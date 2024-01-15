@@ -7,21 +7,34 @@ public class CameraBehavior : MonoBehaviour
 {
     [HideInInspector] public Vector2 _move;
     [HideInInspector] public Vector2 _look;
-    [HideInInspector] public float aimValue;
-    [HideInInspector] public float fireValue;
 
-    [HideInInspector] public Vector3 nextPosition;
-    [HideInInspector] public Quaternion nextRotation;
+    [Header("References")]
+    public Transform orientation;
+    public Transform cameraPos;
+    public Transform playerObj;
+    public Rigidbody rb;
 
-    public float rotationPower = 0.1f;
-    public float rotationLerp = 0.01f;
+    public float rotationSpeed;
 
-    public float speed = 1f;
-    public Camera _camera;
-    public bool inversedAxe = false;
-    private void Awake()
+    public Transform combatLookAt;
+
+    public GameObject thirdPersonCam;
+    public GameObject combatCam;
+    public GameObject topDownCam;
+
+    public CameraStyle currentStyle;
+    public enum CameraStyle
     {
-        _camera = Camera.main;
+        Basic,
+        Combat,
+        Topdown
+    }
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        SwitchCameraStyle(CameraStyle.Basic);
     }
 
     public void OnMove(InputValue value)
@@ -34,84 +47,40 @@ public class CameraBehavior : MonoBehaviour
         _look = value.Get<Vector2>();
     }
 
-    public void OnAim(InputValue value)
-    {
-        aimValue = value.Get<float>();
-    }
-
-    public GameObject followTransform;
 
     private void Update()
     {
-        #region Player Based Rotation
+        // rotate orientation
+        Vector3 viewDir = transform.position - new Vector3(cameraPos.position.x, transform.position.y, cameraPos.position.z);
+        orientation.forward = viewDir.normalized;
 
-        //Move the player based on the X input on the controller
-        //transform.rotation *= Quaternion.AngleAxis(_look.x * rotationPower, Vector3.up);
-
-        #endregion
-
-        #region Follow Transform Rotation
-
-        //Rotate the Follow Target transform based on the input
-        followTransform.transform.rotation *= Quaternion.AngleAxis(_look.x * rotationPower, Vector3.up);
-
-        #endregion
-
-        #region Vertical Rotation
-
-        if (!inversedAxe)
+        // roate cameraPos object
+        if (currentStyle == CameraStyle.Basic || currentStyle == CameraStyle.Topdown)
         {
-            followTransform.transform.rotation *= Quaternion.AngleAxis(-_look.y * rotationPower, Vector3.right);
-        }
-        else
-        {
-            followTransform.transform.rotation *= Quaternion.AngleAxis(_look.y * rotationPower, Vector3.right);
+            Vector3 inputDir = orientation.forward * _move.y + orientation.right * _move.x;
+            if (inputDir != Vector3.zero)
+                playerObj.forward = Vector3.Slerp(playerObj.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
         }
 
-        var angles = followTransform.transform.localEulerAngles;
-        angles.z = 0;
-
-        var angle = followTransform.transform.localEulerAngles.x;
-
-        //Clamp the Up/Down rotation
-        if (angle > 180 && angle < 340)
+        else if (currentStyle == CameraStyle.Combat)
         {
-            angles.x = 340;
+            Vector3 dirToCombatLookAt = combatLookAt.position - new Vector3(cameraPos.position.x, combatLookAt.position.y, cameraPos.position.z);
+            orientation.forward = dirToCombatLookAt.normalized;
+
+            playerObj.forward = dirToCombatLookAt.normalized;
         }
-        else if (angle < 180 && angle > 40)
-        {
-            angles.x = 40;
-        }
+    }
 
+    private void SwitchCameraStyle(CameraStyle newStyle)
+    {
+        combatCam.SetActive(false);
+        thirdPersonCam.SetActive(false);
+        topDownCam.SetActive(false);
 
-        followTransform.transform.localEulerAngles = angles;
-        #endregion
+        if (newStyle == CameraStyle.Basic) thirdPersonCam.SetActive(true);
+        if (newStyle == CameraStyle.Combat) combatCam.SetActive(true);
+        if (newStyle == CameraStyle.Topdown) topDownCam.SetActive(true);
 
-
-        nextRotation = Quaternion.Lerp(followTransform.transform.rotation, nextRotation, Time.deltaTime * rotationLerp);
-
-        if (_move.x == 0 && _move.y == 0)
-        {
-            nextPosition = transform.position;
-
-            if (aimValue == 1)
-            {
-                //Set the player rotation based on the look transform
-                transform.rotation = Quaternion.Euler(0, followTransform.transform.rotation.eulerAngles.y, 0);
-                //reset the y rotation of the look transform
-                followTransform.transform.localEulerAngles = new Vector3(angles.x, 0, 0);
-            }
-
-            return;
-        }
-        float moveSpeed = speed / 100f;
-        Vector3 position = (_move.y * moveSpeed * transform.forward) + (_move.x * moveSpeed * transform.right);
-        nextPosition = transform.position + position;
-
-
-        //Set the player rotation based on the look transform
-        transform.rotation = Quaternion.Euler(0, followTransform.transform.rotation.eulerAngles.y, 0);
-        //reset the y rotation of the look transform
-        followTransform.transform.localEulerAngles = new Vector3(angles.x, 0, 0);
+        currentStyle = newStyle;
     }
 }

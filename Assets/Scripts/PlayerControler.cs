@@ -1,173 +1,134 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-// ReSharper disable All
 
 
-[RequireComponent(typeof(CharacterController))]
+
+
 public class PlayerControler : MonoBehaviour
 {
-    [Header("Player Speed")]
-    [SerializeField] private float movementSpeed;
-    [SerializeField] private float slidingSpeed;
-    [SerializeField] private float dashSpeed;
-    [SerializeField] private float rotationSpeed;
-    [SerializeField] private float dashCooldown;
-    private float movementX;
-    private float movementY;
-    Vector3 moveDirection;
-    private Transform cameraObject;
-    private CharacterController characterController;
-    private float timer;
-    [Header("Gravity & Jump")]
-    public float gravity = -9.81f;
-    public LayerMask groundMask;
-    public float groundDistance = 0.4f;
-    public Transform groundCheck;
-    [SerializeField] float jumpforce;
-    bool isGrounded, jump, isDashing;
-    Vector3 velocity;
-    private Animator m_Animator;
-    private bool isSliding;
-    
-    [Header("InputRef")]
-    [SerializeField] private InputActionReference jumpAction;
-    [SerializeField] private InputActionReference slidingAction;
-    [SerializeField] private InputActionReference dashAction;
+    [Header("Movement")]
+    public float moveSpeed;
 
-    
-    private void Awake()
-    {
-        characterController = GetComponent<CharacterController>();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        cameraObject = Camera.main.transform;
-        m_Animator = GetComponentInChildren<Animator>();
-    }
+    public float groundDrag;
+
+    public float jumpForce;
+    public float jumpCooldown;
+    public float airMultiplier;
+    bool readyToJump = true;
+
+    public Transform orientation;
+
+    [Header("Action Mapping")]
+    public InputActionReference jumpAction;
+
+    [Header("Ground Check")]
+    public Transform groundCheck;
+    public float groundCheckDistance;
+    public LayerMask whatIsGround;
+    bool grounded;
+
+    [Header("Animator")]
+    public Animator animator;
+
+
+
+    [HideInInspector] public Vector2 _move;
+    [HideInInspector] public Vector2 _look;
+
+    Vector3 moveDirection;
+
+    Rigidbody rb;
 
     private void OnEnable()
     {
         jumpAction.action.performed += Jump;
-        slidingAction.action.performed += Sliding;
-        dashAction.action.performed += Dash;
     }
-
     private void OnDisable()
     {
         jumpAction.action.performed -= Jump;
-        slidingAction.action.performed -= Sliding;
-        dashAction.action.performed -= Dash;
+    }
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
     }
 
     private void Update()
     {
-        Move();
-        Gravity();
-        ResetDash();
-    }
-    
-    private void Move()
-    {
-        moveDirection = cameraObject.forward * movementY;
-        moveDirection = moveDirection + cameraObject.right * movementX;
-        moveDirection.Normalize();
-        moveDirection.y = 0;
-        Vector3 moveDir;
-        moveDir = isSliding ? moveDirection *= movementSpeed : moveDirection *= slidingSpeed;
-        characterController.Move(moveDir * Time.deltaTime);
-        m_Animator.SetFloat("Speed", moveDir.magnitude);
-        m_Animator.SetBool("Surf", isSliding);
+        // ground check
+        grounded = Physics.CheckSphere(groundCheck.position, groundCheckDistance, whatIsGround);
+
+        // limit Speed
+        SpeedControl();
+
+        // apply Drag
+        if (grounded)
+            rb.drag = groundDrag;
+        else
+            rb.drag = 0;
+
+        animator.SetFloat("Speed" ,moveDirection.magnitude);
     }
 
-    #region Rota
-    //void Rotation()
-    //{
-    //    Vector3 targetDirection;
-
-    //    targetDirection = cameraObject.forward * movementY;
-    //    targetDirection = targetDirection + cameraObject.right * movementX;
-    //    targetDirection.Normalize();
-    //    targetDirection.y = 0;
-
-    //    if (targetDirection == Vector3.zero)
-    //        targetDirection = transform.forward;
-
-    //    Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-    //    Quaternion playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
-    //    transform.rotation = playerRotation;
-    //} 
-    #endregion
-
-    private void Gravity()
+    private void FixedUpdate()
     {
-        if (isGrounded && velocity.y < 0)
+        MovePlayer();
+    }
+
+    void MovePlayer()
+    {
+        //calculate movement direction
+        moveDirection = orientation.forward * _move.y + orientation.right * _move.x;
+
+        // on ground
+        if(grounded)
+            rb.AddForce(10f * moveSpeed * moveDirection.normalized, ForceMode.Force);
+
+        // in air
+        else if (!grounded)
+            rb.AddForce(10f * moveSpeed * airMultiplier * moveDirection.normalized, ForceMode.Force);
+
+    }
+
+    void SpeedControl()
+    {
+        Vector3 flatVel = new(rb.velocity.x, 0f, rb.velocity.z);
+
+        // limit velocity if needed
+        if(flatVel.magnitude > moveSpeed)
         {
-            velocity.y = -2f;
-        }
-
-        GroundCheck();
-
-        velocity.y += gravity * Time.deltaTime;
-
-        characterController.Move(velocity * Time.deltaTime);
-    }
-
-    private void Jump(InputAction.CallbackContext callbackContext)
-    {
-        if (!isGrounded) return;
-        if (isSliding) return;
-        jump = true;
-        velocity.y = Mathf.Sqrt(jumpforce * -2f * gravity);
-
-        velocity.y += gravity * Time.deltaTime;
-        characterController.Move(velocity * Time.deltaTime);
-    }
-
-    private void OnMove(InputValue movementValue)
-    {
-        Vector2 movementVector = movementValue.Get<Vector2>();
-        movementX = movementVector.x;
-        movementY = movementVector.y;
-    }
-
-    private void Sliding(InputAction.CallbackContext callbackContext)
-    {
-        isSliding = !isSliding;
-    }
-
-    private void Dash(InputAction.CallbackContext callbackContext)
-    {
-        if(isDashing) return;
-        if (!isSliding)
-        {
-            characterController.Move(moveDirection * dashSpeed * Time.deltaTime);
-            isDashing = true;
-            timer = Time.time + dashCooldown;
-        }
-        
-    }
-
-    private void ResetDash()
-    {
-        if (Time.time > timer)
-        {
-            isDashing = false;
+            Vector3 limitedVel = flatVel.normalized * moveSpeed;
+            rb.velocity = new(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
     }
-    
-    void GroundCheck()
+
+    void Jump(InputAction.CallbackContext callbackContext)
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        Physics.Raycast(groundCheck.position, Vector3.down, out RaycastHit hit, 1f, groundMask);
-
-        if (hit.transform != null && hit.transform.CompareTag("Slope") && !jump)
+        if(readyToJump && grounded)
         {
-            velocity.y = -10f;
-        }
+            rb.velocity = new(rb.velocity.x, 0f, rb.velocity.z);
 
-        if(isGrounded && jump)
-        {
-            jump = false;
+            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+
+            readyToJump = false;
+
+            Invoke(nameof(ResetJump), jumpCooldown);
         }
+    }
+
+    void ResetJump()
+    {
+        readyToJump = true;
+    }
+
+    public void OnMove(InputValue value)
+    {
+        _move = value.Get<Vector2>();
+    }
+
+    public void OnLook(InputValue value)
+    {
+        _look = value.Get<Vector2>();
     }
 }
