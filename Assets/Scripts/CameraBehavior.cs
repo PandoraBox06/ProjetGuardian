@@ -1,3 +1,4 @@
+using Cinemachine;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,6 +23,11 @@ public class CameraBehavior : MonoBehaviour
     public GameObject thirdPersonCam;
     public GameObject combatCam;
     public GameObject topDownCam;
+
+    public CinemachineFreeLook thirdPersonFreeLook;
+    public CinemachineFreeLook combatFreeLook;
+    public CinemachineFreeLook topDownFreeLook;
+
 
     public CameraStyle currentStyle;
     public enum CameraStyle
@@ -87,8 +93,30 @@ public class CameraBehavior : MonoBehaviour
 
     public void DoFov(float endValue)
     {
-        Camera.main.gameObject.GetComponent<Camera>().DOFieldOfView(endValue, .25f);
+        //Camera.main.gameObject.GetComponent<Camera>().DOFieldOfView(endValue, .25f);
+        switch (currentStyle)
+        {
+            case CameraStyle.Basic:
+                thirdPersonFreeLook.GetRig(0).GetCinemachineComponent<CinemachineOrbitalTransposer>().m_ZDamping = endValue;
+                thirdPersonFreeLook.GetRig(1).GetCinemachineComponent<CinemachineOrbitalTransposer>().m_ZDamping = endValue;
+                thirdPersonFreeLook.GetRig(2).GetCinemachineComponent<CinemachineOrbitalTransposer>().m_ZDamping = endValue;
+                break;
+            case CameraStyle.Combat:
+                combatFreeLook.GetRig(0).GetCinemachineComponent<CinemachineOrbitalTransposer>().m_ZDamping = endValue;
+                combatFreeLook.GetRig(1).GetCinemachineComponent<CinemachineOrbitalTransposer>().m_ZDamping = endValue;
+                combatFreeLook.GetRig(2).GetCinemachineComponent<CinemachineOrbitalTransposer>().m_ZDamping = endValue;
+                break;
+            case CameraStyle.Topdown:
+                topDownFreeLook.GetRig(0).GetCinemachineComponent<CinemachineOrbitalTransposer>().m_ZDamping = endValue;
+                topDownFreeLook.GetRig(1).GetCinemachineComponent<CinemachineOrbitalTransposer>().m_ZDamping = endValue;
+                topDownFreeLook.GetRig(2).GetCinemachineComponent<CinemachineOrbitalTransposer>().m_ZDamping = endValue;
+                break;
+            default:
+                thirdPersonFreeLook.GetRig(0).GetCinemachineComponent<CinemachineOrbitalTransposer>().m_ZDamping = endValue;
+                thirdPersonFreeLook.GetRig(1).GetCinemachineComponent<CinemachineOrbitalTransposer>().m_ZDamping = endValue;
+                thirdPersonFreeLook.GetRig(2).GetCinemachineComponent<CinemachineOrbitalTransposer>().m_ZDamping = endValue;
+                break;
+        }
 
-        //GetComponent<Cinemachine.CinemachineFreeLook>().m_Lens.FieldOfView = Mathf.Lerp(GetComponent<Cinemachine.CinemachineFreeLook>().m_Lens.FieldOfView, endValue, Time.deltaTime);
     }
 }
