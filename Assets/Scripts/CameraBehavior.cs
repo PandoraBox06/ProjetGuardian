@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -82,5 +83,12 @@ public class CameraBehavior : MonoBehaviour
         if (newStyle == CameraStyle.Topdown) topDownCam.SetActive(true);
 
         currentStyle = newStyle;
+    }
+
+    public void DoFov(float endValue)
+    {
+        Camera.main.gameObject.GetComponent<Camera>().DOFieldOfView(endValue, .25f);
+
+        //GetComponent<Cinemachine.CinemachineFreeLook>().m_Lens.FieldOfView = Mathf.Lerp(GetComponent<Cinemachine.CinemachineFreeLook>().m_Lens.FieldOfView, endValue, Time.deltaTime);
     }
 }

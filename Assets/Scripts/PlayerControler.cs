@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,7 +8,12 @@ using UnityEngine.InputSystem;
 public class PlayerControler : MonoBehaviour
 {
     [Header("Movement")]
-    public float moveSpeed;
+    private float moveSpeed;
+    public float walkSpeed;
+    public float sprintSpeed;
+    public float dashSpeed;
+
+    public float maxYSpeed;
 
     public float groundDrag;
 
@@ -16,10 +22,27 @@ public class PlayerControler : MonoBehaviour
     public float airMultiplier;
     bool readyToJump = true;
 
+    bool isSprinting;
+
     public Transform orientation;
+
+    [Header("Dash")]
+    public float dashForce;
+    public float dashUpwardForce;
+    public float dashDuration;
+    public float dashCD;
+    private float dashCDTimer;
+    private bool dashing;
+    public float dashSpeedChangeFactor;
+    public bool useCameraForward = true;
+    public bool allowAllDirections = true;
+    public bool disableGravity = false;
+    public bool resetVel = true;
 
     [Header("Action Mapping")]
     public InputActionReference jumpAction;
+    public InputActionReference sprintAction;
+    public InputActionReference dashAction;
 
     [Header("Ground Check")]
     public Transform groundCheck;
@@ -27,10 +50,22 @@ public class PlayerControler : MonoBehaviour
     public LayerMask whatIsGround;
     bool grounded;
 
+    [Header("Slope Handling")]
+    public Transform slopeCheck;
+    public float slopeCheckDistance;
+    public float maxSlopeAngle;
+    private RaycastHit slopeHit;
+    bool exitingSlope;
+
     [Header("Animator")]
     public Animator animator;
 
-
+    [Header("CameraEffects")]
+    public CameraBehavior cameraBehavior;
+    public float dashFov;
+    public float normalFov;
+    public float combatFov;
+    public float topDownFov;
 
     [HideInInspector] public Vector2 _move;
     [HideInInspector] public Vector2 _look;
@@ -38,6 +73,20 @@ public class PlayerControler : MonoBehaviour
     Vector3 moveDirection;
 
     Rigidbody rb;
+
+    float desiredMoveSpeed;
+    float lastDesiredMoveSpeed;
+    MovementState lastState;
+    bool keepMomentum;
+
+    public MovementState state;
+    public enum MovementState
+    {
+        walking,
+        sprinting,
+        dashing,
+        air
+    }
 
     private void OnEnable()
     {
@@ -59,16 +108,24 @@ public class PlayerControler : MonoBehaviour
         // ground check
         grounded = Physics.CheckSphere(groundCheck.position, groundCheckDistance, whatIsGround);
 
-        // limit Speed
         SpeedControl();
+        StateHandler();
+
+        if (dashAction.action.WasPressedThisFrame())
+            Dash();
+        if(sprintAction.action.WasPressedThisFrame())
+            isSprinting = !isSprinting;
 
         // apply Drag
-        if (grounded)
+        if (state == MovementState.walking || state == MovementState.sprinting)
             rb.drag = groundDrag;
         else
             rb.drag = 0;
 
         animator.SetFloat("Speed" ,moveDirection.magnitude);
+
+        if(dashCDTimer > 0)
+            dashCDTimer -= Time.deltaTime;
     }
 
     private void FixedUpdate()
@@ -76,10 +133,80 @@ public class PlayerControler : MonoBehaviour
         MovePlayer();
     }
 
+    void StateHandler()
+    {
+        // Mode - Dashing
+        if (dashing)
+        {
+            state = MovementState.dashing;
+            desiredMoveSpeed = dashSpeed;
+            speedChangeFactor = dashSpeedChangeFactor;
+        }
+
+        // Mode - Sprinting
+        else if(grounded && isSprinting)
+        {
+            state = MovementState.sprinting;
+            desiredMoveSpeed = sprintSpeed;
+            animator.SetBool("Sprint", true);
+        }
+
+        // Mode - Walking
+        else if (grounded)
+        {
+            state = MovementState.walking;
+            desiredMoveSpeed = walkSpeed;
+            animator.SetBool("Sprint", false);
+        }
+
+        // Mode - Air
+        else
+        {
+            state = MovementState.air;
+
+            if (desiredMoveSpeed < sprintSpeed)
+                desiredMoveSpeed = walkSpeed;
+            else
+                desiredMoveSpeed = sprintSpeed;
+        }
+
+        bool desiredMoveSpeedHasChanged = desiredMoveSpeed != lastDesiredMoveSpeed;
+        if(lastState == MovementState.dashing)
+            keepMomentum = true;
+
+        if(desiredMoveSpeedHasChanged)
+        {
+            if(keepMomentum)
+            {
+                StopAllCoroutines();
+                StartCoroutine(SmoothlyLerpMoveSpeed());
+            }
+            else
+            {
+                StopAllCoroutines();
+                moveSpeed = desiredMoveSpeed;
+            }
+        }
+
+        lastDesiredMoveSpeed = desiredMoveSpeed;
+        lastState = state;
+    }
+
     void MovePlayer()
     {
+        if (state == MovementState.dashing) return;
+
         //calculate movement direction
         moveDirection = orientation.forward * _move.y + orientation.right * _move.x;
+
+        // on slope
+        if (OnSlope() && !exitingSlope)
+        {
+            rb.AddForce(20f * moveSpeed * GetSlopeMoveDirection(), ForceMode.Force);
+
+            if (rb.velocity.y > 0)
+                rb.AddForce(Vector3.down * 80f, ForceMode.Force);
+        }
 
         // on ground
         if(grounded)
@@ -89,24 +216,44 @@ public class PlayerControler : MonoBehaviour
         else if (!grounded)
             rb.AddForce(10f * moveSpeed * airMultiplier * moveDirection.normalized, ForceMode.Force);
 
+
+        // turn gravity off while on slope
+        rb.useGravity = !OnSlope();
     }
 
     void SpeedControl()
     {
-        Vector3 flatVel = new(rb.velocity.x, 0f, rb.velocity.z);
-
-        // limit velocity if needed
-        if(flatVel.magnitude > moveSpeed)
+        // limiting speed on slope
+        if (OnSlope() && !exitingSlope)
         {
-            Vector3 limitedVel = flatVel.normalized * moveSpeed;
-            rb.velocity = new(limitedVel.x, rb.velocity.y, limitedVel.z);
+            if(rb.velocity.magnitude > moveSpeed)
+                rb.velocity = rb.velocity.normalized * moveSpeed;
         }
+
+        // limiting speed on ground or in air
+        else
+        {
+            Vector3 flatVel = new(rb.velocity.x, 0f, rb.velocity.z);
+
+            // limit velocity if needed
+            if(flatVel.magnitude > moveSpeed)
+            {
+                Vector3 limitedVel = flatVel.normalized * moveSpeed;
+                rb.velocity = new(limitedVel.x, rb.velocity.y, limitedVel.z);
+            }
+        }
+
+        // limit y vel
+        if(maxYSpeed != 0 && rb.velocity.y > maxYSpeed)
+            rb.velocity = new(rb.velocity.x, maxYSpeed, rb.velocity.z);
     }
 
     void Jump(InputAction.CallbackContext callbackContext)
     {
         if(readyToJump && grounded)
         {
+            exitingSlope = true;
+
             rb.velocity = new(rb.velocity.x, 0f, rb.velocity.z);
 
             rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
@@ -120,8 +267,127 @@ public class PlayerControler : MonoBehaviour
     void ResetJump()
     {
         readyToJump = true;
+
+        exitingSlope = false;
     }
 
+    void Dash()
+    {
+        if (dashCDTimer > 0) return;
+        else dashCDTimer = dashCD;
+
+        dashing = true;
+
+        cameraBehavior.DoFov(dashFov);
+
+        Transform forwardT;
+
+        if (useCameraForward)
+            forwardT = Camera.main.transform;
+        else
+            forwardT = orientation;
+
+        Vector3 direction = GetDirection(forwardT);
+
+        Vector3 forceToApply = direction * dashForce + orientation.up * dashUpwardForce;
+
+        if(disableGravity)
+            rb.useGravity = false;
+
+        delayedForceToApply = forceToApply;
+        Invoke(nameof(DelayedDashForce), 0.025f);
+
+        Invoke(nameof(ResetDash), dashDuration);
+    }
+
+    private Vector3 delayedForceToApply;
+
+    void DelayedDashForce()
+    {
+        if (resetVel)
+            rb.velocity = Vector3.zero;
+
+        rb.AddForce(delayedForceToApply, ForceMode.Impulse);
+    }
+
+    void ResetDash()
+    {
+        dashing = false;
+
+        switch (cameraBehavior.currentStyle)
+        {
+            case CameraBehavior.CameraStyle.Basic:
+                cameraBehavior.DoFov(normalFov);
+                break;
+            case CameraBehavior.CameraStyle.Combat:
+                cameraBehavior.DoFov(combatFov);
+                break;
+            case CameraBehavior.CameraStyle.Topdown:
+                cameraBehavior.DoFov(topDownFov);
+                break;
+            default:
+                cameraBehavior.DoFov(normalFov);
+                break;
+        }
+
+        if (disableGravity)
+            rb.useGravity = true;
+    }
+
+    Vector3 GetDirection(Transform forwardT)
+    {
+        Vector3 direction = new();
+
+        if (allowAllDirections)
+            direction = forwardT.forward * _move.y + forwardT.right * _move.x;
+        else
+            direction = forwardT.forward;
+
+        if (_move.x == 0 && _move.y == 0)
+            direction = forwardT.forward;
+
+        return direction.normalized;
+    }
+
+    bool OnSlope()
+    {
+        if (Physics.SphereCast(slopeCheck.position, slopeCheckDistance, Vector3.down, out slopeHit))
+        {
+            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
+            return angle < maxSlopeAngle && angle != 0;
+        } 
+
+        return false;
+    }
+
+    Vector3 GetSlopeMoveDirection()
+    {
+        return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
+    }
+
+    private float speedChangeFactor;
+    private IEnumerator SmoothlyLerpMoveSpeed()
+    {
+        // smoothly lerp movementSpeed to desired value
+        float time = 0;
+        float difference = Mathf.Abs(desiredMoveSpeed - moveSpeed);
+        float startValue = moveSpeed;
+
+        float boostFactor = speedChangeFactor;
+
+        while (time < difference)
+        {
+            moveSpeed = Mathf.Lerp(startValue, desiredMoveSpeed, time / difference);
+            time += Time.deltaTime * boostFactor;
+            yield return null;
+        }
+
+        moveSpeed = desiredMoveSpeed;
+        speedChangeFactor = 1f;
+        keepMomentum = false;
+    }
+
+    #region InputDetection
     public void OnMove(InputValue value)
     {
         _move = value.Get<Vector2>();
@@ -130,5 +396,12 @@ public class PlayerControler : MonoBehaviour
     public void OnLook(InputValue value)
     {
         _look = value.Get<Vector2>();
+    }
+    #endregion
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(slopeCheck.position, slopeCheckDistance);
     }
 }
