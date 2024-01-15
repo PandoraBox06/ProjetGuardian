@@ -205,7 +205,7 @@ public class PlayerControler : MonoBehaviour
             rb.AddForce(20f * moveSpeed * GetSlopeMoveDirection(), ForceMode.Force);
 
             if (rb.velocity.y > 0)
-                rb.AddForce(Vector3.down * 80f, ForceMode.Force);
+                rb.AddForce(Vector3.down * 160f, ForceMode.Force);
         }
 
         // on ground
@@ -351,7 +351,7 @@ public class PlayerControler : MonoBehaviour
 
     bool OnSlope()
     {
-        if (Physics.SphereCast(slopeCheck.position, slopeCheckDistance, Vector3.down, out slopeHit))
+        if (Physics.Raycast(slopeCheck.position, Vector3.down, out slopeHit, slopeCheckDistance))
         {
             float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
             return angle < maxSlopeAngle && angle != 0;
@@ -402,6 +402,6 @@ public class PlayerControler : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(slopeCheck.position, slopeCheckDistance);
+        Gizmos.DrawRay(slopeCheck.position, Vector3.down * slopeCheckDistance);
     }
 }
