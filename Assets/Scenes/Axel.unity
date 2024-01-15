@@ -213,7 +213,67 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a68f2311-ddc9-4836-8a1b-a39ffc21c389
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4bca103f-d630-490a-b19d-da2ec7d3758e
+    m_ActionName: Player/Look[/Mouse/delta,/Pen/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2dff7949-ff02-4ebc-a8f7-84c0693540ca
+    m_ActionName: Player/Fire[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 035125a3-a759-4559-a327-8d0913b4e7b7
+    m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 51d5dd4e-8968-49c0-a540-ca521a0a2b01
+    m_ActionName: Player/Sliding[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e01f8b00-ef43-4a8d-9c05-5cf1d4f3f5a1
+    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8a5a0cba-aaef-48d1-8cde-52c2c079fa87
+    m_ActionName: UI/Submit[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f8075de5-59a2-48e7-9e8a-ff9274d6e1c4
+    m_ActionName: UI/Cancel[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 53383626-5ed5-4bed-951c-6fb275bbee50
+    m_ActionName: UI/Point[/Mouse/position,/Pen/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 026bdf38-5968-4ecf-a24b-1dda2e513a6c
+    m_ActionName: UI/Click[/Mouse/leftButton,/Pen/tip]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 13a96265-9d0b-4676-b612-2792a2e4b04d
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e9f41b18-2248-45f4-88f6-46ab06c9e963
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b0c27108-6d6d-4482-9479-b2917552e448
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 85e873ae-91b6-4a7b-b518-474746b66e65
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 62b161ad-99fd-40b7-89fe-d3b03d05502b
+    m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -254,17 +314,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48303b66c0b956b4cbe2bdee3d05aadb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 15
-  accelerationSpeed: 5
+  movementSpeed: 10
+  slidingSpeed: 20
+  dashSpeed: 25
   rotationSpeed: 15
+  dashCooldown: 1
   gravity: -9.81
   groundMask:
     serializedVersion: 2
     m_Bits: 8
   groundDistance: 0.4
   groundCheck: {fileID: 1368594916}
-  jumpforce: 10
+  jumpforce: 5
   jumpAction: {fileID: -504348310357525271, guid: b0b17bf653d5a64488494776990ea425, type: 3}
+  slidingAction: {fileID: 3668811875352331476, guid: b0b17bf653d5a64488494776990ea425, type: 3}
+  dashAction: {fileID: -9066507815730986984, guid: b0b17bf653d5a64488494776990ea425, type: 3}
 --- !u!114 &213627847
 MonoBehaviour:
   m_ObjectHideFlags: 0

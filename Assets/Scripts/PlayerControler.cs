@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+// ReSharper disable All
 
 
 [RequireComponent(typeof(CharacterController))]
@@ -9,26 +8,33 @@ public class PlayerControler : MonoBehaviour
 {
     [Header("Player Speed")]
     [SerializeField] private float movementSpeed;
-    [SerializeField] private float accelerationSpeed;
+    [SerializeField] private float slidingSpeed;
+    [SerializeField] private float dashSpeed;
     [SerializeField] private float rotationSpeed;
+    [SerializeField] private float dashCooldown;
     private float movementX;
     private float movementY;
-
+    Vector3 moveDirection;
     private Transform cameraObject;
     private CharacterController characterController;
-
+    private float timer;
     [Header("Gravity & Jump")]
     public float gravity = -9.81f;
     public LayerMask groundMask;
     public float groundDistance = 0.4f;
     public Transform groundCheck;
     [SerializeField] float jumpforce;
-    bool isGrounded, jump;
+    bool isGrounded, jump, isDashing;
     Vector3 velocity;
     private Animator m_Animator;
+    private bool isSliding;
+    
     [Header("InputRef")]
-    [SerializeField] InputActionReference jumpAction;
+    [SerializeField] private InputActionReference jumpAction;
+    [SerializeField] private InputActionReference slidingAction;
+    [SerializeField] private InputActionReference dashAction;
 
+    
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
@@ -36,42 +42,40 @@ public class PlayerControler : MonoBehaviour
         Cursor.visible = false;
         cameraObject = Camera.main.transform;
         m_Animator = GetComponentInChildren<Animator>();
-        jumpAction.action.performed += OnJump;
+    }
+
+    private void OnEnable()
+    {
+        jumpAction.action.performed += Jump;
+        slidingAction.action.performed += Sliding;
+        dashAction.action.performed += Dash;
+    }
+
+    private void OnDisable()
+    {
+        jumpAction.action.performed -= Jump;
+        slidingAction.action.performed -= Sliding;
+        dashAction.action.performed -= Dash;
     }
 
     private void Update()
     {
         Move();
         Gravity();
+        ResetDash();
     }
-
-    Vector3 speed;
+    
     private void Move()
     {
-        Vector3 moveDirection;
         moveDirection = cameraObject.forward * movementY;
         moveDirection = moveDirection + cameraObject.right * movementX;
         moveDirection.Normalize();
         moveDirection.y = 0;
-        moveDirection *= accelerationSpeed;
-        if(moveDirection.magnitude > 0.1f)
-        {
-            speed += moveDirection * Time.deltaTime;
-            speed = Vector3.ClampMagnitude(speed, movementSpeed);
-
-            characterController.Move(speed * Time.deltaTime);
-        }
-        else
-            speed = Vector3.zero;
-
-        Debug.Log($"Speed Magnitude = {speed.magnitude}");
-        if(speed.magnitude >= movementSpeed)
-        {
-            m_Animator.SetBool("Surf", true);
-        }
-        else
-            m_Animator.SetBool("Surf", false);
-        m_Animator.SetFloat("Speed", moveDirection.magnitude);
+        Vector3 moveDir;
+        moveDir = isSliding ? moveDirection *= movementSpeed : moveDirection *= slidingSpeed;
+        characterController.Move(moveDir * Time.deltaTime);
+        m_Animator.SetFloat("Speed", moveDir.magnitude);
+        m_Animator.SetBool("Surf", isSliding);
     }
 
     #region Rota
@@ -94,7 +98,7 @@ public class PlayerControler : MonoBehaviour
     //} 
     #endregion
 
-    void Gravity()
+    private void Gravity()
     {
         if (isGrounded && velocity.y < 0)
         {
@@ -108,16 +112,15 @@ public class PlayerControler : MonoBehaviour
         characterController.Move(velocity * Time.deltaTime);
     }
 
-    void OnJump(InputAction.CallbackContext callbackContext)
+    private void Jump(InputAction.CallbackContext callbackContext)
     {
-        if (isGrounded)
-        {
-            jump = true;
-            velocity.y = Mathf.Sqrt(jumpforce * -2f * gravity);
+        if (!isGrounded) return;
+        if (isSliding) return;
+        jump = true;
+        velocity.y = Mathf.Sqrt(jumpforce * -2f * gravity);
 
-            velocity.y += gravity * Time.deltaTime;
-            characterController.Move(velocity * Time.deltaTime);
-        }
+        velocity.y += gravity * Time.deltaTime;
+        characterController.Move(velocity * Time.deltaTime);
     }
 
     private void OnMove(InputValue movementValue)
@@ -127,6 +130,31 @@ public class PlayerControler : MonoBehaviour
         movementY = movementVector.y;
     }
 
+    private void Sliding(InputAction.CallbackContext callbackContext)
+    {
+        isSliding = !isSliding;
+    }
+
+    private void Dash(InputAction.CallbackContext callbackContext)
+    {
+        if(isDashing) return;
+        if (!isSliding)
+        {
+            characterController.Move(moveDirection * dashSpeed * Time.deltaTime);
+            isDashing = true;
+            timer = Time.time + dashCooldown;
+        }
+        
+    }
+
+    private void ResetDash()
+    {
+        if (Time.time > timer)
+        {
+            isDashing = false;
+        }
+    }
+    
     void GroundCheck()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
