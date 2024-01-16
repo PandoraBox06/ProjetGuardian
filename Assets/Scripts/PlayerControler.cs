@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
 
 
 
@@ -141,8 +142,11 @@ public class PlayerControler : MonoBehaviour
         SpeedControl();
         StateHandler();
         WallCheck();
+        RotatePlayerToSlope();
 
-        if(state == MovementState.climbing)
+        #region Climbing
+        //Climbing
+        if (state == MovementState.climbing)
         {
             if (!climbing && climbTimer > 0) StartClimbing();
 
@@ -160,7 +164,8 @@ public class PlayerControler : MonoBehaviour
             if (wallFront && jumpAction.action.WasPressedThisFrame() && climbJumpsLeft > 0) ClimbJump();
         }
 
-        if (climbing && !exitingWall) ClimbingMovement();
+        if (climbing && !exitingWall) ClimbingMovement(); 
+        #endregion
 
         if (dashAction.action.WasPressedThisFrame())
             Dash();
@@ -264,11 +269,11 @@ public class PlayerControler : MonoBehaviour
             rb.AddForce(20f * moveSpeed * GetSlopeMoveDirection(), ForceMode.Force);
 
             if (rb.velocity.y > 0)
-                rb.AddForce(Vector3.down * 190f, ForceMode.Force);
+                rb.AddForce(Vector3.down * 80f, ForceMode.Force);
         }
 
         // on ground
-        if (grounded)
+        else if (grounded)
             rb.AddForce(10f * moveSpeed * moveDirection.normalized, ForceMode.Force);
 
         // in air
@@ -307,9 +312,11 @@ public class PlayerControler : MonoBehaviour
             rb.velocity = new(rb.velocity.x, maxYSpeed, rb.velocity.z);
     }
 
+
+    #region Jump
     void Jump(InputAction.CallbackContext callbackContext)
     {
-        if(readyToJump && grounded)
+        if (readyToJump && grounded)
         {
             exitingSlope = true;
 
@@ -328,8 +335,10 @@ public class PlayerControler : MonoBehaviour
         readyToJump = true;
 
         exitingSlope = false;
-    }
+    } 
+    #endregion
 
+    #region Dash
     void Dash()
     {
         if (dashCDTimer > 0) return;
@@ -350,7 +359,7 @@ public class PlayerControler : MonoBehaviour
 
         Vector3 forceToApply = direction * dashForce + orientation.up * dashUpwardForce;
 
-        if(disableGravity)
+        if (disableGravity)
             rb.useGravity = false;
 
         delayedForceToApply = forceToApply;
@@ -371,6 +380,7 @@ public class PlayerControler : MonoBehaviour
 
     void ResetDash()
     {
+        if(!grounded) return;
         dashing = false;
 
         switch (cameraBehavior.currentStyle)
@@ -391,8 +401,10 @@ public class PlayerControler : MonoBehaviour
 
         if (disableGravity)
             rb.useGravity = true;
-    }
+    } 
+    #endregion
 
+    #region Climbing
     void WallCheck()
     {
         wallFront = Physics.SphereCast(transform.position, climbingSphereCastRadius, orientation.forward, out frontWallHit, climbingDetectionLenght, whatIsWall);
@@ -436,8 +448,10 @@ public class PlayerControler : MonoBehaviour
         rb.AddForce(forceToApply, ForceMode.Impulse);
 
         climbJumpsLeft--;
-    }
+    } 
+    #endregion
 
+    // Dash
     Vector3 GetDirection(Transform forwardT)
     {
         Vector3 direction = new();
@@ -453,13 +467,14 @@ public class PlayerControler : MonoBehaviour
         return direction.normalized;
     }
 
+    #region Slope
     bool OnSlope()
     {
         if (Physics.Raycast(slopeCheck.position, Vector3.down, out slopeHit, slopeCheckDistance))
         {
             float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
             return angle < maxSlopeAngle && angle != 0;
-        } 
+        }
 
         return false;
     }
@@ -467,8 +482,22 @@ public class PlayerControler : MonoBehaviour
     Vector3 GetSlopeMoveDirection()
     {
         return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
+    } 
+    void RotatePlayerToSlope()
+    {
+        if (OnSlope())
+        {
+            RaycastHit hit;
+            if (Physics.SphereCast(transform.position, 0.5f, -transform.up, out hit, 5))
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(Vector3.Cross(transform.right, hit.normal), hit.normal), Time.deltaTime * 5.0f);
+            }
+            rb.AddForce(-9.61f * Time.deltaTime * -transform.up);
+        }
     }
+    #endregion
 
+    // Smooth Speed on Dash
     private float speedChangeFactor;
     private IEnumerator SmoothlyLerpMoveSpeed()
     {
