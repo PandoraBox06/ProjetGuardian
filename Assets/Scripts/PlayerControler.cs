@@ -39,6 +39,35 @@ public class PlayerControler : MonoBehaviour
     public bool disableGravity = false;
     public bool resetVel = true;
 
+    [Header("Climbing")]
+    public LayerMask whatIsWall;
+    public float climbSpeed;
+    public float maxClimbTime;
+    private float climbTimer;
+
+    private bool climbing;
+
+    public float climbingDetectionLenght;
+    public float climbingSphereCastRadius;
+    public float climbingMaxWallLookAngle;
+    private float wallLookAngle;
+
+    private RaycastHit frontWallHit;
+    private bool wallFront;
+
+    public float climJumpUpForce;
+    public float climJumpBackForce;
+    public int climbJumps;
+    int climbJumpsLeft;
+
+    Transform lastWall;
+    Vector3 lastWallNormal;
+    public float minWallNormalAngleChange;
+
+    public bool exitingWall;
+    public float exitWallTime;
+    float exitWallTimer;
+
     [Header("Action Mapping")]
     public InputActionReference jumpAction;
     public InputActionReference sprintAction;
@@ -85,6 +114,7 @@ public class PlayerControler : MonoBehaviour
         walking,
         sprinting,
         dashing,
+        climbing,
         air
     }
 
@@ -110,6 +140,27 @@ public class PlayerControler : MonoBehaviour
 
         SpeedControl();
         StateHandler();
+        WallCheck();
+
+        if(state == MovementState.climbing)
+        {
+            if (!climbing && climbTimer > 0) StartClimbing();
+
+            // timer
+            if (climbTimer > 0) climbTimer -= Time.deltaTime;
+            if (climbTimer < 0) StopClimbing();
+
+            if (exitingWall)
+            {
+                if (climbing) StopClimbing();
+                if (exitWallTimer > 0) exitWallTimer -= Time.deltaTime;
+                if (exitWallTimer < 0) exitingWall = false;
+            }
+
+            if (wallFront && jumpAction.action.WasPressedThisFrame() && climbJumpsLeft > 0) ClimbJump();
+        }
+
+        if (climbing && !exitingWall) ClimbingMovement();
 
         if (dashAction.action.WasPressedThisFrame())
             Dash();
@@ -117,7 +168,7 @@ public class PlayerControler : MonoBehaviour
             isSprinting = !isSprinting;
 
         // apply Drag
-        if (state == MovementState.walking || state == MovementState.sprinting)
+        if (grounded && state != MovementState.dashing)
             rb.drag = groundDrag;
         else
             rb.drag = 0;
@@ -135,8 +186,14 @@ public class PlayerControler : MonoBehaviour
 
     void StateHandler()
     {
+        // Mode - Climbing
+        if(wallFront && wallLookAngle < climbingMaxWallLookAngle && _move.y >= 1 && !exitingWall)
+        {
+            state = MovementState.climbing;
+            desiredMoveSpeed = climbSpeed;
+        }
         // Mode - Dashing
-        if (dashing)
+        else if (dashing)
         {
             state = MovementState.dashing;
             desiredMoveSpeed = dashSpeed;
@@ -163,6 +220,8 @@ public class PlayerControler : MonoBehaviour
         else
         {
             state = MovementState.air;
+
+            if (climbing || exitingWall) StopClimbing();
 
             if (desiredMoveSpeed < sprintSpeed)
                 desiredMoveSpeed = walkSpeed;
@@ -194,7 +253,7 @@ public class PlayerControler : MonoBehaviour
 
     void MovePlayer()
     {
-        if (state == MovementState.dashing) return;
+        if (state == MovementState.dashing || exitingWall) return;
 
         //calculate movement direction
         moveDirection = orientation.forward * _move.y + orientation.right * _move.x;
@@ -205,11 +264,11 @@ public class PlayerControler : MonoBehaviour
             rb.AddForce(20f * moveSpeed * GetSlopeMoveDirection(), ForceMode.Force);
 
             if (rb.velocity.y > 0)
-                rb.AddForce(Vector3.down * 160f, ForceMode.Force);
+                rb.AddForce(Vector3.down * 190f, ForceMode.Force);
         }
 
         // on ground
-        if(grounded)
+        if (grounded)
             rb.AddForce(10f * moveSpeed * moveDirection.normalized, ForceMode.Force);
 
         // in air
@@ -332,6 +391,51 @@ public class PlayerControler : MonoBehaviour
 
         if (disableGravity)
             rb.useGravity = true;
+    }
+
+    void WallCheck()
+    {
+        wallFront = Physics.SphereCast(transform.position, climbingSphereCastRadius, orientation.forward, out frontWallHit, climbingDetectionLenght, whatIsWall);
+        wallLookAngle = Vector3.Angle(orientation.forward, -frontWallHit.normal);
+
+        bool newWall = frontWallHit.transform != lastWall || Mathf.Abs(Vector3.Angle(lastWallNormal, frontWallHit.normal)) > minWallNormalAngleChange;
+
+        if (grounded || (wallFront && newWall))
+        {
+            climbTimer = maxClimbTime;
+            climbJumpsLeft = climbJumps;
+        }
+    }
+
+    void StartClimbing()
+    {
+        climbing = true;
+
+        lastWall = frontWallHit.transform;
+        lastWallNormal = frontWallHit.normal;
+    }
+
+    void ClimbingMovement()
+    {
+        rb.velocity = new(rb.velocity.x, climbSpeed, rb.velocity.z);
+    }
+
+    void StopClimbing()
+    {
+        climbing = false;
+    }
+
+    void ClimbJump()
+    {
+        exitingWall = true;
+        exitWallTimer = exitWallTime;
+
+        Vector3 forceToApply = transform.up * climJumpUpForce + frontWallHit.normal * climJumpBackForce;
+
+        rb.velocity = new(rb.velocity.x, 0f, rb.velocity.z);
+        rb.AddForce(forceToApply, ForceMode.Impulse);
+
+        climbJumpsLeft--;
     }
 
     Vector3 GetDirection(Transform forwardT)
