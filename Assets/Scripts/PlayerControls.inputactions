@@ -294,6 +294,17 @@
                 },
                 {
                     "name": "",
+                    "id": "f2289158-00b9-46a9-a0a1-d12cb6b50df7",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "07168b59-c9eb-4ee4-acb9-1b788e6708f5",
                     "path": "<Keyboard>/shift",
                     "interactions": "",
@@ -305,11 +316,33 @@
                 },
                 {
                     "name": "",
+                    "id": "9ca0a9ff-2f83-4c95-910c-bec377ae3b53",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Sliding",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b42b6e25-dee3-4b32-98ed-dc4482433ec9",
                     "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "59fcae02-6feb-4265-abcf-76eb615209b7",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
