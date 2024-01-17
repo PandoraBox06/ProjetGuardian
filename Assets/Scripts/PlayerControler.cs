@@ -380,7 +380,6 @@ public class PlayerControler : MonoBehaviour
 
     void ResetDash()
     {
-        if(!grounded) return;
         dashing = false;
 
         switch (cameraBehavior.currentStyle)
