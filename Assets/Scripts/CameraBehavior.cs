@@ -30,6 +30,8 @@ public class CameraBehavior : MonoBehaviour
 
 
     public CameraStyle currentStyle;
+
+    public InputActionReference switchCam;
     public enum CameraStyle
     {
         Basic,
@@ -57,6 +59,24 @@ public class CameraBehavior : MonoBehaviour
 
     private void Update()
     {
+        if (switchCam.action.WasPressedThisFrame())
+        {
+            switch (currentStyle)
+            {
+                case CameraStyle.Basic:
+                    SwitchCameraStyle(CameraStyle.Combat);
+                    Debug.Log("Combat !");
+                    break;
+                case CameraStyle.Combat:
+                    SwitchCameraStyle(CameraStyle.Basic);
+                    Debug.Log("Basic !");
+                    break;
+                case CameraStyle.Topdown:
+                    break;
+            }
+
+        }
+
         // rotate orientation
         Vector3 viewDir = transform.position - new Vector3(cameraPos.position.x, transform.position.y, cameraPos.position.z);
         orientation.forward = viewDir.normalized;
