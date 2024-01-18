@@ -1,10 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Tilemaps;
-
-
-
 
 public class PlayerControler : MonoBehaviour
 {
@@ -210,6 +206,7 @@ public class PlayerControler : MonoBehaviour
         {
             state = MovementState.sprinting;
             desiredMoveSpeed = sprintSpeed;
+            exitingWall = false;
             animator.SetBool("Sprint", true);
         }
 
@@ -218,6 +215,7 @@ public class PlayerControler : MonoBehaviour
         {
             state = MovementState.walking;
             desiredMoveSpeed = walkSpeed;
+            exitingWall = false;
             animator.SetBool("Sprint", false);
         }
 
