@@ -389,9 +389,9 @@ GameObject:
   - component: {fileID: 213627844}
   - component: {fileID: 213627848}
   - component: {fileID: 213627845}
-  - component: {fileID: 213627846}
   - component: {fileID: 213627849}
   - component: {fileID: 213627850}
+  - component: {fileID: 213627851}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -534,70 +534,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &213627846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 213627840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48303b66c0b956b4cbe2bdee3d05aadb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkSpeed: 7
-  sprintSpeed: 15
-  dashSpeed: 30
-  maxYSpeed: 15
-  groundDrag: 7
-  jumpForce: 10
-  jumpCooldown: 0.25
-  airMultiplier: 0.4
-  orientation: {fileID: 366613561}
-  dashForce: 50
-  dashUpwardForce: 5
-  dashDuration: 0.7
-  dashCD: 1.5
-  dashSpeedChangeFactor: 75
-  useCameraForward: 0
-  allowAllDirections: 1
-  disableGravity: 0
-  resetVel: 1
-  whatIsWall:
-    serializedVersion: 2
-    m_Bits: 64
-  climbSpeed: 10
-  maxClimbTime: 0.75
-  climbingDetectionLenght: 0.7
-  climbingSphereCastRadius: 0.25
-  climbingMaxWallLookAngle: 30
-  climJumpUpForce: 14
-  climJumpBackForce: 12
-  climbJumps: 1
-  minWallNormalAngleChange: 5
-  exitingWall: 0
-  exitWallTime: 0.2
-  jumpAction: {fileID: -504348310357525271, guid: b0b17bf653d5a64488494776990ea425, type: 3}
-  sprintAction: {fileID: 3668811875352331476, guid: b0b17bf653d5a64488494776990ea425, type: 3}
-  dashAction: {fileID: -9066507815730986984, guid: b0b17bf653d5a64488494776990ea425, type: 3}
-  groundCheck: {fileID: 1368594916}
-  groundCheckDistance: 0.2
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 8
-  slopeCheck: {fileID: 1680926783}
-  slopeCheckDistance: 0.5
-  maxSlopeAngle: 45
-  animator: {fileID: 1228324510}
-  cameraBehavior: {fileID: 213627849}
-  dashFov: 1
-  normalFov: 0
-  combatFov: 0
-  topDownFov: 0
-  _move: {x: 0, y: 0}
-  _look: {x: 0, y: 0}
-  state: 0
 --- !u!54 &213627848
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -679,6 +615,33 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 1024
+--- !u!114 &213627851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213627840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 033c3aa511f4971469199808ae0c8d39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orientation: {fileID: 366613561}
+  moveSpeed: 7
+  groundDrag: 5
+  groundCheck: {fileID: 1368594916}
+  groundCheckDistance: 0.2
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
+  jumpForce: 12
+  jumpCooldown: 0.25
+  airMultiplier: 0.4
+  jumpAction: {fileID: -504348310357525271, guid: b0b17bf653d5a64488494776990ea425, type: 3}
+  animator: {fileID: 1228324510}
+  _move: {x: 0, y: 0}
+  _look: {x: 0, y: 0}
 --- !u!1 &218159703
 GameObject:
   m_ObjectHideFlags: 3
@@ -704,7 +667,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 218159703}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08851536, y: 0.000000008495427, z: -7.549391e-10, w: 0.99607486}
+  m_LocalRotation: {x: 0.08851536, y: 0.000000008573344, z: -7.6186313e-10, w: 0.99607486}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -888,7 +851,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 322663728}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1387012, y: 3.0428242e-15, z: -5.7733845e-16, w: 0.99033433}
+  m_LocalRotation: {x: 0.1387012, y: 8.6099825e-38, z: -1.5862832e-38, w: 0.99033433}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2635,7 +2598,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753646707}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.045608833, y: -0.00000003428136, z: 0.0000000015651617, w: 0.9989594}
+  m_LocalRotation: {x: 0.045608833, y: -0.000000034444344, z: 0.0000000015726029, w: 0.9989594}
   m_LocalPosition: {x: 0, y: 2, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4973,7 +4936,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1655880962}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.045608826, y: -0.000000016996491, z: 7.7599766e-10, w: 0.9989594}
+  m_LocalRotation: {x: 0.045608826, y: -0.000000017322876, z: 7.9089907e-10, w: 0.9989594}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
