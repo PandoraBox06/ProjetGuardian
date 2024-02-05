@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Rigidbody)), RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerControlerV2 : MonoBehaviour
 {
     [Header("Movement")]
     private float moveSpeed;
     public float walkSpeed = 7;
     public float sprintSpeed = 12;
-    public float groundDrag = 5;
+    public float groundDragWalk = 7;
+    public float groundDragSprint = 12;
 
     bool isSprinting;
 
@@ -77,15 +78,26 @@ public class PlayerControlerV2 : MonoBehaviour
         SpeedControl();
         StateHandler();
 
-        if(grounded)
-            rb.drag = groundDrag;
-        else 
-            rb.drag = 0;
+        switch (state)
+        {
+            case MovementState.walking:
+                rb.drag = groundDragWalk;
+                break;
+            case MovementState.sprinting:
+                rb.drag = groundDragSprint;
+                break;
+            case MovementState.air:
+                rb.drag = 0;
+                break;
+        }
 
         if (sprintAction.action.WasPressedThisFrame())
             isSprinting = !isSprinting;
+        if(isSprinting && moveDirection.magnitude <= 0.1f)
+            isSprinting = false;
 
         animator.SetFloat("Speed", moveDirection.magnitude);
+        animator.SetBool("Sprint", isSprinting);
     }
 
     private void FixedUpdate()
