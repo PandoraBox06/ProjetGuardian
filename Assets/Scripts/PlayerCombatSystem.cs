@@ -6,13 +6,21 @@ using UnityEngine.InputSystem;
 
 public class PlayerCombatSystem : MonoBehaviour
 {
-    [Header("Combo")]
+    [Header("MeleeCombo")]
     public List<SO_Attack> comboNormalAttack;
     float lastClickedTime;
     public float clickTimeCooldown;
     float lastComboEnd;
     public float comboCooldown;
     int comboCounter;
+
+    [Header("Range")]
+    public float shootingCooldown;
+    public GameObject projectilePrefab;
+    public float projectileSpeed;
+    public Transform shootingOutput;
+    public Transform projectileDump;
+    float shootingTimer;
 
     [Header("References")]
     public Animator animator;
@@ -23,12 +31,16 @@ public class PlayerCombatSystem : MonoBehaviour
 
     private void OnEnable()
     {
+        CharacterAnimatorEvents.OnFireProjectile += FireProjectile;
         meleeAction.action.performed += NormalAttack;
+        rangeAction.action.performed += RangeAttack;
     }
 
     private void OnDisable()
     {
+        CharacterAnimatorEvents.OnFireProjectile -= FireProjectile;
         meleeAction.action.performed -= NormalAttack;
+        rangeAction.action.performed -= RangeAttack;
     }
 
     void Update()
@@ -36,6 +48,7 @@ public class PlayerCombatSystem : MonoBehaviour
         ExitAttack();
     }
 
+    #region Melee
     void NormalAttack(InputAction.CallbackContext callbackContext)
     {
         if (Time.time - lastComboEnd > comboCooldown && comboCounter <= comboNormalAttack.Count)
@@ -70,4 +83,26 @@ public class PlayerCombatSystem : MonoBehaviour
         comboCounter = 0;
         lastComboEnd = Time.time;
     }
+    #endregion
+
+    #region Range
+    void RangeAttack(InputAction.CallbackContext callbackContext)
+    {
+        if (Time.time > shootingTimer)
+        {
+            animator.Play("Shooting", 0, 0);
+            shootingTimer = Time.time + shootingCooldown;
+        }
+    }
+
+    void FireProjectile()
+    {
+        var thisProjectile = Instantiate(projectilePrefab, shootingOutput.position, Quaternion.identity, projectileDump);
+        Vector3 projectileDir = new();
+        if (combbatCamBehavior.closestTarget != null)
+            projectileDir = combbatCamBehavior.closestTarget.position - transform.position;
+        else projectileDir = shootingOutput.forward;
+        thisProjectile.GetComponent<Rigidbody>().AddForce(projectileDir * projectileSpeed, ForceMode.Impulse);
+    } 
+    #endregion
 }

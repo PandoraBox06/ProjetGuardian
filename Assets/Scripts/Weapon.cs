@@ -8,6 +8,13 @@ public class Weapon : MonoBehaviour
     public float damage;
     public Collider weaponCol;
 
+    public WeaponType weaponType;
+    public enum WeaponType
+    {
+        melee,
+        ranged
+    }
+
     private void OnEnable()
     {
         CharacterAnimatorEvents.OnEnableColliderCall += OnEnableCollider;
@@ -23,14 +30,14 @@ public class Weapon : MonoBehaviour
 
     public void OnEnableCollider()
     {
-        weaponCol.enabled = true;
-        Debug.Log("call");
+        if(weaponType == WeaponType.melee)
+            weaponCol.enabled = true;
     }
 
     public void OnDisbaleCollider()
     {
-        weaponCol.enabled = false;
-        Debug.Log("is call");
+        if (weaponType == WeaponType.melee)
+            weaponCol.enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,6 +46,8 @@ public class Weapon : MonoBehaviour
         {
             other.TryGetComponent(out IDamageable damageable);
             damageable.TakeDamage(damage);
+            if (weaponType == WeaponType.ranged)
+                Destroy(gameObject);
         }
     }
 }

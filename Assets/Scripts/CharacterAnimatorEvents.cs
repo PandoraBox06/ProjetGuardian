@@ -7,7 +7,7 @@ public class CharacterAnimatorEvents : MonoBehaviour
 {
     public static event Action OnEnableColliderCall;
     public static event Action OnDisbaleColliderCall;
-
+    public static event Action OnFireProjectile;
     public void OnEnableeCollider()
     {
         OnEnableColliderCall?.Invoke();
@@ -15,5 +15,10 @@ public class CharacterAnimatorEvents : MonoBehaviour
     public void OnDisableCollider()
     {
         OnDisbaleColliderCall?.Invoke();
+    }
+
+    public void OnFireProjectiles()
+    {
+        OnFireProjectile?.Invoke();
     }
 }
