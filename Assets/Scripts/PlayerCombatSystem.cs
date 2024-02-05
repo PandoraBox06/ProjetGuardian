@@ -52,7 +52,6 @@ public class PlayerCombatSystem : MonoBehaviour
             {
                 animator.runtimeAnimatorController = comboNormalAttack[comboCounter].animatorOV; ;
                 animator.Play("Attack", 0, 0);
-                DealDamage();
                 comboCounter++;
                 lastClickedTime = Time.time;
 
@@ -69,17 +68,6 @@ public class PlayerCombatSystem : MonoBehaviour
         if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f && animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
         {
             Invoke(nameof(EndCombo), 1);
-        }
-    }
-
-    public void DealDamage()
-    {
-        Collider[] colliders = new Collider[99];
-        int numColliders = Physics.OverlapSphereNonAlloc(weapon.hitbox.position, weapon.radius, colliders, enemyMask);
-        for (int i = 0; i < numColliders; i++)
-        {
-            IDamageable damagable = colliders[i].GetComponent<IDamageable>();
-            damagable?.TakeDamage(weapon.damage);
         }
     }
 
