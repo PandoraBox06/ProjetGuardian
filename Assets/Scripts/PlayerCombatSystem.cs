@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,31 +16,24 @@ public class PlayerCombatSystem : MonoBehaviour
 
     [Header("References")]
     public Animator animator;
-    public Weapon weapon;
-    public InputActionReference attackAction;
-    public Transform orientation;
+    public InputActionReference meleeAction;
+    public InputActionReference rangeAction;
+    public CombatCamBehavior combbatCamBehavior;
 
-    [Header("AutoLock Target")]
-    Transform closestTarget;
-    public float enemyClosestRadius = 1f;
-    public float minimumRadius = .5f;
-    public LayerMask enemyMask;
 
     private void OnEnable()
     {
-        attackAction.action.performed += NormalAttack;
+        meleeAction.action.performed += NormalAttack;
     }
 
     private void OnDisable()
     {
-        attackAction.action.performed -= NormalAttack;
+        meleeAction.action.performed -= NormalAttack;
     }
 
     void Update()
     {
         ExitAttack();
-        ClosestEnemy();
-        LookAtEnemy();
     }
 
     void NormalAttack(InputAction.CallbackContext callbackContext)
@@ -75,46 +69,5 @@ public class PlayerCombatSystem : MonoBehaviour
     {
         comboCounter = 0;
         lastComboEnd = Time.time;
-    }
-
-    void ClosestEnemy()
-    {
-        Collider[] enemies = Physics.OverlapSphere(transform.position + Vector3.up, enemyClosestRadius, enemyMask);
-
-        for (int i = 0; i < enemies.Length; i++)
-        {
-            if (Vector3.Distance(transform.position, enemies[i].transform.position) <= minimumRadius)
-            {
-                if (closestTarget == null)
-                {
-                    closestTarget = enemies[i].transform;
-                    break;
-                }
-                else
-                {
-                    return;
-                }
-            }
-        }
-    }
-
-    void LookAtEnemy()
-    {
-        if (closestTarget != null)
-        {
-            transform.LookAt(closestTarget);
-            orientation.LookAt(closestTarget);
-        }
-
-        if (closestTarget != null && Vector3.Distance(transform.position + Vector3.up, closestTarget.position) > enemyClosestRadius)
-            closestTarget = null;
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position + Vector3.up, enemyClosestRadius);
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position + Vector3.up, minimumRadius);
     }
 }

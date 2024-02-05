@@ -33,6 +33,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "AttackRange",
+                    "type": "Button",
+                    "id": "8591668f-2737-4d13-8490-91bf1bc92fde",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "035125a3-a759-4559-a327-8d0913b4e7b7",
@@ -384,6 +393,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Target",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e853e797-988f-4d23-8fbf-619e2724b9d7",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttackRange",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

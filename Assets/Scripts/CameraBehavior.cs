@@ -43,7 +43,7 @@ public class CameraBehavior : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        SwitchCameraStyle(CameraStyle.Basic);
+        SwitchCameraStyle(currentStyle);
     }
 
     public void OnMove(InputValue value)
@@ -91,14 +91,14 @@ public class CameraBehavior : MonoBehaviour
 
         else if (currentStyle == CameraStyle.Combat)
         {
-            Vector3 dirToCombatLookAt = combatLookAt.position - new Vector3(cameraPos.position.x, combatLookAt.position.y, cameraPos.position.z);
-            orientation.forward = dirToCombatLookAt.normalized;
+            //Vector3 dirToCombatLookAt = combatLookAt.position - new Vector3(cameraPos.position.x, combatLookAt.position.y, cameraPos.position.z);
+            //orientation.forward = dirToCombatLookAt.normalized;
 
-            playerObj.forward = dirToCombatLookAt.normalized;
+            //playerObj.forward = dirToCombatLookAt.normalized;
         }
     }
 
-    private void SwitchCameraStyle(CameraStyle newStyle)
+    public void SwitchCameraStyle(CameraStyle newStyle)
     {
         combatCam.SetActive(false);
         thirdPersonCam.SetActive(false);

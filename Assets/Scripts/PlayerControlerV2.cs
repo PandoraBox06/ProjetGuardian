@@ -127,7 +127,6 @@ public class PlayerControlerV2 : MonoBehaviour
     }
 
     #region Movement
-
     void MovePlayer()
     {
         //calculate movement direction
