@@ -42,7 +42,6 @@ public class CameraBehavior : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        SwitchCameraStyle(currentStyle);
     }
 
     public void OnMove(InputValue value)
@@ -99,13 +98,12 @@ public class CameraBehavior : MonoBehaviour
 
     public void SwitchCameraStyle(CameraStyle newStyle)
     {
-        combatCam.SetActive(false);
-        thirdPersonCam.SetActive(false);
-        topDownCam.SetActive(false);
-
-        if (newStyle == CameraStyle.Basic) thirdPersonCam.SetActive(true);
-        if (newStyle == CameraStyle.Combat) combatCam.SetActive(true);
-        if (newStyle == CameraStyle.Topdown) topDownCam.SetActive(true);
+        thirdPersonFreeLook.Priority = 10;
+        combatFreeLook.Priority = 10;
+        topDownFreeLook.Priority = 10;
+        if (newStyle == CameraStyle.Basic) thirdPersonFreeLook.Priority = 11;
+        if (newStyle == CameraStyle.Combat) combatFreeLook.Priority = 11;
+        if (newStyle == CameraStyle.Topdown) topDownFreeLook.Priority = 11;
 
         currentStyle = newStyle;
     }
