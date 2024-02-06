@@ -26,7 +26,8 @@ public class PlayerCombatSystem : MonoBehaviour
     public Animator animator;
     public InputActionReference meleeAction;
     public InputActionReference rangeAction;
-    public CombatCamBehavior combbatCamBehavior;
+    public CombatCamBehavior combatCamBehavior;
+    public Transform orientation;
 
 
     private void OnEnable()
@@ -99,9 +100,9 @@ public class PlayerCombatSystem : MonoBehaviour
     {
         var thisProjectile = Instantiate(projectilePrefab, shootingOutput.position, Quaternion.identity, projectileDump);
         Vector3 projectileDir = new();
-        if (combbatCamBehavior.closestTarget != null)
-            projectileDir = combbatCamBehavior.closestTarget.position - transform.position;
-        else projectileDir = shootingOutput.forward;
+        if (combatCamBehavior.closestTarget != null)
+            projectileDir = combatCamBehavior.closestTarget.position - transform.position;
+        else projectileDir = orientation.forward;
         thisProjectile.GetComponent<Rigidbody>().AddForce(projectileDir * projectileSpeed, ForceMode.Impulse);
     } 
     #endregion

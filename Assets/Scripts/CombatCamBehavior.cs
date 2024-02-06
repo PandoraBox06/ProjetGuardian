@@ -7,9 +7,9 @@ using UnityEngine.InputSystem;
 
 public class CombatCamBehavior : MonoBehaviour
 {
-    [HideInInspector] public List<Transform> targets;
-    [HideInInspector] public Transform closestTarget;
-    [HideInInspector] public Transform lockTarget;
+    /*[HideInInspector]*/ public List<Transform> targets;
+    /*[HideInInspector]*/ public Transform closestTarget;
+    /*[HideInInspector]*/ public Transform lockTarget;
 
     [Header("References")]
     public Transform playerTransform;
@@ -38,7 +38,7 @@ public class CombatCamBehavior : MonoBehaviour
             if (targets.Count >= 2)
             {
                 targets = targets.Where(item => item != null).ToList();
-                FindClosestEnemy(playerTransform.position, targets);
+                closestTarget = FindClosestEnemy(playerTransform.position, targets);
             }
             else if (targets.Count == 1)
             {
