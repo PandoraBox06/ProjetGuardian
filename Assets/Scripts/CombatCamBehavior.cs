@@ -15,6 +15,7 @@ public class CombatCamBehavior : MonoBehaviour
     public Transform playerTransform;
     public Transform playerBody;
     public Transform orientation;
+    public Transform combatOrientation;
     public CinemachineFreeLook combatCam;
     public CameraBehavior cameraBehavior;
     public InputActionReference targetAction;
@@ -25,10 +26,12 @@ public class CombatCamBehavior : MonoBehaviour
     private void OnEnable()
     {
         targetAction.action.performed += TargetLock;
+        CharacterAnimatorEvents.OnLooktAtTarget += LookAtTarget;
     }
     private void OnDisable()
     {
         targetAction.action.performed -= TargetLock;
+        CharacterAnimatorEvents.OnLooktAtTarget -= LookAtTarget;
     }
 
     private void Update()
@@ -44,22 +47,9 @@ public class CombatCamBehavior : MonoBehaviour
             {
                 closestTarget = targets.First();
             }
-
-            if (closestTarget != null)
-            {
-                playerTransform.LookAt(closestTarget.position);
-                playerBody.LookAt(closestTarget.position);
-                orientation.LookAt(closestTarget.position);
-            }
-
-            combatCam.LookAt = playerTransform;
         }
         else if (lockTarget != null)
         {
-            playerTransform.LookAt(lockTarget.position);
-            playerBody.LookAt(lockTarget.position);
-            orientation.LookAt(lockTarget.position);
-
             combatCam.LookAt = lockTarget;
         }
 
@@ -68,7 +58,10 @@ public class CombatCamBehavior : MonoBehaviour
             cameraBehavior.SwitchCameraStyle(CameraBehavior.CameraStyle.Combat);
         }
         else
+        {
             cameraBehavior.SwitchCameraStyle(CameraBehavior.CameraStyle.Basic);
+            combatCam.LookAt = combatOrientation;
+        }
 
     }
 
@@ -83,6 +76,16 @@ public class CombatCamBehavior : MonoBehaviour
         {
             lockTarget = null;
             lockOn = false;
+        }
+    }
+
+    public void LookAtTarget()
+    {
+        if (closestTarget != null)
+        {
+            //Debug.Log("Look at this");
+            //playerTransform.LookAt(closestTarget.position);
+            //orientation.LookAt(closestTarget.position);
         }
     }
 

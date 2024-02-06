@@ -85,15 +85,15 @@ public class CameraBehavior : MonoBehaviour
         {
             Vector3 inputDir = orientation.forward * _move.y + orientation.right * _move.x;
             if (inputDir != Vector3.zero)
-                playerObj.forward = Vector3.Slerp(playerObj.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
+                transform.forward = Vector3.Slerp(transform.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
         }
 
         else if (currentStyle == CameraStyle.Combat)
         {
-            //Vector3 dirToCombatLookAt = combatLookAt.position - new Vector3(cameraPos.position.x, combatLookAt.position.y, cameraPos.position.z);
-            //orientation.forward = dirToCombatLookAt.normalized;
+            Vector3 dirToCombatLookAt = combatLookAt.position - new Vector3(cameraPos.position.x, combatLookAt.position.y, cameraPos.position.z);
+            orientation.forward = dirToCombatLookAt.normalized;
 
-            //playerObj.forward = dirToCombatLookAt.normalized;
+            transform.forward = dirToCombatLookAt.normalized;
         }
     }
 
