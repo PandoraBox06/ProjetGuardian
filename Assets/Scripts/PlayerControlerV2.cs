@@ -10,10 +10,18 @@ public class PlayerControlerV2 : MonoBehaviour
     private float moveSpeed;
     public float walkSpeed = 7;
     public float sprintSpeed = 12;
+    public float dashSpeed = 20;
+    public float dashSpeedChangeFactor = 50;
+    [HideInInspector] public float maxYSpeed;
     public float groundDragWalk = 7;
     public float groundDragSprint = 12;
 
     bool isSprinting;
+
+    float desiredMoveSpeed;
+    float lastDesiredMoveSpeed;
+    MovementState lastState;
+    bool keepMomentum;
 
     [Header("Ground Check")]
     public Transform groundCheck;
@@ -35,7 +43,6 @@ public class PlayerControlerV2 : MonoBehaviour
     [Header("Action Mapping")]
     public InputActionReference jumpAction;
     public InputActionReference sprintAction;
-    //public InputActionReference dashAction;
 
     [Header("References")]
     public Transform orientation;
@@ -53,8 +60,11 @@ public class PlayerControlerV2 : MonoBehaviour
     {
         walking,
         sprinting,
+        dashing,
         air
     }
+
+    public bool dashing;
 
     private void Awake()
     {
@@ -86,6 +96,9 @@ public class PlayerControlerV2 : MonoBehaviour
             case MovementState.sprinting:
                 rb.drag = groundDragSprint;
                 break;
+            case MovementState.dashing:
+                rb.drag = 0;
+                break;
             case MovementState.air:
                 rb.drag = 0;
                 break;
@@ -107,28 +120,87 @@ public class PlayerControlerV2 : MonoBehaviour
 
     void StateHandler()
     {
+        // Mode - Dashing
+        if (dashing)
+        {
+            state = MovementState.dashing;
+            desiredMoveSpeed = dashSpeed;
+            speedChangeFactor = dashSpeedChangeFactor;
+        }
         // Mode - Sprinting
-        if(grounded  && isSprinting)
+        else if(grounded  && isSprinting)
         {
             state = MovementState.sprinting;
-            moveSpeed = sprintSpeed;
+            desiredMoveSpeed = sprintSpeed;
         }
         // Mode - Walking
         else if (grounded)
         {
             state = MovementState.walking;
-            moveSpeed = walkSpeed;
+            desiredMoveSpeed = walkSpeed;
         }
         // Mode - Air
         else
         {
             state = MovementState.air;
+
+            if (desiredMoveSpeed < sprintSpeed)
+                desiredMoveSpeed = walkSpeed;
+            else
+                desiredMoveSpeed = sprintSpeed;
         }
+
+        bool desiredMOveSpeedHasChange = desiredMoveSpeed != lastDesiredMoveSpeed;
+        if (lastState == MovementState.dashing) keepMomentum = true;
+
+        if(desiredMOveSpeedHasChange)
+        {
+            if (keepMomentum)
+            {
+                StopAllCoroutines();
+                StartCoroutine(SmoothlyLerpMoveSpeed());
+            }
+            else
+            {
+                StopAllCoroutines();
+                moveSpeed = desiredMoveSpeed;
+            }
+        }
+
+        lastDesiredMoveSpeed = desiredMoveSpeed;
+        lastState = state;
     }
+
+    float speedChangeFactor;
+    IEnumerator SmoothlyLerpMoveSpeed()
+    {
+        // smoothly lerp movementSpeed to desired value
+        float time = 0;
+        float difference = Mathf.Abs(desiredMoveSpeed - moveSpeed);
+        float startValue = moveSpeed;
+
+        float boostFactor = speedChangeFactor;
+
+        while (time < difference)
+        {
+            moveSpeed = Mathf.Lerp(startValue, desiredMoveSpeed, time / difference);
+
+            time += Time.deltaTime * boostFactor;
+
+            yield return null;
+        }
+
+        moveSpeed = desiredMoveSpeed;
+        speedChangeFactor = 1f;
+        keepMomentum = false;
+    }
+
 
     #region Movement
     void MovePlayer()
     {
+        if (state == MovementState.dashing) return;
+
         //calculate movement direction
         moveDirection = orientation.forward * _move.y + orientation.right * _move.x;
 
@@ -172,6 +244,10 @@ public class PlayerControlerV2 : MonoBehaviour
                 rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
             }
         }
+
+        // limit y vel
+        if(maxYSpeed != 0 && rb.velocity.y > maxYSpeed)
+            rb.velocity = new(rb.velocity.x, maxYSpeed, rb.velocity.z);
     } 
     #endregion
 
@@ -227,7 +303,7 @@ public class PlayerControlerV2 : MonoBehaviour
             }
             rb.AddForce(-9.61f * Time.deltaTime * -transform.up);
         }
-    } 
+    }
     #endregion
 
     #region InputDetection
