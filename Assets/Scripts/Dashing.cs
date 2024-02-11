@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,6 +38,8 @@ public class Dashing : MonoBehaviour
 
     Vector3 delayedForceToApply;
 
+    public static event Action OnDash;
+
     private void OnEnable()
     {
         dashAction.action.performed += Dash;
@@ -62,6 +65,8 @@ public class Dashing : MonoBehaviour
         // Cooldown
         if (dashCdTimer > 0) return;
         else dashCdTimer = dashCd;
+
+        OnDash?.Invoke();
 
         // Change OtherScripts
         playerControler.dashing = true;
