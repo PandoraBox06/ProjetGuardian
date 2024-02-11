@@ -16,7 +16,8 @@ namespace BasicEnemyStateMachine
         {
             if(Time.time > timer)
             {
-                state.SwitchState(state.AttackState);
+                if (state.player == null) { state.SwitchState(state.RoamingState); }
+                else state.SwitchState(state.TrackPlayerState);
             }
         }
 
@@ -24,21 +25,5 @@ namespace BasicEnemyStateMachine
         {
 
         }
-
-        public override void OnTriggerEnter(BaseEnemy_StateManager state, Collider other)
-        {
-
-        }
-
-        public override void OnTriggerExit(BaseEnemy_StateManager state, Collider other)
-        {
-
-        }
-
-        public override void OnTriggerStay(BaseEnemy_StateManager state, Collider other)
-        {
-
-        }
-
     }
 }

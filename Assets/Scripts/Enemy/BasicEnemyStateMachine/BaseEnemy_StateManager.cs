@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace BasicEnemyStateMachine
 {
@@ -10,12 +11,23 @@ namespace BasicEnemyStateMachine
 
         public BaseEnemy_IdleState IdleState = new();
         public BaseEnemy_AttackState AttackState = new();
+        public BaseEnemy_TrackPlayer TrackPlayerState = new();
+        public BaseEnemy_Roaming RoamingState = new();
 
         [Header("Settings")]
         public float idleTime = 1;
+        public float attackRange = 1;
+        public bool randomRoaming = false;
+        public float roamingTimer = 1;
+        public bool inverseDirection;
 
         [Header("References")]
         public Animator animator;
+        public NavMeshAgent agent;
+        public Transform[] roamingPoints;
+        public PatrolRoute route;
+        //Hidden
+        /*[HideInInspector]*/ public Transform player;
 
         void Start()
         {
@@ -23,6 +35,8 @@ namespace BasicEnemyStateMachine
             currentState = IdleState;
             //Current State Start Function
             currentState.EnterState(this);
+
+            roamingPoints = route.Waypoints;
         }
 
         void Update()
@@ -34,23 +48,14 @@ namespace BasicEnemyStateMachine
         public void SwitchState(BaseEnemy_BaseState state)
         {
             //Switch State and Start Function
+            ExitState(state);
             currentState = state;
             state.EnterState(this);
         }
 
-        public void OnTriggerEnter(Collider other)
+        public void ExitState(BaseEnemy_BaseState state)
         {
-            currentState.OnTriggerEnter(this, other);
-        }
-
-        public void OnTriggerStay(Collider other)
-        {
-            currentState.OnTriggerStay(this, other);
-        }
-
-        public void OnTriggerExit(Collider other)
-        {
-            currentState.OnTriggerExit(this, other);
+            state.ExitState(this);
         }
     }
 }

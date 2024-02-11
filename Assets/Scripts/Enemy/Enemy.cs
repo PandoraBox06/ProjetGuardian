@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, IDamageable
 {
     public float maxHealth;
-    public float currentHealth;
+    [HideInInspector] public float currentHealth;
     public Gradient hpGradient;
     Renderer _renderer;
 
