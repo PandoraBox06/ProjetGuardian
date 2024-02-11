@@ -16,8 +16,17 @@ namespace BasicEnemyStateMachine
         {
             if(Time.time > timer)
             {
-                if (state.player == null) { state.SwitchState(state.RoamingState); }
-                else state.SwitchState(state.TrackPlayerState);
+                if(state.canMove)
+                {
+                    if (state.player == null) { state.SwitchState(state.RoamingState); }
+                    else state.SwitchState(state.TrackPlayerState);
+
+                }
+                if(state.canAttack)
+                {
+                    state.SwitchState(state.AttackState);
+                }
+
             }
         }
 

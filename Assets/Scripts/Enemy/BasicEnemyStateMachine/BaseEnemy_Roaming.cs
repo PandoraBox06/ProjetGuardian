@@ -12,20 +12,21 @@ namespace BasicEnemyStateMachine
         public override void EnterState(BaseEnemy_StateManager state)
         {
             if (state.roamingPoints.Length == 0) state.SwitchState(state.IdleState);
-
-            if (!state.randomRoaming)
-            {
-                targetWaypointId = GetClosestWaypointId(state.transform.position, state);
-                TargetWaypoint = state.roamingPoints[targetWaypointId];
-                state.agent.SetDestination(TargetWaypoint.position);
-            }
             else
             {
-                targetWaypointId = GetRandomWaypointId(state);
-                TargetWaypoint = state.roamingPoints[targetWaypointId];
-                state.agent.SetDestination(TargetWaypoint.position);
+                if (!state.randomRoaming)
+                {
+                    targetWaypointId = GetClosestWaypointId(state.transform.position, state);
+                    TargetWaypoint = state.roamingPoints[targetWaypointId];
+                    state.agent.SetDestination(TargetWaypoint.position);
+                }
+                else
+                {
+                    targetWaypointId = GetRandomWaypointId(state);
+                    TargetWaypoint = state.roamingPoints[targetWaypointId];
+                    state.agent.SetDestination(TargetWaypoint.position);
+                }
             }
-
         }
         public override void UpdateState(BaseEnemy_StateManager state)
         {

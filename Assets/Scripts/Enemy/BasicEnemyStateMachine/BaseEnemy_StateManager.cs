@@ -15,6 +15,8 @@ namespace BasicEnemyStateMachine
         public BaseEnemy_Roaming RoamingState = new();
 
         [Header("Settings")]
+        public bool canMove;
+        public bool canAttack;
         public float idleTime = 1;
         public float attackRange = 1;
         public bool randomRoaming = false;
@@ -36,7 +38,8 @@ namespace BasicEnemyStateMachine
             //Current State Start Function
             currentState.EnterState(this);
 
-            roamingPoints = route.Waypoints;
+            if(route != null )
+                roamingPoints = route.Waypoints;
         }
 
         void Update()

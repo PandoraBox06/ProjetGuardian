@@ -102,7 +102,7 @@ public class PlayerCombatSystem : MonoBehaviour
         Vector3 projectileDir = new();
         if (combatCamBehavior.closestTarget != null)
             projectileDir = combatCamBehavior.closestTarget.position - transform.position;
-        else projectileDir = orientation.forward;
+        else projectileDir = transform.forward;
         thisProjectile.GetComponent<Rigidbody>().AddForce(projectileDir * projectileSpeed, ForceMode.Impulse);
     } 
     #endregion
