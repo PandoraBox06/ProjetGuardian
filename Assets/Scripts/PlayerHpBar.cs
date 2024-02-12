@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHpBar : MonoBehaviour
 {
-    public Image fill;
+    public Slider slider;
 
     private void OnEnable()
     {
@@ -18,11 +18,12 @@ public class PlayerHpBar : MonoBehaviour
 
     private void Start()
     {
-        fill.fillAmount = PlayerData.Instance.currentHealth / PlayerData.Instance.maxHealth;
+        slider.maxValue = PlayerData.Instance.maxHealth;
+        slider.value = PlayerData.Instance.currentHealth;
     }
 
     void UpdateHP(float hp)
     {
-        fill.fillAmount = hp / PlayerData.Instance.maxHealth;
+        slider.value -= hp;
     }
 }

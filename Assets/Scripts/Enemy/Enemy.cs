@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
+    public Transform healthBar;
     public float maxHealth;
     [HideInInspector] public float currentHealth;
     public Gradient hpGradient;
@@ -13,12 +14,14 @@ public class Enemy : MonoBehaviour, IDamageable
     void Start()
     {
         currentHealth = maxHealth;
+        healthBar.localScale = Vector3.one;
         _renderer = GetComponentInChildren<Renderer>();
         _renderer.material.color = hpGradient.Evaluate(currentHealth / maxHealth);
     }
 
     public void TakeDamage(float damage)
     {
+        healthBar.localScale = new Vector3((currentHealth / maxHealth), 1f);
         currentHealth -= damage;
         _renderer.material.color = hpGradient.Evaluate(currentHealth / maxHealth);
         if (currentHealth <= 0)
