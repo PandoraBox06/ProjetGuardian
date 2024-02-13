@@ -95,7 +95,7 @@ public class PlayerCombatSystem : MonoBehaviour
     IEnumerator DeactivateVFXTir()
     {
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
 
         VFX_Tir.SetActive(false);
     }
