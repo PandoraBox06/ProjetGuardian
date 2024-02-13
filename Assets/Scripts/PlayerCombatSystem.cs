@@ -29,6 +29,10 @@ public class PlayerCombatSystem : MonoBehaviour
     public CombatCamBehavior combatCamBehavior;
     public Transform orientation;
 
+    [Header("VFX")]
+    public GameObject VFX_Slash;
+    public float activationTime = 5f;
+    public bool hasActivated = false;
 
     private void OnEnable()
     {
@@ -47,7 +51,47 @@ public class PlayerCombatSystem : MonoBehaviour
     void Update()
     {
         ExitAttack();
+
+        
     }
+
+    void Start()
+    {
+       
+        if (VFX_Slash != null)
+        {
+            VFX_Slash.SetActive(false);
+            
+        }
+
+    }
+    void VFXactivation()
+    {
+        VFX_Slash.SetActive(true);
+        Debug.Log("Oui");
+
+    }
+
+    IEnumerator ActivateObjectAfterDelay()
+    {
+
+        yield return new WaitForSeconds(1f);
+
+        VFX_Slash.SetActive(true);
+
+        yield return null;
+       // Debug.Log("Oui");
+    }
+
+    IEnumerator DeactivateObjectAfterDelay()
+    {
+       
+        yield return new WaitForSeconds(1);
+       
+        VFX_Slash.SetActive(false);
+    }
+
+    
 
     #region Melee
     void NormalAttack(InputAction.CallbackContext callbackContext)
@@ -62,6 +106,11 @@ public class PlayerCombatSystem : MonoBehaviour
                 animator.Play("Attack", 0, 0);
                 comboCounter++;
                 lastClickedTime = Time.time;
+
+
+                Invoke("VFXactivation", 0.6f);
+
+                StartCoroutine(DeactivateObjectAfterDelay());
 
                 if (comboCounter >= comboNormalAttack.Count)
                 {
@@ -104,6 +153,6 @@ public class PlayerCombatSystem : MonoBehaviour
             projectileDir = combatCamBehavior.closestTarget.position - transform.position;
         else projectileDir = transform.forward;
         thisProjectile.GetComponent<Rigidbody>().AddForce(projectileDir * projectileSpeed, ForceMode.Impulse);
-    } 
+    }
     #endregion
 }
