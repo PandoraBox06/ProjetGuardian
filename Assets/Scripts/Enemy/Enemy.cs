@@ -4,26 +4,28 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
-    public Transform healthBar;
-    public float maxHealth;
+    //public
     [HideInInspector] public float currentHealth;
-    public Gradient hpGradient;
-    Renderer _renderer;
+    
+    //private
+    [SerializeField] private SpriteRenderer barSpriteRenderer;
+    [SerializeField] private Transform barParent;
+    [SerializeField] private float maxHealth;
+    [SerializeField] private Gradient hpGradient;
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
-        healthBar.localScale = Vector3.one;
-        _renderer = GetComponentInChildren<Renderer>();
-        _renderer.material.color = hpGradient.Evaluate(currentHealth / maxHealth);
+        barParent.localScale = Vector3.one;
+        barSpriteRenderer.material.color = hpGradient.Evaluate(currentHealth / maxHealth);
     }
 
     public void TakeDamage(float damage)
     {
-        healthBar.localScale = new Vector3((currentHealth / maxHealth), 1f);
+        barParent.localScale = new Vector3((currentHealth / maxHealth), 1f);
         currentHealth -= damage;
-        _renderer.material.color = hpGradient.Evaluate(currentHealth / maxHealth);
+        barSpriteRenderer.material.color = hpGradient.Evaluate(currentHealth / maxHealth);
         if (currentHealth <= 0)
         {
             Die();

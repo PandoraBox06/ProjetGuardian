@@ -1248,9 +1248,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09601c44b452dad469537aae02533ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 1540235006}
-  maxHealth: 100
   currentHealth: 0
+  barSpriteRenderer: {fileID: 1615051688}
+  barParent: {fileID: 1540235006}
+  maxHealth: 100
   hpGradient:
     serializedVersion: 2
     key0: {r: 0.93725497, g: 0.04705883, b: 0.10980393, a: 1}
@@ -1756,6 +1757,11 @@ Transform:
   - {fileID: 2060632072}
   m_Father: {fileID: 1392697334}
   m_LocalEulerAnglesHint: {x: 16.746332, y: 0.75200784, z: -0.22007209}
+--- !u!212 &184196437 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2133402694681917564, guid: 797d92e8b79bc0140bf335fa59b145cf, type: 3}
+  m_PrefabInstance: {fileID: 251855242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &186106166
 GameObject:
   m_ObjectHideFlags: 0
@@ -2256,7 +2262,7 @@ MonoBehaviour:
   jumpForce: 12
   jumpCooldown: 0.25
   airMultiplier: 0.4
-  jumpAction: {fileID: 0}
+  jumpAction: {fileID: -504348310357525271, guid: b0b17bf653d5a64488494776990ea425, type: 3}
   sprintAction: {fileID: 3668811875352331476, guid: b0b17bf653d5a64488494776990ea425, type: 3}
   orientation: {fileID: 366613561}
   animator: {fileID: 1228324510}
@@ -2329,7 +2335,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 218159703}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0000042915344, y: 0.000000028115572, z: -0.000000034697063, w: 1}
+  m_LocalRotation: {x: -0.0000042915344, y: 0.000000049780812, z: -0.00000006143385, w: 1}
   m_LocalPosition: {x: -5.5904175e-20, y: 5.3741384e-27, z: 4.35471e-27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2641,6 +2647,11 @@ Transform:
   - {fileID: 957983987}
   m_Father: {fileID: 1598100186}
   m_LocalEulerAnglesHint: {x: -4.3185167, y: -6.670103, z: 2.7567887}
+--- !u!212 &275370713 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2133402694681917564, guid: 797d92e8b79bc0140bf335fa59b145cf, type: 3}
+  m_PrefabInstance: {fileID: 1602675131}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &275469299
 GameObject:
   m_ObjectHideFlags: 0
@@ -8771,7 +8782,7 @@ Transform:
   m_GameObject: {fileID: 753646707}
   serializedVersion: 2
   m_LocalRotation: {x: 0.46010005, y: 0.000000018783082, z: -0.000000009733547, w: 0.8878671}
-  m_LocalPosition: {x: 2.8185899e-14, y: 5.764292, z: -11.302933}
+  m_LocalPosition: {x: 2.8211146e-14, y: 5.764292, z: -11.302933}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10058,7 +10069,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 908303483}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38246417, y: -0.027893621, z: 0.018680312, w: 0.9233603}
+  m_LocalRotation: {x: 0.38246417, y: -0.027893662, z: 0.018680338, w: 0.9233603}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10112,6 +10123,11 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 2050306682}
+--- !u!212 &910029135 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2133402694681917564, guid: 797d92e8b79bc0140bf335fa59b145cf, type: 3}
+  m_PrefabInstance: {fileID: 381320429}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &911443984
 GameObject:
   m_ObjectHideFlags: 0
@@ -10172,9 +10188,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09601c44b452dad469537aae02533ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 251855243}
-  maxHealth: 100
   currentHealth: 0
+  barSpriteRenderer: {fileID: 184196437}
+  barParent: {fileID: 251855243}
+  maxHealth: 100
   hpGradient:
     serializedVersion: 2
     key0: {r: 0.93725497, g: 0.04705883, b: 0.10980393, a: 1}
@@ -10770,6 +10787,11 @@ Transform:
   - {fileID: 656144991}
   m_Father: {fileID: 259716277}
   m_LocalEulerAnglesHint: {x: 84.60682, y: -133.06609, z: 149.36525}
+--- !u!212 &968323181 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2133402694681917564, guid: 797d92e8b79bc0140bf335fa59b145cf, type: 3}
+  m_PrefabInstance: {fileID: 605145603}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &969390229
 GameObject:
   m_ObjectHideFlags: 3
@@ -12017,6 +12039,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135651441}
   m_CullTransparentMesh: 1
+--- !u!212 &1140461958 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2133402694681917564, guid: 797d92e8b79bc0140bf335fa59b145cf, type: 3}
+  m_PrefabInstance: {fileID: 1628016603}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1145713265
 GameObject:
   m_ObjectHideFlags: 0
@@ -12229,9 +12256,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09601c44b452dad469537aae02533ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 1628016604}
-  maxHealth: 100
   currentHealth: 0
+  barSpriteRenderer: {fileID: 1140461958}
+  barParent: {fileID: 1628016604}
+  maxHealth: 100
   hpGradient:
     serializedVersion: 2
     key0: {r: 0.93725497, g: 0.04705883, b: 0.10980393, a: 1}
@@ -12356,7 +12384,7 @@ Transform:
   m_GameObject: {fileID: 1159778332}
   serializedVersion: 2
   m_LocalRotation: {x: 0.43036816, y: -0.000000055842452, z: 0.00000002662463, w: 0.90265346}
-  m_LocalPosition: {x: 2.8185899e-14, y: 5.764292, z: -3.8429327}
+  m_LocalPosition: {x: 2.8211146e-14, y: 5.764292, z: -3.8429327}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13594,9 +13622,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09601c44b452dad469537aae02533ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 605145604}
-  maxHealth: 100
   currentHealth: 0
+  barSpriteRenderer: {fileID: 968323181}
+  barParent: {fileID: 605145604}
+  maxHealth: 100
   hpGradient:
     serializedVersion: 2
     key0: {r: 0.93725497, g: 0.04705883, b: 0.10980393, a: 1}
@@ -14746,7 +14775,7 @@ MonoBehaviour:
   combatOrientation: {fileID: 1145713266}
   combatCam: {fileID: 352822895}
   cameraBehavior: {fileID: 213627849}
-  targetAction: {fileID: 0}
+  targetAction: {fileID: 7721336551009052499, guid: b0b17bf653d5a64488494776990ea425, type: 3}
 --- !u!1 &1432352840
 GameObject:
   m_ObjectHideFlags: 0
@@ -16552,6 +16581,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2128476929}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1615051688 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2133402694681917564, guid: 797d92e8b79bc0140bf335fa59b145cf, type: 3}
+  m_PrefabInstance: {fileID: 1540235005}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1616994629
 GameObject:
   m_ObjectHideFlags: 0
@@ -16926,9 +16960,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09601c44b452dad469537aae02533ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 1602675132}
-  maxHealth: 100
   currentHealth: 0
+  barSpriteRenderer: {fileID: 275370713}
+  barParent: {fileID: 1602675132}
+  maxHealth: 100
   hpGradient:
     serializedVersion: 2
     key0: {r: 0.93725497, g: 0.04705883, b: 0.10980393, a: 1}
@@ -19416,9 +19451,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09601c44b452dad469537aae02533ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 381320430}
-  maxHealth: 100
   currentHealth: 0
+  barSpriteRenderer: {fileID: 910029135}
+  barParent: {fileID: 381320430}
+  maxHealth: 100
   hpGradient:
     serializedVersion: 2
     key0: {r: 0.93725497, g: 0.04705883, b: 0.10980393, a: 1}
