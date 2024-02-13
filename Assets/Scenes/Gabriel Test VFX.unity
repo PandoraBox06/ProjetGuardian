@@ -1432,7 +1432,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 131827058}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0464752, y: 0.000000057071155, z: -0.00000007753869, w: 0.9989195}
+  m_LocalRotation: {x: 0.0464752, y: 0.000000057071155, z: -0.00000007753868, w: 0.9989195}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1486,6 +1486,99 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1364164339}
+--- !u!1001 &134859498
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 416024471}
+    m_Modifications:
+    - target: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: m_Name
+      value: MuzzleFlash01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300533007854612, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300533007854612, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300533007854612, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300533007854612, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300533007854612, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300533007854612, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300533007854612, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300533007854612, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300533007854612, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300533007854612, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198234346748616026, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198234346748616026, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: lengthInSec
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 198234346748616026, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: UVModule.flipV
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198234346748616026, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 198515452120210940, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: UVModule.flipU
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198515452120210940, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: UVModule.flipV
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199338666435788112, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199409127382122440, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
 --- !u!1 &135576215
 GameObject:
   m_ObjectHideFlags: 0
@@ -5646,6 +5739,7 @@ MonoBehaviour:
   combatCamBehavior: {fileID: 402075796}
   orientation: {fileID: 412774552}
   VFX_Slash: {fileID: 73027568}
+  VFX_Tir: {fileID: 894217934}
   activationTime: 0
   hasActivated: 1
 --- !u!114 &416024465
@@ -5901,6 +5995,7 @@ Transform:
   - {fileID: 2053764436}
   - {fileID: 402075798}
   - {fileID: 73027571}
+  - {fileID: 894217935}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &418323736
@@ -7839,7 +7934,7 @@ Transform:
   m_GameObject: {fileID: 557981560}
   serializedVersion: 2
   m_LocalRotation: {x: 0.43036816, y: -0.000000055842452, z: 0.00000002662463, w: 0.90265346}
-  m_LocalPosition: {x: 2.8491312e-14, y: 5.764292, z: -3.8429327}
+  m_LocalPosition: {x: 2.8744077e-14, y: 5.764292, z: -3.8429327}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10477,6 +10572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
+  hpEnemy: {fileID: 0}
   barSpriteRenderer: {fileID: 0}
   barParent: {fileID: 0}
   maxHealth: 100
@@ -11829,6 +11925,16 @@ Transform:
   - {fileID: 1605285263}
   m_Father: {fileID: 88419947}
   m_LocalEulerAnglesHint: {x: 25.843222, y: 0.822031, z: 4.656356}
+--- !u!1 &894217934 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+  m_PrefabInstance: {fileID: 134859498}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &894217935 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4300533007854612, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+  m_PrefabInstance: {fileID: 134859498}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &897299461
 GameObject:
   m_ObjectHideFlags: 0
@@ -13215,7 +13321,7 @@ Transform:
   m_GameObject: {fileID: 1010559795}
   serializedVersion: 2
   m_LocalRotation: {x: 0.46010005, y: 0.000000029708845, z: -0.000000015395369, w: 0.8878671}
-  m_LocalPosition: {x: 2.8491312e-14, y: 5.764292, z: -11.302933}
+  m_LocalPosition: {x: 2.8744077e-14, y: 5.764292, z: -11.302933}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14255,6 +14361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
+  hpEnemy: {fileID: 0}
   barSpriteRenderer: {fileID: 0}
   barParent: {fileID: 0}
   maxHealth: 100
@@ -14498,6 +14605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
+  hpEnemy: {fileID: 0}
   barSpriteRenderer: {fileID: 0}
   barParent: {fileID: 0}
   maxHealth: 100
@@ -14899,6 +15007,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
+  hpEnemy: {fileID: 0}
   barSpriteRenderer: {fileID: 0}
   barParent: {fileID: 0}
   maxHealth: 100
@@ -17732,7 +17841,7 @@ Transform:
   m_GameObject: {fileID: 1358670161}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0000042915344, y: 0.000000049780812, z: -0.00000006143385, w: 1}
-  m_LocalPosition: {x: -1.6940659e-20, y: 1.6285267e-27, z: 1.3196092e-27}
+  m_LocalPosition: {x: -1.01643954e-19, y: 9.771161e-27, z: 7.917655e-27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19362,6 +19471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
+  hpEnemy: {fileID: 0}
   barSpriteRenderer: {fileID: 0}
   barParent: {fileID: 0}
   maxHealth: 100
@@ -20196,7 +20306,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1633281815}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38246417, y: -0.027893621, z: 0.018680312, w: 0.9233603}
+  m_LocalRotation: {x: 0.38246417, y: -0.027893662, z: 0.018680338, w: 0.9233603}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -26546,6 +26656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
+  hpEnemy: {fileID: 0}
   barSpriteRenderer: {fileID: 0}
   barParent: {fileID: 0}
   maxHealth: 100

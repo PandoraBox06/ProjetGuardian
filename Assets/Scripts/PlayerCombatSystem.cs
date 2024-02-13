@@ -31,6 +31,7 @@ public class PlayerCombatSystem : MonoBehaviour
 
     [Header("VFX")]
     public GameObject VFX_Slash;
+    public GameObject VFX_Tir;
     public float activationTime = 5f;
     public bool hasActivated = false;
 
@@ -52,38 +53,38 @@ public class PlayerCombatSystem : MonoBehaviour
     {
         ExitAttack();
 
-        
+
     }
 
     void Start()
     {
-       
+
         if (VFX_Slash != null)
         {
             VFX_Slash.SetActive(false);
-            
+        }
+
+        if (VFX_Tir != null)
+        {
+            VFX_Tir.SetActive(false);
+
         }
 
     }
-    void VFXactivation()
+    void VFXSlash()
     {
         VFX_Slash.SetActive(true);
-        Debug.Log("Oui");
+      //  Debug.Log("Oui");
+
+    }
+    void VFXTir()
+    {
+        VFX_Tir.SetActive(true);
+      //  Debug.Log("Oui");
 
     }
 
-    IEnumerator ActivateObjectAfterDelay()
-    {
-
-        yield return new WaitForSeconds(1f);
-
-        VFX_Slash.SetActive(true);
-
-        yield return null;
-       // Debug.Log("Oui");
-    }
-
-    IEnumerator DeactivateObjectAfterDelay()
+    IEnumerator DeactivateVFXSlash()
     {
        
         yield return new WaitForSeconds(1);
@@ -91,7 +92,13 @@ public class PlayerCombatSystem : MonoBehaviour
         VFX_Slash.SetActive(false);
     }
 
-    
+    IEnumerator DeactivateVFXTir()
+    {
+
+        yield return new WaitForSeconds(1);
+
+        VFX_Tir.SetActive(false);
+    }
 
     #region Melee
     void NormalAttack(InputAction.CallbackContext callbackContext)
@@ -108,9 +115,9 @@ public class PlayerCombatSystem : MonoBehaviour
                 lastClickedTime = Time.time;
 
 
-                Invoke("VFXactivation", 0.6f);
+                Invoke("VFXSlash", 0.6f);
 
-                StartCoroutine(DeactivateObjectAfterDelay());
+                StartCoroutine(DeactivateVFXSlash());
 
                 if (comboCounter >= comboNormalAttack.Count)
                 {
@@ -153,6 +160,9 @@ public class PlayerCombatSystem : MonoBehaviour
             projectileDir = combatCamBehavior.closestTarget.position - transform.position;
         else projectileDir = transform.forward;
         thisProjectile.GetComponent<Rigidbody>().AddForce(projectileDir * projectileSpeed, ForceMode.Impulse);
+
+        Invoke("VFXTir", 0);
+        StartCoroutine(DeactivateVFXTir());
     }
     #endregion
 }
