@@ -2069,7 +2069,7 @@ GameObject:
   - component: {fileID: 2463258848321828682}
   - component: {fileID: 7250851860038389224}
   m_Layer: 10
-  m_Name: Enemy (5)
+  m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2189,6 +2189,8 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
+  VFX_Hit: {fileID: 4613996846551349949}
+  VFX_Die: {fileID: 358637981425055526, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
 --- !u!114 &2463258848321828682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2862,13 +2864,37 @@ PrefabInstance:
       propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 484368387861551534, guid: 4d8ebf13ae5ba474d91642b7f5330d6d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.65471697
+      objectReference: {fileID: 0}
+    - target: {fileID: 484368387861551534, guid: 4d8ebf13ae5ba474d91642b7f5330d6d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.65471697
+      objectReference: {fileID: 0}
+    - target: {fileID: 484368387861551534, guid: 4d8ebf13ae5ba474d91642b7f5330d6d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 484368387861551534, guid: 4d8ebf13ae5ba474d91642b7f5330d6d, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.b
+      value: 0.6924528
+      objectReference: {fileID: 0}
+    - target: {fileID: 484368387861551534, guid: 4d8ebf13ae5ba474d91642b7f5330d6d, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.g
+      value: 0.6924528
+      objectReference: {fileID: 0}
+    - target: {fileID: 484368387861551534, guid: 4d8ebf13ae5ba474d91642b7f5330d6d, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1758473627833946668, guid: 4d8ebf13ae5ba474d91642b7f5330d6d, type: 3}
       propertyPath: m_Name
       value: Hit Ennemy
       objectReference: {fileID: 0}
     - target: {fileID: 1758473627833946668, guid: 4d8ebf13ae5ba474d91642b7f5330d6d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2452082064152055796, guid: 4d8ebf13ae5ba474d91642b7f5330d6d, type: 3}
       propertyPath: m_LocalScale.x
@@ -2926,11 +2952,32 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8206432625395753029, guid: 4d8ebf13ae5ba474d91642b7f5330d6d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e59bce339c612e84596a6d2746e7708f, type: 2}
+    - target: {fileID: 8892985425029079655, guid: 4d8ebf13ae5ba474d91642b7f5330d6d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.5566037
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892985425029079655, guid: 4d8ebf13ae5ba474d91642b7f5330d6d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9947836
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892985425029079655, guid: 4d8ebf13ae5ba474d91642b7f5330d6d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d8ebf13ae5ba474d91642b7f5330d6d, type: 3}
+--- !u!1 &4613996846551349949 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1758473627833946668, guid: 4d8ebf13ae5ba474d91642b7f5330d6d, type: 3}
+  m_PrefabInstance: {fileID: 6372434992808093841}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8820551075552274277 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2452082064152055796, guid: 4d8ebf13ae5ba474d91642b7f5330d6d, type: 3}

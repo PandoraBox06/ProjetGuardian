@@ -7,13 +7,18 @@ public class Enemy : MonoBehaviour, IDamageable
     //public
     //[HideInInspector]
     public float currentHealth;
-    
+
     //private
     [SerializeField] private GameObject hpEnemy;
     [SerializeField] private SpriteRenderer barSpriteRenderer;
     [SerializeField] private Transform barParent;
     [SerializeField] private float maxHealth;
     [SerializeField] private Gradient hpGradient;
+
+    [Header("VFX")]
+    public GameObject VFX_Hit;
+    public GameObject VFX_Die;
+    public bool HasInstanciated = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +27,37 @@ public class Enemy : MonoBehaviour, IDamageable
         barParent.localScale = Vector3.one;
         barSpriteRenderer.material.color = hpGradient.Evaluate(currentHealth / maxHealth);
         hpEnemy.SetActive(false);
+
+        if (VFX_Hit != null)
+        {
+            VFX_Hit.SetActive(false);
+        }
+        HasInstanciated = false;
+    }
+
+    void VFXHit()
+    {
+        VFX_Hit.SetActive(true);
+        Debug.Log("Oui");
+
+    }
+
+
+
+    IEnumerator DeactivateVFXHit()
+    {
+
+        yield return new WaitForSeconds(1f);
+
+        VFX_Hit.SetActive(false);
+    }
+
+    IEnumerator DestroyExplosion()
+    {
+
+        yield return new WaitForSeconds(1f);
+
+        VFX_Die.SetActive(false);
     }
 
     public void TakeDamage(float damage)
@@ -34,7 +70,18 @@ public class Enemy : MonoBehaviour, IDamageable
         if (currentHealth <= 0)
         {
             Die();
+            Instantiate(VFX_Die,transform.position, Quaternion.identity);
+            HasInstanciated = true;
         }
+
+        if (HasInstanciated == true)
+        {
+            StartCoroutine(DestroyExplosion());
+            Debug.Log("j'ai explosé");
+        }
+
+        Invoke("VFXHit", 0);
+        StartCoroutine(DeactivateVFXHit());
     }
 
     public void Die()
