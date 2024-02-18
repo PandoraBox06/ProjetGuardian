@@ -28,20 +28,13 @@ public class PlayerControlerV2 : MonoBehaviour
     public float groundCheckDistance = .2f;
     public LayerMask whatIsGround;
     bool grounded;
+    public float airMultiplier = .4f;
 
     [Header("Slope Handling")]
     public float maxSlopeAngle = 40;
     RaycastHit slopeHit;
-    private bool exitingSlope;
-
-    [Header("Jump")]
-    public float jumpForce = 12;
-    public float jumpCooldown = .25f;
-    public float airMultiplier = .4f;
-    bool readyToJump = true;
 
     [Header("Action Mapping")]
-    public InputActionReference jumpAction;
     public InputActionReference sprintAction;
 
     [Header("References")]
@@ -70,15 +63,6 @@ public class PlayerControlerV2 : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-    }
-
-    private void OnEnable()
-    {
-        jumpAction.action.performed += Jump;
-    }
-    private void OnDisable()
-    {
-        jumpAction.action.performed -= Jump;
     }
 
     private void Update()
@@ -128,7 +112,7 @@ public class PlayerControlerV2 : MonoBehaviour
             speedChangeFactor = dashSpeedChangeFactor;
         }
         // Mode - Sprinting
-        else if(grounded  && isSprinting)
+        else if(grounded && isSprinting)
         {
             state = MovementState.sprinting;
             desiredMoveSpeed = sprintSpeed;
@@ -205,7 +189,7 @@ public class PlayerControlerV2 : MonoBehaviour
         moveDirection = orientation.forward * _move.y + orientation.right * _move.x;
 
         // on slope
-        if (OnSlope() && !exitingSlope)
+        if (OnSlope())
         {
             rb.AddForce(20f * moveSpeed * GetSlopeMoveDirection(), ForceMode.Force);
 
@@ -226,7 +210,7 @@ public class PlayerControlerV2 : MonoBehaviour
     void SpeedControl()
     {
         // limiting speed on slope
-        if (OnSlope() && !exitingSlope)
+        if (OnSlope())
         {
             if (rb.velocity.magnitude > moveSpeed)
                 rb.velocity = rb.velocity.normalized * moveSpeed;
@@ -249,30 +233,6 @@ public class PlayerControlerV2 : MonoBehaviour
         if(maxYSpeed != 0 && rb.velocity.y > maxYSpeed)
             rb.velocity = new(rb.velocity.x, maxYSpeed, rb.velocity.z);
     } 
-    #endregion
-
-    #region Jump
-    void Jump(InputAction.CallbackContext callbackContext)
-    {
-        if (readyToJump && grounded)
-        {
-            exitingSlope = true;
-            readyToJump = false;
-
-            rb.velocity = new(rb.velocity.x, 0f, rb.velocity.z);
-
-            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
-
-
-            Invoke(nameof(ResetJump), jumpCooldown);
-        }
-    }
-
-    void ResetJump()
-    {
-        readyToJump = true;
-        exitingSlope = false;
-    }
     #endregion
 
     #region Slope
