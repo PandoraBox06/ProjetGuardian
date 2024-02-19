@@ -44,20 +44,21 @@ public class ComboSystem : MonoBehaviour
 
     private void Update()
     {
-        RegisterInput();
+        RegisterInput();     
 
-        if(parsedInput.Count > 0 )
-            CheckParsedInput();
-
-        if (attackAction.action.WasPressedThisFrame() && !canParseInput && Time.time > attackTimer)
+        if (attackAction.action.WasPerformedThisFrame() && !canParseInput && Time.time > attackTimer)
         {
             MeleeAttack();
         }
+
+        if (parsedInput.Count > 0)
+            CheckParsedInput();
     }
 
     void MeleeAttack()
     {
         comboCounter = 0;
+        canParseInput = false;
         comboCounter++;
         animator.Play("Attack" + comboCounter, 0, 0);
         attackTimer = Time.time + attackTime;
@@ -72,10 +73,15 @@ public class ComboSystem : MonoBehaviour
                 Debug.Log($"Match Combo1");
 
                 comboCounter++;
-                animator.Play("Attack" + comboCounter, 0, 0);
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > attackTime && animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
+                {
+                    animator.Play("Attack" + comboCounter, 0, 0);
+                }
                 parsedInput.Clear();
                 if(comboCounter >= comboChain1.Length)
+                {
                     comboCounter = 0;
+                }
 
             }
             else if (comboCounter < comboChain2.Length && parsedInput[i] == comboChain2[comboCounter].action)
@@ -83,10 +89,15 @@ public class ComboSystem : MonoBehaviour
                 Debug.Log($"Match Combo2");
 
                 comboCounter++;
-                animator.Play("AttackB" + comboCounter, 0, 0);
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > attackTime && animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
+                {
+                    animator.Play("AttackB" + comboCounter, 0, 0);
+                }
                 parsedInput.Clear();
                 if (comboCounter >= comboChain2.Length)
+                {
                     comboCounter = 0;
+                }
             }
             else
             {
@@ -102,12 +113,12 @@ public class ComboSystem : MonoBehaviour
     {
         if(canParseInput)
         {
-            if(attackAction.action.WasPressedThisFrame())
+            if(attackAction.action.WasPerformedThisFrame())
             {
                 parsedInput.Add(attackAction.action);
                 Debug.Log($"Register attack");
             }
-            else if (rangeAttackAction.action.WasPressedThisFrame())
+            else if (rangeAttackAction.action.WasPerformedThisFrame())
             {
                 parsedInput.Add(rangeAttackAction.action);
                 Debug.Log($"Register Range Attack");
