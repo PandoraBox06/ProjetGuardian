@@ -9,7 +9,8 @@ public class PlayerCombatSystem : MonoBehaviour
     [Header("MeleeCombo")]
     public List<SO_Attack> comboNormalAttack;
     float lastClickedTime;
-    public float clickTimeCooldown;
+    float clickTimeCooldown;
+    public float clickCooldown = 0.2f;
     float lastComboEnd;
     public float comboCooldown;
     int comboCounter;
@@ -38,22 +39,20 @@ public class PlayerCombatSystem : MonoBehaviour
     private void OnEnable()
     {
         CharacterAnimatorEvents.OnFireProjectile += FireProjectile;
-        meleeAction.action.performed += NormalAttack;
-        rangeAction.action.performed += RangeAttack;
+        meleeAction.action.started += NormalAttack;
+        rangeAction.action.started += RangeAttack;
     }
 
     private void OnDisable()
     {
         CharacterAnimatorEvents.OnFireProjectile -= FireProjectile;
-        meleeAction.action.performed -= NormalAttack;
-        rangeAction.action.performed -= RangeAttack;
+        meleeAction.action.started -= NormalAttack;
+        rangeAction.action.started -= RangeAttack;
     }
 
     void Update()
     {
         ExitAttack();
-
-
     }
 
     void Start()
@@ -109,13 +108,13 @@ public class PlayerCombatSystem : MonoBehaviour
 
             if (Time.time - lastClickedTime >= clickTimeCooldown)
             {
-                animator.runtimeAnimatorController = comboNormalAttack[comboCounter].animatorOV; ;
+                animator.runtimeAnimatorController = comboNormalAttack[comboCounter].animatorOV;
                 animator.Play("Attack", 0, 0);
                 comboCounter++;
                 lastClickedTime = Time.time;
 
 
-                Invoke("VFXSlash", 0.6f);
+                Invoke(nameof(VFXSlash), 0.6f);
 
                 StartCoroutine(DeactivateVFXSlash());
 

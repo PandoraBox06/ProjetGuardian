@@ -85,6 +85,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "PauseAttack",
+                    "type": "Button",
+                    "id": "aeb4c984-d058-4b18-a9b1-016467d3ed84",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -426,6 +435,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "AttackRange",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b54f8a52-1729-4967-8a95-14227fd2e78f",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

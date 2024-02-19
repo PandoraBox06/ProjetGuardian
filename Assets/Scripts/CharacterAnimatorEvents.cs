@@ -9,6 +9,9 @@ public class CharacterAnimatorEvents : MonoBehaviour
     public static event Action OnDisbaleColliderCall;
     public static event Action OnFireProjectile;
     public static event Action OnLooktAtTarget;
+    public static event Action OnParseInputOn;
+    public static event Action OnParseInputOff;
+    public static event Action OnPauseToParse;
     public void OnEnableeCollider()
     {
         OnEnableColliderCall?.Invoke();
@@ -26,5 +29,19 @@ public class CharacterAnimatorEvents : MonoBehaviour
     public void OnLookAtTargets()
     {
         OnLooktAtTarget?.Invoke();
+    }
+
+    public void ParseInputOn()
+    {
+        OnParseInputOn?.Invoke();
+    }
+    public void ParseInputOff()
+    {
+        OnParseInputOff?.Invoke();
+    }
+
+    public void AddPauseToParse()
+    {
+        OnPauseToParse?.Invoke();
     }
 }
