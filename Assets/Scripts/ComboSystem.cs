@@ -74,7 +74,7 @@ public class ComboSystem : MonoBehaviour
                 comboCounter++;
                 animator.Play("Attack" + comboCounter, 0, 0);
                 parsedInput.Clear();
-                if(comboCounter > comboChain1.Length)
+                if(comboCounter >= comboChain1.Length)
                     comboCounter = 0;
 
             }
@@ -83,9 +83,9 @@ public class ComboSystem : MonoBehaviour
                 Debug.Log($"Match Combo2");
 
                 comboCounter++;
-                animator.Play("Attack" + comboCounter, 0, 0);
+                animator.Play("AttackB" + comboCounter, 0, 0);
                 parsedInput.Clear();
-                if (comboCounter > comboChain2.Length)
+                if (comboCounter >= comboChain2.Length)
                     comboCounter = 0;
             }
             else
