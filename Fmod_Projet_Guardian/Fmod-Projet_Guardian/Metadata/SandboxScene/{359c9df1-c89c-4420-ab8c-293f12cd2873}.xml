@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="SandboxScene" id="{359c9df1-c89c-4420-ab8c-293f12cd2873}">
+		<property name="name">
+			<value>Scene_Gabriel_BOYARD_3GDB</value>
+		</property>
+		<relationship name="folder">
+			<destination>{3042bb4b-8b37-404a-9902-ad421c08a5a6}</destination>
+		</relationship>
+		<relationship name="markerTracks">
+			<destination>{1cd5f99a-45fd-4f89-94a2-7fd777ec1b62}</destination>
+		</relationship>
+		<relationship name="timeline">
+			<destination>{a31f5ce0-140e-448c-a3e8-3898406751db}</destination>
+		</relationship>
+		<relationship name="listeners">
+			<destination>{d1ef6b8d-0107-4f3b-a135-c8570ff53757}</destination>
+		</relationship>
+	</object>
+	<object class="MarkerTrack" id="{1cd5f99a-45fd-4f89-94a2-7fd777ec1b62}" />
+	<object class="Timeline" id="{a31f5ce0-140e-448c-a3e8-3898406751db}" />
+	<object class="SandboxListener" id="{d1ef6b8d-0107-4f3b-a135-c8570ff53757}">
+		<property name="positionX">
+			<value>-0.0191279873</value>
+		</property>
+		<property name="positionZ">
+			<value>0.367131472</value>
+		</property>
+		<property name="rotationY">
+			<value>-92.3515167</value>
+		</property>
+	</object>
+</objects>
