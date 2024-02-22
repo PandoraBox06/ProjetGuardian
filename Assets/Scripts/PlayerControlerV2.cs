@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -178,7 +179,6 @@ public class PlayerControlerV2 : MonoBehaviour
         speedChangeFactor = 1f;
         keepMomentum = false;
     }
-
 
     #region Movement
     void MovePlayer()

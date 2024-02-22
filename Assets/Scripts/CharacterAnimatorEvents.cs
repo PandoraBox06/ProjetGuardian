@@ -1,10 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 
 public class CharacterAnimatorEvents : MonoBehaviour
 {
+    
+    [SerializeField] private EventReference stepAudio;
     public static event Action OnEnableColliderCall;
     public static event Action OnDisbaleColliderCall;
     public static event Action OnFireProjectile;
@@ -43,5 +46,10 @@ public class CharacterAnimatorEvents : MonoBehaviour
     public void AddPauseToParse()
     {
         OnPauseToParse?.Invoke();
+    }
+    
+    public void StepEvent()
+    {
+        RuntimeManager.PlayOneShot(stepAudio);
     }
 }
