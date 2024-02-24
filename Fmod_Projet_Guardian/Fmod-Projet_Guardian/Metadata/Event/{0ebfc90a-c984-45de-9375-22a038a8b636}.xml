@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{0ebfc90a-c984-45de-9375-22a038a8b636}">
+		<property name="note">
+			<value>Ce son est le son qui s'activera lorsque la balle sera tirée.
+J'ai créer ce son en nettoyant dans Reaper des sons de tir d'arme à feu et en rajoutant de la reverb dans Fmod afin de donner au son un peu plus de longueur
+Ce son est en multi-instrument car il y a plusieurs sons afin de créer un peu de diversité dans l'event de tir.
+
+</value>
+		</property>
 		<property name="name">
 			<value>Shot_Air</value>
 		</property>

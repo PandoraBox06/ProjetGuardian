@@ -2,9 +2,9 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{8b3b891c-ecb9-4eef-96b4-62dbcf33e1c3}">
 		<property name="note">
-			<value>Ce son est le son qui s'activera lorsque le personnage sortira son arme pour tirer.
+			<value>Ce son est le son qui s'activera lorsque le personnage sortira son arme en appuyant sur la touche pour tirer.
 J'ai créer ce son en combinant un son de frottement, pour montrer que l'arme sort du personnage et pour montrer le mouvement de dégainage, et un son mécanique pour montrer que l'arme est fait de piece qui bouge lorsqu'il est maintenu.
-Ce son se déclanche
+
 
 
 </value>

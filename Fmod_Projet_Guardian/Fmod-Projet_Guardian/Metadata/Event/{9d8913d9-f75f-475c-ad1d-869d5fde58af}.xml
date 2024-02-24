@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{9d8913d9-f75f-475c-ad1d-869d5fde58af}">
+		<property name="note">
+			<value>Ce son est le son qui s'activera lorsque la balle touchera le sol ou les murs ou en tout cas, tout ce qui n'est pas organique. Pour le moment nous n'avons pas de direction artistique visuelle donc j'ai séparer les sons de hit en 2 catégories, les ennemis, et le décors.
+J'ai créer ce son en nettoyant dans Reaper des sons de pierre se brisant et en modifiant le pitch pour ne pas avoir quelque chose de trop lourd.
+Ce son est en multi-instrument car il y a plusieurs sons afin de créer un peu de diversité dans l'event de hit de décors.</value>
+		</property>
 		<property name="name">
 			<value>Hit Stone</value>
 		</property>
