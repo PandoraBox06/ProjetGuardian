@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{f2dded5c-3935-436d-9adb-ae60db8e9df9}">
+		<property name="assetPath">
+			<value>Hit ennemy blood 3.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.4601360544217687</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{96b10a71-ce91-4c02-8101-4f875d5a0317}</destination>
+		</relationship>
+	</object>
+</objects>
