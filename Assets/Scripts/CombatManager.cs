@@ -6,41 +6,39 @@ using UnityEngine.InputSystem;
 public class CombatManager : MonoBehaviour
 {
     public static CombatManager instance;
-    public bool isAttacking = false;
-    public bool isShooting = false;
-    public InputActionReference attackAction;
-    public InputActionReference rangeAction;
-    public InputActionReference dashAction;
-    public InputActionReference pauseAction;
-    public InputActionReference[] combo1;
-    public InputActionReference[] combo2;
-    public InputActionReference[] combo3;
-    public InputActionReference[] combo4;
-    public List<InputAction> parsing;
-    public int comboCount1;
-    public int comboCount2;
-    public int comboCount3;
-    public int comboCount4;
-    public bool firstAttack;
-    public bool canParse;
-    public bool isDashing;
-    public bool isHoldingAttack;
+    [HideInInspector] public bool isAttacking = false;
+    [HideInInspector] public bool isShooting = false;
+    [SerializeField] InputActionReference attackAction;
+    [SerializeField] InputActionReference rangeAction;
+    [SerializeField] InputActionReference dashAction;
+    [SerializeField] InputActionReference pauseAction;
+    [SerializeField] InputActionReference[] combo1;
+    [SerializeField] InputActionReference[] combo2;
+    [SerializeField] InputActionReference[] combo3;
+    [SerializeField] InputActionReference[] combo4;
+    [HideInInspector] public List<InputAction> parsing;
+    [HideInInspector] public int comboCount1;
+    [HideInInspector] public int comboCount2;
+    [HideInInspector] public int comboCount3;
+    [HideInInspector] public int comboCount4;
+    [HideInInspector] public bool firstAttack;
+    [HideInInspector] public bool canParse;
+    [HideInInspector] public bool isDashing;
+    [HideInInspector] public bool isHoldingAttack;
 
     [Header("Range")]
-    public float shootingCooldown;
-    public GameObject projectilePrefab;
-    public float projectileSpeed;
-    public Transform shootingOutput;
-    public Transform projectileDump;
+    [SerializeField] float shootingCooldown;
+    [SerializeField] GameObject projectilePrefab;
+    [SerializeField] float projectileSpeed;
+    [SerializeField] Transform shootingOutput;
+    [SerializeField] Transform projectileDump;
     float shootingTimer;
-    public CombatCamBehavior combatCamBehavior;
-    public Transform orientation;
+    [SerializeField] CombatCamBehavior combatCamBehavior;
+    [SerializeField] Transform orientation;
 
     [Header("VFX")]
-    public GameObject VFX_Slash;
-    public GameObject VFX_Tir;
-    public float activationTime = 5f;
-    public bool hasActivated = false;
+    [SerializeField] GameObject VFX_Slash;
+    [SerializeField] GameObject VFX_Tir;
 
     private void Awake()
     {
