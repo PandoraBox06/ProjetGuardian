@@ -12,10 +12,8 @@ public class CharacterAnimatorEvents : MonoBehaviour
     public static event Action OnDisbaleColliderCall;
     public static event Action OnFireProjectile;
     public static event Action OnLooktAtTarget;
-    public static event Action OnParseInputOn;
-    public static event Action OnParseInputOff;
-    public static event Action OnPauseToParse;
-    public void OnEnableeCollider()
+    [SerializeField] private Collider playerCollider;
+    public void OnEnableCollider()
     {
         OnEnableColliderCall?.Invoke();
     }
@@ -33,23 +31,19 @@ public class CharacterAnimatorEvents : MonoBehaviour
     {
         OnLooktAtTarget?.Invoke();
     }
-
-    public void ParseInputOn()
-    {
-        OnParseInputOn?.Invoke();
-    }
-    public void ParseInputOff()
-    {
-        OnParseInputOff?.Invoke();
-    }
-
-    public void AddPauseToParse()
-    {
-        OnPauseToParse?.Invoke();
-    }
     
     public void StepEvent()
     {
         RuntimeManager.PlayOneShot(stepAudio);
+    }
+
+    public void PlayerIFrameOn()
+    {
+        playerCollider.enabled = false;
+    }
+
+    public void PlayerIFrameOff()
+    {
+        playerCollider.enabled = true;
     }
 }

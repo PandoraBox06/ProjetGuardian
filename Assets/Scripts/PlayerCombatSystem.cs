@@ -38,14 +38,14 @@ public class PlayerCombatSystem : MonoBehaviour
 
     private void OnEnable()
     {
-        CharacterAnimatorEvents.OnFireProjectile += FireProjectile;
+        //CharacterAnimatorEvents.OnFireProjectile += FireProjectile;
         meleeAction.action.started += NormalAttack;
         rangeAction.action.started += RangeAttack;
     }
 
     private void OnDisable()
     {
-        CharacterAnimatorEvents.OnFireProjectile -= FireProjectile;
+        //CharacterAnimatorEvents.OnFireProjectile -= FireProjectile;
         meleeAction.action.started -= NormalAttack;
         rangeAction.action.started -= RangeAttack;
     }
