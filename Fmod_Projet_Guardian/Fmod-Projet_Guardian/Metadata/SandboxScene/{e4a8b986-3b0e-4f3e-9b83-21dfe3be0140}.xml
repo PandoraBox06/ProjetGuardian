@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="SandboxScene" id="{e4a8b986-3b0e-4f3e-9b83-21dfe3be0140}">
+		<property name="name">
+			<value>Scene_Lorenza_LEVY_3GDB</value>
+		</property>
+		<relationship name="folder">
+			<destination>{3042bb4b-8b37-404a-9902-ad421c08a5a6}</destination>
+		</relationship>
+		<relationship name="markerTracks">
+			<destination>{4031c08a-7b5e-4079-a4dd-e4a3093e9eda}</destination>
+		</relationship>
+		<relationship name="timeline">
+			<destination>{3bb4f408-acb8-4277-b4ce-2ba8603623af}</destination>
+		</relationship>
+	</object>
+	<object class="MarkerTrack" id="{4031c08a-7b5e-4079-a4dd-e4a3093e9eda}" />
+	<object class="Timeline" id="{3bb4f408-acb8-4277-b4ce-2ba8603623af}" />
+</objects>
