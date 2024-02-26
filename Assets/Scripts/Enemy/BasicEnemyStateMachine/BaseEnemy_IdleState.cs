@@ -16,7 +16,9 @@ namespace BasicEnemyStateMachine
         {
             if(state.trainingDummyMode) { return; }
 
-            if(Time.time > timer)
+            if (state.isStunned) { state.SwitchState(state.StunState); }
+
+            if (Time.time > timer)
             {
                 if(state.staticAttacking)
                 {

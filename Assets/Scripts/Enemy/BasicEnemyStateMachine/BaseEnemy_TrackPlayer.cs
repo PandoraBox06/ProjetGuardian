@@ -22,39 +22,23 @@ namespace BasicEnemyStateMachine
 
             state.agent.stoppingDistance = attackRange;
 
-            if (state.player != null)
-            {
-                if (IsPlayerInAttackRange(state))
-                    state.SwitchState(state.AttackState);
-                else
-                    state.agent.SetDestination(state.player.position);
-            }
-            else
-                state.SwitchState(state.IdleState);
+            FindingPlayer(state);
         }
         public override void UpdateState(BaseEnemy_StateManager state)
         {
-            if (state.player != null)
-            {
-                if (IsPlayerInAttackRange(state))
-                    state.SwitchState(state.AttackState);
-                else
-                    state.agent.SetDestination(state.player.position);
-            }
-            else
-                state.SwitchState(state.IdleState);
+            if (state.isStunned) { state.SwitchState(state.StunState); }
+
+            FindingPlayer(state);
         }
 
         public bool IsPlayerInAttackRange(BaseEnemy_StateManager state)
         {
             if (Vector3.Distance(state.player.position, state.transform.position) <= attackRange) 
             {
-                Debug.Log("True");
                 return true;
             }
             else
             {
-                Debug.Log("True");
                 return false;
             }
 
@@ -63,6 +47,19 @@ namespace BasicEnemyStateMachine
         public override void ExitState(BaseEnemy_StateManager state)
         {
 
+        }
+
+        public void FindingPlayer(BaseEnemy_StateManager state)
+        {
+            if (state.player != null)
+            {
+                if (IsPlayerInAttackRange(state))
+                    state.SwitchState(state.AttackState);
+                else
+                    state.agent.SetDestination(state.player.position);
+            }
+            else
+                state.SwitchState(state.IdleState);
         }
 
     }

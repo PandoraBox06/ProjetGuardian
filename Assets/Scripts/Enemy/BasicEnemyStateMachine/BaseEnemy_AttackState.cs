@@ -7,6 +7,8 @@ namespace BasicEnemyStateMachine
     {
         public override void EnterState(BaseEnemy_StateManager state)
         {
+            if (state.isStunned) { state.SwitchState(state.StunState); }
+
             switch (state.combatType)
             {
                 case BaseEnemy_StateManager.CombatMode.melee:
@@ -24,8 +26,11 @@ namespace BasicEnemyStateMachine
 
         public override void UpdateState(BaseEnemy_StateManager state)
         {
+            if(state.isStunned) { state.SwitchState(state.StunState); }
+
             if (state.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
                 state.SwitchState(state.IdleState);
+
         }
 
         public override void ExitState(BaseEnemy_StateManager state)

@@ -1,3 +1,4 @@
+using BasicEnemyStateMachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, IDamageable
 {
     //public
-    //[HideInInspector]
-    public float currentHealth;
-
+    [HideInInspector] public float currentHealth;
+    [SerializeField] BaseEnemy_StateManager stateManager;
     //private
     [SerializeField] private GameObject hpEnemy;
     [SerializeField] private SpriteRenderer barSpriteRenderer;
@@ -65,6 +65,7 @@ public class Enemy : MonoBehaviour, IDamageable
         currentHealth -= damage;
         barSpriteRenderer.material.color = hpGradient.Evaluate(currentHealth / maxHealth);
         barParent.localScale = new Vector3((currentHealth / maxHealth), 1f);
+        stateManager.isStunned = true;
         if (currentHealth < maxHealth)
             hpEnemy.SetActive(true);
         if (currentHealth <= 0)
