@@ -13,23 +13,38 @@ namespace BasicEnemyStateMachine
         public BaseEnemy_AttackState AttackState = new();
         public BaseEnemy_TrackPlayer TrackPlayerState = new();
         public BaseEnemy_Roaming RoamingState = new();
+        public BaseEnemy_Stun StunState = new();
 
         [Header("Settings")]
-        public bool canMove;
-        public bool canAttack;
+        public bool trainingDummyMode;
+        public bool staticAttacking;
         public float idleTime = 1;
-        public float attackRange = 1;
-        public bool randomRoaming = false;
-        public float roamingTimer = 1;
-        public bool inverseDirection;
+        public CombatMode combatType;
+        public float meleeAttackRange = 1;
+        public float rangeAttackRange = 1;
+        public float projectilesSpeed = 10;
+        [HideInInspector] public bool randomRoaming = false;
+        [HideInInspector] public float roamingTimer = 1;
+        [HideInInspector] public bool inverseDirection;
+        public bool isStunned = false;
+        public float stunTimer = 1;
 
         [Header("References")]
         public Animator animator;
         public NavMeshAgent agent;
-        public Transform[] roamingPoints;
-        public PatrolRoute route;
+        public Transform player;
+        public GameObject projectiles;
+        public Transform fireOutput;
+        [HideInInspector] public Transform[] roamingPoints;
+        [HideInInspector] public PatrolRoute route;
         //Hidden
-        /*[HideInInspector]*/ public Transform player;
+
+        public enum CombatMode
+        {
+            melee,
+            range,
+            Boss
+        }
 
         void Start()
         {

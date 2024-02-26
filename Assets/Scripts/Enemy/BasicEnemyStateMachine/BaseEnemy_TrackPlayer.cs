@@ -5,6 +5,8 @@ namespace BasicEnemyStateMachine
 {
     public class BaseEnemy_TrackPlayer : BaseEnemy_BaseState
     {
+        float attackRange;
+
         public override void EnterState(BaseEnemy_StateManager state)
         {
             if (state.player != null)
@@ -16,6 +18,18 @@ namespace BasicEnemyStateMachine
             }
             else
                 state.SwitchState(state.IdleState);
+
+            switch (state.combatType)
+            {
+                case BaseEnemy_StateManager.CombatMode.melee:
+                    attackRange = state.meleeAttackRange;
+                    break;
+                case BaseEnemy_StateManager.CombatMode.range:
+                    attackRange = state.rangeAttackRange;
+                    break;
+                case BaseEnemy_StateManager.CombatMode.Boss:
+                    break;
+            }
         }
         public override void UpdateState(BaseEnemy_StateManager state)
         {
@@ -32,7 +46,7 @@ namespace BasicEnemyStateMachine
 
         public bool IsPlayerInAttackRange(BaseEnemy_StateManager state)
         {
-            if(Vector3.Distance(state.player.position, state.transform.position) <= state.attackRange)
+            if(Vector3.Distance(state.player.position, state.transform.position) <= attackRange)
             {
                 return true;
             }

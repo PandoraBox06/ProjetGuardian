@@ -644,7 +644,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 6
+  m_Radius: 100
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &631150705727123768
 MonoBehaviour:
@@ -2191,6 +2191,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   VFX_Hit: {fileID: 4613996846551349949}
   VFX_Die: {fileID: 358637981425055526, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
+  HasInstanciated: 0
 --- !u!114 &2463258848321828682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2203,18 +2204,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c791bc862f2aa1946bf4ffc02d7799e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canMove: 1
-  canAttack: 0
+  trainingDummyMode: 0
+  staticAttacking: 0
   idleTime: 1
-  attackRange: 1
+  combatType: 0
+  meleeAttackRange: 1
+  rangeAttackRange: 10
+  projectilesSpeed: 10
   randomRoaming: 0
   roamingTimer: 1
   inverseDirection: 0
+  isStunned: 0
+  stunTimer: 1
   animator: {fileID: 3091468178753969336}
   agent: {fileID: 7250851860038389224}
+  player: {fileID: 0}
+  projectiles: {fileID: 0}
   roamingPoints: []
   route: {fileID: 0}
-  player: {fileID: 0}
 --- !u!195 &7250851860038389224
 NavMeshAgent:
   m_ObjectHideFlags: 0

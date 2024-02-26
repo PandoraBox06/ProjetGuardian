@@ -7,8 +7,21 @@ namespace BasicEnemyStateMachine
     {
         public override void EnterState(BaseEnemy_StateManager state)
         {
-            state.transform.LookAt(state.player);
-            state.animator.Play("Attack", 0, 0);
+            switch (state.combatType)
+            {
+                case BaseEnemy_StateManager.CombatMode.melee:
+                    state.transform.LookAt(state.player);
+                    state.animator.Play("Attack", 0, 0);
+                    break;
+                case BaseEnemy_StateManager.CombatMode.range:
+                    state.transform.LookAt(state.player);
+                    state.animator.Play("Shoot", 0, 0);
+                    break;
+                case BaseEnemy_StateManager.CombatMode.Boss:
+                    break;
+            }
+
+    
         }
 
         public override void UpdateState(BaseEnemy_StateManager state)

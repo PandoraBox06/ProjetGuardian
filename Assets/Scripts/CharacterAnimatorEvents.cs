@@ -12,6 +12,7 @@ public class CharacterAnimatorEvents : MonoBehaviour
     public static event Action OnDisbaleColliderCall;
     public static event Action OnFireProjectile;
     public static event Action OnLooktAtTarget;
+    [SerializeField] PlayerControlerV2 playerControler;
     [SerializeField] private Collider playerCollider;
     public void OnEnableCollider()
     {
@@ -45,5 +46,14 @@ public class CharacterAnimatorEvents : MonoBehaviour
     public void PlayerIFrameOff()
     {
         playerCollider.enabled = true;
+    }
+
+    public void FreezeMovement()
+    {
+        playerControler.isAttacking = true;
+    }
+    public void UnFreezeMovement()
+    {
+        playerControler.isAttacking = false;
     }
 }

@@ -24,6 +24,7 @@ public class PlayerControlerV2 : MonoBehaviour
     MovementState lastState;
     bool keepMomentum;
 
+    public bool isAttacking;
     [Header("Ground Check")]
     public Transform groundCheck;
     public float groundCheckDistance = .2f;
@@ -52,6 +53,7 @@ public class PlayerControlerV2 : MonoBehaviour
 
     public enum MovementState
     {
+        attacking,
         walking,
         sprinting,
         dashing,
@@ -75,6 +77,9 @@ public class PlayerControlerV2 : MonoBehaviour
 
         switch (state)
         {
+            case MovementState.attacking:
+                rb.drag = groundDragWalk;
+                break;
             case MovementState.walking:
                 rb.drag = groundDragWalk;
                 break;
@@ -105,8 +110,13 @@ public class PlayerControlerV2 : MonoBehaviour
 
     void StateHandler()
     {
+        if (isAttacking)
+        {
+            state = MovementState.attacking;
+            desiredMoveSpeed = 0;
+        }
         // Mode - Dashing
-        if (dashing)
+        else if (dashing)
         {
             state = MovementState.dashing;
             desiredMoveSpeed = dashSpeed;
@@ -184,6 +194,7 @@ public class PlayerControlerV2 : MonoBehaviour
     void MovePlayer()
     {
         if (state == MovementState.dashing) return;
+        if (state == MovementState.attacking) return;
 
         //calculate movement direction
         moveDirection = orientation.forward * _move.y + orientation.right * _move.x;
