@@ -35,6 +35,7 @@ namespace BasicEnemyStateMachine
         public Transform player;
         public GameObject projectiles;
         public Transform fireOutput;
+        public Transform projectileDump;
         [HideInInspector] public Transform[] roamingPoints;
         [HideInInspector] public PatrolRoute route;
         //Hidden
@@ -44,6 +45,15 @@ namespace BasicEnemyStateMachine
             melee,
             range,
             Boss
+        }
+
+        private void OnEnable()
+        {
+            Enemy_AnimatorEvents.OnFireProjectileEnemy += FireProjectile;
+        }
+        private void OnDisable()
+        {
+            Enemy_AnimatorEvents.OnFireProjectileEnemy -= FireProjectile;
         }
 
         void Start()
@@ -74,6 +84,15 @@ namespace BasicEnemyStateMachine
         public void ExitState(BaseEnemy_BaseState state)
         {
             state.ExitState(this);
+        }
+
+
+        public void FireProjectile()
+        {
+            var thisProjectile = Instantiate(projectiles, fireOutput.position, Quaternion.identity, projectileDump);
+            Vector3 projectileDir = new();
+            projectileDir = player.position - transform.position;
+            thisProjectile.GetComponent<Rigidbody>().AddForce(projectileDir * projectilesSpeed, ForceMode.Impulse);
         }
     }
 }

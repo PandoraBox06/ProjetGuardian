@@ -38,7 +38,20 @@ namespace BasicEnemyStateMachine
                 if (IsPlayerInAttackRange(state))
                     state.SwitchState(state.AttackState);
                 else
-                    state.agent.SetDestination(state.player.position);
+                {
+                    switch (state.combatType)
+                    {
+                        case BaseEnemy_StateManager.CombatMode.melee:
+                            state.agent.SetDestination(state.player.position);
+                            break;
+                        case BaseEnemy_StateManager.CombatMode.range:
+                            state.agent.SetDestination(state.player.position + new Vector3(attackRange / 2, 0, attackRange / 2));
+                            break;
+                        case BaseEnemy_StateManager.CombatMode.Boss:
+                            break;
+                    }
+
+                }
             }
             else
                 state.SwitchState(state.IdleState);
@@ -46,7 +59,7 @@ namespace BasicEnemyStateMachine
 
         public bool IsPlayerInAttackRange(BaseEnemy_StateManager state)
         {
-            if(Vector3.Distance(state.player.position, state.transform.position) <= attackRange)
+            if (Vector3.Distance(state.player.position, state.transform.position) <= attackRange)
             {
                 return true;
             }

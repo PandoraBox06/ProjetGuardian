@@ -19,9 +19,7 @@ namespace BasicEnemyStateMachine
                     break;
                 case BaseEnemy_StateManager.CombatMode.Boss:
                     break;
-            }
-
-    
+            }    
         }
 
         public override void UpdateState(BaseEnemy_StateManager state)
@@ -32,7 +30,7 @@ namespace BasicEnemyStateMachine
 
         public override void ExitState(BaseEnemy_StateManager state)
         {
-
+    
         }
     }
 }
