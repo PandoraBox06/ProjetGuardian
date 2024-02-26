@@ -87,12 +87,15 @@ namespace BasicEnemyStateMachine
         }
 
 
-        public void FireProjectile()
+        public void FireProjectile(GameObject go)
         {
-            var thisProjectile = Instantiate(projectiles, fireOutput.position, Quaternion.identity, projectileDump);
-            Vector3 projectileDir = new();
-            projectileDir = player.position - transform.position;
-            thisProjectile.GetComponent<Rigidbody>().AddForce(projectileDir * projectilesSpeed, ForceMode.Impulse);
+            if (go == this.transform.root.gameObject)
+            {
+                var thisProjectile = Instantiate(projectiles, fireOutput.position, Quaternion.identity, projectileDump);
+                Vector3 projectileDir = new();
+                projectileDir = player.position - transform.position;
+                thisProjectile.GetComponent<Rigidbody>().AddForce(projectileDir * projectilesSpeed, ForceMode.Impulse);
+            }
         }
     }
 }

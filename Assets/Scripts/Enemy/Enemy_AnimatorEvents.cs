@@ -7,11 +7,11 @@ public class Enemy_AnimatorEvents : MonoBehaviour
 {
     public static event Action<GameObject> OnEnableColliderCall;
     public static event Action<GameObject> OnDisbaleColliderCall;
-    public static event Action OnFireProjectileEnemy;
+    public static event Action<GameObject> OnFireProjectileEnemy;
 
     public void OnFireProjectilesEnemy()
     {
-        OnFireProjectileEnemy?.Invoke();
+        OnFireProjectileEnemy?.Invoke(this.transform.root.gameObject);
     }
 
     public void OnEnableeCollider()

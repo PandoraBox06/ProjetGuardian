@@ -24,11 +24,6 @@ public class IdleBehavior : StateMachineBehaviour
         {
             animator.Play("Shooting");
         }
-
-        if (CombatManager.instance.isDashing)
-        {
-            animator.Play("Roll");
-        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
