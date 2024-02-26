@@ -21,6 +21,10 @@ public class TransitionEndCombo : StateMachineBehaviour
     {
         CombatManager.instance.canParse = false;
         CombatManager.instance.ClearParse();
+        CombatManager.instance.firstAttack = false;
+        CombatManager.instance.isAttacking = false;
+        CombatManager.instance.isShooting = false;
+
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
