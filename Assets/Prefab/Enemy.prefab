@@ -2157,6 +2157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
+  stateManager: {fileID: 2463258848321828682}
   hpEnemy: {fileID: 8657358410286054434}
   barSpriteRenderer: {fileID: 5135907778575677586}
   barParent: {fileID: 7085601417123263368}
