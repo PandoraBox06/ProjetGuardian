@@ -4,7 +4,7 @@
 		<property name="note">
 			<value>La scène que j'ai fait représente la sonorisation du joueur quand il marche dans un batiment.
 Vue que les sons sont issues du player pour cette scène, ils seront disposer au centre de celle-ci.
-Tout d'abord les sons de walk on concrete, walk on metal, running on concrete et running on metal sont placer pile au centre de la scène vue qu'il seront issues du joueur et non de quelque chose autour de lui. 
+Tout d'abord les sons de walk on concrete, walk on metal, running on concrete et running on metal sont placer pile au centre de la scène vue qu'il seront issues du joueur et non de quelque chose autour de lui. Ils seront jouer en fonction du sol ou le player va se déplacer et s'adapteront soit pour que si le joueur passe sur de la concrete, lancer les sons de de déplacement issues de celle-ci soit utiliser les sons de déplacement de métal si il se déplace sur une zone métallique.
 Ses 4 sons ont été produits sur reaper en étant nettoyer et couper. Puis j'ai transférer les sons sur Fmod en appliquant un multi instruments à chaque events de walk et de running, pour ne pas avoir de sons répétifs.
 
 le son de l'environnement à été placer un peu plus en avant car le player devra avancer vers la zone ou se situe la pluie qui tombe pour pouvoir l'entendre tout autour de lui. Le listener est pincipalement pour comprendre l'environnement et le fait de devoir allez vers lui.
