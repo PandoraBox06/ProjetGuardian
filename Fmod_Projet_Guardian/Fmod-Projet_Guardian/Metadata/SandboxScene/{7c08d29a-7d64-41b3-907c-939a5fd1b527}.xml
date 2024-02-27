@@ -2,8 +2,13 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="SandboxScene" id="{7c08d29a-7d64-41b3-907c-939a5fd1b527}">
 		<property name="note">
-			<value>Les sons de pas ont été crée pour le player si il marche sur du sol dur avec une texture ce rapprochant de la concrete ou du metal un des sons vont se lancer en fonction du sol. Pour produire les sons j'ai tout d'abord récuperer des placehorder que j'ai nettoyer et couper sur reaper pour ensuite les implémenté sur Fmod avec un event 3d timeline et un multi-instrument. Je les ai  parsemer de chaque coté du listener pour avoir un réel effet de son stéréo et pour montrer dans l'exercice que le listener fonctionne.
-Pour le son d'environnement étant donner que les pas sont principalement en intérieur j'ai choisi un son de bruit d'eau qui résonne sur un toit de batiment.</value>
+			<value>La scène que j'ai fait représente la sonorisation du joueur quand il marche dans un batiment.
+Vue que les sons sont issues du player pour cette scène, ils seront disposer au centre de celle-ci.
+Tout d'abord les sons de walk on concrete, walk on metal, running on concrete et running on metal sont placer pile au centre de la scène vue qu'il seront issues du joueur et non de quelque chose autour de lui. 
+Ses 4 sons ont été produits sur reaper en étant nettoyer et couper. Puis j'ai transférer les sons sur Fmod en appliquant un multi instruments à chaque events de walk et de running, pour ne pas avoir de sons répétifs.
+
+le son de l'environnement à été placer un peu plus en avant car le player devra avancer vers la zone ou se situe la pluie qui tombe pour pouvoir l'entendre tout autour de lui. Le listener est pincipalement pour comprendre l'environnement et le fait de devoir allez vers lui.
+</value>
 		</property>
 		<property name="name">
 			<value>Scene_Camille_MENANA_3GDB</value>
@@ -18,7 +23,7 @@ Pour le son d'environnement étant donner que les pas sont principalement en int
 			<destination>{08484510-7dd4-431e-898e-02869e7db6ed}</destination>
 		</relationship>
 		<relationship name="listeners">
-			<destination>{e506c049-2d48-4a3b-9913-055fecd0d64b}</destination>
+			<destination>{7fa1f1b7-ef07-4d52-b2c1-f1aa97ce78a1}</destination>
 		</relationship>
 		<relationship name="emitters">
 			<destination>{86c474b1-0e17-4c84-bb76-91bfa768d1a4}</destination>
@@ -30,26 +35,26 @@ Pour le son d'environnement étant donner que les pas sont principalement en int
 	</object>
 	<object class="MarkerTrack" id="{1177681a-ed8d-45c0-aa92-dfcc413faf67}" />
 	<object class="Timeline" id="{08484510-7dd4-431e-898e-02869e7db6ed}" />
-	<object class="SandboxListener" id="{e506c049-2d48-4a3b-9913-055fecd0d64b}">
+	<object class="SandboxListener" id="{7fa1f1b7-ef07-4d52-b2c1-f1aa97ce78a1}">
 		<property name="positionX">
-			<value>-0.0164213497</value>
+			<value>-0.0353552699</value>
 		</property>
 		<property name="positionZ">
-			<value>0.108578779</value>
+			<value>-0.123743713</value>
 		</property>
 		<property name="rotationY">
-			<value>-15.5368853</value>
+			<value>-0.168266445</value>
 		</property>
 	</object>
 	<object class="SandboxEmitter" id="{86c474b1-0e17-4c84-bb76-91bfa768d1a4}">
 		<property name="positionX">
-			<value>4.27499962</value>
+			<value>-0.00732277986</value>
 		</property>
 		<property name="positionZ">
-			<value>3.70000076</value>
+			<value>-0.0866109505</value>
 		</property>
 		<property name="rotationY">
-			<value>-48.4595909</value>
+			<value>6.22110605</value>
 		</property>
 		<relationship name="event">
 			<destination>{d0efc290-5812-47d5-b54d-0876349deab9}</destination>
@@ -57,13 +62,13 @@ Pour le son d'environnement étant donner que les pas sont principalement en int
 	</object>
 	<object class="SandboxEmitter" id="{0c976352-8bd1-4ac3-90db-16ce5636523d}">
 		<property name="positionX">
-			<value>-4.07500029</value>
+			<value>-0.0396449901</value>
 		</property>
 		<property name="positionZ">
-			<value>3.72500014</value>
+			<value>-0.109834857</value>
 		</property>
 		<property name="rotationY">
-			<value>-29.02244</value>
+			<value>4.33944273</value>
 		</property>
 		<relationship name="event">
 			<destination>{36128dc8-62c8-48cc-9031-0e8d59ff47b1}</destination>
@@ -71,13 +76,13 @@ Pour le son d'environnement étant donner que les pas sont principalement en int
 	</object>
 	<object class="SandboxEmitter" id="{623362ed-c973-48cd-ae84-ed7bb9a700cf}">
 		<property name="positionX">
-			<value>6.2225399</value>
+			<value>0.0048620468</value>
 		</property>
 		<property name="positionZ">
-			<value>-3.9597981</value>
+			<value>-0.0805087984</value>
 		</property>
 		<property name="rotationY">
-			<value>-160.048859</value>
+			<value>8.87761402</value>
 		</property>
 		<relationship name="event">
 			<destination>{6096cd3a-022c-4620-8cf6-b02b8665c84c}</destination>
@@ -85,13 +90,13 @@ Pour le son d'environnement étant donner que les pas sont principalement en int
 	</object>
 	<object class="SandboxEmitter" id="{0c1d4947-ce71-43b7-89ca-905128a29917}">
 		<property name="positionX">
-			<value>-5.51543331</value>
+			<value>-0.0227556303</value>
 		</property>
 		<property name="positionZ">
-			<value>-4.59619427</value>
+			<value>-0.113871843</value>
 		</property>
 		<property name="rotationY">
-			<value>63.0438461</value>
+			<value>-0.526239514</value>
 		</property>
 		<relationship name="event">
 			<destination>{49356da8-c5e1-406c-842e-1047b4273a84}</destination>
@@ -99,13 +104,13 @@ Pour le son d'environnement étant donner que les pas sont principalement en int
 	</object>
 	<object class="SandboxEmitter" id="{fbb31919-841d-4a4f-bb5f-53cf53e8001e}">
 		<property name="positionX">
-			<value>0.212132052</value>
+			<value>-0.0659010559</value>
 		</property>
 		<property name="positionZ">
-			<value>-2.75771642</value>
+			<value>2.1496954</value>
 		</property>
 		<property name="rotationY">
-			<value>-10.6203566</value>
+			<value>-1.99017894</value>
 		</property>
 		<relationship name="event">
 			<destination>{a2225441-5b99-4ed9-8c29-7236552016ee}</destination>
