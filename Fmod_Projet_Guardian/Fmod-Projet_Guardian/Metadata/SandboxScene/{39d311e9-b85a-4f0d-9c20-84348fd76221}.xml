@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="SandboxScene" id="{39d311e9-b85a-4f0d-9c20-84348fd76221}">
+		<property name="name">
+			<value>Scene_Edward_Bot_3GDB</value>
+		</property>
+		<relationship name="folder">
+			<destination>{3042bb4b-8b37-404a-9902-ad421c08a5a6}</destination>
+		</relationship>
+		<relationship name="markerTracks">
+			<destination>{48daa8b1-8bfc-46d5-a2d0-a10bb3313d3e}</destination>
+		</relationship>
+		<relationship name="timeline">
+			<destination>{756ded1b-5c91-434c-b3eb-83eff5eaee6a}</destination>
+		</relationship>
+		<relationship name="listeners">
+			<destination>{7dd53abd-95ba-480a-ba44-18ddd1b79fc6}</destination>
+		</relationship>
+		<relationship name="emitters">
+			<destination>{ae9677f5-5200-405c-bce4-4d93a3b03a2b}</destination>
+			<destination>{a31f0864-62d4-4ab9-9347-f469b014d663}</destination>
+		</relationship>
+	</object>
+	<object class="MarkerTrack" id="{48daa8b1-8bfc-46d5-a2d0-a10bb3313d3e}" />
+	<object class="Timeline" id="{756ded1b-5c91-434c-b3eb-83eff5eaee6a}" />
+	<object class="SandboxListener" id="{7dd53abd-95ba-480a-ba44-18ddd1b79fc6}">
+		<property name="positionX">
+			<value>0.0500000007</value>
+		</property>
+		<property name="positionZ">
+			<value>0.150000006</value>
+		</property>
+	</object>
+	<object class="SandboxEmitter" id="{ae9677f5-5200-405c-bce4-4d93a3b03a2b}">
+		<property name="positionX">
+			<value>0.0353553407</value>
+		</property>
+		<property name="positionZ">
+			<value>1.97989905</value>
+		</property>
+		<relationship name="event">
+			<destination>{d6bbe203-1a9c-4bab-8cc3-f1edf10eceb2}</destination>
+		</relationship>
+	</object>
+	<object class="SandboxEmitter" id="{a31f0864-62d4-4ab9-9347-f469b014d663}">
+		<property name="positionX">
+			<value>0.0176776592</value>
+		</property>
+		<property name="positionZ">
+			<value>1.90918839</value>
+		</property>
+		<property name="rotationY">
+			<value>22.9178238</value>
+		</property>
+		<relationship name="event">
+			<destination>{6a2676ca-1c5c-4d05-bd90-26c9adcfaa18}</destination>
+		</relationship>
+	</object>
+</objects>
