@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="SandboxScene" id="{7c08d29a-7d64-41b3-907c-939a5fd1b527}">
 		<property name="note">
-			<value>Les sons de pas ont été crée pour le player si il marche sur du sol dur avec une texture ce rapprochant de la concrete ou du metal un des sons vont se lancer en fonction du sol.Pour produire les sons j'ai tout d'abord récuperer des placehorder que j'ai nettoyer et couper sur reaper pour ensuite les implémenté sur Fmod avec un event 3d timeline et un multi-instrument. Je les ai  parsemer de chaque coté du listener pour avoir un réel effet de son stéréo et pour montrer dans l'exercice que le listener fonctionne.
+			<value>Les sons de pas ont été crée pour le player si il marche sur du sol dur avec une texture ce rapprochant de la concrete ou du metal un des sons vont se lancer en fonction du sol. Pour produire les sons j'ai tout d'abord récuperer des placehorder que j'ai nettoyer et couper sur reaper pour ensuite les implémenté sur Fmod avec un event 3d timeline et un multi-instrument. Je les ai  parsemer de chaque coté du listener pour avoir un réel effet de son stéréo et pour montrer dans l'exercice que le listener fonctionne.
 Pour le son d'environnement étant donner que les pas sont principalement en intérieur j'ai choisi un son de bruit d'eau qui résonne sur un toit de batiment.</value>
 		</property>
 		<property name="name">
