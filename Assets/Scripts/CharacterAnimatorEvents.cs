@@ -13,6 +13,7 @@ public class CharacterAnimatorEvents : MonoBehaviour
     public static event Action OnFireProjectile;
     public static event Action OnLooktAtTarget;
     [SerializeField] PlayerControlerV2 playerControler;
+    [SerializeField] private CameraBehavior _cameraBehavior;
     [SerializeField] private Collider playerCollider;
     public void OnEnableCollider()
     {
@@ -51,9 +52,11 @@ public class CharacterAnimatorEvents : MonoBehaviour
     public void FreezeMovement()
     {
         playerControler.isAttacking = true;
+        _cameraBehavior.isAttacking = true;
     }
     public void UnFreezeMovement()
     {
         playerControler.isAttacking = false;
+        _cameraBehavior.isAttacking = false;
     }
 }

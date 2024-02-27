@@ -1,3 +1,4 @@
+using System;
 using Cinemachine;
 using DG.Tweening;
 using System.Collections;
@@ -30,6 +31,8 @@ public class CameraBehavior : MonoBehaviour
 
     public CameraStyle currentStyle;
 
+    public bool isAttacking;
+    
     public InputActionReference switchCam;
     public enum CameraStyle
     {
@@ -57,6 +60,11 @@ public class CameraBehavior : MonoBehaviour
 
     private void Update()
     {
+        if (isAttacking)
+        {
+            return;
+        }
+        
         if (switchCam.action.WasPressedThisFrame())
         {
             switch (currentStyle)
