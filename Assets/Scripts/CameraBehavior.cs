@@ -40,7 +40,24 @@ public class CameraBehavior : MonoBehaviour
         Combat,
         Topdown
     }
+    public static CameraBehavior Instance { get; private set; }
 
+    private void Awake()
+    {
+        if (Instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
+
+    private void OnDestroy()
+    {
+        if (this == Instance)
+            Instance = null;
+    }
+    
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
