@@ -110,17 +110,17 @@ public class PlayerControlerV2 : MonoBehaviour
 
     void StateHandler()
     {
-        if (isAttacking)
-        {
-            state = MovementState.attacking;
-            desiredMoveSpeed = 0;
-        }
         // Mode - Dashing
-        else if (dashing)
+        if (dashing)
         {
             state = MovementState.dashing;
             desiredMoveSpeed = dashSpeed;
             speedChangeFactor = dashSpeedChangeFactor;
+        }
+        else if (isAttacking)
+        {
+            state = MovementState.attacking;
+            desiredMoveSpeed = 0;
         }
         // Mode - Sprinting
         else if(grounded && isSprinting)
