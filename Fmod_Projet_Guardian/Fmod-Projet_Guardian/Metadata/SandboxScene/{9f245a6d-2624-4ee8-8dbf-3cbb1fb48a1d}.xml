@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="SandboxScene" id="{9f245a6d-2624-4ee8-8dbf-3cbb1fb48a1d}">
+		<property name="note">
+			<value>Ma scène représente le mouvement de dash. On a un mouvement vers l'avant sonorisé sous la forme d'un sifflement de vent (1) et le personnnage va éventuellement rencontrer une surface contre laquelle il va se cogner. On a ici les exemples d'un personnage qui percute du méral (2) ou un mur de bois (3). Le panel de surfaces peut être agrandis en fonction des décors et des matériaux qu'ils impliquent. Pour éviter la répétition, les sons d'impact contre les surface sont divers et stockés dans un multi-instrument</value>
+		</property>
 		<property name="name">
 			<value>Scene_Garance_LESPAGNOL_3GDB</value>
 		</property>
@@ -37,13 +40,13 @@
 	</object>
 	<object class="SandboxEmitter" id="{a8908b3f-a9f3-4a28-80ee-7156a043182f}">
 		<property name="positionX">
-			<value>0.0500000156</value>
+			<value>-0.0499999858</value>
 		</property>
 		<property name="positionZ">
-			<value>2.625</value>
+			<value>1.5999999</value>
 		</property>
 		<property name="rotationY">
-			<value>2.73235464</value>
+			<value>116.222816</value>
 		</property>
 		<relationship name="event">
 			<destination>{bbc91df7-9240-481e-b01b-37c8caf0a779}</destination>
