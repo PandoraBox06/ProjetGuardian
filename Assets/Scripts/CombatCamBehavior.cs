@@ -53,30 +53,30 @@ public class CombatCamBehavior : MonoBehaviour
             combatCam.LookAt = lockTarget;
         }
 
-        if (closestTarget != null || lockTarget != null)
-        {
-            cameraBehavior.SwitchCameraStyle(CameraBehavior.CameraStyle.Combat);
-        }
-        else
-        {
-            cameraBehavior.SwitchCameraStyle(CameraBehavior.CameraStyle.Basic);
-            combatCam.LookAt = combatOrientation;
-        }
+        // if (closestTarget != null || lockTarget != null)
+        // {
+        //     cameraBehavior.SwitchCameraStyle(CameraBehavior.CameraStyle.Combat);
+        // }
+        // else
+        // {
+        //     cameraBehavior.SwitchCameraStyle(CameraBehavior.CameraStyle.Basic);
+        //     combatCam.LookAt = combatOrientation;
+        // }
 
     }
 
     void TargetLock(InputAction.CallbackContext callbackContext)
     {
-        if (!lockOn)
-        {
-            lockTarget = closestTarget;
-            lockOn = true;
-        }
-        else
-        {
-            lockTarget = null;
-            lockOn = false;
-        }
+        // if (!lockOn)
+        // {
+        //     lockTarget = closestTarget;
+        //     lockOn = true;
+        // }
+        // else
+        // {
+        //     lockTarget = null;
+        //     lockOn = false;
+        // }
     }
 
     public void LookAtTarget()
