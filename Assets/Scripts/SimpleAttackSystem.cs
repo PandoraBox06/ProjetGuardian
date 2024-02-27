@@ -6,18 +6,36 @@ using UnityEngine.InputSystem;
 
 public class SimpleAttackSystem : MonoBehaviour
 {
+    public static SimpleAttackSystem Instance { get; private set;}
     [SerializeField] private InputActionReference attackAction;
     [SerializeField] private InputActionReference rangeAction;
     [SerializeField] private InputActionReference dashAction;
     [SerializeField] private Animator _animator;
-    [SerializeField] private string comboName = "Atk";
+    public string comboName = "Atk";
     [SerializeField] private string shootingName = "Shooting";
-    [SerializeField] private int comboCount = 0;
+    public int comboCount = 0;
     [SerializeField] private int maxComboCount = 0;
 
     [SerializeField] private float resetComboTimer = 1f;
     [SerializeField] private float timeBetweenAttack = .5f;
     private float timer;
+
+    public bool isAttaking;
+    
+    private void Awake()
+    {
+        if (Instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
+    private void OnDestroy()
+    {
+        if (this == Instance)
+            Instance = null;
+    }
     
     private void OnEnable()
     {
@@ -40,11 +58,12 @@ public class SimpleAttackSystem : MonoBehaviour
             CancelInvoke(nameof(ResetCombo));
             
             comboCount++;
-            _animator.Play(comboName + comboCount);
+            // _animator.Play(comboName + comboCount);
+            isAttaking = true;
             timer = Time.time + timeBetweenAttack;
             Invoke(nameof(ResetCombo), resetComboTimer);
             
-            if (comboCount >= maxComboCount)
+            if (comboCount >= maxComboCount + 1)
                 ResetCombo();
                 
         }
