@@ -171,7 +171,7 @@ Ce son est en multi-instrument car il y a plusieurs sons afin de créer un peu d
 	<object class="MixerBusFader" id="{b6166c7a-3815-4397-a0f0-961edfa4f2f8}" />
 	<object class="SFXReverbEffect" id="{cb7074df-49bc-4892-b320-dca0f3a9898e}">
 		<property name="decayTime">
-			<value>1600</value>
+			<value>100</value>
 		</property>
 		<property name="HFDecayRatio">
 			<value>30</value>
