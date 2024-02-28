@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="SandboxScene" id="{add53d4f-579a-4092-b514-355d871f538b}">
+		<property name="note">
+			<value>Les sons 1,2 peuvent être jouer seul ou ensemble, le 3 et 4 permet de testé la distance.
+
+Visuel pour le son : https://www.youtube.com/shorts/BOqyGwcu-jo?feature=share
+
+Idéalement produire un multi instrument avec plus de son (exemple avec des sons pas satisfaisant event 5 qui possède 3 sons différents)
+
+Dans Enemy.cs
+
+private void OnDeath()
+{
+    // A la mort du mob joue le son et le vfx.
+   // Future opti son &amp; vfx jouer via Animation Event pour encore plus de réalisme sur le timing.
+    FMODUnity.RuntimeManager.PlayOneShot(event:/Enemy/Enemy_Death, transform.position);
+    GameObject dVFX = Instantiate(deathVFX, transform.position, Quaternion.identity);
+    Destroy(dVFX, vfxTimer);
+}</value>
+		</property>
+		<property name="name">
+			<value>Scene_Axel_BROWET_3GDB</value>
+		</property>
+		<relationship name="folder">
+			<destination>{3042bb4b-8b37-404a-9902-ad421c08a5a6}</destination>
+		</relationship>
+		<relationship name="markerTracks">
+			<destination>{6491a0cb-5a1b-4147-934f-bba2889b4bcc}</destination>
+		</relationship>
+		<relationship name="timeline">
+			<destination>{1651f75f-d1d3-4fa5-a57f-7963f4dc0f18}</destination>
+		</relationship>
+		<relationship name="listeners">
+			<destination>{82ec5a66-21e4-414d-92cd-f09a0f44666d}</destination>
+		</relationship>
+		<relationship name="emitters">
+			<destination>{8b2ae8ff-b773-4dbf-8e37-e5d9539fd431}</destination>
+			<destination>{f7a5fcf3-7e4e-4432-aebb-bbb97f094f91}</destination>
+			<destination>{9e69bba7-d56a-4b1c-bc6c-9ad79f8e4006}</destination>
+			<destination>{03334218-c29b-49a5-a27f-1f167b84743d}</destination>
+			<destination>{f4fb9a44-59c4-4cc1-a800-ca2c29987648}</destination>
+		</relationship>
+	</object>
+	<object class="MarkerTrack" id="{6491a0cb-5a1b-4147-934f-bba2889b4bcc}" />
+	<object class="Timeline" id="{1651f75f-d1d3-4fa5-a57f-7963f4dc0f18}" />
+	<object class="SandboxListener" id="{82ec5a66-21e4-414d-92cd-f09a0f44666d}">
+		<property name="positionX">
+			<value>-0.183578715</value>
+		</property>
+		<property name="positionZ">
+			<value>0.0171572305</value>
+		</property>
+		<property name="rotationY">
+			<value>-2.67174935</value>
+		</property>
+	</object>
+	<object class="SandboxEmitter" id="{8b2ae8ff-b773-4dbf-8e37-e5d9539fd431}">
+		<property name="positionX">
+			<value>-1.54999971</value>
+		</property>
+		<property name="positionZ">
+			<value>2.6500001</value>
+		</property>
+		<property name="rotationY">
+			<value>70.5431671</value>
+		</property>
+		<relationship name="event">
+			<destination>{a78762c3-08a4-4fba-a658-17e5eab93a38}</destination>
+		</relationship>
+	</object>
+	<object class="SandboxEmitter" id="{f7a5fcf3-7e4e-4432-aebb-bbb97f094f91}">
+		<property name="positionX">
+			<value>0.375</value>
+		</property>
+		<property name="positionZ">
+			<value>2.6500001</value>
+		</property>
+		<property name="rotationY">
+			<value>-151.602478</value>
+		</property>
+		<relationship name="event">
+			<destination>{a78762c3-08a4-4fba-a658-17e5eab93a38}</destination>
+		</relationship>
+	</object>
+	<object class="SandboxEmitter" id="{9e69bba7-d56a-4b1c-bc6c-9ad79f8e4006}">
+		<property name="positionX">
+			<value>17.5750027</value>
+		</property>
+		<property name="positionZ">
+			<value>0.124999963</value>
+		</property>
+		<property name="rotationY">
+			<value>-173.992935</value>
+		</property>
+		<relationship name="event">
+			<destination>{a78762c3-08a4-4fba-a658-17e5eab93a38}</destination>
+		</relationship>
+	</object>
+	<object class="SandboxEmitter" id="{03334218-c29b-49a5-a27f-1f167b84743d}">
+		<property name="positionX">
+			<value>-12.2739582</value>
+		</property>
+		<property name="positionZ">
+			<value>0.381065995</value>
+		</property>
+		<property name="rotationY">
+			<value>86.1677246</value>
+		</property>
+		<relationship name="event">
+			<destination>{a78762c3-08a4-4fba-a658-17e5eab93a38}</destination>
+		</relationship>
+	</object>
+	<object class="SandboxEmitter" id="{f4fb9a44-59c4-4cc1-a800-ca2c29987648}">
+		<property name="positionX">
+			<value>3.84873076e-08</value>
+		</property>
+		<property name="positionZ">
+			<value>-3.50017881</value>
+		</property>
+		<property name="rotationY">
+			<value>57.4115639</value>
+		</property>
+		<relationship name="event">
+			<destination>{2f9cadf1-e215-4b35-afcd-df8d2786282d}</destination>
+		</relationship>
+	</object>
+</objects>
