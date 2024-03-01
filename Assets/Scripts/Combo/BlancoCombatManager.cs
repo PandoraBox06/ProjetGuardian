@@ -36,9 +36,9 @@ public class BlancoCombatManager : MonoBehaviour
     [SerializeField] private float holdMinDuration;
     [SerializeField] private List<ComboScriptableObject> allCombos = new List<ComboScriptableObject>();
 
-    public List<ComboScriptableObject> validList = new List<ComboScriptableObject>();
+    private List<ComboScriptableObject> validList = new List<ComboScriptableObject>();
     private List<InputAction> currentCombo = new List<InputAction>();
-    public float elapsedTime;
+    private float elapsedTime;
     private float holdTime;
     private bool isHoldPossible;
 
@@ -86,11 +86,8 @@ public class BlancoCombatManager : MonoBehaviour
     {
         if (elapsedTime > transitionDuration)
         {
-            Debug.Log("should happen once");
             elapsedTime = 0f;
             
-            Debug.Log(currentCombo);
-            Debug.Log(pauseInput);
             if (currentCombo.Count > 0) CheckValidCombo(pauseInput, false);
         }
         else
@@ -126,17 +123,13 @@ public class BlancoCombatManager : MonoBehaviour
 
     private void CheckValidCombo(InputAction lastAction, bool isHold)
     {
-        Debug.Log(1);
         bool isPauseAvailable = false;
         //check if first attack
         if (!canChainInput) RestartCombo();
-        Debug.Log(2);
         
         currentCombo.Add(lastAction);
-        Debug.Log(3);
 
         int comboCount = currentCombo.Count;
-        Debug.Log(4);
 
         //check possible valid combos
         for (int i = validList.Count - 1; i >= 0; i--)
@@ -145,12 +138,6 @@ public class BlancoCombatManager : MonoBehaviour
             if (IfFinishedCombos(validList[i]))
             {
                 continue;
-            }
-
-            Debug.Log($"loop n°{i} current combo count =>> {currentCombo.Count}");
-            for (int j = 0; j < currentCombo.Count; j++)
-            {
-                Debug.Log(j + " : " + currentCombo[j].name);
             }
 
             // Debug.Log($"if {validList[comboCount].inputList[currentCombo.Count].action.name} == {currentCombo.Last().name}");
