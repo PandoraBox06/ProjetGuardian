@@ -44,7 +44,7 @@ public class BlancoCombatManager : MonoBehaviour
 
     private void Start()
     {
-        elapsedTime = transitionDuration;
+        elapsedTime = transitionDuration +1;
         //detect all inputs in scriptableObjects
         //may add a whitelist if needed
         List<InputAction> _simpleInputs = new List<InputAction>();
@@ -113,7 +113,7 @@ public class BlancoCombatManager : MonoBehaviour
 
     private void CancelInput(InputAction.CallbackContext callback)
     {
-        Debug.Log($"New input : {callback.action.name}");
+        // Debug.Log($"New input : {callback.action.name}");
         CheckValidCombo(callback.action, false);//isHold);
 
         isHoldPossible = false;
@@ -134,12 +134,6 @@ public class BlancoCombatManager : MonoBehaviour
         //check possible valid combos
         for (int i = validList.Count - 1; i >= 0; i--)
         {
-            //remove finished combos
-            if (IfFinishedCombos(validList[i]))
-            {
-                continue;
-            }
-
             // Debug.Log($"if {validList[comboCount].inputList[currentCombo.Count].action.name} == {currentCombo.Last().name}");
             if (validList[i].inputList[currentCombo.Count].action == currentCombo.Last())
             {
@@ -156,11 +150,14 @@ public class BlancoCombatManager : MonoBehaviour
                 //the combo isnt valid, it is thrown away
                 validList.Remove(validList[i]);
             }
+            
+            //remove finished combos
+            IfFinishedCombos(validList[i]);
         }
 
+        //if pause is not available then we failed
         if (actionType == ActionType.Pause && !isPauseAvailable)
         {
-            canChainInput = false;
             RestartCombo();
         }
 
@@ -198,6 +195,7 @@ public class BlancoCombatManager : MonoBehaviour
         currentCombo = new List<InputAction>();
         validList = new(allCombos);
         elapsedTime = transitionDuration;
+        canChainInput = false;
         CancelEvent?.Invoke();
     }
 }

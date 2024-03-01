@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6764f6823ad34254fa9fceded2d315ae, type: 3}
-  m_Name: ComboF
+  m_Name: Combo_3
   m_EditorClassIdentifier: 
-  comboName: Attack_sword_4
+  comboName: Attack_sword_3
   inputList:
   - {fileID: 6733769925832788176, guid: b0b17bf653d5a64488494776990ea425, type: 3}
   - {fileID: 6733769925832788176, guid: b0b17bf653d5a64488494776990ea425, type: 3}
-  - {fileID: 6733769925832788176, guid: b0b17bf653d5a64488494776990ea425, type: 3}
   - {fileID: -170820252901667302, guid: b0b17bf653d5a64488494776990ea425, type: 3}
-  actionTypesList: 00000000000000000000000002000000
+  - {fileID: 6733769925832788176, guid: b0b17bf653d5a64488494776990ea425, type: 3}
+  actionTypesList: 00000000000000000200000000000000
