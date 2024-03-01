@@ -38,11 +38,9 @@ public class Enemy : MonoBehaviour, IDamageable
     void VFXHit()
     {
         VFX_Hit.SetActive(true);
-        Debug.Log("Oui");
+        // Debug.Log("Oui");
 
     }
-
-
 
     IEnumerator DeactivateVFXHit()
     {
@@ -78,7 +76,7 @@ public class Enemy : MonoBehaviour, IDamageable
         if (HasInstanciated == true)
         {
             StartCoroutine(DestroyExplosion());
-            Debug.Log("j'ai explosé");
+            Debug.Log("j'ai explosï¿½");
         }
 
         Invoke("VFXHit", 0);

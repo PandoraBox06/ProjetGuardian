@@ -10,10 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6764f6823ad34254fa9fceded2d315ae, type: 3}
-  m_Name: Combo4
+  m_Name: Combo5
   m_EditorClassIdentifier: 
-  comboName: Attack_sword_4
-  inputList:
-  - {fileID: -9066507815730986984, guid: b0b17bf653d5a64488494776990ea425, type: 3}
-  - {fileID: -7983557248117076479, guid: b0b17bf653d5a64488494776990ea425, type: 3}
-  actionTypesList: 0000000001000000
+  comboName: Attack_sword_5
+  inputList: []
+  actionTypesList: 

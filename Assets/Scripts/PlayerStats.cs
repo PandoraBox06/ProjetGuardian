@@ -34,7 +34,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
     }
     public void TakeDamage(float damage)
     {
-        Debug.Log("Take Dmg");
+        // Debug.Log("Take Dmg"); //tu peux décommenter, j'en avait marre de voir cette ligne spawn ptdr
         playerData.currentHealth -= damage;
         OnDamageTaken(playerData.currentHealth);
         if (playerData.currentHealth <= 0)
