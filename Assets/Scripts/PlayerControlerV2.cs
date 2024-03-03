@@ -205,7 +205,7 @@ public class PlayerControlerV2 : MonoBehaviour
             rb.AddForce(20f * moveSpeed * GetSlopeMoveDirection(), ForceMode.Force);
 
             if (rb.velocity.y > 0)
-                rb.AddForce(Vector3.down * 80f, ForceMode.Force);
+                rb.AddForce(Vector3.down * 800f, ForceMode.Force);
         }
         // on ground
         else if (grounded)
