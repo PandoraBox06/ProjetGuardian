@@ -57,6 +57,6 @@ public class CharacterAnimatorEvents : MonoBehaviour
     public void UnFreezeMovement()
     {
         playerControler.isAttacking = false;
-        // _cameraBehavior.isAttacking = false;
+        //_cameraBehavior.isAttacking = false;
     }
 }

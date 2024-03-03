@@ -21,7 +21,14 @@ public class SimpleAttackSystem : MonoBehaviour
     private float timer;
 
     public bool isAttaking;
-    
+
+    [Header("Range")]
+    public GameObject projectilePrefab;
+    public float projectileSpeed;
+    public Transform shootingOutput;
+    public Transform projectileDump;
+    public CombatCamBehavior combatCamBehavior;
+
     private void Awake()
     {
         if (Instance)
@@ -42,6 +49,7 @@ public class SimpleAttackSystem : MonoBehaviour
         attackAction.action.performed += Attack;
         rangeAction.action.performed += Range;
         dashAction.action.performed += Dash;
+        CharacterAnimatorEvents.OnFireProjectile += FireProjectile;
     }
 
     private void OnDisable()
@@ -49,6 +57,7 @@ public class SimpleAttackSystem : MonoBehaviour
         attackAction.action.performed -= Attack;
         rangeAction.action.performed -= Range;
         dashAction.action.performed -= Dash;
+        CharacterAnimatorEvents.OnFireProjectile -= FireProjectile;
     }
 
     void Attack(InputAction.CallbackContext context)
@@ -76,6 +85,17 @@ public class SimpleAttackSystem : MonoBehaviour
             _animator.Play(shootingName);
             timer = Time.time + timeBetweenAttack;
         }
+    }
+
+    void FireProjectile()
+    {
+        var thisProjectile = Instantiate(projectilePrefab, shootingOutput.position, Quaternion.identity, projectileDump);
+        Vector3 projectileDir = new();
+        if(combatCamBehavior.closestTarget != null)
+            projectileDir = combatCamBehavior.closestTarget.position - transform.position;
+        else
+            projectileDir = transform.forward;
+        thisProjectile.GetComponent<Rigidbody>().AddForce(projectileDir * projectileSpeed, ForceMode.Impulse);
     }
 
     void ResetCombo()
