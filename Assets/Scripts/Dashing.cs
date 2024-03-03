@@ -11,7 +11,7 @@ public class Dashing : MonoBehaviour
     public Transform playerCam;
     Rigidbody rb;
     PlayerControlerV2 playerControler;
-
+    [SerializeField] Animator animator;
     [Header("Dashing")]
     public float dashForce = 20;
     public float dashUpwardForce = 0;
@@ -84,7 +84,7 @@ public class Dashing : MonoBehaviour
 
         // Action
         Vector3 forceToApply = direction * dashForce + orientation.up * dashUpwardForce;
-
+        animator.Play("Roll", 0, 0);
         if (disableGravity)
             rb.useGravity = false;
 
