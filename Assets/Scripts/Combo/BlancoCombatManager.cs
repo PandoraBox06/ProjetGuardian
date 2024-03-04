@@ -25,10 +25,12 @@ public class BlancoCombatManager : MonoBehaviour
     [HideInInspector] public UnityEvent InputEvent;
     [HideInInspector] public UnityEvent CancelEvent;
     [HideInInspector] public UnityEvent NextAnimEvent;
+    [HideInInspector] public UnityEvent FinishedComboEvent;
     [SerializeField] private InputActionReference pauseInput;
     public ActionType actionType { get; private set; }
     public InputAction actionInput { get; private set; }
     public string actionName { get; private set; }
+    public ComboScriptableObject finishedCombo { get; private set; }
     public bool canChainInput { get; private set; }
     public bool isHold { get; private set; }
 
@@ -134,6 +136,7 @@ public class BlancoCombatManager : MonoBehaviour
         bool inputEventSent = false;
         //check possible valid combos
         // for (int i = validList.Count - 1; i >= 0; i--)
+        
         for (int i = 0; i < validList.Count; i++)
         {
             // Debug.Log($"if {validList[i].inputList[currentCombo.Count].action.name} == {currentCombo[i].name}");
@@ -150,7 +153,6 @@ public class BlancoCombatManager : MonoBehaviour
                     InputEvent?.Invoke();
                     inputEventSent = true;
                 }
-                
             }
             else
             {
@@ -165,7 +167,7 @@ public class BlancoCombatManager : MonoBehaviour
             //remove finished combos
             IfFinishedCombos(validList[i], shitList);
         }
-
+        
         //else the list is kept
         elapsedTime = 0f;
         
@@ -186,6 +188,8 @@ public class BlancoCombatManager : MonoBehaviour
     {
         if (combo.inputList.Count <= currentCombo.Count)
         {
+            finishedCombo = combo;
+            FinishedComboEvent?.Invoke();
             // validList.Remove(combo);
             shitList.Add(combo);
             Debug.Log("BRAVO ! Vous avez terminé le combo "+combo.comboName);
@@ -203,7 +207,7 @@ public class BlancoCombatManager : MonoBehaviour
     //delete current combo & possible combos
     private void RestartCombo()
     {
-        Debug.Log("** restart **");
+        //Debug.Log("** restart **");
         currentCombo = new List<InputAction>();
         validList = new(allCombos);
         elapsedTime = transitionDuration + 1;

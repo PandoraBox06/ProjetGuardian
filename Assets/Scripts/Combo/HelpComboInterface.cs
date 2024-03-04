@@ -8,11 +8,13 @@ public class HelpComboInterface : MonoBehaviour
     [SerializeField] private TextMeshProUGUI lastInputText1;
     [SerializeField] private TextMeshProUGUI lastInputText2;
     [SerializeField] private TextMeshProUGUI lastInputText3;
+    [SerializeField] private TextMeshProUGUI lastComboText;
 
     private void Start()
     {
         BlancoCombatManager.Instance.InputEvent.AddListener(AddCombo);
         BlancoCombatManager.Instance.CancelEvent.AddListener(CleanCombo);
+        BlancoCombatManager.Instance.FinishedComboEvent.AddListener(FinishedCombo);
     }
 
     private void AddCombo()
@@ -34,6 +36,11 @@ public class HelpComboInterface : MonoBehaviour
         lastInputText3.text = lastInputText2.text;
         lastInputText2.text = lastInputText1.text;
         lastInputText1.text = newInput;
+    }
+
+    private void FinishedCombo()
+    {
+        lastComboText.text = "Last Combo : "+BlancoCombatManager.Instance.finishedCombo.comboName;
     }
 
     private void CleanCombo()
