@@ -88,6 +88,7 @@ public class BlancoCombatManager : MonoBehaviour
         {
             elapsedTime = 0f;
             
+            //I HATE YOU
             if (currentCombo.Count > 0) CheckValidCombo(pauseInput, false);
         }
         else
@@ -123,42 +124,55 @@ public class BlancoCombatManager : MonoBehaviour
 
     private void CheckValidCombo(InputAction lastAction, bool isHold)
     {
-        bool isPauseAvailable = false;
+        List<ComboScriptableObject> shitList = new List<ComboScriptableObject>();
+        
         //check if first attack
         if (!canChainInput) RestartCombo();
         
         currentCombo.Add(lastAction);
-
-        int comboCount = currentCombo.Count;
-
+        int currentComboLastIdx = currentCombo.Count - 1;
+        bool inputEventSent = false;
         //check possible valid combos
-        for (int i = validList.Count - 1; i >= 0; i--)
+        // for (int i = validList.Count - 1; i >= 0; i--)
+        for (int i = 0; i < validList.Count; i++)
         {
-            // Debug.Log($"if {validList[comboCount].inputList[currentCombo.Count].action.name} == {currentCombo.Last().name}");
-            if (validList[i].inputList[currentCombo.Count].action == currentCombo.Last())
+            // Debug.Log($"if {validList[i].inputList[currentCombo.Count].action.name} == {currentCombo[i].name}");
+            // Debug.Log($"{i} == {currentCombo.Count} == {validList[i].inputList.Count}");
+            // Debug.Log(validList[i].inputList[currentCombo.Count]);
+            if (validList[i].inputList[currentComboLastIdx].action == lastAction)
             {
-                //doAction, we keep the combo
-                actionName = validList[i].comboName;
-                actionInput = validList[i].inputList[currentCombo.Count];
-                actionType = validList[i].actionTypesList[currentCombo.Count];
-                InputEvent?.Invoke();
-                if (actionType == ActionType.Pause) isPauseAvailable = true;
-                break;
+                if (!inputEventSent)
+                {
+                    //doAction, we keep the combo
+                    actionName = validList[i].comboName;
+                    actionInput = validList[i].inputList[currentComboLastIdx];
+                    actionType = validList[i].actionTypesList[currentComboLastIdx];
+                    InputEvent?.Invoke();
+                    inputEventSent = true;
+                }
+                
             }
             else
             {
                 //the combo isnt valid, it is thrown away
-                validList.Remove(validList[i]);
+                shitList.Add(validList[i]);
+                // validList.Remove(validList[i]);
             }
-            
-            //remove finished combos
-            IfFinishedCombos(validList[i]);
         }
 
-        //if pause is not available then we failed
-        if (actionType == ActionType.Pause && !isPauseAvailable)
+        for (int i = 0; i < validList.Count; i++)
         {
-            RestartCombo();
+            //remove finished combos
+            IfFinishedCombos(validList[i], shitList);
+        }
+
+        //else the list is kept
+        elapsedTime = 0f;
+        
+        //ICIIIIIIIIII LAAAAA
+        for (int i = shitList.Count -1; i >= 0 ; i--)
+        {
+            validList.Remove(shitList[i]);
         }
 
         //check if there is any combo left
@@ -166,16 +180,14 @@ public class BlancoCombatManager : MonoBehaviour
         {
             RestartCombo();
         }
-
-        //else the list is kept
-        elapsedTime = 0f;
     }
 
-    private bool IfFinishedCombos(ComboScriptableObject combo)
+    private bool IfFinishedCombos(ComboScriptableObject combo, List<ComboScriptableObject> shitList)
     {
         if (combo.inputList.Count <= currentCombo.Count)
         {
-            validList.Remove(combo);
+            // validList.Remove(combo);
+            shitList.Add(combo);
             Debug.Log("BRAVO ! Vous avez terminé le combo "+combo.comboName);
             return true;
         }
@@ -194,7 +206,7 @@ public class BlancoCombatManager : MonoBehaviour
         Debug.Log("** restart **");
         currentCombo = new List<InputAction>();
         validList = new(allCombos);
-        elapsedTime = transitionDuration;
+        elapsedTime = transitionDuration + 1;
         canChainInput = false;
         CancelEvent?.Invoke();
     }
