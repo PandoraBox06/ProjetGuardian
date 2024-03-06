@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,42 +7,73 @@ namespace BasicEnemyStateMachine
     {
         BaseEnemy_BaseState currentState;
 
-        public BaseEnemy_IdleState IdleState = new();
-        public BaseEnemy_AttackState AttackState = new();
-        public BaseEnemy_TrackPlayer TrackPlayerState = new();
-        public BaseEnemy_Roaming RoamingState = new();
-        public BaseEnemy_Stun StunState = new();
-
+        public readonly BaseEnemy_IdleState IdleState = new();
+        public readonly BaseEnemy_AttackState AttackState = new();
+        public readonly BaseEnemy_TrackPlayer TrackPlayerState = new();
+        // public BaseEnemy_Roaming RoamingState = new();
+        public readonly BaseEnemy_Stun StunState = new();
+        public readonly BaseEnemy_GetInRange GetInRangeState = new();
+        
         [Header("Settings")]
         public bool trainingDummyMode;
-        public bool staticAttacking;
         public float idleTime = 1;
         public CombatMode combatType;
-        public float meleeAttackRange = 1;
-        public float rangeAttackRange = 1;
+        public float meleeAttackRange = 1.5f;
+        public float rangeAttackRange = 15;
+        public float minRangeAttackRange = 7;
         public float projectilesSpeed = 10;
-        [HideInInspector] public bool randomRoaming = false;
-        [HideInInspector] public float roamingTimer = 1;
-        [HideInInspector] public bool inverseDirection;
-        public bool isStunned = false;
+        public bool isStunned;
         public float stunTimer = 1;
+        [Header("Hp Floor Percentage (X/100%)")]
+        [Range(0f, 1f)] public float highHpPercentLower;
+        [Range(0f, 1f)] public float midHpPercentUpper, midHpPercentLower;
+        [Range(0f, 1f)] public float lowHpPercentUpper, lowHpPercentLower;
 
+        [Header("Percentage For States High HP")] 
+        [Range(0f, 1f)] public float highHpPercentMelee;
+        [Range(0f, 1f)] public float highHpPercentRange;
+        [Range(0f, 1f)] public float highHpPercentDodge;
+
+        [Header("Percentage For States Mid HP")] 
+        [Range(0f, 1f)] public float midHpPercentMelee;
+        [Range(0f, 1f)] public float midHpPercentRange;
+        [Range(0f, 1f)] public float midHpPercentDodge;
+
+        [Header("Percentage For States Low HP")] 
+        [Range(0f, 1f)] public float lowHpPercentMelee;
+        [Range(0f, 1f)] public float lowHpPercentRange;
+        [Range(0f, 1f)] public float lowHpPercentDodge;
+
+        [Header("Time for the current State")] 
+        public float randomTimeForMeleeUpper;
+        public float randomTimeForMeleeLower;
+        public float randomTimeForRangeUpper;
+        public float randomTimeForRangeLower;
+        public float randomTimeForDodgeUpper;
+        public float randomTimeForDodgeLower;
         [Header("References")]
         public Animator animator;
         public NavMeshAgent agent;
-        public Transform player;
         public GameObject projectiles;
         public Transform fireOutput;
         public Transform projectileDump;
+        public Enemy stats;
+        
+        //Hidden
+        [HideInInspector] public Transform player;
+        [HideInInspector] public float timer;
+        // Discarded but still here if needed
         [HideInInspector] public Transform[] roamingPoints;
         [HideInInspector] public PatrolRoute route;
-        //Hidden
-
+        [HideInInspector] public bool randomRoaming;
+        [HideInInspector] public float roamingTimer = 1;
+        [HideInInspector] public bool inverseDirection;
+        
         public enum CombatMode
         {
             melee,
             range,
-            Boss
+            dodge
         }
 
         private void OnEnable()
@@ -66,11 +95,14 @@ namespace BasicEnemyStateMachine
             if(route != null )
                 roamingPoints = route.Waypoints;
         }
-
+        
         void Update()
         {
             //CurrentState Update Function
             currentState.UpdateState(this);
+
+            if(timer > 0)
+                timer -= Time.deltaTime;
         }
 
         public void SwitchState(BaseEnemy_BaseState state)
@@ -89,13 +121,10 @@ namespace BasicEnemyStateMachine
 
         public void FireProjectile(GameObject go)
         {
-            if (go == this.transform.root.gameObject)
-            {
-                var thisProjectile = Instantiate(projectiles, fireOutput.position, Quaternion.identity, projectileDump);
-                Vector3 projectileDir = new();
-                projectileDir = player.position - transform.position;
-                thisProjectile.GetComponent<Rigidbody>().AddForce(projectileDir * projectilesSpeed, ForceMode.Impulse);
-            }
+            if (go != this.transform.root.gameObject) return;
+            var thisProjectile = Instantiate(projectiles, fireOutput.position, Quaternion.identity, projectileDump);
+            var projectileDir = player.position - transform.position;
+            thisProjectile.GetComponent<Rigidbody>().AddForce(projectileDir * projectilesSpeed, ForceMode.Impulse);
         }
     }
 }

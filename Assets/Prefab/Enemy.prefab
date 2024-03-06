@@ -2208,25 +2208,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trainingDummyMode: 0
-  staticAttacking: 0
-  idleTime: 1
+  idleTime: 0
   combatType: 0
-  meleeAttackRange: 1.3
+  meleeAttackRange: 1.5
   rangeAttackRange: 15
+  minRangeAttackRange: 7
   projectilesSpeed: 8
-  randomRoaming: 0
-  roamingTimer: 1
-  inverseDirection: 0
   isStunned: 0
   stunTimer: 1
+  highHpPercentLower: 0.61
+  midHpPercentUpper: 0.6
+  midHpPercentLower: 0.31
+  lowHpPercentUpper: 0.3
+  lowHpPercentLower: 0
+  highHpPercentMelee: 0.6
+  highHpPercentRange: 0.3
+  highHpPercentDodge: 0
+  midHpPercentMelee: 0.3
+  midHpPercentRange: 0
+  midHpPercentDodge: 0.6
+  lowHpPercentMelee: 0
+  lowHpPercentRange: 0.6
+  lowHpPercentDodge: 0.3
+  randomTimeForMeleeUpper: 3
+  randomTimeForMeleeLower: 6
+  randomTimeForRangeUpper: 3
+  randomTimeForRangeLower: 6
+  randomTimeForDodgeUpper: 0.5
+  randomTimeForDodgeLower: 1
   animator: {fileID: 3091468178753969336}
   agent: {fileID: 7250851860038389224}
-  player: {fileID: 0}
   projectiles: {fileID: 36356212038313948, guid: 04660e68160acb846bfc346f11ff3d90, type: 3}
   fireOutput: {fileID: 5613963384633715780}
   projectileDump: {fileID: 5546769423299121707}
+  stats: {fileID: 8274879694345833310}
+  player: {fileID: 0}
   roamingPoints: []
   route: {fileID: 0}
+  randomRoaming: 0
+  roamingTimer: 1
+  inverseDirection: 0
+  timer: 0
 --- !u!195 &7250851860038389224
 NavMeshAgent:
   m_ObjectHideFlags: 0

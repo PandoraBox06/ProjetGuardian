@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace BasicEnemyStateMachine
 {
@@ -19,7 +18,14 @@ namespace BasicEnemyStateMachine
                     state.transform.LookAt(state.player);
                     state.animator.Play("Shoot", 0, 0);
                     break;
-                case BaseEnemy_StateManager.CombatMode.Boss:
+                case BaseEnemy_StateManager.CombatMode.dodge:
+                    // state.transform.LookAt(state.player);
+                    // state.animator.Play("Dodge", 0, 0);
+                    Debug.Log("Dodge");
+                    break;
+                default:
+                    state.transform.LookAt(state.player);
+                    state.animator.Play("Attack", 0, 0);
                     break;
             }    
         }
@@ -28,9 +34,11 @@ namespace BasicEnemyStateMachine
         {
             if(state.isStunned) { state.SwitchState(state.StunState); }
 
+            if(state.combatType == BaseEnemy_StateManager.CombatMode.dodge)
+                state.SwitchState(state.IdleState);
+            
             if (state.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
                 state.SwitchState(state.IdleState);
-
         }
 
         public override void ExitState(BaseEnemy_StateManager state)

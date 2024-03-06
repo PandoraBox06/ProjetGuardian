@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace BasicEnemyStateMachine
 {
@@ -9,16 +8,13 @@ namespace BasicEnemyStateMachine
 
         public override void EnterState(BaseEnemy_StateManager state)
         {
-
-            switch (state.combatType)
+            attackRange = state.combatType switch
             {
-                case BaseEnemy_StateManager.CombatMode.melee:
-                    attackRange = state.meleeAttackRange;
-                    break;
-                case BaseEnemy_StateManager.CombatMode.range:
-                    attackRange = state.rangeAttackRange;
-                    break;
-            }
+                BaseEnemy_StateManager.CombatMode.melee => state.meleeAttackRange,
+                BaseEnemy_StateManager.CombatMode.range => state.rangeAttackRange,
+                BaseEnemy_StateManager.CombatMode.dodge => 99,
+                _ => attackRange
+            };
 
             state.agent.stoppingDistance = attackRange;
 
@@ -31,17 +27,14 @@ namespace BasicEnemyStateMachine
             FindingPlayer(state);
         }
 
-        public bool IsPlayerInAttackRange(BaseEnemy_StateManager state)
+        private bool IsPlayerInAttackRange(BaseEnemy_StateManager state)
         {
-            if (Vector3.Distance(state.player.position, state.transform.position) <= attackRange) 
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return Vector3.Distance(state.player.position, state.transform.position) <= attackRange;
+        }
 
+        private float PlayerDistance(BaseEnemy_StateManager state)
+        {
+            return Vector3.Distance(state.player.position, state.transform.position);
         }
 
         public override void ExitState(BaseEnemy_StateManager state)
@@ -49,14 +42,35 @@ namespace BasicEnemyStateMachine
 
         }
 
-        public void FindingPlayer(BaseEnemy_StateManager state)
+        private void FindingPlayer(BaseEnemy_StateManager state)
         {
             if (state.player != null)
             {
-                if (IsPlayerInAttackRange(state))
-                    state.SwitchState(state.AttackState);
+                if (state.combatType == BaseEnemy_StateManager.CombatMode.range)
+                {
+                    if (PlayerDistance(state) < state.minRangeAttackRange)
+                    {
+                        state.SwitchState(state.GetInRangeState);
+                    }
+                    else
+                    {
+                        if (IsPlayerInAttackRange(state))
+                            state.SwitchState(state.AttackState);
+                        else
+                        {
+                            state.agent.SetDestination(state.player.position);
+                        }
+                    }
+                }
                 else
-                    state.agent.SetDestination(state.player.position);
+                {
+                    if (IsPlayerInAttackRange(state))
+                        state.SwitchState(state.AttackState);
+                    else
+                    {
+                        state.agent.SetDestination(state.player.position);
+                    }
+                }
             }
             else
                 state.SwitchState(state.IdleState);

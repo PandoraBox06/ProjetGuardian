@@ -1,6 +1,5 @@
 using BasicEnemyStateMachine;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamageable
@@ -12,14 +11,14 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private GameObject hpEnemy;
     [SerializeField] private SpriteRenderer barSpriteRenderer;
     [SerializeField] private Transform barParent;
-    [SerializeField] private float maxHealth;
+    public float maxHealth;
     [SerializeField] private Gradient hpGradient;
 
     [Header("VFX")]
     public GameObject VFX_Hit;
     public GameObject VFX_Die;
-    public bool HasInstanciated = false;
-
+    public bool HasInstanciated;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -63,7 +62,8 @@ public class Enemy : MonoBehaviour, IDamageable
         currentHealth -= damage;
         barSpriteRenderer.material.color = hpGradient.Evaluate(currentHealth / maxHealth);
         barParent.localScale = new Vector3((currentHealth / maxHealth), 1f);
-        stateManager.isStunned = true;
+        if(stateManager.combatType == BaseEnemy_StateManager.CombatMode.dodge)
+            stateManager.isStunned = true;
         if (currentHealth < maxHealth)
             hpEnemy.SetActive(true);
         if (currentHealth <= 0)
@@ -73,13 +73,12 @@ public class Enemy : MonoBehaviour, IDamageable
             HasInstanciated = true;
         }
 
-        if (HasInstanciated == true)
+        if (HasInstanciated)
         {
             StartCoroutine(DestroyExplosion());
-            Debug.Log("j'ai explos�");
         }
 
-        Invoke("VFXHit", 0);
+        Invoke(nameof(VFXHit), 0);
         StartCoroutine(DeactivateVFXHit());
     }
 
