@@ -2230,12 +2230,12 @@ MonoBehaviour:
   lowHpPercentMelee: 0
   lowHpPercentRange: 0.6
   lowHpPercentDodge: 0.3
-  randomTimeForMeleeUpper: 3
-  randomTimeForMeleeLower: 6
-  randomTimeForRangeUpper: 3
-  randomTimeForRangeLower: 6
-  randomTimeForDodgeUpper: 0.5
-  randomTimeForDodgeLower: 1
+  randomTimeForMeleeUpper: 6
+  randomTimeForMeleeLower: 3
+  randomTimeForRangeUpper: 6
+  randomTimeForRangeLower: 3
+  randomTimeForDodgeUpper: 1
+  randomTimeForDodgeLower: 0.5
   animator: {fileID: 3091468178753969336}
   agent: {fileID: 7250851860038389224}
   projectiles: {fileID: 36356212038313948, guid: 04660e68160acb846bfc346f11ff3d90, type: 3}
@@ -2243,12 +2243,12 @@ MonoBehaviour:
   projectileDump: {fileID: 5546769423299121707}
   stats: {fileID: 8274879694345833310}
   player: {fileID: 0}
+  timer: 0
   roamingPoints: []
   route: {fileID: 0}
   randomRoaming: 0
   roamingTimer: 1
   inverseDirection: 0
-  timer: 0
 --- !u!195 &7250851860038389224
 NavMeshAgent:
   m_ObjectHideFlags: 0
