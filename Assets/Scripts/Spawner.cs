@@ -30,6 +30,7 @@ public class Spawner : MonoBehaviour
     {
         numberOfWave = waves.Length;
         waveTimer = Time.time + delayBeforeWaveStart;
+        enemyDump = new();
     }
 
     private void Update()
