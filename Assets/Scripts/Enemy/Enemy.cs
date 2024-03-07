@@ -1,3 +1,4 @@
+using System;
 using BasicEnemyStateMachine;
 using System.Collections;
 using UnityEngine;
@@ -18,6 +19,8 @@ public class Enemy : MonoBehaviour, IDamageable
     public GameObject VFX_Hit;
     public GameObject VFX_Die;
     public bool HasInstanciated;
+
+    public static event Action<GameObject> OnDeath;
     
     // Start is called before the first frame update
     void Start()
@@ -85,5 +88,6 @@ public class Enemy : MonoBehaviour, IDamageable
     public void Die()
     {
         Destroy(gameObject);
+        OnDeath?.Invoke(this.gameObject);
     }
 }
