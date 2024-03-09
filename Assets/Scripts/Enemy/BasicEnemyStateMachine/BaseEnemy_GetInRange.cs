@@ -22,6 +22,8 @@ namespace BasicEnemyStateMachine
                 state.SwitchState(state.TrackPlayerState);
                 gotaPath = false;
             }
+            
+            state.animator.SetFloat("Speed", state.agent.velocity.magnitude);
         }
 
         public override void ExitState(BaseEnemy_StateManager state)

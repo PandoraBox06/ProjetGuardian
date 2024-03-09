@@ -91,7 +91,7 @@ namespace BasicEnemyStateMachine
             currentState = IdleState;
             //Current State Start Function
             currentState.EnterState(this);
-
+            
             if(route != null )
                 roamingPoints = route.Waypoints;
         }

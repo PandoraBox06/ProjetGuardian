@@ -24,6 +24,8 @@ namespace BasicEnemyStateMachine
         {
             if (state.isStunned) { state.SwitchState(state.StunState); }
 
+            state.animator.SetFloat("Speed", state.agent.velocity.magnitude);
+
             FindingPlayer(state);
         }
 
