@@ -10,11 +10,11 @@ public class BlancoAnimationBehaviour : MonoBehaviour
 
     private BlancoCombatManager managerInstance;
     private float animationProgress;
-    private int InputIndex = 1;
+    private int InputIndex = 0;
     private float elapsedTime;
 
-    private string nextAnimation;
-    
+    [SerializeField] private InputActionReference attackInput;
+
     private void Awake()
     {
         if (Instance)
@@ -27,82 +27,46 @@ public class BlancoAnimationBehaviour : MonoBehaviour
         managerInstance = BlancoCombatManager.Instance;
         managerInstance.InputEvent.AddListener(StartAnimation);
         managerInstance.CancelEvent.AddListener(CancelAnimation);
-        managerInstance.NextAnimEvent.AddListener(PlayNextAnimation);
-    }
-
-    private void Update()
-    {
-        // animationProgress = animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
-        
-        // Debug.Log(IsPlaying("Attack_sword_1"));
     }
 
     private void StartAnimation()
     {
-        string _fullName = managerInstance.actionName;
-        _fullName = _fullName.Substring(0, _fullName.Length-2);
-        string _animationName = $"{_fullName}_{InputIndex}";
-        // Debug.Log(_animationName);
-        
-        //if animation en cours
-        if (IsPlaying() && nextAnimation == "")
-        {
-            nextAnimation = _animationName;
-            return;
-        }
-        
-        PlayAnimation(_animationName);
-    }
-    
-    private void PlayNextAnimation()
-    {
-        if (nextAnimation == null)
-        {
-            animator.Play("Walking");
-            return;
-        }
-        
-        PlayAnimation(nextAnimation);
-
-        nextAnimation = null;
-    }
-
-    private void PlayAnimation(string _animationName)
-    {
         InputIndex++;
+        InputAction animInput = managerInstance.actionInput;
+
+        string actionType = "";
+        string inputType = "";
 
         switch (managerInstance.actionType)
         {
-            case ActionType.Simple:
-                TryToPlay(_animationName);
-                break;
-            case ActionType.Hold:
-                TryToPlay(_animationName);
-                break;
             case ActionType.Pause:
+                return;
+            case ActionType.Hold:
+                inputType = "hold";
+                if (animInput == attackInput.action) actionType = "Attack";
+                else Debug.LogWarning("The attack "+animInput+" has no animation");
+                return;//break; TO CHANGE <===============================================
+            case ActionType.Simple:
+                inputType = "simple";
+                if (animInput == attackInput.action) actionType = "Attack";
+                else Debug.LogWarning("The attack "+animInput+" has no animation");
                 break;
         }
+        
+        TryToPlay($"{actionType}_{inputType}_{InputIndex}");
     }
 
     private void CancelAnimation()
     {
-        InputIndex = 1;
+        InputIndex = 0;
         animator.SetTrigger("CancelAnimation");
         
     }
 
-    private bool IsPlaying(string stateName)
-    {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName(stateName) &&
-            animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f) return true;
-        else return false;
-    }
-
     private bool IsPlaying()
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >
-            animator.GetCurrentAnimatorStateInfo(0).length) return true;
-        else return false;
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1) return true;
+        return false;
     }
 
     private void TryToPlay(string _animation)
