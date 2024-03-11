@@ -114,6 +114,7 @@ public class PlayerControlerV2 : MonoBehaviour
         if (dashing)
         {
             state = MovementState.dashing;
+            animator.Play("Dash");
             desiredMoveSpeed = dashSpeed;
             speedChangeFactor = dashSpeedChangeFactor;
         }

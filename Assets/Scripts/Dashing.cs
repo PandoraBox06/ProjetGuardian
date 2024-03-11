@@ -84,7 +84,7 @@ public class Dashing : MonoBehaviour
 
         // Action
         Vector3 forceToApply = direction * dashForce + orientation.up * dashUpwardForce;
-
+        
         if (disableGravity)
             rb.useGravity = false;
 
