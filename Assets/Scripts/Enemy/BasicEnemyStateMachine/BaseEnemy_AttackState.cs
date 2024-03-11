@@ -15,8 +15,9 @@ namespace BasicEnemyStateMachine
                     state.animator.Play("Attack", 0, 0);
                     break;
                 case BaseEnemy_StateManager.CombatMode.range:
-                    state.transform.LookAt(state.player);
-                    state.animator.Play("Shoot", 0, 0);
+                    // state.transform.LookAt(state.player);
+                    // state.animator.Play("Shoot", 0, 0);
+                    Debug.Log("Range");
                     break;
                 case BaseEnemy_StateManager.CombatMode.dodge:
                     // state.transform.LookAt(state.player);
@@ -36,7 +37,8 @@ namespace BasicEnemyStateMachine
 
             if(state.combatType == BaseEnemy_StateManager.CombatMode.dodge)
                 state.SwitchState(state.IdleState);
-            
+            if(state.combatType == BaseEnemy_StateManager.CombatMode.range)
+                state.SwitchState(state.IdleState);
             if (state.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
                 state.SwitchState(state.IdleState);
         }
