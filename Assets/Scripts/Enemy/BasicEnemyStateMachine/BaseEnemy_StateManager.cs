@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,52 +14,55 @@ namespace BasicEnemyStateMachine
         // public BaseEnemy_Roaming RoamingState = new();
         public readonly BaseEnemy_Stun StunState = new();
         public readonly BaseEnemy_GetInRange GetInRangeState = new();
-        
-        [Header("Settings")]
-        public bool trainingDummyMode;
-        public float idleTime = 1;
-        public CombatMode combatType;
-        public float meleeAttackRange = 1.5f;
-        public float rangeAttackRange = 15;
-        public float minRangeAttackRange = 7;
-        public float projectilesSpeed = 10;
-        public bool isStunned;
-        public float stunTimer = 1;
-        [Header("Hp Floor Percentage (X/100%)")]
-        [Range(0f, 1f)] public float highHpPercentLower;
-        [Range(0f, 1f)] public float midHpPercentUpper, midHpPercentLower;
-        [Range(0f, 1f)] public float lowHpPercentUpper, lowHpPercentLower;
 
-        [Header("Percentage For States High HP")] 
-        [Range(0f, 1f)] public float highHpPercentMelee;
-        [Range(0f, 1f)] public float highHpPercentRange;
-        [Range(0f, 1f)] public float highHpPercentDodge;
-
-        [Header("Percentage For States Mid HP")] 
-        [Range(0f, 1f)] public float midHpPercentMelee;
-        [Range(0f, 1f)] public float midHpPercentRange;
-        [Range(0f, 1f)] public float midHpPercentDodge;
-
-        [Header("Percentage For States Low HP")] 
-        [Range(0f, 1f)] public float lowHpPercentMelee;
-        [Range(0f, 1f)] public float lowHpPercentRange;
-        [Range(0f, 1f)] public float lowHpPercentDodge;
-
-        [Header("Time for the current State")] 
-        public float randomTimeForMeleeUpper;
-        public float randomTimeForMeleeLower;
-        public float randomTimeForRangeUpper;
-        public float randomTimeForRangeLower;
-        public float randomTimeForDodgeUpper;
-        public float randomTimeForDodgeLower;
         [Header("References")]
+        [SerializeField] private Enemy_Data enemyData;
         public Animator animator;
         public NavMeshAgent agent;
-        public GameObject projectiles;
+        [HideInInspector] public GameObject projectiles;
         public Transform fireOutput;
         public Transform projectileDump;
         public Enemy stats;
-        
+    
+        [Header("Settings")]
+        [HideInInspector] public bool trainingDummyMode;
+        [HideInInspector] public float idleTime = 1;
+        [HideInInspector] public CombatMode combatType;
+        [HideInInspector] public float meleeAttackRange = 1.5f;
+        [HideInInspector] public float rangeAttackRange = 15;
+        [HideInInspector] public float minRangeAttackRange = 7;
+        [HideInInspector] public float projectilesSpeed = 10;
+        [HideInInspector] public bool isStunned;
+        [HideInInspector] public float stunTimer = 1;
+
+        [Header("Hp Floor Percentage (X/100%)")]
+        [HideInInspector] [Range(0f, 1f)] public float highHpPercentLower;
+        [HideInInspector] [Range(0f, 1f)] public float midHpPercentUpper, midHpPercentLower;
+        [HideInInspector] [Range(0f, 1f)] public float lowHpPercentUpper, lowHpPercentLower;
+
+        [Header("Percentage For States High HP")] 
+        [HideInInspector] [Range(0f, 1f)] public float highHpPercentMelee;
+        [HideInInspector] [Range(0f, 1f)] public float highHpPercentRange;
+        [HideInInspector] [Range(0f, 1f)] public float highHpPercentDodge;
+
+        [Header("Percentage For States Mid HP")] 
+        [HideInInspector] [Range(0f, 1f)] public float midHpPercentMelee;
+        [HideInInspector] [Range(0f, 1f)] public float midHpPercentRange;
+        [HideInInspector] [Range(0f, 1f)] public float midHpPercentDodge;
+
+        [Header("Percentage For States Low HP")] 
+        [HideInInspector] [Range(0f, 1f)] public float lowHpPercentMelee;
+        [HideInInspector] [Range(0f, 1f)] public float lowHpPercentRange;
+        [HideInInspector] [Range(0f, 1f)] public float lowHpPercentDodge;
+
+        [Header("Time for the current State")] 
+        [HideInInspector] public float randomTimeForMeleeUpper;
+        [HideInInspector] public float randomTimeForMeleeLower;
+        [HideInInspector] public float randomTimeForRangeUpper;
+        [HideInInspector] public float randomTimeForRangeLower;
+        [HideInInspector] public float randomTimeForDodgeUpper;
+        [HideInInspector] public float randomTimeForDodgeLower;
+      
         //Hidden
         [HideInInspector] public Transform player;
         [HideInInspector] public float timer;
@@ -74,6 +78,16 @@ namespace BasicEnemyStateMachine
             melee,
             range,
             dodge
+        }
+
+        private void Awake()
+        {
+            enemyData.SetUpStateManager(projectiles, trainingDummyMode, idleTime, meleeAttackRange, rangeAttackRange,
+                minRangeAttackRange, projectilesSpeed, stunTimer, highHpPercentLower, midHpPercentUpper,
+                midHpPercentLower, lowHpPercentUpper, lowHpPercentLower, highHpPercentMelee, highHpPercentRange,
+                highHpPercentDodge, midHpPercentMelee, midHpPercentRange, midHpPercentDodge, lowHpPercentMelee,
+                lowHpPercentRange, lowHpPercentDodge, randomTimeForMeleeUpper, randomTimeForMeleeLower,
+                randomTimeForRangeUpper, randomTimeForRangeLower, randomTimeForDodgeUpper, randomTimeForDodgeLower);
         }
 
         private void OnEnable()

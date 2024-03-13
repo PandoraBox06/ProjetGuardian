@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy_Weapon : MonoBehaviour
 {
-    public string weaponName;
-    public float damage;
+    [SerializeField] private Enemy_Data enemyData;
+    private string weaponName;
+    private float damage;
     public Collider weaponCol;
 
     public WeaponType weaponType;
@@ -13,6 +15,10 @@ public class Enemy_Weapon : MonoBehaviour
     {
         melee,
         ranged
+    }
+    private void Awake()
+    {
+        enemyData.SetUpWeapon(damage);
     }
 
     private void OnEnable()
@@ -35,7 +41,7 @@ public class Enemy_Weapon : MonoBehaviour
         }
     }
 
-    public void OnDisbaleCollider(GameObject go)
+    private void OnDisbaleCollider(GameObject go)
     {
         if(go == this.transform.root.gameObject)
         {

@@ -6,22 +6,28 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, IDamageable
 {
     //public
+    [SerializeField] private Enemy_Data enemyData;
     [HideInInspector] public float currentHealth;
     [SerializeField] BaseEnemy_StateManager stateManager;
     //private
     [SerializeField] private GameObject hpEnemy;
     [SerializeField] private SpriteRenderer barSpriteRenderer;
     [SerializeField] private Transform barParent;
-    public float maxHealth;
+    [HideInInspector] public float maxHealth;
     [SerializeField] private Gradient hpGradient;
 
     [Header("VFX")]
-    public GameObject VFX_Hit;
-    public GameObject VFX_Die;
-    public bool HasInstanciated;
+    [HideInInspector] public GameObject VFX_Hit;
+    [HideInInspector] public GameObject VFX_Die;
+    [HideInInspector] public bool HasInstanciated;
 
     public static event Action<GameObject> OnDeath;
-    
+
+    private void Awake()
+    {
+        enemyData.SetUpEnemy(maxHealth, VFX_Hit, VFX_Die);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
