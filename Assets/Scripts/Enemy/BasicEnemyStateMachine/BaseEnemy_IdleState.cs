@@ -18,20 +18,12 @@ namespace BasicEnemyStateMachine
             if (state.isStunned) { state.SwitchState(state.StunState); }
 
             if (!(Time.time > timer)) return;
-            
-            switch (state.timer)
+
+            if (state.timer <= 0)
             {
-                case <= 0 when state.combatType == BaseEnemy_StateManager.CombatMode.melee:
-                    state.timer = Random.Range(state.randomTimeForMeleeLower, state.randomTimeForMeleeUpper);
-                    break;
-                case <= 0 when state.combatType == BaseEnemy_StateManager.CombatMode.range:
-                    state.timer = Random.Range(state.randomTimeForRangeLower, state.randomTimeForRangeUpper);
-                    break;
-                case <= 0 when state.combatType == BaseEnemy_StateManager.CombatMode.dodge:
-                    state.timer = Random.Range(state.randomTimeForDodgeLower, state.randomTimeForDodgeUpper);
-                    break;
+                GetNextState(state);
+                GetTimer(state);
             }
-            GetNextState(state);
             state.SwitchState(state.TrackPlayerState);
         }
 
@@ -89,6 +81,22 @@ namespace BasicEnemyStateMachine
                 {
                     state.combatType = BaseEnemy_StateManager.CombatMode.dodge;
                 }
+            }
+        }
+
+        private void GetTimer(BaseEnemy_StateManager state)
+        {
+            switch (state.timer)
+            {
+                case <= 0 when state.combatType == BaseEnemy_StateManager.CombatMode.melee:
+                    state.timer = Random.Range(state.randomTimeForMeleeLower, state.randomTimeForMeleeUpper);
+                    break;
+                case <= 0 when state.combatType == BaseEnemy_StateManager.CombatMode.range:
+                    state.timer = Random.Range(state.randomTimeForRangeLower, state.randomTimeForRangeUpper);
+                    break;
+                case <= 0 when state.combatType == BaseEnemy_StateManager.CombatMode.dodge:
+                    state.timer = Random.Range(state.randomTimeForDodgeLower, state.randomTimeForDodgeUpper);
+                    break;
             }
         }
     }

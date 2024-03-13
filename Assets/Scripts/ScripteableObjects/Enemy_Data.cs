@@ -47,26 +47,27 @@ public class Enemy_Data : ScriptableObject
     public float RandomTimeForDodgeUpper = 1;
     public float RandomTimeForDodgeLower = .5f;
 
-    public void SetUpEnemy(float maxHealth, GameObject vfx_Hit, GameObject vfx_Die)
+    public void SetUpEnemy(out float maxHealth, out GameObject vfx_Hit, out GameObject vfx_Die)
     {
         maxHealth = MaxHealth;
         vfx_Hit = VFX_Hit;
         vfx_Die = VFX_Die;
     }
     
-    public void SetUpWeapon(float weaponDamage)
+    public void SetUpWeapon(out float weaponDamage)
     {
         weaponDamage = WeaponDamage;
     }
     
-    public void SetUpStateManager(GameObject projectiles, bool trainingDummyMode, float idleTime, float meleeAttackRange, float rangeAttackRange,
-        float minRangeAttackRange, float projectilesSpeed, float stunTimer, float highHpPercentLower,
-        float midHpPercentUpper, float midHpPercentLower, float lowHpPercentUpper, float lowHpPercentLower,
-        float highHpPercentMelee, float highHpPercentRange, float highHpPercentDodge, float midHpPercentMelee,
-        float midHpPercentRange, float midHpPercentDodge, float lowHpPercentMelee, float lowHpPercentRange,
-        float lowHpPercentDodge, float randomTimeForMeleeUpper, float randomTimeForMeleeLower,
-        float randomTimeForRangeUpper, float randomTimeForRangeLower, float randomTimeForDodgeUpper,
-        float randomTimeForDodgeLower)
+    public void SetUpStateManager(out GameObject projectiles, out bool trainingDummyMode, out float idleTime,
+        out float meleeAttackRange, out float rangeAttackRange, out float minRangeAttackRange,
+        out float projectilesSpeed, out float stunTimer, out float highHpPercentLower, out float midHpPercentUpper,
+        out float midHpPercentLower, out float lowHpPercentUpper, out float lowHpPercentLower,
+        out float highHpPercentMelee, out float highHpPercentRange, out float highHpPercentDodge,
+        out float midHpPercentMelee, out float midHpPercentRange, out float midHpPercentDodge,
+        out float lowHpPercentMelee, out float lowHpPercentRange, out float lowHpPercentDodge,
+        out float randomTimeForMeleeUpper, out float randomTimeForMeleeLower, out float randomTimeForRangeUpper,
+        out float randomTimeForRangeLower, out float randomTimeForDodgeUpper, out float randomTimeForDodgeLower)
     {
         projectiles = Projectiles;
         trainingDummyMode = TrainingDummyMode;

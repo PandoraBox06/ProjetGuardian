@@ -28,7 +28,7 @@ namespace BasicEnemyStateMachine
         [HideInInspector] public bool trainingDummyMode;
         [HideInInspector] public float idleTime = 1;
         [HideInInspector] public CombatMode combatType;
-        [HideInInspector] public float meleeAttackRange = 1.5f;
+        [HideInInspector] public float meleeAttackRange;
         [HideInInspector] public float rangeAttackRange = 15;
         [HideInInspector] public float minRangeAttackRange = 7;
         [HideInInspector] public float projectilesSpeed = 10;
@@ -82,12 +82,13 @@ namespace BasicEnemyStateMachine
 
         private void Awake()
         {
-            enemyData.SetUpStateManager(projectiles, trainingDummyMode, idleTime, meleeAttackRange, rangeAttackRange,
-                minRangeAttackRange, projectilesSpeed, stunTimer, highHpPercentLower, midHpPercentUpper,
-                midHpPercentLower, lowHpPercentUpper, lowHpPercentLower, highHpPercentMelee, highHpPercentRange,
-                highHpPercentDodge, midHpPercentMelee, midHpPercentRange, midHpPercentDodge, lowHpPercentMelee,
-                lowHpPercentRange, lowHpPercentDodge, randomTimeForMeleeUpper, randomTimeForMeleeLower,
-                randomTimeForRangeUpper, randomTimeForRangeLower, randomTimeForDodgeUpper, randomTimeForDodgeLower);
+            enemyData.SetUpStateManager(out projectiles, out trainingDummyMode, out idleTime, out meleeAttackRange,
+                out rangeAttackRange, out minRangeAttackRange, out projectilesSpeed, out stunTimer,
+                out highHpPercentLower, out midHpPercentUpper, out midHpPercentLower, out lowHpPercentUpper,
+                out lowHpPercentLower, out highHpPercentMelee, out highHpPercentRange, out highHpPercentDodge,
+                out midHpPercentMelee, out midHpPercentRange, out midHpPercentDodge, out lowHpPercentMelee,
+                out lowHpPercentRange, out lowHpPercentDodge, out randomTimeForMeleeUpper, out randomTimeForMeleeLower,
+                out randomTimeForRangeUpper, out randomTimeForRangeLower, out randomTimeForDodgeUpper, out randomTimeForDodgeLower);
         }
 
         private void OnEnable()
@@ -139,6 +140,14 @@ namespace BasicEnemyStateMachine
             var thisProjectile = Instantiate(projectiles, fireOutput.position, Quaternion.identity, projectileDump);
             var projectileDir = player.position - transform.position;
             thisProjectile.GetComponent<Rigidbody>().AddForce(projectileDir * projectilesSpeed, ForceMode.Impulse);
+        }
+        
+        public void CheckTimer()
+        {
+            if (timer <= 0 && this.currentState != currentState)
+            {
+                SwitchState(IdleState);
+            }
         }
     }
 }

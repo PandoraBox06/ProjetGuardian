@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void Awake()
     {
-        enemyData.SetUpEnemy(maxHealth, VFX_Hit, VFX_Die);
+        enemyData.SetUpEnemy(out maxHealth, out VFX_Hit, out VFX_Die);
     }
 
     // Start is called before the first frame update

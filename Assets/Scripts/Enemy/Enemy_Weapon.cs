@@ -18,7 +18,7 @@ public class Enemy_Weapon : MonoBehaviour
     }
     private void Awake()
     {
-        enemyData.SetUpWeapon(damage);
+        enemyData.SetUpWeapon(out damage);
     }
 
     private void OnEnable()

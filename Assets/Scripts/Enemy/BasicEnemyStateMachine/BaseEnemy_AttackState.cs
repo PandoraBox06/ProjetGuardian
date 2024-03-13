@@ -35,6 +35,8 @@ namespace BasicEnemyStateMachine
         {
             if(state.isStunned) { state.SwitchState(state.StunState); }
 
+            state.CheckTimer();
+            
             if(state.combatType == BaseEnemy_StateManager.CombatMode.dodge)
                 state.SwitchState(state.IdleState);
             if(state.combatType == BaseEnemy_StateManager.CombatMode.range)

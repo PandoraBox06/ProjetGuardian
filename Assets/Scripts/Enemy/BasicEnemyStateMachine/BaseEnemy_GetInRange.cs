@@ -11,6 +11,7 @@ namespace BasicEnemyStateMachine
 
         public override void UpdateState(BaseEnemy_StateManager state)
         {
+            state.CheckTimer();
             if (!state.agent.hasPath && !gotaPath)
             {
                 gotaPath = true;
