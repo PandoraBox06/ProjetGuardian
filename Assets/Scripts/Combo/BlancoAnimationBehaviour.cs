@@ -63,12 +63,6 @@ public class BlancoAnimationBehaviour : MonoBehaviour
         
     }
 
-    private bool IsPlaying()
-    {
-        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1) return true;
-        return false;
-    }
-
     private void TryToPlay(string _animation)
     {
         var stateID = Animator.StringToHash(_animation);
@@ -79,7 +73,6 @@ public class BlancoAnimationBehaviour : MonoBehaviour
             return;
         }
         
-        Debug.Log("play anim");
         animator.Play(_animation);
     }
 

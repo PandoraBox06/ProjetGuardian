@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class CharacterAnimatorEvents : MonoBehaviour
 {
-    
     [SerializeField] private EventReference stepAudio;
     public static event Action OnEnableColliderCall;
     public static event Action OnDisbaleColliderCall;

@@ -26,12 +26,14 @@ public class BlancoCombatManager : MonoBehaviour
     [HideInInspector] public UnityEvent CancelEvent;
     [HideInInspector] public UnityEvent FinishedComboEvent;
     [SerializeField] private InputActionReference pauseInput;
+    [SerializeField] private Animator animator;
     public ActionType actionType { get; private set; }
     public InputAction actionInput { get; private set; }
     public ComboScriptableObject finishedCombo { get; private set; }
     public bool isHold { get; private set; }
 
-    [Header("Settings")] [SerializeField] private float transitionDuration;
+    [Header("Settings")]
+    [SerializeField] private float transitionDuration;
     [SerializeField] private float holdMinDuration;
     [SerializeField] private List<ComboScriptableObject> allCombos = new List<ComboScriptableObject>();
 
@@ -41,6 +43,7 @@ public class BlancoCombatManager : MonoBehaviour
     private float holdTime;
     private bool isHoldPossible;
     private bool canChainInput;
+    private InputAction nextInput;
 
     private void Start()
     {
@@ -116,8 +119,27 @@ public class BlancoCombatManager : MonoBehaviour
 
     private void CancelInput(InputAction.CallbackContext callback)
     {
-        // Debug.Log($"New input : {callback.action.name}");
-        CheckValidCombo(callback.action, false);//isHold);
+        if (IsPlayingAttack())
+        {
+            if (nextInput == null)
+            {
+                if (nextInput == pauseInput.action) return;
+                Debug.LogWarning($"nextInput is {callback.action.name}");
+                nextInput = callback.action;
+                Debug.Log("on stocke nextInput"+nextInput.name);
+            }
+            else
+            {
+                Debug.Log("XXX Il y a déjà un prochain input");
+                return;
+            }
+        }
+        else
+        {
+            Debug.Log("on peut checker le combo");
+            Debug.LogWarning($"nextInput is {callback.action.name}");
+            CheckValidCombo(callback.action, false);//isHold);
+        }
 
         isHoldPossible = false;
         isHold = false;
@@ -126,6 +148,7 @@ public class BlancoCombatManager : MonoBehaviour
 
     private void CheckValidCombo(InputAction lastAction, bool isHold)
     {
+        Debug.Log("========>> On joue "+lastAction.name);
         List<ComboScriptableObject> shitList = new List<ComboScriptableObject>();
         
         //check if first attack
@@ -197,13 +220,28 @@ public class BlancoCombatManager : MonoBehaviour
 
     public void FinishedAnimation()
     {
-        Debug.Log("fin de l'anim");
+        if (nextInput != null)
+        {
+            Debug.Log("on joue l'anim suivante : "+nextInput.name);
+            CheckValidCombo(nextInput, false);
+            nextInput = null;
+        }
+    }
+    
+    public bool IsPlayingAttack()
+    {
+        var animatorState = animator.GetCurrentAnimatorStateInfo(0);
+        if (animatorState.normalizedTime < 1 && animatorState.IsTag("Attack"))
+        {
+            return true;
+        }
+        return false;
     }
 
     //delete current combo & possible combos
     private void RestartCombo()
     {
-        //Debug.Log("** restart **");
+        Debug.Log("** restart **");
         currentCombo = new List<InputAction>();
         validList = new(allCombos);
         elapsedTime = transitionDuration + 1;
