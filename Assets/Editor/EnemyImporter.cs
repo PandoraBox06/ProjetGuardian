@@ -21,13 +21,21 @@ public class EnemyImporter : EditorWindow
         outPut = EditorGUILayout.ObjectField(outPut, typeof(GameObject), false) as GameObject;
         EditorGUILayout.LabelField("Origin");
         origin = EditorGUILayout.ObjectField(origin, typeof(GameObject), false) as GameObject;
-        string assetPath = AssetDatabase.GetAssetPath(outPut);
+        string assetPathOutput = AssetDatabase.GetAssetPath(outPut);
+        string assetPathOrigin = AssetDatabase.GetAssetPath(origin);
+        
         if (GUILayout.Button("Unpack"))
         {
-            GameObject contentsRoot = PrefabUtility.LoadPrefabContents(assetPath);
-            contentsRoot.AddComponent<SkinnedMeshRenderer>();
-            PrefabUtility.SaveAsPrefabAsset(contentsRoot, assetPath);
-            PrefabUtility.UnloadPrefabContents(contentsRoot);
+            GameObject originRoot = PrefabUtility.LoadPrefabContents(assetPathOrigin);
+            GameObject outputRoot = PrefabUtility.LoadPrefabContents(assetPathOutput);
+            GameObject skin = originRoot.GetComponentInChildren<SkinnedMeshRenderer>().gameObject;
+
+            Destroy(outputRoot.GetComponentInChildren<SkinnedMeshRenderer>().gameObject);
+            Instantiate(skin, outputRoot.transform, false);
+            
+            
+            PrefabUtility.SaveAsPrefabAsset(outputRoot, assetPathOrigin);
+            PrefabUtility.UnloadPrefabContents(outputRoot);
         }
     }
 }
