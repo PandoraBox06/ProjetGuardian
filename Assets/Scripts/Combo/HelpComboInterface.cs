@@ -5,13 +5,14 @@ using UnityEngine;
 public class HelpComboInterface : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI comboText;
-    [SerializeField] private TextMeshProUGUI lastInputText1;
-    [SerializeField] private TextMeshProUGUI lastInputText2;
-    [SerializeField] private TextMeshProUGUI lastInputText3;
+    [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI lastComboText;
+
+    private int score;
 
     private void Start()
     {
+        // BlancoCombatManager.Instance.Whathever.AddListener(AddScore);
         BlancoCombatManager.Instance.InputEvent.AddListener(AddCombo);
         BlancoCombatManager.Instance.CancelEvent.AddListener(CleanCombo);
         BlancoCombatManager.Instance.FinishedComboEvent.AddListener(FinishedCombo);
@@ -32,10 +33,12 @@ public class HelpComboInterface : MonoBehaviour
         {
             comboText.text = comboText.text + " + " + newInput + inputTypeWithBrackets;
         }
+    }
 
-        lastInputText3.text = lastInputText2.text;
-        lastInputText2.text = lastInputText1.text;
-        lastInputText1.text = newInput;
+    private void AddScore(int _score)
+    {
+        score += _score;
+        scoreText.text = $"Score : {score}";
     }
 
     private void FinishedCombo()
