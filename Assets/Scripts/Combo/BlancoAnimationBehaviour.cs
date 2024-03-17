@@ -10,10 +10,8 @@ public class BlancoAnimationBehaviour : MonoBehaviour
 
     private BlancoCombatManager managerInstance;
     private float animationProgress;
-    private int InputIndex = 0;
+    private int inputIndex;
     private float elapsedTime;
-
-    [SerializeField] private InputActionReference attackInput;
 
     private void Awake()
     {
@@ -31,7 +29,7 @@ public class BlancoAnimationBehaviour : MonoBehaviour
 
     private void StartAnimation()
     {
-        InputIndex++;
+        inputIndex++;
         InputAction animInput = managerInstance.actionInput;
 
         string actionType = "";
@@ -43,22 +41,22 @@ public class BlancoAnimationBehaviour : MonoBehaviour
                 return;
             case ActionType.Hold:
                 inputType = "hold";
-                if (animInput == attackInput.action) actionType = "Attack";
+                if (animInput == managerInstance.attackInput.action) actionType = "Attack";
                 else Debug.LogWarning("The attack "+animInput+" has no animation");
                 return;//break; TO CHANGE <===============================================
             case ActionType.Simple:
                 inputType = "simple";
-                if (animInput == attackInput.action) actionType = "Attack";
+                if (animInput == managerInstance.attackInput.action) actionType = "Attack";
                 else Debug.LogWarning("The attack "+animInput+" has no animation");
                 break;
         }
         
-        TryToPlay($"{actionType}_{inputType}_{InputIndex}");
+        TryToPlay($"{actionType}_{inputType}_{inputIndex}");
     }
 
     private void CancelAnimation()
     {
-        InputIndex = 0;
+        inputIndex = 0;
         animator.SetTrigger("CancelAnimation");
         
     }

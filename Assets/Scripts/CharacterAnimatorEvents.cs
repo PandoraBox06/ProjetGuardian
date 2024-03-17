@@ -60,4 +60,8 @@ public class CharacterAnimatorEvents : MonoBehaviour
         // _cameraBehavior.isAttacking = false;
     }
 
+    public void EndOfAnimation()
+    {
+        
+    }
 }

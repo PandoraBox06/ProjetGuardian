@@ -1,6 +1,8 @@
-using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class HelpComboInterface : MonoBehaviour
 {
@@ -16,33 +18,51 @@ public class HelpComboInterface : MonoBehaviour
         Instance = this;
     }
     
-    [SerializeField] private TextMeshProUGUI comboText;
+    [Header("Texts")]
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI lastComboText;
+    [Header("Images")]
+    [SerializeField] private List<Image> combosImages = new();
+    [Header("Sprites")]
+    [SerializeField] private Sprite attackSprite;
+    [SerializeField] private Sprite pauseSprite;
+    
+    private BlancoCombatManager managerInstance;
+    
     private int score;
+    private int index;
 
     private void Start()
     {
-        BlancoCombatManager.Instance.InputEvent.AddListener(AddCombo);
-        BlancoCombatManager.Instance.CancelEvent.AddListener(CleanCombo);
-        BlancoCombatManager.Instance.FinishedComboEvent.AddListener(FinishedCombo);
+        managerInstance = BlancoCombatManager.Instance;
+        
+        managerInstance.InputEvent.AddListener(AddCombo);
+        managerInstance.CancelEvent.AddListener(CleanCombo);
+        managerInstance.FinishedComboEvent.AddListener(FinishedCombo);
+
+        CleanCombo();
     }
 
     private void AddCombo()
     {
-        string newInput = BlancoCombatManager.Instance.actionInput.name.ToString();
-        string inputType = BlancoCombatManager.Instance.actionType.ToString();
-        inputType = inputType.Substring(0, 1);
-        string inputTypeWithBrackets = $" ({inputType})";
-        
-        if (comboText.text == "")
+        combosImages[index].enabled = true;
+        InputAction newInput = managerInstance.actionInput;
+        string inputName = newInput.name;
+        Debug.Log("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+inputName);
+
+        switch (inputName)
         {
-            comboText.text = newInput + inputTypeWithBrackets;
+            case "Attack":
+                combosImages[index].sprite = attackSprite;
+                combosImages[index].color = Color.white;
+                break;
+            case "PauseAttack":
+                combosImages[index].sprite = pauseSprite;
+                combosImages[index].color = Color.black;
+                break;
         }
-        else
-        {
-            comboText.text = comboText.text + " + " + newInput + inputTypeWithBrackets;
-        }
+
+        index++;
     }
 
     public void AddScore(int _score)
@@ -53,12 +73,17 @@ public class HelpComboInterface : MonoBehaviour
 
     private void FinishedCombo()
     {
-        lastComboText.text = "Last Combo : "+BlancoCombatManager.Instance.finishedCombo.comboName;
+        lastComboText.text = "Finished : "+managerInstance.finishedCombo.comboName;
     }
 
     private void CleanCombo()
     {
-        comboText.text = "";
+        index = 0;
+
+        foreach (Image combo in combosImages)
+        {
+            combo.enabled = false;
+        }
     }
     
     private void OnDestroy()

@@ -25,7 +25,8 @@ public class BlancoCombatManager : MonoBehaviour
     [HideInInspector] public UnityEvent InputEvent;
     [HideInInspector] public UnityEvent CancelEvent;
     [HideInInspector] public UnityEvent FinishedComboEvent;
-    [SerializeField] private InputActionReference pauseInput;
+    public InputActionReference pauseInput;
+    public InputActionReference attackInput;
     public ActionType actionType { get; private set; }
     public InputAction actionInput { get; private set; }
     public ComboScriptableObject finishedCombo { get; private set; }
