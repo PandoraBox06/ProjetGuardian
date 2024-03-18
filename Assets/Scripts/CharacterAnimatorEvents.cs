@@ -11,7 +11,7 @@ public class CharacterAnimatorEvents : MonoBehaviour
     public static event Action OnDisbaleColliderCall;
     public static event Action OnFireProjectile;
     public static event Action OnLooktAtTarget;
-    
+    public static event Action OnEndAnimation;
     [SerializeField] PlayerControlerV2 playerControler;
     [SerializeField] private CameraBehavior _cameraBehavior;
     [SerializeField] private Collider playerCollider;
@@ -60,8 +60,8 @@ public class CharacterAnimatorEvents : MonoBehaviour
         // _cameraBehavior.isAttacking = false;
     }
 
-    public void EndOfAnimation()
+    public void OnEndAnimations()
     {
-        
+        OnEndAnimation?.Invoke();
     }
 }
