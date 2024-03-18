@@ -44,10 +44,13 @@ public class BlancoCombatManager : MonoBehaviour
     private bool isHoldPossible;
     private bool canChainInput;
     private InputAction nextInput;
-
+    private const string INPUT_NONE = "None";
+    private InputAction NoneInput;
     private void Start()
     {
         CharacterAnimatorEvents.OnEndAnimation += FinishedAnimation;
+        NoneInput = new InputAction("INPUT_NONE");
+        nextInput = NoneInput;
         
         elapsedTime = transitionDuration +1;
         //detect all inputs in scriptableObjects
@@ -119,25 +122,25 @@ public class BlancoCombatManager : MonoBehaviour
 
     private void CancelInput(InputAction.CallbackContext callback)
     {
+        Debug.Log($"CancelInput>> Received input {callback.action.name}");
         if (IsPlayingAttack())
         {
-            if (nextInput == null)
+            Debug.Log($"\tCancelInput>> an animation is already playing : {animator.GetCurrentAnimatorStateInfo(0).ToString()}");
+            if (nextInput == NoneInput)
             {
-                if (nextInput == pauseInput.action) return;
+                Debug.Log($"\tCancelInput>> Regisering as next input");
                 Debug.LogWarning($"nextInput is {callback.action.name}");
                 nextInput = callback.action;
-                Debug.Log("on stocke nextInput"+nextInput.name);
             }
             else
             {
-                Debug.Log("XXX Il y a déjà un prochain input");
+                Debug.Log("Cancelling input because a buffered input already exists : " + nextInput.name);
                 return;
             }
         }
         else
         {
-            Debug.Log("on peut checker le combo");
-            Debug.LogWarning($"nextInput is {callback.action.name}");
+            Debug.Log($"No attack playing, checking input {callback.action.name} for combos");
             CheckValidCombo(callback.action, false);//isHold);
         }
 
@@ -214,17 +217,19 @@ public class BlancoCombatManager : MonoBehaviour
             FinishedComboEvent?.Invoke();
             // validList.Remove(combo);
             shitList.Add(combo);
+            nextInput = null;
             Debug.Log("BRAVO ! Vous avez terminé le combo "+combo.comboName);
         }
     }
 
     public void FinishedAnimation()
     {
-        if (nextInput != null)
+        if (nextInput != NoneInput)
         {
             Debug.Log("on joue l'anim suivante : "+nextInput.name);
             CheckValidCombo(nextInput, false);
-            nextInput = null;
+            nextInput = NoneInput;
+            elapsedTime = 0f;
         }
     }
     
