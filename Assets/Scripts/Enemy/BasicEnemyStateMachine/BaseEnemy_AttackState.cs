@@ -22,7 +22,7 @@ namespace BasicEnemyStateMachine
                 case BaseEnemy_StateManager.CombatMode.dodge:
                     // state.transform.LookAt(state.player);
                     // state.animator.Play("Dodge", 0, 0);
-                    // Debug.Log("Dodge");
+                    Debug.Log("Dodge");
                     break;
                 default:
                     state.transform.LookAt(state.player);
