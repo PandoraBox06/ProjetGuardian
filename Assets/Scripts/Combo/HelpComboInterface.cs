@@ -26,6 +26,8 @@ public class HelpComboInterface : MonoBehaviour
     [Header("Sprites")]
     [SerializeField] private Sprite attackSprite;
     [SerializeField] private Sprite pauseSprite;
+    [SerializeField] private Sprite gunSprite;
+    [SerializeField] private Sprite holdSprite;
     
     private BlancoCombatManager managerInstance;
     
@@ -48,7 +50,6 @@ public class HelpComboInterface : MonoBehaviour
         combosImages[index].enabled = true;
         InputAction newInput = managerInstance.actionInput;
         string inputName = newInput.name;
-        Debug.Log("=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+inputName);
 
         switch (inputName)
         {
@@ -59,6 +60,14 @@ public class HelpComboInterface : MonoBehaviour
             case "PauseAttack":
                 combosImages[index].sprite = pauseSprite;
                 combosImages[index].color = Color.black;
+                break;
+           case "AttackRange" :
+                    combosImages[index].sprite = gunSprite;
+                    combosImages[index].color = Color.white;
+                break;
+            case "HoldAttack" :
+                combosImages[index].sprite = holdSprite;
+                combosImages[index].color = Color.white;
                 break;
         }
 

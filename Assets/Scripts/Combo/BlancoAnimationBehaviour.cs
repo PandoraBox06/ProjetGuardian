@@ -32,12 +32,11 @@ public class BlancoAnimationBehaviour : MonoBehaviour
         inputIndex++;
         InputAction animInput = managerInstance.actionInput;
 
-        string actionType = "";
+        string actionType = "Attack";
         string inputType = "";
 
         if (managerInstance.actionInput == managerInstance.attackInput.action)
         {
-            actionType = "Attack";
             inputType = "simple";
         }
         else if (managerInstance.actionInput == managerInstance.pauseInput.action)
@@ -46,8 +45,11 @@ public class BlancoAnimationBehaviour : MonoBehaviour
         }
         else if (managerInstance.actionInput == managerInstance.holdInput.action)
         {
-            actionType = "Attack";
             inputType = "hold";
+        }
+        else if (managerInstance.actionInput == managerInstance.gunInput.action)
+        {
+            inputType = "gun";
         }
         
         TryToPlay($"{actionType}_{inputType}_{inputIndex}");

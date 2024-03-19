@@ -144,7 +144,7 @@ namespace BasicEnemyStateMachine
         
         public void CheckTimer()
         {
-            if (timer <= 0 && this.currentState != currentState)
+            if (timer <= 0)
             {
                 SwitchState(IdleState);
             }
