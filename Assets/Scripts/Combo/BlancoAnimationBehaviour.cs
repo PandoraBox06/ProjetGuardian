@@ -35,20 +35,19 @@ public class BlancoAnimationBehaviour : MonoBehaviour
         string actionType = "";
         string inputType = "";
 
-        switch (managerInstance.actionType)
+        if (managerInstance.actionInput == managerInstance.attackInput.action)
         {
-            case ActionType.Pause:
-                return;
-            case ActionType.Hold:
-                inputType = "hold";
-                if (animInput == managerInstance.attackInput.action) actionType = "Attack";
-                else Debug.LogWarning("The attack "+animInput+" has no animation");
-                return;//break; TO CHANGE <===============================================
-            case ActionType.Simple:
-                inputType = "simple";
-                if (animInput == managerInstance.attackInput.action) actionType = "Attack";
-                else Debug.LogWarning("The attack "+animInput+" has no animation");
-                break;
+            actionType = "Attack";
+            inputType = "simple";
+        }
+        else if (managerInstance.actionInput == managerInstance.pauseInput.action)
+        {
+            return;
+        }
+        else if (managerInstance.actionInput == managerInstance.holdInput.action)
+        {
+            actionType = "Attack";
+            inputType = "hold";
         }
         
         TryToPlay($"{actionType}_{inputType}_{inputIndex}");

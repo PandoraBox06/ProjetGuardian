@@ -9,6 +9,7 @@ public class CharacterAnimatorEvents : MonoBehaviour
     [SerializeField] private EventReference stepAudio;
     public static event Action OnEnableColliderCall;
     public static event Action OnDisbaleColliderCall;
+    public static event Action OnEndAnimation;
     public static event Action OnFireProjectile;
     public static event Action OnLooktAtTarget;
     
@@ -60,8 +61,8 @@ public class CharacterAnimatorEvents : MonoBehaviour
         // _cameraBehavior.isAttacking = false;
     }
 
-    public void EndOfAnimation()
+    public void OnEndAnimations()
     {
-        
+        OnEndAnimation?.Invoke();
     }
 }

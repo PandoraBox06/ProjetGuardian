@@ -116,6 +116,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HoldAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""49c79b3a-eb31-460b-adfc-42e317303271"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -468,6 +477,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""PauseAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""84857065-72cf-45d9-a896-f370c084cece"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HoldAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1065,6 +1085,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_SwitchCamera = m_Player.FindAction("SwitchCamera", throwIfNotFound: true);
         m_Player_Target = m_Player.FindAction("Target", throwIfNotFound: true);
         m_Player_PauseAttack = m_Player.FindAction("PauseAttack", throwIfNotFound: true);
+        m_Player_HoldAttack = m_Player.FindAction("HoldAttack", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1148,6 +1169,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SwitchCamera;
     private readonly InputAction m_Player_Target;
     private readonly InputAction m_Player_PauseAttack;
+    private readonly InputAction m_Player_HoldAttack;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -1162,6 +1184,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @SwitchCamera => m_Wrapper.m_Player_SwitchCamera;
         public InputAction @Target => m_Wrapper.m_Player_Target;
         public InputAction @PauseAttack => m_Wrapper.m_Player_PauseAttack;
+        public InputAction @HoldAttack => m_Wrapper.m_Player_HoldAttack;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1201,6 +1224,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @PauseAttack.started += instance.OnPauseAttack;
             @PauseAttack.performed += instance.OnPauseAttack;
             @PauseAttack.canceled += instance.OnPauseAttack;
+            @HoldAttack.started += instance.OnHoldAttack;
+            @HoldAttack.performed += instance.OnHoldAttack;
+            @HoldAttack.canceled += instance.OnHoldAttack;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1235,6 +1261,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @PauseAttack.started -= instance.OnPauseAttack;
             @PauseAttack.performed -= instance.OnPauseAttack;
             @PauseAttack.canceled -= instance.OnPauseAttack;
+            @HoldAttack.started -= instance.OnHoldAttack;
+            @HoldAttack.performed -= instance.OnHoldAttack;
+            @HoldAttack.canceled -= instance.OnHoldAttack;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1427,6 +1456,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnSwitchCamera(InputAction.CallbackContext context);
         void OnTarget(InputAction.CallbackContext context);
         void OnPauseAttack(InputAction.CallbackContext context);
+        void OnHoldAttack(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
