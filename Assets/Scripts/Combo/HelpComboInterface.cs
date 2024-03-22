@@ -17,17 +17,17 @@ public class HelpComboInterface : MonoBehaviour
         }
         Instance = this;
     }
-    
+
     [Header("Texts")]
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI lastComboText;
-    [Header("Images")]
-    [SerializeField] private List<Image> combosImages = new();
     [Header("Sprites")]
     [SerializeField] private Sprite attackSprite;
     [SerializeField] private Sprite pauseSprite;
     [SerializeField] private Sprite gunSprite;
     [SerializeField] private Sprite holdSprite;
+    [Header("Images")]
+    [SerializeField] private List<Image> combosImages = new();
     
     private BlancoCombatManager managerInstance;
     

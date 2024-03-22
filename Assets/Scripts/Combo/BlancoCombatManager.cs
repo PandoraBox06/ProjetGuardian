@@ -1,16 +1,13 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class BlancoCombatManager : MonoBehaviour
 {
+    #region Variables
+    //-----instance-------------------------------------------------------
     public static BlancoCombatManager Instance
     {
         get
@@ -19,15 +16,18 @@ public class BlancoCombatManager : MonoBehaviour
             return _instance;
         }
     }
-
     private static BlancoCombatManager _instance;
-    [SerializeField] private Animator animator;
-
+    //-----public---------------------------------------------------------
     [HideInInspector] public UnityEvent InputEvent;
     [HideInInspector] public UnityEvent CancelEvent;
     [HideInInspector] public UnityEvent FinishedComboEvent;
+    public InputAction actionInput { get; private set; }
+    public ComboScriptableObject finishedCombo { get; private set; }
+    //-----sérialisé------------------------------------------------------
+    [SerializeField] private Animator animator;
     
     [Header("Inputs")]
+    [SerializeField] private Slider inputTimingSlider;
     public InputActionReference pauseInput;
     public InputActionReference attackInput;
     public InputActionReference gunInput;
@@ -35,31 +35,31 @@ public class BlancoCombatManager : MonoBehaviour
     private InputAction nextInput;
     private InputAction NoneInput;
     
-    public InputAction actionInput { get; private set; }
-    public ComboScriptableObject finishedCombo { get; private set; }
-
     [Header("Settings")]
     [SerializeField] private float transitionDuration;
     [SerializeField] private float holdMinDuration;
     [SerializeField] private List<ComboScriptableObject> allCombos = new List<ComboScriptableObject>();
-
+    //-----privé------------------------------------------------------
     private List<ComboScriptableObject> validList = new List<ComboScriptableObject>();
     private List<InputAction> currentCombo = new List<InputAction>();
+    
     private float elapsedTime;
     private float holdTime;
+    
     private bool isHoldPossible;
     private bool isHoldFinished;
     private bool canChainInput;
+    
     private const string INPUT_NONE = "None_Input";
+    #endregion
     private void Start()
     {
-        CharacterAnimatorEvents.OnEndAnimation += FinishedAnimation;
         NoneInput = new InputAction(INPUT_NONE);
         nextInput = NoneInput;
+        inputTimingSlider.maxValue = transitionDuration;
         
         elapsedTime = transitionDuration +1;
         //detect all inputs in scriptableObjects
-        //may add a whitelist if needed
         List<InputAction> _allInputs = new List<InputAction>();
         foreach (ComboScriptableObject combo in allCombos)
         {
@@ -84,6 +84,7 @@ public class BlancoCombatManager : MonoBehaviour
 
     private void Update()
     {
+        //detect pause input
         if (elapsedTime > transitionDuration)
         {
             elapsedTime = 0f;
@@ -92,9 +93,11 @@ public class BlancoCombatManager : MonoBehaviour
         else
         {
             elapsedTime += Time.deltaTime;
+            inputTimingSlider.value = elapsedTime;
             canChainInput = true;
         }
 
+        //detect hold input
         if (isHoldPossible)
         {
             holdTime += Time.deltaTime;
@@ -102,6 +105,7 @@ public class BlancoCombatManager : MonoBehaviour
             {
                 isHoldPossible = false;
                 isHoldFinished = true;
+                elapsedTime = 0f;
                 CheckValidCombo(holdInput);
             }
         }
@@ -140,7 +144,6 @@ public class BlancoCombatManager : MonoBehaviour
 
     private void CheckValidCombo(InputAction lastAction)
     {
-        Debug.Log(1);
         if (lastAction == NoneInput || lastAction == null) return;
         
         //check if first attack
@@ -148,19 +151,14 @@ public class BlancoCombatManager : MonoBehaviour
         
         Debug.Log(lastAction.name+" IS COMING");   
         
-        Debug.Log(2);
         List<ComboScriptableObject> shitList = new List<ComboScriptableObject>();
         
         currentCombo.Add(lastAction);
         int currentComboLastIdx = currentCombo.Count - 1;
         bool inputEventSent = false;
         //check possible valid combos
-        // for (int i = validList.Count - 1; i >= 0; i--)
-        
-        Debug.Log(3);
-        for (int i = 0; i < validList.Count; i++)
+        for (int i = validList.Count - 1; i >= 0; i--)
         {
-            Debug.Log($"Est ce que l'action {validList[i].inputList[currentComboLastIdx].action.name} est identique à l'action {lastAction.name}");
             if (validList[i].inputList[currentComboLastIdx].action == lastAction)
             {
                 if (!inputEventSent)
@@ -174,46 +172,34 @@ public class BlancoCombatManager : MonoBehaviour
             else
             {
                 //the combo isnt valid, it is thrown away
-                shitList.Add(validList[i]);
-                // validList.Remove(validList[i]);
+                validList.Remove(validList[i]);
             }
         }
-        Debug.Log(4);
 
-        for (int i = 0; i < validList.Count; i++)
+        for (int i = validList.Count - 1; i >= 0; i--)
         {
             //remove finished combos
-            IfFinishedCombos(validList[i], shitList);
+            IfFinishedCombos(validList[i]);
         }
-        Debug.Log(5);
-        
+
         //else the list is kept
         elapsedTime = 0f;
         
-        for (int i = shitList.Count -1; i >= 0 ; i--)
-        {
-            validList.Remove(shitList[i]);
-        }
-        Debug.Log(6);
-
         //check if there is any combo left
         if (validList.Count <= 0)
         {
             RestartCombo();
         }
-        Debug.Log(7);
     }
 
-    private void IfFinishedCombos(ComboScriptableObject combo, List<ComboScriptableObject> shitList)
+    private void IfFinishedCombos(ComboScriptableObject combo)
     {
         if (combo.inputList.Count <= currentCombo.Count)
         {
             finishedCombo = combo;
             FinishedComboEvent?.Invoke();
-            // validList.Remove(combo);
-            shitList.Add(combo);
+            validList.Remove(combo);
             nextInput = null;
-            // Debug.Log("BRAVO ! Vous avez terminé le combo "+combo.comboName);
         }
     }
 
@@ -236,8 +222,7 @@ public class BlancoCombatManager : MonoBehaviour
         }
         return false;
     }
-
-    //delete current combo & possible combos
+    
     private void RestartCombo()
     {
         // Debug.Log("** restart **");
