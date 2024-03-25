@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -16,6 +17,10 @@ public class Spawner : MonoBehaviour
     private bool fullWaveSpawn;
     private float spawnTimer;
     private float waveTimer;
+
+    [SerializeField] private bool canSpawnWave;
+    [SerializeField] private KeyCode activator;
+    
     private void OnEnable()
     {
         Enemy.OnDeath += RemoveEnemyFromWave;
@@ -35,8 +40,16 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(activator))
+        {
+            canSpawnWave = !canSpawnWave;
+        }
+        
+        if(!canSpawnWave) return;
+        
         if (actualWave >= numberOfWave)
         {
+            actualWave = 0;
             return;
         }
         
@@ -93,5 +106,11 @@ public class Spawner : MonoBehaviour
         //(Là où Gizmos s'arrête aux WireSphere & WireBox)
         Handles.color = Color.yellow;
         Handles.DrawWireDisc(transform.position, Vector3.up, radius);
+    }
+
+    private void OnGUI()
+    {
+        GUILayout.Space(100f);
+        GUILayout.Box("Press F1 to Start Wave", GUILayout.Width(150f), GUILayout.Height(25f));
     }
 }
