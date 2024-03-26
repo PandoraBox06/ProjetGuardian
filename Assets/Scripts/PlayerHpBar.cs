@@ -24,6 +24,6 @@ public class PlayerHpBar : MonoBehaviour
 
     void UpdateHP(float hp)
     {
-        slider.value -= hp;
+        slider.value = hp;
     }
 }

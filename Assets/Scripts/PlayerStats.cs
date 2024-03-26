@@ -36,7 +36,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
     {
         // Debug.Log("Take Dmg"); //tu peux décommenter, j'en avait marre de voir cette ligne spawn ptdr
         playerData.currentHealth -= damage;
-        OnDamageTaken(playerData.currentHealth);
+        OnDamageTaken?.Invoke(playerData.currentHealth);
         if (playerData.currentHealth <= 0)
             Die();
     }
