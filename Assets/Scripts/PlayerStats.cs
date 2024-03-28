@@ -25,6 +25,10 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
     public float playerMaxHp;
 
+    [SerializeField] private Animator animator;
+    private static readonly int Hit = Animator.StringToHash("Hit");
+    private static readonly int Death = Animator.StringToHash("Death");
+
     public static event Action<float> OnDamageTaken;
 
     private void Awake()
@@ -34,7 +38,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
     }
     public void TakeDamage(float damage)
     {
-        // Debug.Log("Take Dmg"); //tu peux décommenter, j'en avait marre de voir cette ligne spawn ptdr
+        animator.SetTrigger(Hit);
         playerData.currentHealth -= damage;
         OnDamageTaken?.Invoke(playerData.currentHealth);
         if (playerData.currentHealth <= 0)
@@ -43,6 +47,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
     public void Die()
     {
+        animator.SetTrigger(Death);
         playerData.currentHealth = playerData.maxHealth;
     }
 

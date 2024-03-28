@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Ground 1 Variant
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_Parent: {fileID: 2100000, guid: ca4be99d62169874580293831826392a, type: 2}
+  m_Parent: {fileID: 2100000, guid: fba297e36bf431248b6dcc3f2844495e, type: 2}
   m_ModifiedSerializedProperties: 2
   m_ValidKeywords:
   - _EMISSION

@@ -11,6 +11,7 @@ public class Dashing : MonoBehaviour
     public Transform playerCam;
     Rigidbody rb;
     PlayerControlerV2 playerControler;
+    [SerializeField] private Animator animator;
 
     [Header("Dashing")]
     public float dashForce = 20;
@@ -76,6 +77,7 @@ public class Dashing : MonoBehaviour
 
         // Settings
         Transform forwardT;
+        animator.applyRootMotion = false;
 
         if (useCameraForward) forwardT = playerCam;
         else forwardT = orientation;

@@ -8,8 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Ground Variant Variant
-  m_Shader: {fileID: -6465566751694194690, guid: c50a75cbbe2bd6d449843f2cbbad02ec, type: 3}
-  m_Parent: {fileID: 2100000, guid: 3528739406495e3449304dbf99c6bb16, type: 2}
+  m_Shader: {fileID: -6465566751694194690, guid: b4049d14486ca6846ad65ee60be647ec, type: 3}
+  m_Parent: {fileID: 2100000, guid: 8f6f6bfa28d4f304b99aa2263bbd826f, type: 2}
   m_ModifiedSerializedProperties: 16
   m_ValidKeywords: []
   m_InvalidKeywords: []

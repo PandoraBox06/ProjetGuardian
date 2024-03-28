@@ -16,6 +16,7 @@ public class CharacterAnimatorEvents : MonoBehaviour
     [SerializeField] PlayerControlerV2 playerControler;
     [SerializeField] private CameraBehavior _cameraBehavior;
     [SerializeField] private Collider playerCollider;
+    [SerializeField] private Animator animator;
     public void OnEnableCollider()
     {
         OnEnableColliderCall?.Invoke();
@@ -64,5 +65,15 @@ public class CharacterAnimatorEvents : MonoBehaviour
     public void OnEndAnimations()
     {
         OnEndAnimation?.Invoke();
+    }
+
+    public void ApplyRootMotionBack()
+    {
+        animator.applyRootMotion = !animator.applyRootMotion;
+    }
+    
+    public void ClearRootMotionBack()
+    {
+        animator.applyRootMotion = false;
     }
 }

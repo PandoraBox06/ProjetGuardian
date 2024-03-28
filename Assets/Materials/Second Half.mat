@@ -8,13 +8,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Second Half
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
+  m_Shader: {fileID: 4800000, guid: 2365dde2ff2032643bcb55133304c7f0, type: 3}
+  m_Parent: {fileID: 2100000, guid: 75e9f8054decc72409df75c41de669db, type: 2}
+  m_ModifiedSerializedProperties: 2
+  m_ValidKeywords: []
+  m_InvalidKeywords:
   - _METALLICGLOSSMAP
   - _NORMALMAP
-  m_InvalidKeywords: []
   m_LightmapFlags: 6
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -29,18 +29,6 @@ Material:
         m_Texture: {fileID: 2800000, guid: 0a49e5dcbaf35334bafb4bd3b8824d7f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _DetailAlbedoMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DetailMask:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DetailNormalMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 2800000, guid: 9494c54ad18b86345acf70c826066ef7, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -53,33 +41,25 @@ Material:
         m_Texture: {fileID: 2800000, guid: e42d17a874a0d894bb10394e92c22d20, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _OcclusionMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _ParallaxMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _BumpScale: 0.7
-    - _Cutoff: 0.5
-    - _DetailNormalMapScale: 1
-    - _DstBlend: 0
+    - _EditorVersion: 0
+    - _EnableColorReplacer: 0
+    - _EnableOutline: 0
     - _GlossMapScale: 0.5
-    - _Glossiness: 0.5
-    - _GlossyReflections: 1
-    - _Metallic: 0
-    - _Mode: 0
-    - _OcclusionStrength: 1
-    - _Parallax: 0.02
-    - _SmoothnessTextureChannel: 0
-    - _SpecularHighlights: 1
-    - _SrcBlend: 1
-    - _UVSec: 0
-    - _ZWrite: 1
+    - _OutlineThickness: 0
+    - _SpecularSize: 0.2
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _BaseTint: {r: 1, g: 1, b: 1, a: 0}
+    - _Source1Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Source2Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Source3Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Source4Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Source5Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Target1Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Target2Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Target3Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Target4Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Target5Color: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
