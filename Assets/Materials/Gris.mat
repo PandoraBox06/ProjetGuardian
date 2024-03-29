@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Gris
+  m_Shader: {fileID: 4800000, guid: 2365dde2ff2032643bcb55133304c7f0, type: 3}
+  m_Parent: {fileID: 2100000, guid: 1ff2d4095615857429d03bc24af01c3c, type: 2}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: fba9b316da2f2f84d91b99bf102d7265, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _EditorVersion: 0
+    - _EnableColorReplacer: 0
+    - _EnableOutline: 0
+    - _Glossiness: 0
+    - _OutlineThickness: 0
+    - _SpecularSize: 0.2
+    m_Colors:
+    - _BaseTint: {r: 1, g: 1, b: 1, a: 0}
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
+    - _Source1Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Source2Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Source3Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Source4Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Source5Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Target1Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Target2Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Target3Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Target4Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Target5Color: {r: 1, g: 1, b: 1, a: 0}
+  m_BuildTextureStacks: []
