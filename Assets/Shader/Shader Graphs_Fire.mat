@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7431300162453067360
+--- !u!114 &-1109211622209945190
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fire
+  m_Name: Shader Graphs_Fire
   m_Shader: {fileID: -6465566751694194690, guid: 61267e6fac994da448976a52a73f8bab, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -37,20 +37,20 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Main_Texture:
-        m_Texture: {fileID: 2800000, guid: f811c18b8af520d4e9775044c73317b1, type: 3}
+        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _Dissolve_Amount: 2.13
-    - _Dissolve_Scale: 2.21
-    - _Distortion_Amount: 0.06
-    - _Distortion_Scale: 3.22
+    - _Dissolve_Amount: 1.2
+    - _Dissolve_Scale: 2
+    - _Distortion_Amount: 0.1
+    - _Distortion_Scale: 5
     m_Colors:
-    - _Color: {r: 3.3883748, g: 27.155401, b: 36.254593, a: 0}
-    - _Dissolve_Speed: {r: -0.2, g: -1, b: 0, a: 0}
-    - _Distortion_Speed: {r: 0, g: -2, b: 0, a: 0}
-    - _Emissive: {r: 0.65461004, g: 9.06365, b: 0, a: 0}
+    - _Color: {r: 0.5874664, g: 5.9921575, b: 0, a: 0}
+    - _Dissolve_Speed: {r: -0.1, g: -0.5, b: 0, a: 0}
+    - _Distortion_Speed: {r: 0, g: -0.3, b: 0, a: 0}
+    - _Emissive: {r: 0.35430634, g: 2.265913, b: 0, a: 0}
   m_BuildTextureStacks: []

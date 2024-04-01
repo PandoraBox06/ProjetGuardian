@@ -28,6 +28,7 @@ Material:
     - _Dissolve_Amount: 2
     - _Distortion_Scale: 3.1
     m_Colors:
+    - _Color: {r: 0.5451211, g: 27.155401, b: 36.254593, a: 0}
     - _Dissolve_Speed: {r: 0.2, g: -1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5327741582700782715
