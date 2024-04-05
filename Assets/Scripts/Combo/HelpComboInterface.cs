@@ -82,7 +82,7 @@ public class HelpComboInterface : MonoBehaviour
 
     private void FinishedCombo()
     {
-        lastComboText.text = "Finished : "+managerInstance.finishedCombo.comboName;
+        lastComboText.text = "Last combo : "+managerInstance.finishedCombo.comboName;
     }
 
     private void CleanCombo()

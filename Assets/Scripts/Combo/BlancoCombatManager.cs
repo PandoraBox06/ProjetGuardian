@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Slider = UnityEngine.UI.Slider;
 
 public class BlancoCombatManager : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class BlancoCombatManager : MonoBehaviour
     private static BlancoCombatManager _instance;
     //-----public---------------------------------------------------------
     [HideInInspector] public UnityEvent InputEvent;
+    [HideInInspector] public UnityEvent LastInputEvent;
     [HideInInspector] public UnityEvent CancelEvent;
     [HideInInspector] public UnityEvent FinishedComboEvent;
     public InputAction actionInput { get; private set; }
@@ -32,8 +34,10 @@ public class BlancoCombatManager : MonoBehaviour
     public InputActionReference attackInput;
     public InputActionReference gunInput;
     public InputActionReference holdInput;
-    private InputAction nextInput;
-    private InputAction NoneInput;
+    public ComboScriptableObject LastAnimSO;
+    private InputAction NextInputContainer;
+    private InputAction NoneInputContainer;
+    private InputAction HoldInputContainer;
     
     [Header("Settings")]
     [SerializeField] private float transitionDuration;
@@ -54,8 +58,8 @@ public class BlancoCombatManager : MonoBehaviour
     #endregion
     private void Start()
     {
-        NoneInput = new InputAction(INPUT_NONE);
-        nextInput = NoneInput;
+        NoneInputContainer = new InputAction(INPUT_NONE);
+        NextInputContainer = NoneInputContainer;
         inputTimingSlider.maxValue = transitionDuration;
         
         elapsedTime = transitionDuration +1;
@@ -106,7 +110,10 @@ public class BlancoCombatManager : MonoBehaviour
                 isHoldPossible = false;
                 isHoldFinished = true;
                 elapsedTime = 0f;
-                CheckValidCombo(holdInput);
+                if (HoldInputContainer == attackInput.action)
+                {
+                    CheckValidCombo(HoldInputContainer);
+                }
             }
         }
     }
@@ -114,44 +121,39 @@ public class BlancoCombatManager : MonoBehaviour
     private void StartInput(InputAction.CallbackContext callback)
     {
         isHoldPossible = true;
+        HoldInputContainer = callback.action;
     }
 
     private void CancelInput(InputAction.CallbackContext callback)
     {
         if (IsPlayingAttack())
         {
-            if (nextInput == NoneInput)
+            if (NextInputContainer == NoneInputContainer)
             {
-                Debug.Log(1);
-                nextInput = callback.action;
+                NextInputContainer = callback.action;
             }
             else
             {
-                Debug.Log(2);
                 return;
             }
         }
         else
         {
-            Debug.Log(3);
             if (!isHoldFinished) CheckValidCombo(callback.action);
         }
 
         isHoldFinished = false;
         isHoldPossible = false;
         holdTime = 0f;
+        HoldInputContainer = NoneInputContainer;
     }
 
     private void CheckValidCombo(InputAction lastAction)
     {
-        if (lastAction == NoneInput || lastAction == null) return;
+        if (lastAction == NoneInputContainer || lastAction == null) return;
         
         //check if first attack
         if (!canChainInput) RestartCombo();
-        
-        Debug.Log(lastAction.name+" IS COMING");   
-        
-        List<ComboScriptableObject> shitList = new List<ComboScriptableObject>();
         
         currentCombo.Add(lastAction);
         int currentComboLastIdx = currentCombo.Count - 1;
@@ -165,7 +167,13 @@ public class BlancoCombatManager : MonoBehaviour
                 {
                     //doAction, we keep the combo
                     actionInput = validList[i].inputList[currentComboLastIdx];
-                    InputEvent?.Invoke();
+                    if (validList[i].inputList.Count == currentCombo.Count)
+                    {
+                        LastAnimSO = validList[i];
+                        LastInputEvent?.Invoke();
+                    }
+                    else { InputEvent?.Invoke(); }
+                    
                     inputEventSent = true;
                 }
             }
@@ -199,21 +207,21 @@ public class BlancoCombatManager : MonoBehaviour
             finishedCombo = combo;
             FinishedComboEvent?.Invoke();
             validList.Remove(combo);
-            nextInput = null;
+            NextInputContainer = null;
         }
     }
 
     public void FinishedAnimation()
     {
-        if (nextInput != NoneInput)
+        if (NextInputContainer != NoneInputContainer)
         {
-            CheckValidCombo(nextInput);
-            nextInput = NoneInput;
+            CheckValidCombo(NextInputContainer);
+            NextInputContainer = NoneInputContainer;
             elapsedTime = 0f;
         }
     }
     
-    public bool IsPlayingAttack()
+    private bool IsPlayingAttack()
     {
         var animatorState = animator.GetCurrentAnimatorStateInfo(0);
         if (animatorState.normalizedTime < 1 && animatorState.IsTag("Attack"))
