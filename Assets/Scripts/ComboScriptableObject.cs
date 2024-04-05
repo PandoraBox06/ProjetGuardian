@@ -10,4 +10,5 @@ public class ComboScriptableObject : ScriptableObject
 {
     [CanBeNull] public string comboName;
     public List<InputActionReference> inputList = new List<InputActionReference>();
+    public string nameOfLastAnim;
 }

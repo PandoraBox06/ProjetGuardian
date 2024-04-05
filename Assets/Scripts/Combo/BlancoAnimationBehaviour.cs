@@ -24,6 +24,7 @@ public class BlancoAnimationBehaviour : MonoBehaviour
 
         managerInstance = BlancoCombatManager.Instance;
         managerInstance.InputEvent.AddListener(StartAnimation);
+        managerInstance.LastInputEvent.AddListener(StartLastAnimation);
         managerInstance.CancelEvent.AddListener(CancelAnimation);
     }
 
@@ -53,6 +54,21 @@ public class BlancoAnimationBehaviour : MonoBehaviour
         }
         
         TryToPlay($"{actionType}_{inputType}_{inputIndex}");
+    }
+
+    private void StartLastAnimation()
+    {
+        ComboScriptableObject comboSO = managerInstance.LastAnimSO;
+
+        string lastAnimName = comboSO.nameOfLastAnim;
+        if (string.IsNullOrEmpty(lastAnimName))
+        {
+            //if there is no lastAnim custom we play the normal final anim
+            StartAnimation();
+        }
+        
+        inputIndex = 0;
+        TryToPlay(lastAnimName);
     }
 
     private void CancelAnimation()
