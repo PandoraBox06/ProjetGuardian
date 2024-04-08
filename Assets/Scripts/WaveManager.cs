@@ -36,7 +36,6 @@ public class WaveManager : MonoBehaviour
     private void OnEnable()
     {
         Enemy.OnDeath += RemoveEnemyFromWave;
-        GameManager.Instance.StartSpawningWave += StartSpawning;
     }
 
     private void OnDisable()
@@ -47,6 +46,7 @@ public class WaveManager : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.StartSpawningWave += StartSpawning;
         totalNumberOfEnemyPerWave = baseNumberOfEnemy;
         totalNumberOfSuperEnemyPerWave = baseNumberOfSuperEnemy;
         RefreshWaveCount?.Invoke(numberOfWave);
@@ -100,9 +100,9 @@ public class WaveManager : MonoBehaviour
         {
             if (Time.time > spawnTimer)
             {
-                //On tire une position random dans une sphère :
+                //On tire une position random dans une sphï¿½re :
                 Vector3 rdPos = Random.insideUnitSphere;
-                //On met sa position en y à zéro, la position est donc maintenant DANS un cercle orienté sur xz :
+                //On met sa position en y ï¿½ zï¿½ro, la position est donc maintenant DANS un cercle orientï¿½ sur xz :
                 rdPos.y = 0f;
                 //On normalise la pos, ce qui fait qu'elle est maintenant SUR un cercle de 1m de rayon, qu'on multiplie par radius : 
                 rdPos = rdPos.normalized * radius;
@@ -129,9 +129,9 @@ public class WaveManager : MonoBehaviour
         {
             if (Time.time > superSpawnTimer)
             {
-                //On tire une position random dans une sphère :
+                //On tire une position random dans une sphï¿½re :
                 Vector3 rdPos = Random.insideUnitSphere;
-                //On met sa position en y à zéro, la position est donc maintenant DANS un cercle orienté sur xz :
+                //On met sa position en y ï¿½ zï¿½ro, la position est donc maintenant DANS un cercle orientï¿½ sur xz :
                 rdPos.y = 0f;
                 //On normalise la pos, ce qui fait qu'elle est maintenant SUR un cercle de 1m de rayon, qu'on multiplie par radius : 
                 rdPos = rdPos.normalized * radius;
@@ -193,8 +193,8 @@ public class WaveManager : MonoBehaviour
     
     private void OnDrawGizmos()
     {
-        //++ Handles est une classe similaire à Gizmos, qui permet notamment de dessiner des arcs, disques, etc.
-        //(Là où Gizmos s'arrête aux WireSphere & WireBox)
+        //++ Handles est une classe similaire ï¿½ Gizmos, qui permet notamment de dessiner des arcs, disques, etc.
+        //(Lï¿½ oï¿½ Gizmos s'arrï¿½te aux WireSphere & WireBox)
         Handles.color = Color.yellow;
         Handles.DrawWireDisc(transform.position, Vector3.up, radius);
     }

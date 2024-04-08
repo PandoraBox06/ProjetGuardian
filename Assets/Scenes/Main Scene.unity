@@ -533,7 +533,7 @@ MonoBehaviour:
   addingNumberOfSuperEnemyPerWave: 1
   factorMultiplicatorSuperEnemy: 1
   delayBetweenSpawn: 1
-  radius: 28
+  radius: 25
   canSpawnWave: 0
   skippingWave: 283
 --- !u!4 &149156629
@@ -545,7 +545,7 @@ Transform:
   m_GameObject: {fileID: 149156627}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.0654554, y: -5.749916, z: -27.428804}
+  m_LocalPosition: {x: 2.0654554, y: -6.9, z: -27.428804}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4350,7 +4350,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753646707}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11559233, y: -0.0000000341821, z: 0.000000003977853, w: 0.9932968}
+  m_LocalRotation: {x: 0.11559233, y: 0.000000034182076, z: -0.0000000039778496, w: 0.9932968}
   m_LocalPosition: {x: 1.6704672e-13, y: 3, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9959,7 +9959,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2127034160}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0000000074505797, y: 0.00000001674658, z: -0.0000000039511887, w: 1}
+  m_LocalRotation: {x: 0.0000000074505797, y: 0.00000005023972, z: -0.00000001185356, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
