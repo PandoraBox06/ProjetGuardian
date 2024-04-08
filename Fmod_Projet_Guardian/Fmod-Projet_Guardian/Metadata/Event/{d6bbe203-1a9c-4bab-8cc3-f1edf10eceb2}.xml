@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{d6bbe203-1a9c-4bab-8cc3-f1edf10eceb2}">
 		<property name="name">
-			<value>Sword No Hit</value>
+			<value>Sword No Hit V1</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -92,7 +92,6 @@
 		<property name="length">
 			<value>0.16200000000000001</value>
 		</property>
-		<property name="name" />
 		<relationship name="sounds">
 			<destination>{fb4e2959-0b2b-4ec2-83e0-c20bbba75e83}</destination>
 			<destination>{648c913e-a734-4a52-be6d-c0e6e5d6bd30}</destination>

@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{49356da8-c5e1-406c-842e-1047b4273a84}">
 		<property name="name">
-			<value>Walk on Metal</value>
+			<value>Walk on Metal V1</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
 		</property>
 		<relationship name="folder">
-			<destination>{599a9056-1573-4745-baf0-f071c2ce0548}</destination>
+			<destination>{6fa4459d-8995-4a4f-ab81-98c26ac4872d}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{f2d87865-fa16-49a1-9f18-0856dd1ee073}</destination>
