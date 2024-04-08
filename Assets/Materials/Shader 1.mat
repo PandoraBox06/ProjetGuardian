@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader
+  m_Name: Shader 1
   m_Shader: {fileID: 4800000, guid: 2365dde2ff2032643bcb55133304c7f0, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -56,7 +56,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: b83a9fd9f08e7be45bbf741316b9b79a, type: 3}
+        m_Texture: {fileID: 2800000, guid: fba9b316da2f2f84d91b99bf102d7265, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -170,7 +170,7 @@ Material:
     - _Shadow2Smoothness: 0
     - _Shadow2VertexRThreshold: 0.1
     - _SmoothnessTextureChannel: 0
-    - _Source1Fuzziness: 1
+    - _Source1Fuzziness: 0.01
     - _Source2Fuzziness: 0.01
     - _Source3Fuzziness: 0.01
     - _Source4Fuzziness: 0.01
@@ -207,13 +207,13 @@ Material:
     - _RimlightTint: {r: 1, g: 1, b: 1, a: 0}
     - _Shadow1Tint: {r: 1, g: 1, b: 1, a: 0}
     - _Shadow2Tint: {r: 1, g: 1, b: 1, a: 0}
-    - _Source1Color: {r: 0, g: 0, b: 0, a: 0}
+    - _Source1Color: {r: 1, g: 0, b: 0, a: 0}
     - _Source2Color: {r: 0, g: 0, b: 0, a: 0}
     - _Source3Color: {r: 1, g: 0, b: 0, a: 0}
     - _Source4Color: {r: 1, g: 0, b: 0, a: 0}
     - _Source5Color: {r: 0.79622644, g: 0.11868272, b: 0.11868272, a: 0}
     - _SpecularTint: {r: 1, g: 1, b: 1, a: 0}
-    - _Target1Color: {r: 0, g: 0, b: 0, a: 0}
+    - _Target1Color: {r: 1, g: 0, b: 0, a: 0}
     - _Target2Color: {r: 1, g: 0, b: 0, a: 0}
     - _Target3Color: {r: 1, g: 0.9407685, b: 0, a: 0}
     - _Target4Color: {r: 1, g: 0.36037737, b: 0.36037737, a: 0}
