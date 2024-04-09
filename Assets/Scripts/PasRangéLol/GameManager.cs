@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum GameState
@@ -129,6 +130,11 @@ public class GameManager : MonoBehaviour
     void Pause()
     {
         // Menu while in Game
+    }
+
+    public void RestartGame()
+    {
+        
     }
 
     public void ChangeGameState(GameState state)
