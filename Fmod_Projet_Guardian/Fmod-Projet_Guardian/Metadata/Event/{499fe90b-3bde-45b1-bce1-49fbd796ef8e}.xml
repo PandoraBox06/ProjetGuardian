@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{499fe90b-3bde-45b1-bce1-49fbd796ef8e}">
 		<property name="name">
-			<value>Effort de l'avatar</value>
+			<value>Effort de l'avatar V1</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{599a9056-1573-4745-baf0-f071c2ce0548}</destination>
+			<destination>{6fa4459d-8995-4a4f-ab81-98c26ac4872d}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{9926fa7a-8a70-4c0e-ac55-8acfae53ca3e}</destination>

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{2f9cadf1-e215-4b35-afcd-df8d2786282d}">
-		<property name="note" />
 		<property name="name">
-			<value>Enemy_Death Garbage</value>
+			<value>Enemy_Death Garbage V1</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>

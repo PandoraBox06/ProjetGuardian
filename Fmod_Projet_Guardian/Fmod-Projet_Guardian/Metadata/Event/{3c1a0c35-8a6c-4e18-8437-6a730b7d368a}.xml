@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{3c1a0c35-8a6c-4e18-8437-6a730b7d368a}">
 		<property name="name">
-			<value>GetHit</value>
+			<value>GetHit V1</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{599a9056-1573-4745-baf0-f071c2ce0548}</destination>
+			<destination>{6fa4459d-8995-4a4f-ab81-98c26ac4872d}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{d3f5ed0e-1a81-41c7-b0e8-14c70cfe622e}</destination>
