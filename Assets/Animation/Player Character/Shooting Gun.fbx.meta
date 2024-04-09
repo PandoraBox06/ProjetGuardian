@@ -37,7 +37,7 @@ ModelImporter:
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 76
-      lastFrame: 230
+      lastFrame: 170
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -65,8 +65,8 @@ ModelImporter:
       name: ShootingTransi
       takeName: mixamo.com
       internalID: 4061839508520268033
-      firstFrame: 181
-      lastFrame: 230
+      firstFrame: 170
+      lastFrame: 195
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
