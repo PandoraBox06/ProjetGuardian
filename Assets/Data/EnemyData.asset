@@ -20,7 +20,7 @@ MonoBehaviour:
   VFX_Die: {fileID: 358637981425055526, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
   TrainingDummyMode: 0
   IdleTime: 0
-  MeleeAttackRange: 3
+  MeleeAttackRange: 2.3
   RangeAttackRange: 15
   MinRangeAttackRange: 7
   ProjectilesSpeed: 10

@@ -117,15 +117,32 @@ public class EnemyBehaviour : MonoBehaviour
         if (player != null)
         {
             //Search if close to player
-            if (!CheckDistanceToPlayer())
+            if (nextState == Enemy_State.Fire)
             {
-                //else : go to player
-                animator.SetFloat("Speed", agent.velocity.magnitude);
-                agent.SetDestination(player.transform.position);
+                float playerDist = Vector3.Distance(player.position, transform.position);
+                if (playerDist <= minRangeAttackRange)
+                {
+                    //else : go to player
+                    animator.SetFloat("Speed", agent.velocity.magnitude);
+                    agent.SetDestination(-transform.forward * (minRangeAttackRange + 1));
+                }
+                else
+                {
+                    ChangeState(nextState);
+                }
             }
             else
             {
-                ChangeState(nextState);
+                if (!CheckDistanceToPlayer())
+                {
+                    //else : go to player
+                    animator.SetFloat("Speed", agent.velocity.magnitude);
+                    agent.SetDestination(player.transform.position);
+                }
+                else
+                {
+                    ChangeState(nextState);
+                }
             }
         }
     }
@@ -134,6 +151,7 @@ public class EnemyBehaviour : MonoBehaviour
     private void Attack()
     {
         if (isAttacking) return;
+        
         //Turn towards player
         transform.LookAt(player);
         //Check again if range
@@ -151,7 +169,6 @@ public class EnemyBehaviour : MonoBehaviour
                 isAttacking = true;
                 //Random between 1&2
                 int randomAttack = Random.Range(0, 2);
-                Debug.Log($"Random Attack is : {randomAttack}");
                 //Play attack 1 ou 2
                 switch (randomAttack)
                 {
@@ -170,25 +187,40 @@ public class EnemyBehaviour : MonoBehaviour
     private void Fire()
     {
         if (isAttacking) return;
-        //Turn towarrds player
-        transform.LookAt(player);
-        //Fire (play anim)
-        isAttacking = true;
-        animator.Play("Fire");
-        //Return to walk
+        
+        if (!CheckDistanceToPlayer())
+        {
+            //else : go to player
+            animator.SetFloat("Speed", agent.velocity.magnitude);
+            agent.SetDestination(-transform.forward * (minRangeAttackRange + 1));
+        }
+        else
+        {
+            //Turn towarrds player
+            transform.LookAt(player);
+            //Fire (play anim)
+            isAttacking = true;
+            animator.Play("Fire");
+            //Return to walk
+        }
     }
 
     private void Guard()
     {
-        //Turn towards player
-        transform.LookAt(player);
-        //Guard Up
-        stats.isGuarding = true;
-        animator.SetBool("Block",stats.isGuarding);
-        //if Guard broken : stun
-        //Return to walk
-        if (Time.time >= stateTimer)
+        if (!isAttacking)
+        { 
+            //Turn towards player
+            transform.LookAt(player);
+            //Guard Up
+            stats.isGuarding = true;
+            isAttacking = true;
+            animator.SetBool("Block",stats.isGuarding);
+            timer = Time.time + stateTimer;
+        }
+        else if (Time.time >= timer && stats.isGuarding)
         {
+            //if Guard broken : stun
+            //Return to walk
             stats.isGuarding = false;
             animator.SetBool("Block",stats.isGuarding);
             ChangeState(Enemy_State.Walk);
@@ -244,15 +276,19 @@ public class EnemyBehaviour : MonoBehaviour
         switch (currentState)
         {
             case Enemy_State.Attack:
+                agent.stoppingDistance = meleeAttackRange;
                 toReturn = playerDist <= meleeAttackRange;
                 break;
             case Enemy_State.Fire:
-                toReturn = playerDist <= rangeAttackRange;
+                agent.stoppingDistance = rangeAttackRange;
+                toReturn = playerDist >= minRangeAttackRange;
                 break;
             case Enemy_State.Guard:
+                agent.stoppingDistance = meleeAttackRange;
                 toReturn = playerDist <= meleeAttackRange;
                 break;
             default:
+                agent.stoppingDistance = meleeAttackRange;
                 toReturn = playerDist <= meleeAttackRange;
                 break;
         }

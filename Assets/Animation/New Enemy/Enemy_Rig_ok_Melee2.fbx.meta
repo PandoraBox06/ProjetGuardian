@@ -19,7 +19,7 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: Event EnemyEndAnimation has a time (2.608834) outside
+    animationImportWarnings: Event EnemyEndAnimation has a time (2.530402) outside
       the clip's valid range (0.000000..2.516667). It will never be fired
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
@@ -58,7 +58,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.9234107
+      - time: 0.9390969
         functionName: EnemyEndAnimation
         data: 
         objectReferenceParameter: {instanceID: 0}

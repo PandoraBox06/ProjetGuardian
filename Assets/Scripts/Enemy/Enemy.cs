@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour, IDamageable
             float tempoDmg = new();
             tempoDmg = Mathf.Clamp(damage / 2, 0, Mathf.Infinity);
             guardHealth -= tempoDmg;
-            animator.SetTrigger("BlockHit");
+            animator.Play("Block_hit");
             if (guardHealth <= 0)
             {
                 enemyBehaviour.ChangeState(Enemy_State.Stun);
