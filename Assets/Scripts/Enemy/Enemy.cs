@@ -2,20 +2,24 @@ using System;
 using BasicEnemyStateMachine;
 using System.Collections;
 using UnityEngine;
+using Debug = System.Diagnostics.Debug;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
     //public
     [SerializeField] private Enemy_Data enemyData;
     [HideInInspector] public float currentHealth;
-    [SerializeField] BaseEnemy_StateManager stateManager;
+    public float guardHealth;
+    [SerializeField] EnemyBehaviour enemyBehaviour;
+    [SerializeField] private Animator animator;
     //private
     [SerializeField] private GameObject hpEnemy;
     [SerializeField] private SpriteRenderer barSpriteRenderer;
     [SerializeField] private Transform barParent;
     [HideInInspector] public float maxHealth;
     [SerializeField] private Gradient hpGradient;
-
+    public bool isGuarding;
+    
     [Header("VFX")]
     [HideInInspector] public GameObject VFX_Hit;
     [HideInInspector] public GameObject VFX_Die;
@@ -25,7 +29,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void Awake()
     {
-        enemyData.SetUpEnemy(out maxHealth, out VFX_Hit, out VFX_Die);
+        enemyData.SetUpEnemy(out maxHealth, out VFX_Hit, out VFX_Die, out guardHealth);
     }
 
     // Start is called before the first frame update
@@ -68,29 +72,46 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
-        currentHealth -= damage;
-        barSpriteRenderer.material.color = hpGradient.Evaluate(currentHealth / maxHealth);
-        barParent.localScale = new Vector3((currentHealth / maxHealth), 1f);
-        if(stateManager.combatType == BaseEnemy_StateManager.CombatMode.dodge)
-            stateManager.isStunned = true;
-        if (currentHealth < maxHealth)
-            hpEnemy.SetActive(true);
-        if (currentHealth <= 0)
+        if (isGuarding)
         {
-            Die();
-            Instantiate(VFX_Die,transform.position, Quaternion.identity);
-            HasInstanciated = true;
+            float tempoDmg = new();
+            tempoDmg = Mathf.Clamp(damage / 2, 0, Mathf.Infinity);
+            guardHealth -= tempoDmg;
+            animator.SetTrigger("BlockHit");
+            if (guardHealth <= 0)
+            {
+                enemyBehaviour.ChangeState(Enemy_State.Stun);
+            }
         }
-
-        if (HasInstanciated)
+        else
         {
-            StartCoroutine(DestroyExplosion());
-        }
+            currentHealth -= damage;
+            barSpriteRenderer.material.color = hpGradient.Evaluate(currentHealth / maxHealth);
+            barParent.localScale = new Vector3((currentHealth / maxHealth), 1f);
+            if (currentHealth < maxHealth)
+                hpEnemy.SetActive(true);
+            if (currentHealth <= 0)
+            {
+                Die();
+                Instantiate(VFX_Die,transform.position, Quaternion.identity);
+                HasInstanciated = true;
+            }
 
-        Invoke(nameof(VFXHit), 0);
-        StartCoroutine(DeactivateVFXHit());
+            if (HasInstanciated)
+            {
+                StartCoroutine(DestroyExplosion());
+            }
+
+            Invoke(nameof(VFXHit), 0);
+            StartCoroutine(DeactivateVFXHit());
+        }
     }
 
+    public void ResetGuard()
+    {
+        guardHealth = enemyData.GuardHealth;
+    }
+    
     public void Die()
     {
         Destroy(gameObject);

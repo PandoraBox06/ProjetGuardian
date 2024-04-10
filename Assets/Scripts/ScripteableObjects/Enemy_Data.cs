@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy_Data : ScriptableObject
 {
     public float MaxHealth = 100;
+    public float GuardHealth = 50;
     public float WeaponDamage = 30;
     public GameObject Projectiles;
     public GameObject VFX_Hit;
@@ -47,11 +48,12 @@ public class Enemy_Data : ScriptableObject
     public float RandomTimeForDodgeUpper = 1;
     public float RandomTimeForDodgeLower = .5f;
 
-    public void SetUpEnemy(out float maxHealth, out GameObject vfx_Hit, out GameObject vfx_Die)
+    public void SetUpEnemy(out float maxHealth, out GameObject vfx_Hit, out GameObject vfx_Die, out float guardHealth)
     {
         maxHealth = MaxHealth;
         vfx_Hit = VFX_Hit;
         vfx_Die = VFX_Die;
+        guardHealth = GuardHealth;
     }
     
     public void SetUpWeapon(out float weaponDamage)

@@ -5,22 +5,22 @@ using UnityEngine;
 
 public class TriggerDetector : MonoBehaviour
 {
-    public BaseEnemy_StateManager stateManager;
+    public EnemyBehaviour enemyBehaviour;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if (stateManager.player == null)
-                stateManager.player = other.transform;
+            if (enemyBehaviour.player == null)
+                enemyBehaviour.player = other.transform;
         }
     }
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if (stateManager.player == null)
-                stateManager.player = other.transform;
+            if (enemyBehaviour.player == null)
+                enemyBehaviour.player = other.transform;
         }
     }
 
@@ -28,8 +28,8 @@ public class TriggerDetector : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (stateManager.player != null)
-                stateManager.player = null;
+            if (enemyBehaviour.player != null)
+                enemyBehaviour.player = null;
         }
     }
 }

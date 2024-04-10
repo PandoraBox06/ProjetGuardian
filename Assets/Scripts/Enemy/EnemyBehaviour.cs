@@ -4,7 +4,7 @@ using UnityEngine.AI;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
-enum Enemy_State
+public enum Enemy_State
 {
     Idle,
     Walk,
@@ -16,7 +16,6 @@ enum Enemy_State
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    
     [Header("References")]
     [SerializeField] private Enemy_Data enemyData;
     [SerializeField] private Enemy_State currentState;
@@ -67,8 +66,11 @@ public class EnemyBehaviour : MonoBehaviour
     [HideInInspector] public float randomTimeForDodgeLower;
 
     //Hidden
+    private Action DoAction;
     [SerializeField] private float timer;
+    [SerializeField] private float stateTimer;
     [HideInInspector] public GameObject projectiles;
+    private bool canChangeState;
     
     private void Awake()
     {
@@ -80,34 +82,20 @@ public class EnemyBehaviour : MonoBehaviour
             out lowHpPercentRange, out lowHpPercentDodge, out randomTimeForMeleeUpper, out randomTimeForMeleeLower,
             out randomTimeForRangeUpper, out randomTimeForRangeLower, out randomTimeForDodgeUpper, out randomTimeForDodgeLower);
     }
-    
-    
-    private void Update()
+
+
+    private void Start()
     {
-        switch (currentState)
-        {
-            case Enemy_State.Idle:
-                Idle();
-                break;
-            case Enemy_State.Walk:
-                Walk();
-                break;
-            case Enemy_State.Attack:
-                Attack();
-                break;
-            case Enemy_State.Fire:
-                Fire();
-                break;
-            case Enemy_State.Guard:
-                Guard();
-                break;
-            case Enemy_State.Stun:
-                Stun();
-                break;
-        }
+        animator.Play("spawning");
+        ChangeState(Enemy_State.Walk);
     }
 
-    private bool canChangeState;
+    private void Update()
+    {
+        DoAction();
+    }
+
+
     
     private void Idle()
     {
@@ -117,13 +105,14 @@ public class EnemyBehaviour : MonoBehaviour
     private void Walk()
     {
         //if close : random behaviour : switch to attack mode or guard
+        isAttacking = false;
+        
         if (canChangeState)
         {
             nextState = GetNextState();
             canChangeState = false;
         }
-        
-        animator.SetFloat("Speed", agent.velocity.magnitude);
+
 
         if (player != null)
         {
@@ -131,6 +120,7 @@ public class EnemyBehaviour : MonoBehaviour
             if (!CheckDistanceToPlayer())
             {
                 //else : go to player
+                animator.SetFloat("Speed", agent.velocity.magnitude);
                 agent.SetDestination(player.transform.position);
             }
             else
@@ -140,25 +130,52 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
+    private bool isAttacking;
     private void Attack()
     {
+        if (isAttacking) return;
         //Turn towards player
         transform.LookAt(player);
         //Check again if range
-        //Random between 1&2
-        //Play attack 1 ou 2
-        //Return to Walk
-        canChangeState = true;
+        if (player != null)
+        {
+            //Search if close to player
+            if (!CheckDistanceToPlayer())
+            {
+                //else : go to player
+                animator.SetFloat("Speed", agent.velocity.magnitude);
+                agent.SetDestination(player.transform.position);
+            }
+            else
+            {
+                isAttacking = true;
+                //Random between 1&2
+                int randomAttack = Random.Range(0, 2);
+                Debug.Log($"Random Attack is : {randomAttack}");
+                //Play attack 1 ou 2
+                switch (randomAttack)
+                {
+                    case 0:
+                        animator.Play("Attack1");
+                        break;
+                    case 1:
+                        animator.Play("Attack2");
+                        break;
+                }
+                //Return to Walk
+            }
+        }
     }
 
     private void Fire()
     {
+        if (isAttacking) return;
         //Turn towarrds player
         transform.LookAt(player);
         //Fire (play anim)
-        
+        isAttacking = true;
+        animator.Play("Fire");
         //Return to walk
-        canChangeState = true;
     }
 
     private void Guard()
@@ -166,22 +183,58 @@ public class EnemyBehaviour : MonoBehaviour
         //Turn towards player
         transform.LookAt(player);
         //Guard Up
+        stats.isGuarding = true;
+        animator.SetBool("Block",stats.isGuarding);
         //if Guard broken : stun
         //Return to walk
-        canChangeState = true;
+        if (Time.time >= stateTimer)
+        {
+            stats.isGuarding = false;
+            animator.SetBool("Block",stats.isGuarding);
+            ChangeState(Enemy_State.Walk);
+        }
     }
 
     private void Stun()
     {
         //stun cd then return to walk
-        canChangeState = true;
+        if (isStunned)
+        {
+            timer -= Time.deltaTime;
+            if (!(timer <= 0)) return;
+            isStunned = false;
+            stats.ResetGuard();
+            animator.SetBool("Stun", isStunned);
+            ChangeState(Enemy_State.Walk);
+        }
+        else
+        {
+            isStunned = true;
+            timer = stunTimer;
+            animator.SetBool("Stun", isStunned);
+        }
+        
     }
 
-    private void ChangeState(Enemy_State newState)
+    public void ChangeState(Enemy_State newState)
     {
         if (newState == currentState) return;
 
+        canChangeState = true;
+        
         currentState = newState;
+        DoAction = currentState switch
+        {
+            Enemy_State.Idle => Idle,
+            Enemy_State.Walk => Walk,
+            Enemy_State.Attack => Attack,
+            Enemy_State.Fire => Fire,
+            Enemy_State.Guard => Guard,
+            Enemy_State.Stun => Stun,
+            _ => DoAction
+        };
+        
+        SetTimer();
     }
     
     private bool CheckDistanceToPlayer()
@@ -269,13 +322,26 @@ public class EnemyBehaviour : MonoBehaviour
         return toReturn;
     }
     
-    private void GetTimer()
+    private void SetTimer()
     {
-        
+        stateTimer = currentState switch
+        {
+            Enemy_State.Idle => idleTime,
+            Enemy_State.Attack => Random.Range(randomTimeForMeleeLower,randomTimeForMeleeUpper),
+            Enemy_State.Fire => Random.Range(randomTimeForRangeLower,randomTimeForRangeUpper),
+            Enemy_State.Guard => Random.Range(randomTimeForDodgeLower,randomTimeForDodgeUpper),
+            _ => stateTimer
+        };
     }
 
-    public void EndAnimation()
+    public void EnemyEndAnimation()
     {
+        if (Time.time >= stateTimer)
+        {
+            canChangeState = true;
+        }
+
+        if (isAttacking) isAttacking = false;
         ChangeState(Enemy_State.Walk);
     }
 }
