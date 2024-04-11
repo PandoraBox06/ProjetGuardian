@@ -14,7 +14,7 @@ public class UI_Pause : MonoBehaviour
 
     private void Play()
     {
-        //replay
+        GameManager.Instance.ContinueGame();
     }
 
     private void Quit()

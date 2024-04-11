@@ -12,6 +12,6 @@ public class UI_Score : MonoBehaviour
 
     private void Quit()
     {
-        Application.Quit();
+        UIManager.Instance.OpenOnePanel(PanelsNames.MainMenu);
     }
 }
