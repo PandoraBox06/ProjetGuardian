@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public enum Enemy_State
@@ -65,6 +64,8 @@ public class EnemyBehaviour : MonoBehaviour
     [HideInInspector] public float randomTimeForDodgeUpper;
     [HideInInspector] public float randomTimeForDodgeLower;
 
+    [SerializeField] private Collider attackBox;
+    
     //Hidden
     private Action DoAction;
     [SerializeField] private float timer;
@@ -101,7 +102,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         
     }
-
+    bool isReplacing;
     private void Walk()
     {
         //if close : random behaviour : switch to attack mode or guard
@@ -120,14 +121,17 @@ public class EnemyBehaviour : MonoBehaviour
             if (nextState == Enemy_State.Fire)
             {
                 float playerDist = Vector3.Distance(player.position, transform.position);
-                if (playerDist <= minRangeAttackRange)
+            
+                if (playerDist <= minRangeAttackRange && !isReplacing)
                 {
                     //else : go to player
                     animator.SetFloat("Speed", agent.velocity.magnitude);
                     agent.SetDestination(-transform.forward * (minRangeAttackRange + 1));
+                    isReplacing = true;
                 }
                 else
                 {
+                    isReplacing = false;
                     ChangeState(nextState);
                 }
             }
@@ -188,21 +192,12 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (isAttacking) return;
         
-        if (!CheckDistanceToPlayer())
-        {
-            //else : go to player
-            animator.SetFloat("Speed", agent.velocity.magnitude);
-            agent.SetDestination(-transform.forward * (minRangeAttackRange + 1));
-        }
-        else
-        {
-            //Turn towarrds player
-            transform.LookAt(player);
-            //Fire (play anim)
-            isAttacking = true;
-            animator.Play("Fire");
-            //Return to walk
-        }
+        //Turn towarrds player
+        transform.LookAt(player);
+        //Fire (play anim)
+        isAttacking = true;
+        animator.Play("Fire");
+        //Return to walk
     }
 
     private void Guard()
@@ -213,9 +208,9 @@ public class EnemyBehaviour : MonoBehaviour
             transform.LookAt(player);
             //Guard Up
             stats.isGuarding = true;
-            isAttacking = true;
             animator.SetBool("Block",stats.isGuarding);
             timer = Time.time + stateTimer;
+            isAttacking = true;
         }
         else if (Time.time >= timer && stats.isGuarding)
         {
@@ -234,15 +229,17 @@ public class EnemyBehaviour : MonoBehaviour
         {
             timer -= Time.deltaTime;
             if (!(timer <= 0)) return;
-            isStunned = false;
             stats.ResetGuard();
             animator.SetBool("Stun", isStunned);
             ChangeState(Enemy_State.Walk);
+            isStunned = false;
         }
         else
         {
             isStunned = true;
             timer = stunTimer;
+            stats.isGuarding = false;
+            animator.SetBool("Block",stats.isGuarding);
             animator.SetBool("Stun", isStunned);
         }
         
@@ -299,64 +296,55 @@ public class EnemyBehaviour : MonoBehaviour
     private Enemy_State GetNextState()
     {
         Enemy_State toReturn = currentState;
-        float percentage = Random.Range(0, 1f);
+        float percentage = Random.Range(0f, 1f);
+        float[] cumulativeProbabilities = new float[3]; // Array to store cumulative probabilities
+
+        // Calculate cumulative probabilities for each behavior based on health percentage ranges
         if (stats.currentHealth / stats.maxHealth >= highHpPercentLower)
         {
-            if (percentage >= highHpPercentMelee)
-            {
-                //Melee
-                toReturn = Enemy_State.Attack;
-            }
-            else if(percentage >= highHpPercentRange && percentage < highHpPercentMelee)
-            {
-                //Range
-                toReturn = Enemy_State.Fire;
-            }
-            else if(percentage >= highHpPercentDodge && percentage < highHpPercentRange)
-            {
-                //Guard
-                toReturn = Enemy_State.Guard;
-            }
+            cumulativeProbabilities[0] = highHpPercentMelee;
+            cumulativeProbabilities[1] = highHpPercentRange;
+            cumulativeProbabilities[2] = highHpPercentDodge;
         }
         else if (stats.currentHealth / stats.maxHealth >= midHpPercentLower && stats.currentHealth / stats.maxHealth < midHpPercentUpper)
         {
-            if (percentage >= midHpPercentMelee)
-            {
-                //Melee
-                toReturn = Enemy_State.Attack;
-            }
-            else if(percentage >= midHpPercentRange && percentage < midHpPercentMelee)
-            {
-                //Range
-                toReturn = Enemy_State.Fire;
-            }
-            else if(percentage >= midHpPercentDodge && percentage < midHpPercentRange)
-            {
-               //Guard
-               toReturn = Enemy_State.Guard;
-            }
+            cumulativeProbabilities[0] = midHpPercentMelee;
+            cumulativeProbabilities[1] = midHpPercentRange;
+            cumulativeProbabilities[2] = midHpPercentDodge;
         }
         else if (stats.currentHealth / stats.maxHealth >= lowHpPercentLower && stats.currentHealth / stats.maxHealth < lowHpPercentUpper)
         {
-            if (percentage >= lowHpPercentMelee)
-            {
-                //Melee
-                toReturn = Enemy_State.Attack;
-            }
-            else if(percentage >= lowHpPercentRange && percentage < lowHpPercentMelee)
-            {
-                //Range
-                toReturn = Enemy_State.Fire;
-            }
-            else if(percentage >= lowHpPercentDodge && percentage < lowHpPercentRange)
-            {
-               //Guard
-               toReturn = Enemy_State.Guard;
-            }
+            cumulativeProbabilities[0] = lowHpPercentMelee;
+            cumulativeProbabilities[1] = lowHpPercentRange;
+            cumulativeProbabilities[2] = lowHpPercentDodge;
+        }
+
+        // Calculate cumulative probabilities
+        for (int i = 1; i < cumulativeProbabilities.Length; i++)
+        {
+            cumulativeProbabilities[i] += cumulativeProbabilities[i - 1];
+        }
+
+        // Select behavior based on random number and cumulative probabilities
+        if (percentage < cumulativeProbabilities[0])
+        {
+            // Melee
+            toReturn = Enemy_State.Attack;
+        }
+        else if (percentage < cumulativeProbabilities[1])
+        {
+            // Range
+            toReturn = Enemy_State.Fire;
+        }
+        else
+        {
+            // Guard
+            toReturn = Enemy_State.Guard;
         }
 
         return toReturn;
     }
+
     
     private void SetTimer()
     {
@@ -370,6 +358,7 @@ public class EnemyBehaviour : MonoBehaviour
         };
     }
 
+    //Animation EVENT
     public void EnemyEndAnimation()
     {
         if (Time.time >= stateTimer)
@@ -379,5 +368,23 @@ public class EnemyBehaviour : MonoBehaviour
 
         if (isAttacking) isAttacking = false;
         ChangeState(Enemy_State.Walk);
+    }
+
+    public void FireProjectiles()
+    {
+        if (player != null)
+        {
+            Instantiate(projectiles, player.position, Quaternion.identity);
+        }
+    }
+
+    public void EnableAttack()
+    {
+        attackBox.enabled = true;
+    }
+
+    public void DisableAttack()
+    {
+        attackBox.enabled = false;
     }
 }

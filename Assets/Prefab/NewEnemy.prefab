@@ -5928,6 +5928,7 @@ MonoBehaviour:
   randomTimeForRangeLower: 0
   randomTimeForDodgeUpper: 0
   randomTimeForDodgeLower: 0
+  attackBox: {fileID: 2469217807444691006}
   timer: 0
   stateTimer: 0
   projectiles: {fileID: 0}
