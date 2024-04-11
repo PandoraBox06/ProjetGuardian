@@ -1,9 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class AoEDamage : MonoBehaviour
 {
+    [SerializeField] private float fallingSpeed;
+    [SerializeField] private Rigidbody rb;
     
+    private void Update()
+    {
+        rb.velocity = Vector3.down * fallingSpeed;
+    }
 }
