@@ -1,13 +1,19 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UI_MainMenu : MonoBehaviour
 {
+    [Header("MainMenu")]
     [SerializeField] private Button playButton;
     [SerializeField] private Button scoreButton;
     [SerializeField] private Button creditsButton;
     [SerializeField] private Button quitButton;
+    [Header("PopUp")]
+    [SerializeField] private GameObject popUpGO;
+    [SerializeField] private Button continueButton;
+    [SerializeField] private TMP_InputField pseudoInput;
 
     private void Awake()
     {
@@ -15,11 +21,20 @@ public class UI_MainMenu : MonoBehaviour
         scoreButton.onClick.AddListener(Score);
         creditsButton.onClick.AddListener(Credits);
         quitButton.onClick.AddListener(Quit);
+        continueButton.onClick.AddListener(Continue);
+    }
+
+    private void Continue()
+    {
+        UIManager.Instance.RegisterNewPseudo(pseudoInput.text);
+        Debug.Log($"Pseudo : {pseudoInput.text}");
+        GameManager.Instance.StartGame();
     }
 
     private void Play()
     {
-        GameManager.Instance.RestartGame();
+        popUpGO.SetActive(true);
+        pseudoInput.Select();
     }
 
     private void Score()
@@ -35,5 +50,10 @@ public class UI_MainMenu : MonoBehaviour
     private void Quit()
     {
         Application.Quit();
+    }
+
+    private void OnEnable()
+    {
+        popUpGO.SetActive(false);
     }
 }

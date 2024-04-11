@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -5,7 +6,8 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public static bool StartWithMenu;
+    public bool startWithMenu;
+    public PanelsNames startingMenu;
     [Space]
     [SerializeField] private List<GameObject> allPanels = new List<GameObject>();
     public static UIManager Instance
@@ -21,7 +23,14 @@ public class UIManager : MonoBehaviour
     public string playerPseudo {get ; private set;} //pas récupéré pour le moment 
     public string currentLastScore {get ; private set;}
     public string currentBestScore {get ; private set;}
-    
+
+    private void Awake()
+    {
+        //TEMPORARY
+        if (startWithMenu) OpenOnePanel(startingMenu);
+        else ClosePanels();
+    }
+
     #region Panels
     public void OpenOnePanel(PanelsNames panelName)
     {
@@ -55,6 +64,25 @@ public class UIManager : MonoBehaviour
         return null;
     }
     #endregion
+
+    public void RegisterNewPseudo(string newPseudo)
+    {
+        playerPseudo = newPseudo;
+    }
+
+    public void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        ClosePanels();
+    }
+
+    public void UnlockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+        //dont forget to open a panel !
+    }
 }
 
 public enum PanelsNames

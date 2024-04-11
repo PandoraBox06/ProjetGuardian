@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public enum GameState
 {
@@ -12,7 +13,8 @@ public enum GameState
     InWave,
     PostWave,
     Defeat,
-    Pause
+    Pause,
+    Null
 }
 
 
@@ -22,7 +24,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] float delayBeforeWaveStart = 3f;
     [SerializeField] private int currentWave;
     [SerializeField] private KeyCode waveActivator;
+    [SerializeField] private InputActionReference pauseInput;
     private float timer;
+    private GameState stateBeforePause;
+    private bool isTutorialDone;
 
     public event Action StartSpawningWave;
     public static GameManager Instance { get; private set; }
@@ -44,6 +49,7 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         WaveManager.RefreshWaveCount += GetWaveNumber;
+        pauseInput.action.performed += PauseInput;
     }
 
     private void OnDisable()
@@ -54,6 +60,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         timer = delayBeforeWaveStart;
+        stateBeforePause = GameState.Null;
     }
 
     private void Update()
@@ -89,6 +96,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    #region StateMachine
     void Lobby()
     {
         //Main Menu
@@ -131,10 +139,61 @@ public class GameManager : MonoBehaviour
     {
         // Menu while in Game
     }
+    #endregion
 
-    public void RestartGame()
+    public void StartGame()
     {
+        //methods to launch to enter gameMode
+        UIManager.Instance.LockCursor();
+        if (isTutorialDone) currentGameState = GameState.PreWave;
+        else currentGameState = GameState.Tutorial;
+    }
+
+    public void StopGame() //jsp à quoi ça va servir lol
+    {
+        //methods to launch to exit gameMode
+        UIManager.Instance.UnlockCursor();
+    }
+
+    public void PauseInput(InputAction.CallbackContext callback)
+    {
+        //Pause
+        if (currentGameState != GameState.Lobby && currentGameState != GameState.Pause &&
+            currentGameState != GameState.Defeat)
+        {
+            stateBeforePause = currentGameState;
+            currentGameState = GameState.Pause;
+            PauseGame();
+        }
+
+        //Play
+        else if (currentGameState == GameState.Pause)
+        {
+            if (stateBeforePause == GameState.Null)
+            {
+                Debug.LogWarning("No state is registered, we cannot get out of pause");
+                return;
+            }
+            currentGameState = stateBeforePause;
+            stateBeforePause = GameState.Null;
+            ContinueGame();
+        } 
+    }
+
+    public void PauseGame()
+    {
+        UIManager.Instance.UnlockCursor();
+        Time.timeScale = 0;
         
+        UIManager.Instance.OpenOnePanel(PanelsNames.Pause);
+    }
+
+    public void ContinueGame()
+    {
+        UIManager.Instance.LockCursor();
+        Time.timeScale = 1;
+        
+        UIManager.Instance.ClosePanels();
     }
 
     public void ChangeGameState(GameState state)

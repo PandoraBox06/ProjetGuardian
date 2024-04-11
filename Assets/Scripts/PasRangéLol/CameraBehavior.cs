@@ -57,12 +57,6 @@ public class CameraBehavior : MonoBehaviour
         if (this == Instance)
             Instance = null;
     }
-    
-    private void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
 
     public void OnMove(InputValue value)
     {

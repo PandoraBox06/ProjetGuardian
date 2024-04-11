@@ -14,7 +14,7 @@ public class UI_GameOver : MonoBehaviour
 
     private void Play()
     {
-        GameManager.Instance.RestartGame();
+        GameManager.Instance.StartGame();
     }
 
     private void Quit()
