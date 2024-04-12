@@ -77,6 +77,7 @@ public class Enemy : MonoBehaviour, IDamageable
             float tempoDmg = new();
             tempoDmg = Mathf.Clamp(damage / 2, 0, Mathf.Infinity);
             guardHealth -= tempoDmg;
+            enemyBehaviour.GuardEnemySound();
             animator.Play("Block_hit");
             if (guardHealth <= 0)
             {
@@ -88,6 +89,7 @@ public class Enemy : MonoBehaviour, IDamageable
             currentHealth -= damage;
             barSpriteRenderer.material.color = hpGradient.Evaluate(currentHealth / maxHealth);
             barParent.localScale = new Vector3((currentHealth / maxHealth), 1f);
+            enemyBehaviour.GetHitEnemySound();
             if (currentHealth < maxHealth)
                 hpEnemy.SetActive(true);
             if (currentHealth <= 0)
@@ -114,6 +116,7 @@ public class Enemy : MonoBehaviour, IDamageable
     
     public void Die()
     {
+        enemyBehaviour.DeathEnemySound();
         Destroy(gameObject);
         OnDeath?.Invoke(this.gameObject);
     }

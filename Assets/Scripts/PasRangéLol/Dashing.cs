@@ -86,7 +86,7 @@ public class Dashing : MonoBehaviour
 
         // Action
         Vector3 forceToApply = direction * dashForce + orientation.up * dashUpwardForce;
-        
+        DashPlayerSound();
         if (disableGravity)
             rb.useGravity = false;
 
@@ -130,4 +130,11 @@ public class Dashing : MonoBehaviour
 
         return direction.normalized;
     }
+    
+    public void DashPlayerSound()
+    {
+        if (!AudioManager.Instance.dash.IsNull)
+            AudioManager.Instance.PlayOneShot(AudioManager.Instance.dash, transform.position);
+    }
+    
 }

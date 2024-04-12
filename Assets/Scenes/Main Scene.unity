@@ -598,8 +598,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wave:
-    enemyPrefab: {fileID: 5701659682228424500, guid: 73d1c85443b909f4d9423dd8eb36d8da, type: 3}
-    superEnemyPrefab: {fileID: 5701659682228424500, guid: 73d1c85443b909f4d9423dd8eb36d8da, type: 3}
+    enemyPrefab: {fileID: 5858527829242232144, guid: 7f6cde56b61c2b642aa6da2108fb99dc, type: 3}
+    superEnemyPrefab: {fileID: 5858527829242232144, guid: 83fcab73981b62141a60c87e71275f84, type: 3}
   baseNumberOfEnemy: 2
   addingNumberOfEnemyPerWave: 1
   factorMultiplicator: 1
@@ -4152,6 +4152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c068ec2283986084eb31309dc4f1227d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startWithMenu: 0
+  startingMenu: 0
   allPanels:
   - {fileID: 1166877259}
   - {fileID: 1693073795}
@@ -8204,6 +8206,9 @@ MonoBehaviour:
   scoreButton: {fileID: 387055944}
   creditsButton: {fileID: 241233109}
   quitButton: {fileID: 1090957707}
+  popUpGO: {fileID: 0}
+  continueButton: {fileID: 0}
+  pseudoInput: {fileID: 0}
 --- !u!1 &1179489492
 GameObject:
   m_ObjectHideFlags: 0
@@ -9046,6 +9051,7 @@ MonoBehaviour:
   delayBeforeWaveStart: 3
   currentWave: 0
   waveActivator: 282
+  pauseInput: {fileID: 0}
 --- !u!1 &1313731018
 GameObject:
   m_ObjectHideFlags: 0
@@ -11287,6 +11293,190 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663921206}
   m_CullTransparentMesh: 1
+--- !u!1 &1671119813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1671119814}
+  - component: {fileID: 1671119815}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1671119814
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671119813}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1732086271}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1671119815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671119813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0261b4f15dfe664fb9f9e2e58ab04bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <walk>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <sprint>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <dash>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <getHit>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <death>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <doHit>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <hitSword>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <draw>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <hitCrossbow>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <hitCrossbowWall>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <walkEnemy>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <getHitEnemy>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <attackEnemy>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <attackRangeEnemy>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <guardEnemy>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <deathEnemy>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <cursorValidate>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <cursorBack>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <cursorSelection>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <gameOver>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &1676439764
 GameObject:
   m_ObjectHideFlags: 0
@@ -11717,6 +11907,7 @@ Transform:
   - {fileID: 1289183037}
   - {fileID: 149156629}
   - {fileID: 581060643}
+  - {fileID: 1671119814}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1732526193
@@ -13810,11 +14001,11 @@ PrefabInstance:
       objectReference: {fileID: 753646710}
     - target: {fileID: 5038869482642865381, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.027597276
+      value: -0.027597304
       objectReference: {fileID: 0}
     - target: {fileID: 5038869482642865381, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.019115401
+      value: 0.01911542
       objectReference: {fileID: 0}
     - target: {fileID: 5072608076204082933, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalRotation.y
@@ -13826,11 +14017,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6575052430456687129, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.027146477
+      value: -0.027146464
       objectReference: {fileID: 0}
     - target: {fileID: 6575052430456687129, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.01975041
+      value: 0.019750403
       objectReference: {fileID: 0}
     - target: {fileID: 7066134420152419141, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: cameraPos

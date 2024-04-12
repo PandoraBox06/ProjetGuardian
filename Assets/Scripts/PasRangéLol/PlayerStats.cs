@@ -40,6 +40,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
     {
         animator.SetTrigger(Hit);
         playerData.currentHealth -= damage;
+        GetHitPlayerSound();
         OnDamageTaken?.Invoke(playerData.currentHealth);
         if (playerData.currentHealth <= 0)
             Die();
@@ -47,8 +48,21 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
     public void Die()
     {
+        DeathPlayerSound();
         animator.SetTrigger(Death);
         playerData.currentHealth = playerData.maxHealth;
+    }
+    
+    private void GetHitPlayerSound()
+    {
+        if (!AudioManager.Instance.getHit.IsNull)
+            AudioManager.Instance.PlayOneShot(AudioManager.Instance.getHit, transform.position);
+    }
+    
+    private void DeathPlayerSound()
+    {
+        if (!AudioManager.Instance.death.IsNull)
+            AudioManager.Instance.PlayOneShot(AudioManager.Instance.death, transform.position);
     }
 
 }

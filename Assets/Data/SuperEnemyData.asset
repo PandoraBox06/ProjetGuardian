@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29456595ba1e4439a4567bb9e88255ff, type: 3}
+  m_Name: SuperEnemyData
+  m_EditorClassIdentifier: 
+  MaxHealth: 100
+  GuardHealth: 50
+  WeaponDamage: 60
+  Projectiles: {fileID: 2509917760392722383, guid: a90fa225e09bd4642a0abd3c3cd428de, type: 3}
+  VFX_Hit: {fileID: 222688749315544891, guid: ff55d87d9e5cc974499fb218f24d7e12, type: 3}
+  VFX_Die: {fileID: 358637981425055526, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
+  TrainingDummyMode: 0
+  IdleTime: 0
+  MeleeAttackRange: 2.3
+  RangeAttackRange: 15
+  MinRangeAttackRange: 7
+  ProjectilesSpeed: 10
+  StunTimer: 1
+  HighHpPercentLower: 0.61
+  MidHpPercentUpper: 0.6
+  MidHpPercentLower: 0.31
+  LowHpPercentUpper: 0.3
+  LowHpPercentLower: 0
+  HighHpPercentMelee: 0.6
+  HighHpPercentRange: 0.3
+  HighHpPercentDodge: 0
+  MidHpPercentMelee: 0.3
+  MidHpPercentRange: 0
+  MidHpPercentDodge: 0.6
+  LowHpPercentMelee: 0
+  LowHpPercentRange: 0.6
+  LowHpPercentDodge: 0.3
+  RandomTimeForMeleeUpper: 6
+  RandomTimeForMeleeLower: 3
+  RandomTimeForRangeUpper: 6
+  RandomTimeForRangeLower: 3
+  RandomTimeForDodgeUpper: 4
+  RandomTimeForDodgeLower: 2

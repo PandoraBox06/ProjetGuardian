@@ -137,7 +137,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c8ea42d404e1c1a4580638bd595ddfca, type: 2}
+  - {fileID: 2100000, guid: e0ce7b192e10ef041bf643260c0a07b9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15437,7 +15437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b7c6775fc68e28439e23ac5790d4fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 718934a24a82edb48bcee1d7f4b2db70, type: 2}
+  enemyData: {fileID: 11400000, guid: 448e3e8b6a64a6940a9b8f0b8aaa1494, type: 2}
   weaponCol: {fileID: 3031816720048385431}
   weaponType: 0
 --- !u!65 &3031816720048385431
@@ -15544,7 +15544,7 @@ GameObject:
   - component: {fileID: 6858151234115867698}
   - component: {fileID: 3854044491715554193}
   m_Layer: 10
-  m_Name: Enemy
+  m_Name: SuperEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15666,7 +15666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09601c44b452dad469537aae02533ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 718934a24a82edb48bcee1d7f4b2db70, type: 2}
+  enemyData: {fileID: 11400000, guid: 448e3e8b6a64a6940a9b8f0b8aaa1494, type: 2}
   currentHealth: 0
   guardHealth: 0
   enemyBehaviour: {fileID: 6858151234115867698}
@@ -15721,7 +15721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db748b080de42ab97a3897557128cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 718934a24a82edb48bcee1d7f4b2db70, type: 2}
+  enemyData: {fileID: 11400000, guid: 448e3e8b6a64a6940a9b8f0b8aaa1494, type: 2}
   currentState: 0
   nextState: 0
   player: {fileID: 0}
@@ -21125,7 +21125,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c8ea42d404e1c1a4580638bd595ddfca, type: 2}
+  - {fileID: 2100000, guid: e0ce7b192e10ef041bf643260c0a07b9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

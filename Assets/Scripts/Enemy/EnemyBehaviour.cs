@@ -387,4 +387,36 @@ public class EnemyBehaviour : MonoBehaviour
     {
         attackBox.enabled = false;
     }
+
+    public void WalkEnemySound()
+    {
+        if(!AudioManager.Instance.walkEnemy.IsNull)
+            AudioManager.Instance.PlayOneShot(AudioManager.Instance.walkEnemy, transform.position);
+    }
+    
+    public void GetHitEnemySound()
+    {
+        if(!AudioManager.Instance.getHitEnemy.IsNull)
+            AudioManager.Instance.PlayOneShot(AudioManager.Instance.getHitEnemy, transform.position);
+    }
+    private void AttackEnemySound()
+    {
+        if(!AudioManager.Instance.attackEnemy.IsNull)
+            AudioManager.Instance.PlayOneShot(AudioManager.Instance.attackEnemy, transform.position);
+    }
+    public void AttackRangeEnemySound()
+    {
+        if(!AudioManager.Instance.attackRangeEnemy.IsNull)
+           AudioManager.Instance.PlayOneShot(AudioManager.Instance.attackRangeEnemy, transform.position);
+    }
+    public void GuardEnemySound()
+    {
+        if(!AudioManager.Instance.guardEnemy.IsNull)
+            AudioManager.Instance.PlayOneShot(AudioManager.Instance.guardEnemy, transform.position);
+    }
+    public void DeathEnemySound()
+    {
+        if(!AudioManager.Instance.deathEnemy.IsNull)
+            AudioManager.Instance.PlayOneShot(AudioManager.Instance.deathEnemy, transform.position);
+    }
 }

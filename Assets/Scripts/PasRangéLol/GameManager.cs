@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameState currentGameState;
     [SerializeField] float delayBeforeWaveStart = 3f;
     [SerializeField] private int currentWave;
-    [SerializeField] private KeyCode waveActivator;
     [SerializeField] private InputActionReference pauseInput;
     private float timer;
     private GameState stateBeforePause;
@@ -65,11 +64,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(waveActivator))
-        {
-            ChangeGameState(GameState.PreWave);
-        }
-        
         switch (currentGameState)
         {
             case GameState.Lobby:
@@ -205,11 +199,5 @@ public class GameManager : MonoBehaviour
     public void GetWaveNumber(int wave)
     {
         currentWave = wave;
-    }
-    
-    private void OnGUI()
-    {
-        GUILayout.Space(100f);
-        GUILayout.Box($"Press {waveActivator} to Start Wave", GUILayout.Width(150f), GUILayout.Height(25f));
     }
 }

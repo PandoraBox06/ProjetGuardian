@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class CharacterAnimatorEvents : MonoBehaviour
 {
-    [SerializeField] private EventReference stepAudio;
     public static event Action OnEnableColliderCall;
     public static event Action OnDisbaleColliderCall;
     public static event Action OnEndAnimation;
@@ -38,9 +37,23 @@ public class CharacterAnimatorEvents : MonoBehaviour
     
     public void StepEvent()
     {
-        RuntimeManager.PlayOneShot(stepAudio);
+        if (!AudioManager.Instance.walk.IsNull)
+            AudioManager.Instance.PlayOneShot(AudioManager.Instance.walk, transform.position);
     }
 
+    public void SprintPlayerSound()
+    {
+        if (!AudioManager.Instance.sprint.IsNull)
+            AudioManager.Instance.PlayOneShot(AudioManager.Instance.sprint, transform.position);
+    }
+
+    public void DoHitPlayerSound()
+    {
+        if (!AudioManager.Instance.doHit.IsNull)
+            AudioManager.Instance.PlayOneShot(AudioManager.Instance.doHit, transform.position);
+    }
+
+    
     public void PlayerIFrameOn()
     {
         playerCollider.enabled = false;
