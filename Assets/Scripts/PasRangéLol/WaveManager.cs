@@ -191,13 +191,13 @@ public class WaveManager : MonoBehaviour
         GameManager.Instance.ChangeGameState(GameState.PostWave);
     }
     
-    private void OnDrawGizmos()
-    {
-        //++ Handles est une classe similaire � Gizmos, qui permet notamment de dessiner des arcs, disques, etc.
-        //(L� o� Gizmos s'arr�te aux WireSphere & WireBox)
-        Handles.color = Color.yellow;
-        Handles.DrawWireDisc(transform.position, Vector3.up, radius);
-    }
+    // private void OnDrawGizmos()
+    // {
+    //     //++ Handles est une classe similaire � Gizmos, qui permet notamment de dessiner des arcs, disques, etc.
+    //     //(L� o� Gizmos s'arr�te aux WireSphere & WireBox)
+    //     Handles.color = Color.yellow;
+    //     Handles.DrawWireDisc(transform.position, Vector3.up, radius);
+    // }
 
     // private void OnGUI()
     // {

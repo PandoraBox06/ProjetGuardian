@@ -13,6 +13,6 @@ public class AoELaunching : MonoBehaviour
 
     private void OnDestroy()
     {
-        Instantiate(projectile, coords, Quaternion.identity);
+        Instantiate(projectile, transform.position + coords, Quaternion.identity);
     }
 }

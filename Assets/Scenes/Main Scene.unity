@@ -7195,7 +7195,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1072143368
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9047,11 +9047,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7272eda74fdbef94ea3da0c7aef1356d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentGameState: 0
+  currentGameState: 2
   delayBeforeWaveStart: 3
   currentWave: 0
-  waveActivator: 282
-  pauseInput: {fileID: 0}
+  pauseInput: {fileID: -8883490959086131353, guid: b0b17bf653d5a64488494776990ea425, type: 3}
 --- !u!1 &1313731018
 GameObject:
   m_ObjectHideFlags: 0
@@ -11339,46 +11338,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <walk>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 907185608
+      Data2: 1221354184
+      Data3: -1928449648
+      Data4: -1320681639
+    Path: event:/Avatar/Walk
   <sprint>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -5586771
+      Data2: 1256665084
+      Data3: -1034027903
+      Data4: 2066138430
+    Path: event:/Avatar/Sprint
   <dash>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1832341489
+      Data2: 1127021583
+      Data3: 719741076
+      Data4: -200044795
+    Path: event:/Avatar/Dash
   <getHit>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 2054775542
+      Data2: 1259865624
+      Data3: 1742987
+      Data4: 419742179
+    Path: event:/Avatar/GetHit
   <death>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1156032588
+      Data2: 1115338382
+      Data3: 1183220119
+      Data4: -1356353927
+    Path: event:/Avatar/Death
   <doHit>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -400953876
+      Data2: 1096482658
+      Data3: 2108557757
+      Data4: 1318135306
+    Path: event:/Avatar/DoHit
   <hitSword>k__BackingField:
     Guid:
       Data1: 0
@@ -11409,46 +11408,46 @@ MonoBehaviour:
     Path: 
   <walkEnemy>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 609650096
+      Data2: 1095427164
+      Data3: 528303038
+      Data4: 2027100920
+    Path: event:/Ennemy/Walk Ennemy
   <getHitEnemy>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1317439258
+      Data2: 1202258794
+      Data3: 301508518
+      Data4: -194790144
+    Path: event:/Ennemy/GetHit Ennemy
   <attackEnemy>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 613673999
+      Data2: 1094049073
+      Data3: 1936186000
+      Data4: -472425221
+    Path: event:/Ennemy/Attack
   <attackRangeEnemy>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1741373662
+      Data2: 1265948969
+      Data3: -1894273876
+      Data4: -1217672977
+    Path: "event:/Ennemy/Attack \xE0 distance"
   <guardEnemy>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 447839066
+      Data2: 1220796501
+      Data3: 374269853
+      Data4: -805339195
+    Path: event:/Ennemy/Guard up (la garde)
   <deathEnemy>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1766758891
+      Data2: 1097425781
+      Data3: 322247553
+      Data4: -629184972
+    Path: event:/Ennemy/Death
   <cursorValidate>k__BackingField:
     Guid:
       Data1: 0
@@ -14017,11 +14016,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6575052430456687129, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.027146464
+      value: -0.027146477
       objectReference: {fileID: 0}
     - target: {fileID: 6575052430456687129, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.019750403
+      value: 0.01975041
       objectReference: {fileID: 0}
     - target: {fileID: 7066134420152419141, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: cameraPos
@@ -14029,11 +14028,11 @@ PrefabInstance:
       objectReference: {fileID: 753646710}
     - target: {fileID: 7283526145195117978, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.026679004
+      value: -0.026678963
       objectReference: {fileID: 0}
     - target: {fileID: 7283526145195117978, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.020377474
+      value: 0.020377442
       objectReference: {fileID: 0}
     - target: {fileID: 8036097790816998348, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14218,13 +14217,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebac3311869231b4abfe35aff16da90b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stepAudio:
-    Guid:
-      Data1: 907185608
-      Data2: 1221354184
-      Data3: -1928449648
-      Data4: -1320681639
-    Path: event:/Avatar/Walk
   playerControler: {fileID: 213627851}
   _cameraBehavior: {fileID: 213627849}
   playerCollider: {fileID: 213627845}
