@@ -27,8 +27,16 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         //TEMPORARY
-        if (startWithMenu) OpenOnePanel(startingMenu);
-        else ClosePanels();
+        if (startWithMenu)
+        {
+            GameManager.Instance.ChangeGameState(GameState.Lobby);
+            OpenOnePanel(startingMenu);
+        }
+        else
+        {
+            GameManager.Instance.ChangeGameState(GameState.PreWave);
+            ClosePanels();
+        }
     }
 
     #region Panels

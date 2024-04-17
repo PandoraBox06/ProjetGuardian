@@ -6,7 +6,7 @@ public class BlancoAnimationBehaviour : MonoBehaviour
     public static BlancoAnimationBehaviour Instance { get; private set; }
     [SerializeField] private Animator animator; //to pass as parameter
 
-    private BlancoCombatManager managerInstance;
+    private Fuckall managerInstance;
     private float animationProgress;
     private int inputIndex;
     private float elapsedTime;
@@ -20,7 +20,7 @@ public class BlancoAnimationBehaviour : MonoBehaviour
         }
         Instance = this;
 
-        managerInstance = BlancoCombatManager.Instance;
+        managerInstance = Fuckall.Instance;
         // managerInstance.CancelEvent.AddListener(CancelAnimation);
     }
 
@@ -46,7 +46,12 @@ public class BlancoAnimationBehaviour : MonoBehaviour
 
     public void FollowWithInput(ActionType input)
     {
+        int index = 0;
+        if (input == ActionType.Attack) index = 1;
+        else if (input == ActionType.Range) index = 2;
         
+        animator.SetInteger("InputType", index);
+        animator.SetTrigger("NewInput");
     }
 
     private void OnDestroy()

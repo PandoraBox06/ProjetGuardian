@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -17,36 +19,43 @@ public class HelpComboInterface : MonoBehaviour
         }
         Instance = this;
     }
-
-    [Header("Texts")]
+    
     [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI lastComboText;
-    [Header("Sprites")]
     [SerializeField] private Sprite attackSprite;
     [SerializeField] private Sprite pauseSprite;
     [SerializeField] private Sprite gunSprite;
     [SerializeField] private Sprite holdSprite;
-    [Header("Images")]
     [SerializeField] private List<Image> combosImages = new();
+    [SerializeField] private Animator animator;
     
-    private BlancoCombatManager managerInstance;
+    private Fuckall managerInstance;
+    private bool ComboIsOver;
     
     private int score;
     private int index;
 
     private void Start()
     {
-        managerInstance = BlancoCombatManager.Instance;
+        managerInstance = Fuckall.Instance;
         
-        managerInstance.InputEvent.AddListener(AddCombo);
+        managerInstance.InputEvent.AddListener(AddComboInput);
         managerInstance.CancelEvent.AddListener(CleanCombo);
-        managerInstance.FinishedComboEvent.AddListener(FinishedCombo);
 
         CleanCombo();
     }
 
-    private void AddCombo()
+    private void AddComboInput()
     {
+        if (ComboIsOver)
+        {
+            foreach (Image combo in combosImages)
+            {
+                combo.enabled = false;
+            }
+
+            ComboIsOver = false;
+        }
+        
         combosImages[index].enabled = true;
         InputAction newInput = managerInstance.actionInput;
         string inputName = newInput.name;
@@ -61,11 +70,11 @@ public class HelpComboInterface : MonoBehaviour
                 combosImages[index].sprite = pauseSprite;
                 combosImages[index].color = Color.black;
                 break;
-           case "AttackRange" :
-                    combosImages[index].sprite = gunSprite;
-                    combosImages[index].color = Color.white;
+            case "AttackRange":
+                combosImages[index].sprite = gunSprite;
+                combosImages[index].color = Color.white;
                 break;
-            case "HoldAttack" :
+            case "HoldAttack":
                 combosImages[index].sprite = holdSprite;
                 combosImages[index].color = Color.white;
                 break;
@@ -80,18 +89,14 @@ public class HelpComboInterface : MonoBehaviour
         scoreText.text = $"Score : {score}";
     }
 
-    private void FinishedCombo()
-    {
-        lastComboText.text = "Last combo : "+managerInstance.finishedCombo.comboName;
-    }
-
     private void CleanCombo()
     {
         index = 0;
 
+        ComboIsOver = true;
         foreach (Image combo in combosImages)
         {
-            combo.enabled = false;
+            combo.color = Color.red;
         }
     }
     

@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     private float timer;
     private GameState stateBeforePause;
     private bool isTutorialDone;
+    private Action GameStateAction;
 
     public event Action StartSpawningWave;
     public static GameManager Instance { get; private set; }
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
+        GameStateAction = Lobby;
     }
     private void OnDestroy()
     {
@@ -64,30 +66,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        switch (currentGameState)
-        {
-            case GameState.Lobby:
-                Lobby();
-                break;
-            case GameState.Tutorial:
-                Tutorial();
-                break;
-            case GameState.PreWave:
-                PreWave();
-                break;
-            case GameState.InWave:
-                InWave();
-                break;
-            case GameState.PostWave:
-                PostWave();
-                break;
-            case GameState.Defeat:
-                Defeat();
-                break;
-            case GameState.Pause:
-                Pause();
-                break;
-        }
+        GameStateAction();
     }
 
     #region StateMachine
@@ -135,12 +114,21 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    public bool IsInPlayMode()
+    {
+        if (GameStateAction == Lobby || GameStateAction == Pause || GameStateAction == Defeat)
+        {
+            return false;
+        }
+        return true;
+    }
+    
     public void StartGame()
     {
         //methods to launch to enter gameMode
         UIManager.Instance.LockCursor();
-        if (isTutorialDone) currentGameState = GameState.PreWave;
-        else currentGameState = GameState.Tutorial;
+        if (isTutorialDone) ChangeGameState(GameState.PreWave);
+        else ChangeGameState(GameState.Tutorial);
     }
 
     public void StopGame() //jsp à quoi ça va servir lol
@@ -152,23 +140,21 @@ public class GameManager : MonoBehaviour
     public void PauseInput(InputAction.CallbackContext callback)
     {
         //Pause
-        if (currentGameState != GameState.Lobby && currentGameState != GameState.Pause &&
-            currentGameState != GameState.Defeat)
+        if (IsInPlayMode())
         {
             stateBeforePause = currentGameState;
-            currentGameState = GameState.Pause;
+            ChangeGameState(GameState.Pause);
             PauseGame();
         }
-
         //Play
-        else if (currentGameState == GameState.Pause)
+        else if (GameStateAction == Pause)
         {
             if (stateBeforePause == GameState.Null)
             {
                 Debug.LogWarning("No state is registered, we cannot get out of pause");
                 return;
             }
-            currentGameState = stateBeforePause;
+            ChangeGameState(stateBeforePause);
             stateBeforePause = GameState.Null;
             ContinueGame();
         } 
@@ -193,7 +179,32 @@ public class GameManager : MonoBehaviour
     public void ChangeGameState(GameState state)
     {
         if (state == currentGameState) return;
+
         currentGameState = state;
+        switch (currentGameState)
+        {
+            case GameState.Lobby:
+                GameStateAction = Lobby;
+                break;
+            case GameState.Tutorial:
+                GameStateAction = Tutorial;
+                break;
+            case GameState.PreWave:
+                GameStateAction = PreWave;
+                break;
+            case GameState.InWave:
+                GameStateAction = InWave;
+                break;
+            case GameState.PostWave:
+                GameStateAction = PostWave;
+                break;
+            case GameState.Defeat:
+                GameStateAction = Defeat;
+                break;
+            case GameState.Pause:
+                GameStateAction = Pause;
+                break;
+        }
     }
 
     public void GetWaveNumber(int wave)
