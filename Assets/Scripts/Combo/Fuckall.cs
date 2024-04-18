@@ -16,6 +16,8 @@ public class Fuckall : MonoBehaviour
     [SerializeField] private BlancoAnimationBehaviour animManager;
     
     public Slider inputTimingSlider;
+
+    public string lastFinishedCombo { get; private set; }
     
     [HideInInspector] public UnityEvent InputEvent;
     [HideInInspector] public UnityEvent CancelEvent;
@@ -59,6 +61,7 @@ public class Fuckall : MonoBehaviour
 
     private void NewInput(InputAction input, bool isRetry = false)
     {
+        Debug.Log("new input "+input);
         if (!GameManager.Instance.IsInPlayMode() || !CanInput) return;
         
         if (input == rangeInput.action)
@@ -75,9 +78,9 @@ public class Fuckall : MonoBehaviour
     }
 
     #region TryInput
-
     private void TryAttack(bool isRetry = false)
     {
+        Debug.Log("Attack "+isRetry);
         if (currentCombo.Count == 1)
         {
             animManager.TryToPlay("Attack_1");
@@ -87,12 +90,6 @@ public class Fuckall : MonoBehaviour
         {
             animManager.FollowWithInput(ActionType.Attack);
             ShowInput(attackInput.action);
-        }
-        else if (currentCombo.Count == 5)
-        {
-            animManager.FollowWithInput(ActionType.Attack);
-            ShowInput(attackInput.action, true);
-            RestartCombo();
         }
         else
         {
@@ -107,6 +104,7 @@ public class Fuckall : MonoBehaviour
 
     private void TryRange(bool isRetry = false)
     {
+        Debug.Log("Range "+isRetry);
         if (currentCombo.Count == 1)
         {
             animManager.TryToPlay("Range_1");
@@ -121,6 +119,30 @@ public class Fuckall : MonoBehaviour
     }
     #endregion
 
+    //For when the player is mistaken and we want to retry their input
+    private void RetryCombo(InputAction input)
+    {
+        // Debug.Log("*** retry ***");
+        // RestartCombo();
+        // NewInput(input, true);
+    }
+
+    public void FinishCombo(string comboName)
+    {
+        lastFinishedCombo = comboName;
+        FinishedComboEvent?.Invoke();
+        Debug.Log($"{comboName} has been finished");
+        RestartCombo();
+    }
+    
+    public void RestartCombo()
+    {
+        Debug.Log("*** restart ***");
+        currentCombo = new List<InputAction>();
+        CanInput = true;
+        CancelEvent?.Invoke();
+    }
+    
     private void ShowInput(InputAction input, bool isFinal = false)
     {
         actionInput = input;
@@ -129,20 +151,5 @@ public class Fuckall : MonoBehaviour
         {
             FinishedComboEvent?.Invoke();
         }
-    }
-
-    //For when the player is mistaken and we want to retry their input
-    private void RetryCombo(InputAction input)
-    {
-        RestartCombo();
-        NewInput(input, true);
-    }
-    
-    public void RestartCombo()
-    {
-        // Debug.Log("*** restart ***");
-        currentCombo = new List<InputAction>();
-        CanInput = true;
-        CancelEvent?.Invoke();
     }
 }

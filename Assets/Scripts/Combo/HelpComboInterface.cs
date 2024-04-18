@@ -1,7 +1,6 @@
-using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -21,6 +20,8 @@ public class HelpComboInterface : MonoBehaviour
     }
     
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI comboName;
+    [SerializeField] private GameObject finishedComboBox;
     [SerializeField] private Sprite attackSprite;
     [SerializeField] private Sprite pauseSprite;
     [SerializeField] private Sprite gunSprite;
@@ -40,6 +41,7 @@ public class HelpComboInterface : MonoBehaviour
         
         managerInstance.InputEvent.AddListener(AddComboInput);
         managerInstance.CancelEvent.AddListener(CleanCombo);
+        managerInstance.FinishedComboEvent.AddListener(FinishCombo);
 
         CleanCombo();
     }
@@ -81,6 +83,18 @@ public class HelpComboInterface : MonoBehaviour
         }
 
         index++;
+    }
+
+    private void FinishCombo()
+    {
+        Debug.Log("WTF");
+        Sequence finishedComboSequence = DOTween.Sequence();
+        finishedComboSequence.Append(finishedComboBox.transform.DOMoveY(finishedComboBox.transform.position.y +100, 0.2f));
+        finishedComboSequence.AppendInterval(1f);
+        finishedComboSequence.Append(finishedComboBox.transform.DOMoveY(finishedComboBox.transform.position.y -100, 0.2f));
+        
+        comboName.text = Fuckall.Instance.lastFinishedCombo;
+        finishedComboSequence.Play();
     }
 
     public void AddScore(int _score)

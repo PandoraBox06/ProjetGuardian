@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class BlancoTransitionBehaviour : StateMachineBehaviour
 {
     [SerializeField] private bool isFinal;
+    [SerializeField] private string comboName;
     private float clipLength;
     private float elapsedTime;
 
@@ -44,8 +45,13 @@ public class BlancoTransitionBehaviour : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Fuckall.Instance.CanInput = false;
-        if (inputSlider.IsActive()) inputSlider.gameObject.SetActive(false);
         
-        if (!hasInput) Fuckall.Instance.RestartCombo();
+        if (inputSlider.IsActive()) inputSlider.gameObject.SetActive(false);
+
+        if (isFinal)
+        {
+            if (comboName != null) Fuckall.Instance.FinishCombo(comboName);
+            else Debug.LogWarning("There is no name for this combo");
+        }
     }
 }
