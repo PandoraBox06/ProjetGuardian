@@ -11467,32 +11467,32 @@ MonoBehaviour:
     Path: event:/Avatar/DoHit
   <hitSword>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 828630756
+      Data2: 1112668891
+      Data3: 661649594
+      Data4: 2082059715
+    Path: "event:/Weapons/Hit \xE9p\xE9e Sound"
   <draw>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 492489403
+      Data2: 1135902018
+      Data3: -1154309240
+      Data4: 887371709
+    Path: "event:/Weapons/Draw (d\xE9gainer)"
   <hitCrossbow>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1801940381
+      Data2: 1160658805
+      Data3: -1649996138
+      Data4: 792997619
+    Path: event:/Weapons/Hit pistolet Ennemi Sound
   <hitCrossbowWall>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1827339922
+      Data2: 1302479770
+      Data3: -268771424
+      Data4: -420192623
+    Path: event:/Weapons/Hit pistolet Nothing Sound
   <walkEnemy>k__BackingField:
     Guid:
       Data1: 609650096
@@ -11537,32 +11537,32 @@ MonoBehaviour:
     Path: event:/Ennemy/Death
   <cursorValidate>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1490984354
+      Data2: 1076846316
+      Data3: -1460688497
+      Data4: -1573344472
+    Path: event:/User Interface/Cursor Validate
   <cursorBack>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1145707267
+      Data2: 1242885118
+      Data3: -1844353624
+      Data4: 454189732
+    Path: event:/User Interface/Cursor Back
   <cursorSelection>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 292563492
+      Data2: 1134014756
+      Data3: -1770436695
+      Data4: -30913179
+    Path: event:/User Interface/Cursor Selection
   <gameOver>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1343416487
+      Data2: 1225325120
+      Data3: 332221321
+      Data4: -777829004
+    Path: event:/User Interface/GameOver Sound
 --- !u!1 &1676439764
 GameObject:
   m_ObjectHideFlags: 0
@@ -14115,11 +14115,11 @@ PrefabInstance:
       objectReference: {fileID: 753646710}
     - target: {fileID: 7283526145195117978, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.026678963
+      value: -0.026679004
       objectReference: {fileID: 0}
     - target: {fileID: 7283526145195117978, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.020377442
+      value: 0.020377474
       objectReference: {fileID: 0}
     - target: {fileID: 8036097790816998348, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalPosition.x
