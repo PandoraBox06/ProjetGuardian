@@ -94,7 +94,7 @@ public class BlancoAnimationBehaviour : MonoBehaviour
             return;
         }
         
-        animator.Play(_animation);
+        animator.SetTrigger(_animation);
     }
 
     private void OnDestroy()
