@@ -75,7 +75,6 @@ public class BlancoAnimationBehaviour : MonoBehaviour
     {
         inputIndex = 0;
         animator.SetTrigger("CancelAnimation");
-        
     }
 
     private bool IsPlaying()
@@ -93,7 +92,7 @@ public class BlancoAnimationBehaviour : MonoBehaviour
             Debug.LogWarning($"The animation {_animation} doesn't exist, you made a mistake");
             return;
         }
-        
+
         animator.SetTrigger(_animation);
     }
 

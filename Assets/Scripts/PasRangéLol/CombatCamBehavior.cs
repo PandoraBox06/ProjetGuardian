@@ -13,83 +13,44 @@ public class CombatCamBehavior : MonoBehaviour
 
     [Header("References")]
     public Transform playerTransform;
-    public Transform playerBody;
     public Transform orientation;
-    public Transform combatOrientation;
-    public CinemachineFreeLook combatCam;
-    public CameraBehavior cameraBehavior;
-    public InputActionReference targetAction;
     
     //Private
     bool lockOn;
 
     private void OnEnable()
     {
-        targetAction.action.performed += TargetLock;
         CharacterAnimatorEvents.OnLooktAtTarget += LookAtTarget;
     }
     private void OnDisable()
     {
-        targetAction.action.performed -= TargetLock;
         CharacterAnimatorEvents.OnLooktAtTarget -= LookAtTarget;
     }
 
     private void Update()
     {
-        if(lockTarget == null)
+        if (targets.Count >= 2)
         {
-            if (targets.Count >= 2)
-            {
-                targets = targets.Where(item => item != null).ToList();
-                closestTarget = FindClosestEnemy(playerTransform.position, targets);
-            }
-            else if (targets.Count == 1)
-            {
-                closestTarget = targets.First();
-            }
+            targets = targets.Where(item => item != null).ToList();
+            closestTarget = FindClosestEnemy(playerTransform.position, targets);
         }
-        else if (lockTarget != null)
+        else if (targets.Count == 1)
         {
-            combatCam.LookAt = lockTarget;
+            closestTarget = targets.First();
         }
-
-        // if (closestTarget != null || lockTarget != null)
-        // {
-        //     cameraBehavior.SwitchCameraStyle(CameraBehavior.CameraStyle.Combat);
-        // }
-        // else
-        // {
-        //     cameraBehavior.SwitchCameraStyle(CameraBehavior.CameraStyle.Basic);
-        //     combatCam.LookAt = combatOrientation;
-        // }
-
     }
 
-    void TargetLock(InputAction.CallbackContext callbackContext)
-    {
-        // if (!lockOn)
-        // {
-        //     lockTarget = closestTarget;
-        //     lockOn = true;
-        // }
-        // else
-        // {
-        //     lockTarget = null;
-        //     lockOn = false;
-        // }
-    }
-
-    public void LookAtTarget()
+    private void LookAtTarget()
     {
         if (closestTarget != null)
         {
             //Debug.Log("Look at this");
-            //playerTransform.LookAt(closestTarget.position);
+            playerTransform.LookAt(closestTarget.position);
             //orientation.LookAt(closestTarget.position);
         }
     }
 
-    public Transform FindClosestEnemy(Vector3 playerPosition, List<Transform> enemies)
+    private Transform FindClosestEnemy(Vector3 playerPosition, List<Transform> enemies)
     {
         Transform closestEnemy = null;
         float closestDistance = Mathf.Infinity;
