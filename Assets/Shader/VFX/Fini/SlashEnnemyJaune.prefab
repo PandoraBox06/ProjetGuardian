@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9166622362060739297}
   - component: {fileID: 5308420162720630495}
   m_Layer: 0
-  m_Name: Slash
+  m_Name: SlashEnnemyJaune
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
