@@ -65,7 +65,11 @@ public class CharacterAnimatorEvents : MonoBehaviour
             AudioManager.Instance.PlayOneShot(AudioManager.Instance.doHit, transform.position);
     }
 
-    
+    public void HitSwordSound()
+    {
+        if (!AudioManager.Instance.hitSword.IsNull)
+            AudioManager.Instance.PlayOneShot(AudioManager.Instance.hitSword, transform.position);
+    }
     public void PlayerIFrameOn()
     {
         playerCollider.enabled = false;

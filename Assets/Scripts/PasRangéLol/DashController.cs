@@ -86,4 +86,10 @@ public class DashController : MonoBehaviour
         // Add any cleanup or resetting logic after dash (optional)
         // Add your own cleanup/reset logic
     }
+    
+    public void DashPlayerSound()
+    {
+        if (!AudioManager.Instance.dash.IsNull)
+            AudioManager.Instance.PlayOneShot(AudioManager.Instance.dash, transform.position);
+    }
 }
