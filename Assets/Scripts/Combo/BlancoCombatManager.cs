@@ -151,6 +151,7 @@ public class BlancoCombatManager : MonoBehaviour
     private void CheckValidCombo(InputAction lastAction)
     {
         if (lastAction == NoneInputContainer || lastAction == null) return;
+        if (!GameManager.Instance.IsPlaying()) return;
         
         //check if first attack
         if (!canChainInput) RestartCombo();

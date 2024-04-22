@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     private GameState stateBeforePause;
     private bool isTutorialDone;
 
+    private Action currentAction;
+
     public event Action StartSpawningWave;
     public static GameManager Instance { get; private set; }
     private void Awake()
@@ -60,34 +62,14 @@ public class GameManager : MonoBehaviour
     {
         timer = delayBeforeWaveStart;
         stateBeforePause = GameState.Null;
+        
+        if (UIManager.Instance.startWithMenu) ChangeGameState(GameState.Lobby);
+        else ChangeGameState(GameState.PreWave);
     }
 
     private void Update()
     {
-        switch (currentGameState)
-        {
-            case GameState.Lobby:
-                Lobby();
-                break;
-            case GameState.Tutorial:
-                Tutorial();
-                break;
-            case GameState.PreWave:
-                PreWave();
-                break;
-            case GameState.InWave:
-                InWave();
-                break;
-            case GameState.PostWave:
-                PostWave();
-                break;
-            case GameState.Defeat:
-                Defeat();
-                break;
-            case GameState.Pause:
-                Pause();
-                break;
-        }
+        currentAction();
     }
 
     #region StateMachine
@@ -135,12 +117,24 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+
+    public bool IsPlaying()
+    {
+        if (currentGameState == GameState.Lobby ||
+            currentGameState == GameState.Defeat || currentGameState == GameState.Pause)
+        {
+            return false;
+        }
+
+        return true;
+    }
+    
     public void StartGame()
     {
         //methods to launch to enter gameMode
         UIManager.Instance.LockCursor();
-        if (isTutorialDone) currentGameState = GameState.PreWave;
-        else currentGameState = GameState.Tutorial;
+        if (isTutorialDone) ChangeGameState(GameState.PreWave);
+        else ChangeGameState(GameState.Tutorial);
     }
 
     public void StopGame() //jsp à quoi ça va servir lol
@@ -152,11 +146,10 @@ public class GameManager : MonoBehaviour
     public void PauseInput(InputAction.CallbackContext callback)
     {
         //Pause
-        if (currentGameState != GameState.Lobby && currentGameState != GameState.Pause &&
-            currentGameState != GameState.Defeat)
+        if (!IsPlaying())
         {
             stateBeforePause = currentGameState;
-            currentGameState = GameState.Pause;
+            ChangeGameState(GameState.Pause);
             PauseGame();
         }
 
@@ -168,7 +161,7 @@ public class GameManager : MonoBehaviour
                 Debug.LogWarning("No state is registered, we cannot get out of pause");
                 return;
             }
-            currentGameState = stateBeforePause;
+            ChangeGameState(stateBeforePause);
             stateBeforePause = GameState.Null;
             ContinueGame();
         } 
@@ -194,6 +187,31 @@ public class GameManager : MonoBehaviour
     {
         if (state == currentGameState) return;
         currentGameState = state;
+        
+        switch (currentGameState)
+        {
+            case GameState.Lobby:
+                currentAction = Lobby;
+                break;
+            case GameState.Tutorial:
+                currentAction = Tutorial;
+                break;
+            case GameState.PreWave:
+                currentAction = PreWave;
+                break;
+            case GameState.InWave:
+                currentAction = InWave;
+                break;
+            case GameState.PostWave:
+                currentAction = PostWave;
+                break;
+            case GameState.Defeat:
+                currentAction = Defeat;
+                break;
+            case GameState.Pause:
+                currentAction = Pause;
+                break;
+        }
     }
 
     public void GetWaveNumber(int wave)
