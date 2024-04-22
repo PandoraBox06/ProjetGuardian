@@ -114,7 +114,9 @@ public class CharacterAnimatorEvents : MonoBehaviour
         dashDirection.Normalize();
         
         // Move the player in dash direction
+        animator.applyRootMotion = false;
         _characterController.Move(dashDirection * ((dashDistance / dashDuration) * Time.deltaTime));
+        animator.applyRootMotion = true;
     }
     
     // private void ResetAllAnimatorTriggers()
