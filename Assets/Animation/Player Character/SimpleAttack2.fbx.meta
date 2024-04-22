@@ -71,8 +71,22 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0
+        functionName: OnLookAtTargets
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.5551682
         functionName: OnEnableCollider
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.56228954
+        functionName: DoHitPlayerSound
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -85,15 +99,22 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9968454
+      - time: 0.9896165
         functionName: OnEndAnimations
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.56228954
-        functionName: DoHitPlayerSound
+      - time: 0.9936909
+        functionName: UnFreezeMovement
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.6611842
+        functionName: HitSwordSound
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

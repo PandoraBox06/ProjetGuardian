@@ -13,7 +13,6 @@ public class AudioManager : MonoBehaviour
 
     [field: Header("Avatar")]
     [field: SerializeField] public EventReference walk { get; private set; }
-    [field: SerializeField] public EventReference sprint { get; private set; }
     [field: SerializeField] public EventReference dash { get; private set; }
     [field: SerializeField] public EventReference getHit { get; private set; }
     [field: SerializeField] public EventReference death { get; private set; }

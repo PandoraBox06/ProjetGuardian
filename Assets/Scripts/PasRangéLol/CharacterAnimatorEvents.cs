@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using FMODUnity;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CharacterAnimatorEvents : MonoBehaviour
 {
@@ -12,10 +13,21 @@ public class CharacterAnimatorEvents : MonoBehaviour
     public static event Action OnFireProjectile;
     public static event Action OnLooktAtTarget;
     
-    [SerializeField] PlayerControlerV2 playerControler;
+    [SerializeField] PlayerMouvement playerController;
     [SerializeField] private CameraBehavior _cameraBehavior;
     [SerializeField] private Collider playerCollider;
     [SerializeField] private Animator animator;
+    
+    private Vector3 dashDirection;
+    [SerializeField] private float dashDistance = 5f;
+    [SerializeField] private float dashDuration = 0.2f;
+    private CharacterController _characterController;
+
+    private void Start()
+    {
+        _characterController = GetComponent<CharacterController>();
+    }
+
     public void OnEnableCollider()
     {
         OnEnableColliderCall?.Invoke();
@@ -41,19 +53,17 @@ public class CharacterAnimatorEvents : MonoBehaviour
             AudioManager.Instance.PlayOneShot(AudioManager.Instance.walk, transform.position);
     }
 
-    public void SprintPlayerSound()
-    {
-        if (!AudioManager.Instance.sprint.IsNull)
-            AudioManager.Instance.PlayOneShot(AudioManager.Instance.sprint, transform.position);
-    }
-
     public void DoHitPlayerSound()
     {
         if (!AudioManager.Instance.doHit.IsNull)
             AudioManager.Instance.PlayOneShot(AudioManager.Instance.doHit, transform.position);
     }
 
-    
+    public void HitSwordSound()
+    {
+        if (!AudioManager.Instance.hitSword.IsNull)
+            AudioManager.Instance.PlayOneShot(AudioManager.Instance.hitSword, transform.position);
+    }
     public void PlayerIFrameOn()
     {
         playerCollider.enabled = false;
@@ -66,12 +76,12 @@ public class CharacterAnimatorEvents : MonoBehaviour
 
     public void FreezeMovement()
     {
-        playerControler.isAttacking = true;
+        playerController.isAttacking = true;
         _cameraBehavior.isAttacking = true;
     }
     public void UnFreezeMovement()
     {
-        playerControler.isAttacking = false;
+        playerController.isAttacking = false;
         _cameraBehavior.isAttacking = false;
     }
 
@@ -89,4 +99,32 @@ public class CharacterAnimatorEvents : MonoBehaviour
     {
         animator.applyRootMotion = false;
     }
+
+    public void MoveImpulse()
+    {
+        // Get camera forward direction as dash direction
+        dashDirection = transform.forward;
+
+        // Ignore Y component to avoid dashing upwards
+        dashDirection.y = 0;
+
+        // Normalize dash direction to avoid faster dashes when looking up or down
+        dashDirection.Normalize();
+        
+        // Move the player in dash direction
+        animator.applyRootMotion = false;
+        _characterController.Move(dashDirection * ((dashDistance / dashDuration) * Time.deltaTime));
+        animator.applyRootMotion = true;
+    }
+    
+    // private void ResetAllAnimatorTriggers()
+    // {
+    //     foreach (var trigger in animator.parameters)
+    //     {
+    //         if (trigger.type == AnimatorControllerParameterType.Trigger)
+    //         {
+    //             animator.ResetTrigger(trigger.name);
+    //         }
+    //     }
+    // }
 }
