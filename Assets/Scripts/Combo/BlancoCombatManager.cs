@@ -53,6 +53,8 @@ public class BlancoCombatManager : MonoBehaviour
     private bool isHoldPossible;
     private bool isHoldFinished;
     private bool canChainInput;
+
+    private string currentAnimationName;
     
     private const string INPUT_NONE = "None_Input";
     #endregion
@@ -156,6 +158,14 @@ public class BlancoCombatManager : MonoBehaviour
         //check if first attack
         if (!canChainInput) RestartCombo();
         
+        //check if input has already been done for this anim
+        string checkAnim = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+        if (checkAnim == currentAnimationName)
+        {
+            //if its idle it's ok to have a new input, idk why it bugs
+            if (checkAnim != "Idle") return;
+        }
+        
         currentCombo.Add(lastAction);
         int currentComboLastIdx = currentCombo.Count - 1;
         bool inputEventSent = false;
@@ -176,6 +186,8 @@ public class BlancoCombatManager : MonoBehaviour
                     else { InputEvent?.Invoke(); }
                     
                     inputEventSent = true;
+                    
+                    currentAnimationName = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
                 }
             }
             else
@@ -239,6 +251,7 @@ public class BlancoCombatManager : MonoBehaviour
         validList = new(allCombos);
         elapsedTime = transitionDuration + 1;
         canChainInput = false;
+        currentAnimationName = null;
         CancelEvent?.Invoke();
     }
 
