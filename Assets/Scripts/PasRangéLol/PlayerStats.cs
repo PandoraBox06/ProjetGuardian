@@ -29,6 +29,9 @@ public class PlayerStats : MonoBehaviour, IDamageable
     private static readonly int Hit = Animator.StringToHash("Hit");
     private static readonly int Death = Animator.StringToHash("Death");
 
+    [SerializeField] private ParticleSystem blood;
+    [SerializeField] private ParticleSystem hit;
+    
     public static event Action<float> OnDamageTaken;
 
     private void Awake()
@@ -40,6 +43,8 @@ public class PlayerStats : MonoBehaviour, IDamageable
     {
         animator.SetTrigger(Hit);
         playerData.currentHealth -= damage;
+        blood.Play();
+        hit.Play();
         GetHitPlayerSound();
         OnDamageTaken?.Invoke(playerData.currentHealth);
         if (playerData.currentHealth <= 0)

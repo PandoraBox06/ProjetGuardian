@@ -14,6 +14,8 @@ public class DashController : MonoBehaviour
     private Vector3 dashDirection;
     private float dashTimer = 0f;
 
+    [SerializeField] private ParticleSystem dashVFX;
+    
     // Update is called once per frame
     private void Start()
     {
@@ -35,6 +37,7 @@ public class DashController : MonoBehaviour
             dashTimer += Time.deltaTime;
 
             animator.Play("Dash");
+            dashVFX.Play();
             
             // Check if dash duration is over
             if (dashTimer >= dashDuration)

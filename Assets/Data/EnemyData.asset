@@ -16,7 +16,7 @@ MonoBehaviour:
   GuardHealth: 50
   WeaponDamage: 30
   Projectiles: {fileID: 2509917760392722383, guid: a90fa225e09bd4642a0abd3c3cd428de, type: 3}
-  VFX_Hit: {fileID: 222688749315544891, guid: ff55d87d9e5cc974499fb218f24d7e12, type: 3}
+  VFX_Hit: {fileID: 924768508263797405, guid: 8bc51796552c0164a8513fe8a6fc6925, type: 3}
   VFX_Die: {fileID: 358637981425055526, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
   TrainingDummyMode: 0
   IdleTime: 0

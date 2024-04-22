@@ -25,6 +25,8 @@ public class Enemy : MonoBehaviour, IDamageable
     [HideInInspector] public GameObject VFX_Die;
     [HideInInspector] public bool HasInstanciated;
 
+    [SerializeField] private ParticleSystem guardBlocked;
+    [SerializeField] private ParticleSystem shieldEffect;
     public static event Action<GameObject> OnDeath;
 
     private void Awake()
@@ -47,29 +49,6 @@ public class Enemy : MonoBehaviour, IDamageable
         HasInstanciated = false;
     }
 
-    void VFXHit()
-    {
-        VFX_Hit.SetActive(true);
-        // Debug.Log("Oui");
-
-    }
-
-    IEnumerator DeactivateVFXHit()
-    {
-
-        yield return new WaitForSeconds(1f);
-
-        VFX_Hit.SetActive(false);
-    }
-
-    IEnumerator DestroyExplosion()
-    {
-
-        yield return new WaitForSeconds(1f);
-
-        VFX_Die.SetActive(false);
-    }
-
     public void TakeDamage(float damage)
     {
         if (isGuarding)
@@ -79,6 +58,8 @@ public class Enemy : MonoBehaviour, IDamageable
             guardHealth -= tempoDmg;
             enemyBehaviour.GuardEnemySound();
             animator.Play("Block_hit");
+            guardBlocked.Play();
+            shieldEffect.Play();
             if (guardHealth <= 0)
             {
                 enemyBehaviour.ChangeState(Enemy_State.Stun);
@@ -99,13 +80,7 @@ public class Enemy : MonoBehaviour, IDamageable
                 HasInstanciated = true;
             }
 
-            if (HasInstanciated)
-            {
-                StartCoroutine(DestroyExplosion());
-            }
-
-            Invoke(nameof(VFXHit), 0);
-            StartCoroutine(DeactivateVFXHit());
+            Instantiate(VFX_Hit, transform.position + Vector3.up, Quaternion.identity);
         }
     }
 
