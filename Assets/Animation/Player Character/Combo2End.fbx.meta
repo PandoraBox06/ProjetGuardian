@@ -99,6 +99,20 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.58789533
+        functionName: SpawnVFX3
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.631579
+        functionName: HitSwordSound
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.80476093
         functionName: OnDisableCollider
         data: 
@@ -115,13 +129,6 @@ ModelImporter:
         messageOptions: 0
       - time: 1
         functionName: UnFreezeMovement
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.631579
-        functionName: HitSwordSound
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
