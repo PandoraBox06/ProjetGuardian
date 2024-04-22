@@ -53,12 +53,6 @@ public class CharacterAnimatorEvents : MonoBehaviour
             AudioManager.Instance.PlayOneShot(AudioManager.Instance.walk, transform.position);
     }
 
-    public void SprintPlayerSound()
-    {
-        if (!AudioManager.Instance.sprint.IsNull)
-            AudioManager.Instance.PlayOneShot(AudioManager.Instance.sprint, transform.position);
-    }
-
     public void DoHitPlayerSound()
     {
         if (!AudioManager.Instance.doHit.IsNull)

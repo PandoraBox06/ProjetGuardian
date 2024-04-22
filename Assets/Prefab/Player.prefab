@@ -470,7 +470,8 @@ Transform:
   m_LocalPosition: {x: -0.19189593, y: 0.88546836, z: -0.015938072}
   m_LocalScale: {x: 1.0000006, y: 1.0000005, z: 1.0000005}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3604915367597300388}
   m_Father: {fileID: 7898848057538208802}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &835366345736314615
@@ -712,8 +713,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1868300569363738888}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11559233, y: -0.000000034182097, z: 0.0000000039778523, w: 0.9932968}
-  m_LocalPosition: {x: 1.4842419e-13, y: 3, z: -7}
+  m_LocalRotation: {x: 0.11559233, y: 0.00000003416923, z: -0.0000000039763552, w: 0.9932968}
+  m_LocalPosition: {x: 1.674117e-13, y: 3, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6443,7 +6444,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4219283958837976098}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08648641, y: 0.0000000326842, z: -0.000000010769464, w: 0.996253}
+  m_LocalRotation: {x: 0.08648641, y: -0.000000032671913, z: 0.000000010765418, w: 0.996253}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6607,7 +6608,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4602318276961627246}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.04008756, y: 0.000000033149437, z: -0.00000000923868, w: 0.99919623}
+  m_LocalRotation: {x: 0.04008756, y: -0.000000033136978, z: 0.000000009235208, w: 0.99919623}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7452,7 +7453,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6017324436475141005}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0000000074505797, y: 0.000000050239706, z: -0.000000011853556, w: 1}
+  m_LocalRotation: {x: 0.0000000074505797, y: -0.000000016733987, z: 0.0000000039482173, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8296,6 +8297,37 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 7
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &8403462581918203872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3604915367597300388}
+  m_Layer: 0
+  m_Name: FireOutput
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3604915367597300388
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8403462581918203872}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.07, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7431403569184326608}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &8405454003346408753
 GameObject:
   m_ObjectHideFlags: 0
@@ -8427,6 +8459,7 @@ GameObject:
   - component: {fileID: 5665569233489516513}
   - component: {fileID: 6510876185618797857}
   - component: {fileID: 4836268023266057977}
+  - component: {fileID: 5108578877518357498}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -8813,6 +8846,23 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.95, z: 0}
+--- !u!114 &5108578877518357498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8749299566912900666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c64850fae8d0f5d4c8ead445ebcc446a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectileOutput: {fileID: 3604915367597300388}
+  _projectileSpeed: 800
+  _projectilePrefab: {fileID: 36356212038313948, guid: 9c9fb607a717f3945b5c55801c86c63e, type: 3}
+  _combatCamBehavior: {fileID: 4917013394908423719}
+  _projectileDump: {fileID: 0}
 --- !u!1 &9041258510780551821
 GameObject:
   m_ObjectHideFlags: 0
