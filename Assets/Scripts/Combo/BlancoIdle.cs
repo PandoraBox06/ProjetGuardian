@@ -8,6 +8,13 @@ public class BlancoIdle : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         CameraBehavior.Instance.isAttacking = false;
+        foreach (var trigger in animator.parameters)
+        {
+            if (trigger.type == AnimatorControllerParameterType.Trigger)
+            {
+                animator.ResetTrigger(trigger.name);
+            }
+        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

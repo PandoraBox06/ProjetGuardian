@@ -117,14 +117,14 @@ public class CharacterAnimatorEvents : MonoBehaviour
         _characterController.Move(dashDirection * ((dashDistance / dashDuration) * Time.deltaTime));
     }
     
-    public void ResetAllAnimatorTriggers()
-    {
-        foreach (var trigger in animator.parameters)
-        {
-            if (trigger.type == AnimatorControllerParameterType.Trigger)
-            {
-                animator.ResetTrigger(trigger.name);
-            }
-        }
-    }
+    // private void ResetAllAnimatorTriggers()
+    // {
+    //     foreach (var trigger in animator.parameters)
+    //     {
+    //         if (trigger.type == AnimatorControllerParameterType.Trigger)
+    //         {
+    //             animator.ResetTrigger(trigger.name);
+    //         }
+    //     }
+    // }
 }
