@@ -1,12 +1,16 @@
 using System.Collections.Generic;
 using TMPro;
+using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Sequence = DG.Tweening.Sequence;
 
 public class HelpComboInterface : MonoBehaviour
 {
     public static HelpComboInterface Instance { get; private set; }
+    private bool hasFinished;
 
     private void Awake()
     {
@@ -28,8 +32,10 @@ public class HelpComboInterface : MonoBehaviour
     [SerializeField] private Sprite holdSprite;
     [Header("Images")]
     [SerializeField] private List<Image> combosImages = new();
+    [SerializeField] private GameObject lastComboBox;
     
     private BlancoCombatManager managerInstance;
+    private Vector3 comboBoxPos;
     
     private int score;
     private int index;
@@ -40,13 +46,26 @@ public class HelpComboInterface : MonoBehaviour
         
         managerInstance.InputEvent.AddListener(AddCombo);
         managerInstance.CancelEvent.AddListener(CleanCombo);
+        managerInstance.FinishedComboEvent.AddListener(AddCombo);
         managerInstance.FinishedComboEvent.AddListener(FinishedCombo);
+
+        comboBoxPos = lastComboBox.transform.position;
 
         CleanCombo();
     }
 
     private void AddCombo()
     {
+        if (hasFinished)
+        {
+            foreach (Image combo in combosImages)
+            {
+                combo.enabled = false;
+            }
+
+            hasFinished = false;
+        }
+        
         combosImages[index].enabled = true;
         InputAction newInput = managerInstance.actionInput;
         string inputName = newInput.name;
@@ -82,17 +101,21 @@ public class HelpComboInterface : MonoBehaviour
 
     private void FinishedCombo()
     {
-        lastComboText.text = "Last combo : "+managerInstance.finishedCombo.comboName;
+        lastComboText.text = managerInstance.finishedCombo.comboName;
+        
+        Sequence finishSequence = DOTween.Sequence();
+        finishSequence.Append(lastComboBox.transform.DOMoveY(comboBoxPos.y + 150, 0.2f));
+        finishSequence.AppendInterval(0.5f);
+        finishSequence.Append(lastComboBox.transform.DOMoveY(comboBoxPos.y, 0.2f));
+
+        finishSequence.Play();
     }
 
     private void CleanCombo()
     {
         index = 0;
 
-        foreach (Image combo in combosImages)
-        {
-            combo.enabled = false;
-        }
+        hasFinished = true;
     }
     
     private void OnDestroy()
