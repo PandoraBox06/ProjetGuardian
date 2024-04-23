@@ -29,6 +29,8 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private ParticleSystem shieldEffect;
     public static event Action<GameObject> OnDeath;
 
+    [SerializeField] Transform hitOutput;
+    
     private void Awake()
     {
         enemyData.SetUpEnemy(out maxHealth, out VFX_Hit, out VFX_Die, out guardHealth);
@@ -41,12 +43,6 @@ public class Enemy : MonoBehaviour, IDamageable
         barParent.localScale = Vector3.one;
         barSpriteRenderer.material.color = hpGradient.Evaluate(currentHealth / maxHealth);
         hpEnemy.SetActive(false);
-
-        if (VFX_Hit != null)
-        {
-            VFX_Hit.SetActive(false);
-        }
-        HasInstanciated = false;
     }
 
     public void TakeDamage(float damage)
@@ -80,7 +76,7 @@ public class Enemy : MonoBehaviour, IDamageable
                 HasInstanciated = true;
             }
 
-            Instantiate(VFX_Hit, transform.position + Vector3.up, Quaternion.identity);
+            Instantiate(VFX_Hit, hitOutput.position, Quaternion.identity);
         }
     }
 
