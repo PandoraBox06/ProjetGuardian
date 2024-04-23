@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BlancoTransitionBehaviour : StateMachineBehaviour
 {
+    [SerializeField] private bool isGivingPoints;
+    [SerializeField] private int pointsGiven;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -20,6 +22,15 @@ public class BlancoTransitionBehaviour : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         BlancoCombatManager.Instance.FinishedAnimation();
+
+        if (isGivingPoints)
+        {
+            if (pointsGiven == null || pointsGiven == 0) Debug.LogWarning("You have to specify points, the player gets none");
+            else
+            {
+                HelpComboInterface.Instance.AddScore(pointsGiven);
+            }
+        }
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

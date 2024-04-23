@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfbb119df3ecead47a26ed8dddeaa9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGivingPoints: 0
+  pointsGiven: 0
 --- !u!1101 &-9003789666364245748
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -148,6 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfbb119df3ecead47a26ed8dddeaa9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGivingPoints: 0
+  pointsGiven: 0
 --- !u!1101 &-7569614861766707440
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -413,6 +417,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfbb119df3ecead47a26ed8dddeaa9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGivingPoints: 0
+  pointsGiven: 0
 --- !u!114 &-5123544554163900440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -729,6 +735,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfbb119df3ecead47a26ed8dddeaa9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGivingPoints: 0
+  pointsGiven: 0
 --- !u!114 &-2697287375680680355
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -741,6 +749,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfbb119df3ecead47a26ed8dddeaa9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGivingPoints: 0
+  pointsGiven: 0
 --- !u!114 &-2440812887977665423
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -753,6 +763,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfbb119df3ecead47a26ed8dddeaa9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGivingPoints: 0
+  pointsGiven: 0
 --- !u!1101 &-2421613741315693279
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -812,6 +824,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfbb119df3ecead47a26ed8dddeaa9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGivingPoints: 0
+  pointsGiven: 0
 --- !u!1101 &-1835749610607449954
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1543,6 +1557,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfbb119df3ecead47a26ed8dddeaa9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGivingPoints: 0
+  pointsGiven: 0
 --- !u!114 &3295407451535516837
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1555,6 +1571,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfbb119df3ecead47a26ed8dddeaa9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGivingPoints: 0
+  pointsGiven: 0
 --- !u!1101 &3684918987376686127
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1592,6 +1610,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfbb119df3ecead47a26ed8dddeaa9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGivingPoints: 0
+  pointsGiven: 0
 --- !u!1101 &4297311785373118047
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1673,6 +1693,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfbb119df3ecead47a26ed8dddeaa9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGivingPoints: 0
+  pointsGiven: 0
 --- !u!1101 &5453395071578921684
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1813,6 +1835,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfbb119df3ecead47a26ed8dddeaa9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGivingPoints: 0
+  pointsGiven: 0
 --- !u!1101 &6567263687530127213
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -2164,3 +2188,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfbb119df3ecead47a26ed8dddeaa9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGivingPoints: 0
+  pointsGiven: 0

@@ -61,6 +61,11 @@ public class HelpComboInterface : MonoBehaviour
         inputTimingSlider.value += Time.deltaTime;
     }
 
+    private void OnEnable()
+    {
+        score = 0;
+    }
+
     private void AddCombo()
     {
         if (hasFinished)
