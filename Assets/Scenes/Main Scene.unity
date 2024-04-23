@@ -705,7 +705,7 @@ MonoBehaviour:
   factorMultiplicatorSuperEnemy: 1
   delayBetweenSpawn: 1
   radius: 25
-  canSpawnWave: 0
+  canSpawnWave: 1
   skippingWave: 283
 --- !u!4 &149156629
 Transform:
@@ -716,7 +716,7 @@ Transform:
   m_GameObject: {fileID: 149156627}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.0654554, y: -6.9, z: -27.428804}
+  m_LocalPosition: {x: 2.0654554, y: -4.99, z: -27.428804}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17361,11 +17361,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4065442201119211414, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.026679004
+      value: -0.026678963
       objectReference: {fileID: 0}
     - target: {fileID: 4065442201119211414, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.020377474
+      value: 0.020377442
       objectReference: {fileID: 0}
     - target: {fileID: 4212672270273503124, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalRotation.y

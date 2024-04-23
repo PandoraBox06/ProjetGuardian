@@ -21199,29 +21199,33 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 899962980978204243, guid: 5bd9b1e2f66c641499e92955d88674e2, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 1562609474160894833, guid: 5bd9b1e2f66c641499e92955d88674e2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 150
+      value: 10.000001
       objectReference: {fileID: 0}
     - target: {fileID: 1562609474160894833, guid: 5bd9b1e2f66c641499e92955d88674e2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 150
+      value: 10.000001
       objectReference: {fileID: 0}
     - target: {fileID: 1562609474160894833, guid: 5bd9b1e2f66c641499e92955d88674e2, type: 3}
       propertyPath: m_LocalScale.z
-      value: 150
+      value: 10.000001
       objectReference: {fileID: 0}
     - target: {fileID: 1562609474160894833, guid: 5bd9b1e2f66c641499e92955d88674e2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.366
+      value: 0.133
       objectReference: {fileID: 0}
     - target: {fileID: 1562609474160894833, guid: 5bd9b1e2f66c641499e92955d88674e2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.11
+      value: 1.88
       objectReference: {fileID: 0}
     - target: {fileID: 1562609474160894833, guid: 5bd9b1e2f66c641499e92955d88674e2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.44
+      value: 0.483
       objectReference: {fileID: 0}
     - target: {fileID: 1562609474160894833, guid: 5bd9b1e2f66c641499e92955d88674e2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -21250,6 +21254,10 @@ PrefabInstance:
     - target: {fileID: 1562609474160894833, guid: 5bd9b1e2f66c641499e92955d88674e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 122.669
+      objectReference: {fileID: 0}
+    - target: {fileID: 1562609474160894833, guid: 5bd9b1e2f66c641499e92955d88674e2, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2109640154615903352, guid: 5bd9b1e2f66c641499e92955d88674e2, type: 3}
       propertyPath: m_Name
