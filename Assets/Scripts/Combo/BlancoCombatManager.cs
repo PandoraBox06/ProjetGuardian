@@ -29,7 +29,6 @@ public class BlancoCombatManager : MonoBehaviour
     [SerializeField] private Animator animator;
     
     [Header("Inputs")]
-    [SerializeField] private Slider inputTimingSlider;
     public InputActionReference pauseInput;
     public InputActionReference attackInput;
     public InputActionReference gunInput;
@@ -62,7 +61,6 @@ public class BlancoCombatManager : MonoBehaviour
     {
         NoneInputContainer = new InputAction(INPUT_NONE);
         NextInputContainer = NoneInputContainer;
-        inputTimingSlider.maxValue = transitionDuration;
         
         elapsedTime = transitionDuration +1;
         //detect all inputs in scriptableObjects
@@ -99,7 +97,6 @@ public class BlancoCombatManager : MonoBehaviour
         else
         {
             elapsedTime += Time.deltaTime;
-            inputTimingSlider.value = elapsedTime;
             canChainInput = true;
         }
 

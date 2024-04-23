@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using DG.Tweening;
@@ -33,6 +34,7 @@ public class HelpComboInterface : MonoBehaviour
     [Header("Images")]
     [SerializeField] private List<Image> combosImages = new();
     [SerializeField] private GameObject lastComboBox;
+    [SerializeField] private Slider inputTimingSlider;
     
     private BlancoCombatManager managerInstance;
     private Vector3 comboBoxPos;
@@ -54,6 +56,11 @@ public class HelpComboInterface : MonoBehaviour
         CleanCombo();
     }
 
+    private void Update()
+    {
+        inputTimingSlider.value += Time.deltaTime;
+    }
+
     private void AddCombo()
     {
         if (hasFinished)
@@ -69,6 +76,9 @@ public class HelpComboInterface : MonoBehaviour
         combosImages[index].enabled = true;
         InputAction newInput = managerInstance.actionInput;
         string inputName = newInput.name;
+        
+        inputTimingSlider.value = 0f;
+        inputTimingSlider.maxValue = AnimationsDurations.Instance.GetDuration();
 
         switch (inputName)
         {
