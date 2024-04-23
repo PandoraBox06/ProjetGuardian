@@ -29,6 +29,7 @@ public class DashController : MonoBehaviour
         {
             // Start dashing
             StartDash();
+            dashVFX.Play();
         }
 
         if (isDashing)
@@ -37,7 +38,7 @@ public class DashController : MonoBehaviour
             dashTimer += Time.deltaTime;
 
             animator.Play("Dash");
-            dashVFX.Play();
+            
             
             // Check if dash duration is over
             if (dashTimer >= dashDuration)
