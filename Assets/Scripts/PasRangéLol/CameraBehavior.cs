@@ -91,7 +91,6 @@ public class CameraBehavior : MonoBehaviour
                 case CameraStyle.Topdown:
                     break;
             }
-
         }
 
         // rotate orientation
@@ -117,12 +116,12 @@ public class CameraBehavior : MonoBehaviour
 
     public void SwitchCameraStyle(CameraStyle newStyle)
     {
-        thirdPersonFreeLook.Priority = 10;
-        combatFreeLook.Priority = 10;
-        topDownFreeLook.Priority = 10;
-        if (newStyle == CameraStyle.Basic) thirdPersonFreeLook.Priority = 11;
-        if (newStyle == CameraStyle.Combat) combatFreeLook.Priority = 11;
-        if (newStyle == CameraStyle.Topdown) topDownFreeLook.Priority = 11;
+        thirdPersonFreeLook.Priority = 0;
+        combatFreeLook.Priority = 0;
+        topDownFreeLook.Priority = 0;
+        if (newStyle == CameraStyle.Basic) thirdPersonFreeLook.Priority = 10;
+        if (newStyle == CameraStyle.Combat) combatFreeLook.Priority = 10;
+        if (newStyle == CameraStyle.Topdown) topDownFreeLook.Priority = 10;
 
         currentStyle = newStyle;
     }

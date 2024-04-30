@@ -147,6 +147,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: knife
-  damage: 25
+  damage: 10
   weaponCol: {fileID: 5012722821050734266}
   weaponType: 1

@@ -106,22 +106,22 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.8300731
+      - time: 0.6965837
         functionName: OnDisableCollider
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9896165
-        functionName: OnEndAnimations
+      - time: 0.79228574
+        functionName: UnFreezeMovement
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9936909
-        functionName: UnFreezeMovement
+      - time: 0.7928952
+        functionName: OnEndAnimations
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

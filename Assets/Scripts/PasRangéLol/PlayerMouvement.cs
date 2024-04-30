@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,8 +6,8 @@ public class PlayerMouvement : MonoBehaviour
     float _speed;
     [Header("Movement")]
     [SerializeField] float _walkingSpeed = 7;
-    [SerializeField] float _sprintingSpeed = 14;
-    bool isSprinting = false;
+    // [SerializeField] float _sprintingSpeed = 14;
+    // bool isSprinting = false;
     float maxSlopeAngle;
 
     [Header("References")]
@@ -41,7 +39,7 @@ public class PlayerMouvement : MonoBehaviour
         attacking,
         dashing,
         walking,
-        sprinting,
+        // sprinting,
         air
     }
     private void Awake()
@@ -49,14 +47,14 @@ public class PlayerMouvement : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
     }
 
-    private void OnEnable()
-    {
-        sprintAction.action.performed += Sprinting;
-    }
-    private void OnDisable()
-    {
-        sprintAction.action.performed -= Sprinting;
-    }
+    // private void OnEnable()
+    // {
+    //     sprintAction.action.performed += Sprinting;
+    // }
+    // private void OnDisable()
+    // {
+    //     sprintAction.action.performed -= Sprinting;
+    // }
 
 
     private void Start()
@@ -72,7 +70,7 @@ public class PlayerMouvement : MonoBehaviour
         RotatePlayerToSlope();
         Gravity();
 
-        animator.SetBool("Sprint", isSprinting);
+        // animator.SetBool("Sprint", isSprinting);
     }
     private void Move()
     {
@@ -89,10 +87,10 @@ public class PlayerMouvement : MonoBehaviour
 
         animator.SetFloat("Speed", moveDirection.magnitude);
 
-        if (isSprinting && moveDirection.magnitude < 0.1f)
-        {
-            isSprinting = false;    
-        }
+        // if (isSprinting && moveDirection.magnitude < 0.1f)
+        // {
+        //     isSprinting = false;    
+        // }
     }
 
     void Gravity()
@@ -116,10 +114,10 @@ public class PlayerMouvement : MonoBehaviour
         isGrounded = Physics.CheckSphere(transform.position, groundDistance, groundMask);
     }
 
-    void Sprinting(InputAction.CallbackContext context)
-    {
-        isSprinting = !isSprinting;
-    }
+    // void Sprinting(InputAction.CallbackContext context)
+    // {
+    //     isSprinting = !isSprinting;
+    // }
 
     void StateHandler()
     {
@@ -128,16 +126,16 @@ public class PlayerMouvement : MonoBehaviour
             state = PlayerState.dashing;
             _speed = 0;
         }
-        if (isAttacking)
+        else if (isAttacking)
         {
             state = PlayerState.attacking;
             _speed = 0;
         }
-        else if(isGrounded && isSprinting)
-        {
-            state = PlayerState.sprinting;
-            _speed = _sprintingSpeed;
-        }
+        // else if(isGrounded && isSprinting)
+        // {
+        //     state = PlayerState.sprinting;
+        //     _speed = _sprintingSpeed;
+        // }
         else if (isGrounded)
         {
             _speed = _walkingSpeed;
