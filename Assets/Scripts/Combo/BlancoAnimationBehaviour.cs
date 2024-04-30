@@ -30,7 +30,6 @@ public class BlancoAnimationBehaviour : MonoBehaviour
     private void StartAnimation()
     {
         inputIndex++;
-        InputAction animInput = managerInstance.actionInput;
         
         string actionType = "Attack";
         string inputType = "";
@@ -60,13 +59,13 @@ public class BlancoAnimationBehaviour : MonoBehaviour
         inputIndex = 0;
         animator.SetTrigger("CancelAnimation");
         
-        foreach (var trigger in animator.parameters)
-        {
-            if (trigger.type == AnimatorControllerParameterType.Trigger)
-            {
-                animator.ResetTrigger(trigger.name);
-            }
-        }
+        // foreach (var trigger in animator.parameters)
+        // {
+        //     if (trigger.type == AnimatorControllerParameterType.Trigger)
+        //     {
+        //         animator.ResetTrigger(trigger.name);
+        //     }
+        // }
     }
 
     private void TryToPlay(string _animation)
@@ -79,14 +78,15 @@ public class BlancoAnimationBehaviour : MonoBehaviour
             return;
         }
         
-        foreach (var trigger in animator.parameters)
-        {
-            if (trigger.type == AnimatorControllerParameterType.Trigger)
-            {
-                animator.ResetTrigger(trigger.name);
-            }
-        }
+        // foreach (var trigger in animator.parameters)
+        // {
+        //     if (trigger.type == AnimatorControllerParameterType.Trigger)
+        //     {
+        //         animator.ResetTrigger(trigger.name);
+        //     }
+        // }
         
+        Debug.Log(_animation + " has been triggered");
         animator.SetTrigger(_animation);
     }
 

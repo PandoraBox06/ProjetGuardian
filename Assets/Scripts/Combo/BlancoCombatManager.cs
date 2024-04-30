@@ -52,7 +52,7 @@ public class BlancoCombatManager : MonoBehaviour
     private bool isHoldFinished;
     private bool canChainInput;
 
-    private string currentAnimationName;
+    public string currentAnimationName;
     
     private const string INPUT_NONE = "None_Input";
     #endregion
@@ -171,7 +171,8 @@ public class BlancoCombatManager : MonoBehaviour
                 {
                     //doAction, we keep the combo
                     currentAnimationName = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
-                    
+                    Debug.Log($"anim wierdly is {currentAnimationName}");
+
                     actionInput = validList[i].inputList[currentComboLastIdx];
                     
                     inputEventSent = true;
