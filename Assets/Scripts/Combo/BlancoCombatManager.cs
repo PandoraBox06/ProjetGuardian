@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting.InputSystem;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -20,7 +21,6 @@ public class BlancoCombatManager : MonoBehaviour
     private static BlancoCombatManager _instance;
     //-----public---------------------------------------------------------
     [HideInInspector] public UnityEvent InputEvent;
-    [HideInInspector] public UnityEvent LastInputEvent;
     [HideInInspector] public UnityEvent CancelEvent;
     [HideInInspector] public UnityEvent FinishedComboEvent;
     public InputAction actionInput { get; private set; }
@@ -33,7 +33,6 @@ public class BlancoCombatManager : MonoBehaviour
     public InputActionReference attackInput;
     public InputActionReference gunInput;
     public InputActionReference holdInput;
-    public ComboScriptableObject LastAnimSO;
     private InputAction NextInputContainer;
     private InputAction NoneInputContainer;
     private InputAction HoldInputContainer;
@@ -101,20 +100,20 @@ public class BlancoCombatManager : MonoBehaviour
         }
 
         //detect hold input
-        if (isHoldPossible)
-        {
-            holdTime += Time.deltaTime;
-            if (holdTime >= holdMinDuration)
-            {
-                isHoldPossible = false;
-                isHoldFinished = true;
-                elapsedTime = 0f;
-                if (HoldInputContainer == attackInput.action)
-                {
-                    CheckValidCombo(HoldInputContainer);
-                }
-            }
-        }
+         if (isHoldPossible)
+         {
+             holdTime += Time.deltaTime;
+             if (holdTime >= holdMinDuration)
+             {
+                 isHoldPossible = false;
+                 isHoldFinished = true;
+                 elapsedTime = 0f;
+                 if (HoldInputContainer == attackInput.action)
+                 {
+                     CheckValidCombo(holdInput);
+                 }
+             }
+         }
     }
 
     private void StartInput(InputAction.CallbackContext callback)
@@ -125,31 +124,28 @@ public class BlancoCombatManager : MonoBehaviour
 
     private void CancelInput(InputAction.CallbackContext callback)
     {
+        isHoldPossible = false;
+        holdTime = 0f;
+        isHoldFinished = false;
+        HoldInputContainer = NoneInputContainer;
+        
         if (IsPlayingAttack())
         {
             if (NextInputContainer == NoneInputContainer)
             {
                 NextInputContainer = callback.action;
             }
-            else
-            {
-                return;
-            }
         }
         else
         {
             if (!isHoldFinished) CheckValidCombo(callback.action);
         }
-
-        isHoldFinished = false;
-        isHoldPossible = false;
-        holdTime = 0f;
-        HoldInputContainer = NoneInputContainer;
     }
 
     private void CheckValidCombo(InputAction lastAction)
     {
         if (lastAction == NoneInputContainer || lastAction == null) return;
+        //check if we are in play mode
         if (!GameManager.Instance.IsPlaying()) return;
         
         //check if first attack
@@ -157,12 +153,12 @@ public class BlancoCombatManager : MonoBehaviour
         
         //check if input has already been done for this anim
         string checkAnim = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
-        if (checkAnim == currentAnimationName)
+        if (checkAnim == currentAnimationName && checkAnim != "Idle")
         {
-            //if its idle it's ok to have a new input, idk why it bugs
-            if (checkAnim != "Idle") return;
+            Debug.Log($"===> Current : {checkAnim}, Saved : {currentAnimationName}");
+            return;
         }
-        
+
         currentCombo.Add(lastAction);
         int currentComboLastIdx = currentCombo.Count - 1;
         bool inputEventSent = false;
@@ -174,17 +170,12 @@ public class BlancoCombatManager : MonoBehaviour
                 if (!inputEventSent)
                 {
                     //doAction, we keep the combo
+                    currentAnimationName = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+                    
                     actionInput = validList[i].inputList[currentComboLastIdx];
-                    if (validList[i].inputList.Count == currentCombo.Count)
-                    {
-                        LastAnimSO = validList[i];
-                        LastInputEvent?.Invoke();
-                    }
-                    else { InputEvent?.Invoke(); }
                     
                     inputEventSent = true;
-                    
-                    currentAnimationName = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+                    InputEvent?.Invoke();
                 }
             }
             else

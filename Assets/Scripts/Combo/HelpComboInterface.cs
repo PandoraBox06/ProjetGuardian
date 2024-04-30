@@ -48,7 +48,6 @@ public class HelpComboInterface : MonoBehaviour
         
         managerInstance.InputEvent.AddListener(AddCombo);
         managerInstance.CancelEvent.AddListener(CleanCombo);
-        managerInstance.FinishedComboEvent.AddListener(AddCombo);
         managerInstance.FinishedComboEvent.AddListener(FinishedCombo);
 
         comboBoxPos = lastComboBox.transform.position;
@@ -89,19 +88,15 @@ public class HelpComboInterface : MonoBehaviour
         {
             case "Attack":
                 combosImages[index].sprite = attackSprite;
-                combosImages[index].color = Color.white;
                 break;
             case "PauseAttack":
                 combosImages[index].sprite = pauseSprite;
-                combosImages[index].color = Color.black;
                 break;
            case "AttackRange" :
                     combosImages[index].sprite = gunSprite;
-                    combosImages[index].color = Color.white;
                 break;
             case "HoldAttack" :
                 combosImages[index].sprite = holdSprite;
-                combosImages[index].color = Color.white;
                 break;
         }
 

@@ -21,21 +21,20 @@ public class BlancoAnimationBehaviour : MonoBehaviour
             return;
         }
         Instance = this;
-
+        
         managerInstance = BlancoCombatManager.Instance;
         managerInstance.InputEvent.AddListener(StartAnimation);
-        managerInstance.LastInputEvent.AddListener(StartLastAnimation);
         managerInstance.CancelEvent.AddListener(CancelAnimation);
     }
-
+    
     private void StartAnimation()
     {
         inputIndex++;
         InputAction animInput = managerInstance.actionInput;
-
+        
         string actionType = "Attack";
         string inputType = "";
-
+        
         if (managerInstance.actionInput == managerInstance.attackInput.action)
         {
             inputType = "simple";
@@ -56,31 +55,18 @@ public class BlancoAnimationBehaviour : MonoBehaviour
         TryToPlay($"{actionType}_{inputType}_{inputIndex}");
     }
 
-    private void StartLastAnimation()
-    {
-        ComboScriptableObject comboSO = managerInstance.LastAnimSO;
-
-        string lastAnimName = comboSO.nameOfLastAnim;
-        if (string.IsNullOrEmpty(lastAnimName))
-        {
-            //if there is no lastAnim custom we play the normal final anim
-            StartAnimation();
-        }
-        
-        inputIndex = 0;
-        TryToPlay(lastAnimName);
-    }
-
     private void CancelAnimation()
     {
         inputIndex = 0;
         animator.SetTrigger("CancelAnimation");
-    }
-
-    private bool IsPlaying()
-    {
-        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1) return true;
-        return false;
+        
+        foreach (var trigger in animator.parameters)
+        {
+            if (trigger.type == AnimatorControllerParameterType.Trigger)
+            {
+                animator.ResetTrigger(trigger.name);
+            }
+        }
     }
 
     private void TryToPlay(string _animation)
@@ -92,7 +78,15 @@ public class BlancoAnimationBehaviour : MonoBehaviour
             Debug.LogWarning($"The animation {_animation} doesn't exist, you made a mistake");
             return;
         }
-
+        
+        foreach (var trigger in animator.parameters)
+        {
+            if (trigger.type == AnimatorControllerParameterType.Trigger)
+            {
+                animator.ResetTrigger(trigger.name);
+            }
+        }
+        
         animator.SetTrigger(_animation);
     }
 
