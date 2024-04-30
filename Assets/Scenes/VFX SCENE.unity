@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 944f45a2cf7cd0e498ce2a47d78129f4, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 91681f43463068f44b2b59fa8aef7ee5, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: d984756ea99cc754bb97455ce0f17cfd, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -1477,6 +1477,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMaxHp: 1000
   animator: {fileID: 0}
+  blood: {fileID: 0}
+  hit: {fileID: 0}
 --- !u!114 &213627855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1492,9 +1494,6 @@ MonoBehaviour:
   InputEvent:
     m_PersistentCalls:
       m_Calls: []
-  LastInputEvent:
-    m_PersistentCalls:
-      m_Calls: []
   CancelEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1502,12 +1501,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   animator: {fileID: 1228324510}
-  inputTimingSlider: {fileID: 0}
   pauseInput: {fileID: -170820252901667302, guid: b0b17bf653d5a64488494776990ea425, type: 3}
   attackInput: {fileID: 6733769925832788176, guid: b0b17bf653d5a64488494776990ea425, type: 3}
   gunInput: {fileID: -7983557248117076479, guid: b0b17bf653d5a64488494776990ea425, type: 3}
   holdInput: {fileID: 4847718353859119778, guid: b0b17bf653d5a64488494776990ea425, type: 3}
-  LastAnimSO: {fileID: 0}
   transitionDuration: 0.85
   holdMinDuration: 0.2
   allCombos:
@@ -5333,8 +5330,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753646707}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11559233, y: -0.0000000341821, z: 0.000000003977853, w: 0.9932968}
-  m_LocalPosition: {x: 1.6741173e-13, y: 3, z: -7}
+  m_LocalRotation: {x: 0.11559231, y: -0.0006045338, z: 0.000070351045, w: 0.99329656}
+  m_LocalPosition: {x: 0.008521019, y: 3, z: -6.9999948}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7138,6 +7135,7 @@ MonoBehaviour:
   - {fileID: 1634116986}
   - {fileID: 2014076033}
   lastComboBox: {fileID: 0}
+  inputTimingSlider: {fileID: 0}
 --- !u!1 &1061343116
 GameObject:
   m_ObjectHideFlags: 0
@@ -14223,6 +14221,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2520515340105815286, guid: 4e76addf00018f241bb80221e04139de, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.00057803123
+      objectReference: {fileID: 0}
+    - target: {fileID: 2520515340105815286, guid: 4e76addf00018f241bb80221e04139de, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.00019046165
+      objectReference: {fileID: 0}
+    - target: {fileID: 2769753684803445215, guid: 4e76addf00018f241bb80221e04139de, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.051024094
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905502496084935460, guid: 4e76addf00018f241bb80221e04139de, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.0045761834
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905502496084935460, guid: 4e76addf00018f241bb80221e04139de, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.032708805
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905502496084935460, guid: 4e76addf00018f241bb80221e04139de, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0075593814
+      objectReference: {fileID: 0}
     - target: {fileID: 4065442201119211414, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0.026678963
@@ -14288,16 +14310,44 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7916894039129210306, guid: 4e76addf00018f241bb80221e04139de, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000007450581
+      objectReference: {fileID: 0}
+    - target: {fileID: 7916894039129210306, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000016746565
+      value: -0.0005923459
       objectReference: {fileID: 0}
     - target: {fileID: 7916894039129210306, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000003951186
+      value: 0.0001397581
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590247683789982220, guid: 4e76addf00018f241bb80221e04139de, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.00058625906
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590247683789982220, guid: 4e76addf00018f241bb80221e04139de, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.0001633892
       objectReference: {fileID: 0}
     - target: {fileID: 8749299566912900666, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952369383022496154, guid: 4e76addf00018f241bb80221e04139de, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.999048
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952369383022496154, guid: 4e76addf00018f241bb80221e04139de, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.027857978
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952369383022496154, guid: 4e76addf00018f241bb80221e04139de, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.032876033
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952369383022496154, guid: 4e76addf00018f241bb80221e04139de, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.006795332
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
