@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,7 +16,8 @@ public class DashController : MonoBehaviour
     private float dashTimer = 0f;
 
     [SerializeField] private ParticleSystem dashVFX;
-    
+    [SerializeField] private LayerMask wallMask;
+
     // Update is called once per frame
     private void Start()
     {
@@ -30,6 +32,7 @@ public class DashController : MonoBehaviour
             // Start dashing
             StartDash();
             dashVFX.Play();
+            DashPlayerSound();
         }
 
         if (isDashing)
@@ -48,8 +51,14 @@ public class DashController : MonoBehaviour
             else
             {
                 // Move the player in dash direction
-                _characterController.Move(dashDirection * ((dashDistance / dashDuration) * Time.deltaTime));
-                // transform.position += dashDirection * (dashDistance / dashDuration) * Time.deltaTime;
+                // _characterController.Move(dashDirection * ((dashDistance / dashDuration) * Time.deltaTime));
+                _characterController.enabled = false;
+                if(!Physics.Raycast(transform.position, transform.forward, 1f, wallMask))
+                    transform.position += dashDirection * ((dashDistance / dashDuration) * Time.deltaTime);
+                else
+                {
+                    StopDash();
+                }
             }
         }
     }
@@ -68,27 +77,17 @@ public class DashController : MonoBehaviour
         // Start dashing
         isDashing = true;
         dashTimer = 0f;
-
-        // Disable player controls during dash (optional)
-        // Add your own code to disable controls
-        // _playerMouvement.isDashing = true;
-        // Add any visual effects or animations for dash (optional)
-        // Add your own code for visual effects
     }
 
     void StopDash()
     {
         // Stop dashing
         isDashing = false;
-
+        _characterController.enabled = true;
+        
         // Add any cooldown logic here if needed
         // Add your own cooldown logic
         timer = Time.time + dashCooldown;
-        // Re-enable player controls after dash (optional)
-        // Add your own code to re-enable controls
-        // _playerMouvement.isDashing = false;
-        // Add any cleanup or resetting logic after dash (optional)
-        // Add your own cleanup/reset logic
     }
     
     public void DashPlayerSound()

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3921349640641473132}
   m_Layer: 0
   m_Name: Cube.106_dmg.005
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 5213524895478363514}
   m_Layer: 0
   m_Name: Cube.106_dmg.006
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 271571201869129428}
   m_Layer: 0
   m_Name: Cylinder.032
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -582,7 +582,7 @@ Transform:
   m_GameObject: {fileID: 5606384613805059266}
   serializedVersion: 2
   m_LocalRotation: {x: 0.000030522322, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 3.104993, z: 0}
+  m_LocalPosition: {x: -0, y: 3.09, z: 0}
   m_LocalScale: {x: 481.75696, y: 481.75696, z: 481.75696}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -853,7 +853,7 @@ GameObject:
   - component: {fileID: 2702693310754373016}
   m_Layer: 0
   m_Name: Contour pierre
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1096,7 +1096,7 @@ GameObject:
   - component: {fileID: 3246526965182570771}
   m_Layer: 0
   m_Name: Cube.106_dmg.004
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
