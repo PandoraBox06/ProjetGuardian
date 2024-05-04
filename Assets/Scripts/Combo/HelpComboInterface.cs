@@ -23,6 +23,7 @@ public class HelpComboInterface : MonoBehaviour
         Instance = this;
     }
 
+    [SerializeField] private InputActionReference closeComboInput;
     [Header("Texts")]
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI lastComboText;
@@ -34,6 +35,7 @@ public class HelpComboInterface : MonoBehaviour
     [Header("Images")]
     [SerializeField] private List<Image> combosImages = new();
     [SerializeField] private GameObject lastComboBox;
+    [SerializeField] private GameObject comboHelpBox;
     [SerializeField] private Slider inputTimingSlider;
     
     private BlancoCombatManager managerInstance;
@@ -49,6 +51,7 @@ public class HelpComboInterface : MonoBehaviour
         managerInstance.InputEvent.AddListener(AddCombo);
         managerInstance.CancelEvent.AddListener(CleanCombo);
         managerInstance.FinishedComboEvent.AddListener(FinishedCombo);
+        closeComboInput.action.performed += ToggleCombo;
 
         comboBoxPos = lastComboBox.transform.position;
 
@@ -63,6 +66,12 @@ public class HelpComboInterface : MonoBehaviour
     private void OnEnable()
     {
         score = 0;
+    }
+
+    private void ToggleCombo(InputAction.CallbackContext callback)
+    {
+        if (comboHelpBox.activeInHierarchy) comboHelpBox.SetActive(false);
+        else comboHelpBox.SetActive(true);
     }
 
     private void AddCombo()

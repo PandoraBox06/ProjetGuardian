@@ -68,7 +68,7 @@ public class BlancoCombatManager : MonoBehaviour
         {
             for (int i = 0; i < combo.inputList.Count; i++)
             {
-                //register to attacks
+                // Register to attacks
                 if (!_allInputs.Contains(combo.inputList[i].action))
                 {
                     _allInputs.Add(combo.inputList[i].action);
@@ -138,6 +138,14 @@ public class BlancoCombatManager : MonoBehaviour
         }
         else
         {
+            // Check if we are in play mode
+            if (!GameManager.Instance.IsPlaying()) return;
+        
+            // Check if first attack
+            if (!canChainInput) RestartCombo();
+            
+            // Ici on fait le truc avec le combo.kuntz <=================
+            
             if (!isHoldFinished) CheckValidCombo(callback.action);
         }
     }
@@ -145,20 +153,7 @@ public class BlancoCombatManager : MonoBehaviour
     private void CheckValidCombo(InputAction lastAction)
     {
         if (lastAction == NoneInputContainer || lastAction == null) return;
-        //check if we are in play mode
-        if (!GameManager.Instance.IsPlaying()) return;
         
-        //check if first attack
-        if (!canChainInput) RestartCombo();
-        
-        //check if input has already been done for this anim
-        string checkAnim = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
-        if (checkAnim == currentAnimationName && checkAnim != "Idle")
-        {
-            Debug.Log($"===> Current : {checkAnim}, Saved : {currentAnimationName}");
-            return;
-        }
-
         currentCombo.Add(lastAction);
         int currentComboLastIdx = currentCombo.Count - 1;
         bool inputEventSent = false;
@@ -170,9 +165,6 @@ public class BlancoCombatManager : MonoBehaviour
                 if (!inputEventSent)
                 {
                     //doAction, we keep the combo
-                    currentAnimationName = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
-                    Debug.Log($"anim wierdly is {currentAnimationName}");
-
                     actionInput = validList[i].inputList[currentComboLastIdx];
                     
                     inputEventSent = true;

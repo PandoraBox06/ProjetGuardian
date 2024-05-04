@@ -56,9 +56,6 @@ public class BlancoAnimationBehaviour : MonoBehaviour
 
     private void CancelAnimation()
     {
-        inputIndex = 0;
-        animator.SetTrigger("CancelAnimation");
-        
         // foreach (var trigger in animator.parameters)
         // {
         //     if (trigger.type == AnimatorControllerParameterType.Trigger)
@@ -66,6 +63,9 @@ public class BlancoAnimationBehaviour : MonoBehaviour
         //         animator.ResetTrigger(trigger.name);
         //     }
         // }
+        
+        inputIndex = 0;
+        animator.SetTrigger("CancelAnimation");
     }
 
     private void TryToPlay(string _animation)
@@ -86,7 +86,7 @@ public class BlancoAnimationBehaviour : MonoBehaviour
         //     }
         // }
         
-        Debug.Log(_animation + " has been triggered");
+        // Debug.Log(_animation + " has been triggered");
         animator.SetTrigger(_animation);
     }
 
@@ -95,11 +95,4 @@ public class BlancoAnimationBehaviour : MonoBehaviour
         if (this == Instance)
             Instance = null;
     }
-}
-
-public enum ActionType
-{
-    Simple,
-    Hold,
-    Pause
 }

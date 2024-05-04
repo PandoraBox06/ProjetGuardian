@@ -134,6 +134,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CloseComboHelp"",
+                    ""type"": ""Button"",
+                    ""id"": ""4cfc7846-77d1-480d-9346-1fbc0d99c921"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -519,6 +528,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c2cb6ade-2718-40ea-aefa-ce324c94a86f"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CloseComboHelp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""91f7f653-f34c-4dfc-804d-077b8716d424"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CloseComboHelp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1118,6 +1149,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_PauseAttack = m_Player.FindAction("PauseAttack", throwIfNotFound: true);
         m_Player_HoldAttack = m_Player.FindAction("HoldAttack", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_CloseComboHelp = m_Player.FindAction("CloseComboHelp", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1203,6 +1235,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_PauseAttack;
     private readonly InputAction m_Player_HoldAttack;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_CloseComboHelp;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -1219,6 +1252,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @PauseAttack => m_Wrapper.m_Player_PauseAttack;
         public InputAction @HoldAttack => m_Wrapper.m_Player_HoldAttack;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @CloseComboHelp => m_Wrapper.m_Player_CloseComboHelp;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1264,6 +1298,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @CloseComboHelp.started += instance.OnCloseComboHelp;
+            @CloseComboHelp.performed += instance.OnCloseComboHelp;
+            @CloseComboHelp.canceled += instance.OnCloseComboHelp;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1304,6 +1341,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @CloseComboHelp.started -= instance.OnCloseComboHelp;
+            @CloseComboHelp.performed -= instance.OnCloseComboHelp;
+            @CloseComboHelp.canceled -= instance.OnCloseComboHelp;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1498,6 +1538,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnPauseAttack(InputAction.CallbackContext context);
         void OnHoldAttack(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnCloseComboHelp(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
