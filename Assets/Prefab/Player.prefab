@@ -3959,7 +3959,11 @@ MonoBehaviour:
   dashDistance: 5
   dashDuration: 0.2
   dashCooldown: 0.5
+  _playerMouvement: {fileID: 5665569233489516513}
   dashVFX: {fileID: 1866569947930334041}
+  wallMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!143 &4836268023266057977
 CharacterController:
   m_ObjectHideFlags: 0

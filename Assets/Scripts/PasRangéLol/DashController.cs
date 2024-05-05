@@ -15,6 +15,7 @@ public class DashController : MonoBehaviour
     private Vector3 dashDirection;
     private float dashTimer = 0f;
 
+    [SerializeField] private PlayerMouvement _playerMouvement;
     [SerializeField] private ParticleSystem dashVFX;
     [SerializeField] private LayerMask wallMask;
 
@@ -77,6 +78,9 @@ public class DashController : MonoBehaviour
         // Start dashing
         isDashing = true;
         dashTimer = 0f;
+        
+        //
+        _playerMouvement.isDashing = true;
     }
 
     void StopDash()
@@ -88,6 +92,9 @@ public class DashController : MonoBehaviour
         // Add any cooldown logic here if needed
         // Add your own cooldown logic
         timer = Time.time + dashCooldown;
+        
+        //
+        _playerMouvement.isDashing = false;
     }
     
     public void DashPlayerSound()
