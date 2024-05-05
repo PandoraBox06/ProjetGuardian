@@ -5340,7 +5340,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753646707}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11559233, y: 0.00000003418144, z: -0.000000003977776, w: 0.9932968}
+  m_LocalRotation: {x: 0.11559233, y: -0.0000000341821, z: 0.000000003977853, w: 0.9932968}
   m_LocalPosition: {x: 1.6741182e-13, y: 3, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17394,11 +17394,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4065442201119211414, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.026678963
+      value: -0.026679004
       objectReference: {fileID: 0}
     - target: {fileID: 4065442201119211414, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.020377442
+      value: 0.020377474
       objectReference: {fileID: 0}
     - target: {fileID: 4212672270273503124, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalRotation.y
@@ -17414,11 +17414,19 @@ PrefabInstance:
       objectReference: {fileID: 1146062650}
     - target: {fileID: 5265759667176225969, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.027597304
+      value: -0.027597276
       objectReference: {fileID: 0}
     - target: {fileID: 5265759667176225969, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.01911542
+      value: 0.019115401
+      objectReference: {fileID: 0}
+    - target: {fileID: 5665569233489516513, guid: 4e76addf00018f241bb80221e04139de, type: 3}
+      propertyPath: _walkingSpeed
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6510876185618797857, guid: 4e76addf00018f241bb80221e04139de, type: 3}
+      propertyPath: dashCooldown
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6510876185618797857, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: dashDuration
@@ -17486,11 +17494,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7916894039129210306, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000050238476
+      value: 0.000000016746565
       objectReference: {fileID: 0}
     - target: {fileID: 7916894039129210306, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000011853267
+      value: -0.0000000039511856
       objectReference: {fileID: 0}
     - target: {fileID: 8208790614416898259, guid: 4e76addf00018f241bb80221e04139de, type: 3}
       propertyPath: cameraPos
