@@ -125,6 +125,7 @@ public class EnemyBehaviour : MonoBehaviour
                 if (playerDist <= minRangeAttackRange && !isReplacing)
                 {
                     //else : go to player
+                    agent.stoppingDistance = 1f;
                     animator.SetFloat("Speed", agent.velocity.magnitude);
                     agent.SetDestination(-transform.forward * (minRangeAttackRange + 1));
                     isReplacing = true;
@@ -191,13 +192,14 @@ public class EnemyBehaviour : MonoBehaviour
     private void Fire()
     {
         if (isAttacking) return;
+        if (!(agent.remainingDistance <= .5f)) return;
         
-        //Turn towarrds player
         transform.LookAt(player);
         //Fire (play anim)
         isAttacking = true;
         animator.Play("Fire");
         //Return to walk
+        //Turn towarrds player
     }
 
     private void Guard()
