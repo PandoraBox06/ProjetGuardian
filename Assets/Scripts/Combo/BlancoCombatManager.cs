@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting.InputSystem;
 using UnityEngine;
@@ -24,6 +25,7 @@ public class BlancoCombatManager : MonoBehaviour
     [HideInInspector] public UnityEvent CancelEvent;
     [HideInInspector] public UnityEvent FinishedComboEvent;
     public InputAction actionInput { get; private set; }
+    public static event Action LookTarget;
     public ComboScriptableObject finishedCombo { get; private set; }
     //-----sérialisé------------------------------------------------------
     [SerializeField] private Animator animator;
@@ -168,6 +170,7 @@ public class BlancoCombatManager : MonoBehaviour
                     actionInput = validList[i].inputList[currentComboLastIdx];
                     
                     inputEventSent = true;
+                    LookTarget?.Invoke();
                     InputEvent?.Invoke();
                 }
             }

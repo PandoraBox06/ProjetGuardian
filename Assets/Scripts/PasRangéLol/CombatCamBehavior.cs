@@ -20,11 +20,14 @@ public class CombatCamBehavior : MonoBehaviour
 
     private void OnEnable()
     {
-        CharacterAnimatorEvents.OnLooktAtTarget += LookAtTarget;
+        // CharacterAnimatorEvents.OnLooktAtTarget += LookAtTarget;
+        BlancoCombatManager.LookTarget += LookAtTarget;
     }
     private void OnDisable()
     {
-        CharacterAnimatorEvents.OnLooktAtTarget -= LookAtTarget;
+        // CharacterAnimatorEvents.OnLooktAtTarget -= LookAtTarget;
+        BlancoCombatManager.LookTarget -= LookAtTarget;
+
     }
 
     private void Update()
