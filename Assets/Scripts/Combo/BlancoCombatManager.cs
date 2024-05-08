@@ -130,7 +130,7 @@ public class BlancoCombatManager : MonoBehaviour
         holdTime = 0f;
         isHoldFinished = false;
         HoldInputContainer = NoneInputContainer;
-        
+        LookTarget?.Invoke();
         if (IsPlayingAttack())
         {
             if (NextInputContainer == NoneInputContainer)
@@ -170,7 +170,6 @@ public class BlancoCombatManager : MonoBehaviour
                     actionInput = validList[i].inputList[currentComboLastIdx];
                     
                     inputEventSent = true;
-                    LookTarget?.Invoke();
                     InputEvent?.Invoke();
                 }
             }

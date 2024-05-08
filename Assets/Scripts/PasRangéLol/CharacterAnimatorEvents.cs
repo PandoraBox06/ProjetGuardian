@@ -64,6 +64,13 @@ public class CharacterAnimatorEvents : MonoBehaviour
         if (!AudioManager.Instance.hitSword.IsNull)
             AudioManager.Instance.PlayOneShot(AudioManager.Instance.hitSword, transform.position);
     }
+    
+    public void HitCrossbowSound()
+    {
+        if (!AudioManager.Instance.hitCrossbow.IsNull)
+            AudioManager.Instance.PlayOneShot(AudioManager.Instance.hitCrossbow, transform.position);
+    }
+    
     public void PlayerIFrameOn()
     {
         playerCollider.enabled = false;

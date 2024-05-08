@@ -39,7 +39,7 @@ public class FireProjectiles : MonoBehaviour
         if (target != null)
         {
             Vector3 projectileOutputPosition = _projectileOutput.position;
-            GameObject projectile = Instantiate(_projectilePrefab, projectileOutputPosition, Quaternion.identity, _projectileDump);
+            GameObject projectile = Instantiate(_projectilePrefab, projectileOutputPosition, Quaternion.LookRotation(_projectileOutput.forward), _projectileDump);
             Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
             Vector3 direction =  target.position - projectileOutputPosition;
             direction += Vector3.up;
@@ -47,7 +47,7 @@ public class FireProjectiles : MonoBehaviour
         }
         else
         {
-            GameObject projectile = Instantiate(_projectilePrefab,  _projectileOutput.position, Quaternion.identity, _projectileDump);
+            GameObject projectile = Instantiate(_projectilePrefab,  _projectileOutput.position, Quaternion.LookRotation(_projectileOutput.forward), _projectileDump);
             Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
             Vector3 direction =  _projectileOutput.forward;
             projectileRb.AddForce(direction * _projectileSpeed, ForceMode.Force);

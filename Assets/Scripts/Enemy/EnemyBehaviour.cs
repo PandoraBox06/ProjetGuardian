@@ -65,7 +65,7 @@ public class EnemyBehaviour : MonoBehaviour
     [HideInInspector] public float randomTimeForDodgeLower;
 
     [SerializeField] private Collider attackBox;
-    
+    [SerializeField] private ParticleSystem stunEffect;
     //Hidden
     private Action DoAction;
     [SerializeField] private float timer;
@@ -232,14 +232,15 @@ public class EnemyBehaviour : MonoBehaviour
             timer -= Time.deltaTime;
             if (!(timer <= 0)) return;
             stats.ResetGuard();
-            animator.SetBool("Stun", isStunned);
             ChangeState(Enemy_State.Walk);
             isStunned = false;
+            animator.SetBool("Stun", isStunned);
         }
         else
         {
             isStunned = true;
             timer = stunTimer;
+            stunEffect.Play();
             stats.isGuarding = false;
             animator.SetBool("Block",stats.isGuarding);
             animator.SetBool("Stun", isStunned);

@@ -26,7 +26,8 @@ public class Enemy : MonoBehaviour, IDamageable
     [HideInInspector] public bool HasInstanciated;
 
     [SerializeField] private ParticleSystem guardBlocked;
-    [SerializeField] private ParticleSystem shieldEffect;
+    [SerializeField] private ParticleSystem shieldEffect;    
+    [SerializeField] private ParticleSystem deathEffect;
     public static event Action<GameObject> OnDeath;
 
     [SerializeField] Transform hitOutput;
@@ -88,7 +89,8 @@ public class Enemy : MonoBehaviour, IDamageable
     public void Die()
     {
         enemyBehaviour.DeathEnemySound();
-        Destroy(gameObject);
+        Instantiate(deathEffect, hitOutput.position, Quaternion.identity);
         OnDeath?.Invoke(this.gameObject);
+        Destroy(gameObject);
     }
 }

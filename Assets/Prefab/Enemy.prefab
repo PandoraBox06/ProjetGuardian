@@ -1024,6 +1024,7 @@ MonoBehaviour:
   HasInstanciated: 0
   guardBlocked: {fileID: 3699205556897422688}
   shieldEffect: {fileID: 549612367561028924}
+  deathEffect: {fileID: 1505819240896672979, guid: 761a8a8bb8ab1e14984916dd826998f2, type: 3}
   hitOutput: {fileID: 4626783797122302874}
 --- !u!114 &6858151234115867698
 MonoBehaviour:
@@ -1075,6 +1076,7 @@ MonoBehaviour:
   randomTimeForDodgeUpper: 0
   randomTimeForDodgeLower: 0
   attackBox: {fileID: 3031816720048385431}
+  stunEffect: {fileID: 8228209386453125205}
   timer: 0
   stateTimer: 0
   projectiles: {fileID: 0}

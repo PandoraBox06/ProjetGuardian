@@ -4004,7 +4004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectileOutput: {fileID: 3604915367597300388}
   _projectileSpeed: 800
-  _projectilePrefab: {fileID: 36356212038313948, guid: 9c9fb607a717f3945b5c55801c86c63e, type: 3}
+  _projectilePrefab: {fileID: 3002313966624552335, guid: 9c9fb607a717f3945b5c55801c86c63e, type: 3}
   _combatCamBehavior: {fileID: 4917013394908423719}
   _projectileDump: {fileID: 0}
 --- !u!114 &7705849206106131450

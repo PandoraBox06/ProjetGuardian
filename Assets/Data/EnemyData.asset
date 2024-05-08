@@ -24,7 +24,7 @@ MonoBehaviour:
   RangeAttackRange: 15
   MinRangeAttackRange: 7
   ProjectilesSpeed: 10
-  StunTimer: 1
+  StunTimer: 2
   HighHpPercentLower: 0.61
   MidHpPercentUpper: 0.6
   MidHpPercentLower: 0.31
