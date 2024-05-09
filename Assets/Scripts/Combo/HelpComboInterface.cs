@@ -132,7 +132,7 @@ public class HelpComboInterface : MonoBehaviour
     public void AddScore(int _score)
     {
         score += _score;
-        scoreText.text = $"Score : {score}";
+        scoreText.text = $"{score}";
     }
 
     private void FinishedCombo()
