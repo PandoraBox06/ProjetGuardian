@@ -22,7 +22,10 @@ public class CharacterAnimatorEvents : MonoBehaviour
     [SerializeField] private float dashDistance = 5f;
     [SerializeField] private float dashDuration = 0.2f;
     private CharacterController _characterController;
-
+    [Header("VFX")] 
+    [SerializeField] private ParticleSystem holdVFX;
+    [SerializeField] private Transform vfxOutput;
+    
     private void Start()
     {
         _characterController = GetComponent<CharacterController>();
@@ -97,6 +100,11 @@ public class CharacterAnimatorEvents : MonoBehaviour
         OnEndAnimation?.Invoke();
     }
 
+    public void HoldGood()
+    {
+        Instantiate(holdVFX, vfxOutput.position, Quaternion.identity);
+    }
+    
     public void ApplyRootMotionBack()
     {
         animator.applyRootMotion = !animator.applyRootMotion;

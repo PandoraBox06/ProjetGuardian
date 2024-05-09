@@ -11,6 +11,8 @@ public class Enemy_Weapon : MonoBehaviour
     public Collider weaponCol;
 
     public WeaponType weaponType;
+    [SerializeField] private ParticleSystem vfxImpact;
+    [SerializeField] private Transform vfxOutput;
     public enum WeaponType
     {
         melee,
@@ -56,9 +58,15 @@ public class Enemy_Weapon : MonoBehaviour
         {
             other.TryGetComponent(out IDamageable damageable);
             damageable.TakeDamage(damage);
-            if (weaponType == WeaponType.ranged)
-                Destroy(gameObject);
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (weaponType == WeaponType.ranged)
+        {
+            Instantiate(vfxImpact, vfxOutput.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+    }
 }

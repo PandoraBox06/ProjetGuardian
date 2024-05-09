@@ -4902,5 +4902,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 3
-  projectile: {fileID: 8302301214398391078, guid: c514583aaf0beff4e89cc6ce9bc3414a, type: 3}
+  projectile: {fileID: 470406322816651203, guid: d47b3aa4fb40cca48af792981034577f, type: 3}
   coords: {x: 0, y: 5, z: 0}
