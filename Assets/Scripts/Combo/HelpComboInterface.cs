@@ -23,8 +23,10 @@ public class HelpComboInterface : MonoBehaviour
         Instance = this;
     }
 
+    [SerializeField] private WaveManager waveManager;
     [SerializeField] private InputActionReference closeComboInput;
     [Header("Texts")]
+    [SerializeField] private TextMeshProUGUI wavemCounterText;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI lastComboText;
     [Header("Sprites")]
@@ -36,6 +38,7 @@ public class HelpComboInterface : MonoBehaviour
     [SerializeField] private List<Image> combosImages = new();
     [SerializeField] private GameObject lastComboBox;
     [SerializeField] private GameObject comboHelpBox;
+    [SerializeField] private GameObject waveCounterBox;
     [SerializeField] private Slider inputTimingSlider;
     
     private BlancoCombatManager managerInstance;
@@ -48,12 +51,14 @@ public class HelpComboInterface : MonoBehaviour
     {
         managerInstance = BlancoCombatManager.Instance;
         
+        if (waveManager != null) waveManager.ShowNewWave.AddListener(ShowWaveNumber);
         managerInstance.InputEvent.AddListener(AddCombo);
         managerInstance.CancelEvent.AddListener(CleanCombo);
         managerInstance.FinishedComboEvent.AddListener(FinishedCombo);
         closeComboInput.action.performed += ToggleCombo;
 
         comboBoxPos = lastComboBox.transform.position;
+        waveCounterBox.SetActive(false);
 
         CleanCombo();
     }
@@ -72,6 +77,18 @@ public class HelpComboInterface : MonoBehaviour
     {
         if (comboHelpBox.activeInHierarchy) comboHelpBox.SetActive(false);
         else comboHelpBox.SetActive(true);
+    }
+
+    private void ShowWaveNumber()
+    {
+        waveCounterBox.SetActive(true);
+        wavemCounterText.text = "Wave n." + waveManager.numberOfWave;
+        DOVirtual.DelayedCall(5, HideWaveNumber);
+    }
+
+    private void HideWaveNumber()
+    {
+        waveCounterBox.SetActive(false);
     }
 
     private void AddCombo()
@@ -139,6 +156,11 @@ public class HelpComboInterface : MonoBehaviour
     
     private void OnDestroy()
     {
+        waveManager.ShowNewWave.RemoveAllListeners();
+        managerInstance.InputEvent.RemoveAllListeners();
+        managerInstance.CancelEvent.RemoveAllListeners();
+        managerInstance.FinishedComboEvent.RemoveAllListeners();
+        
         if (this == Instance)
             Instance = null;
     }

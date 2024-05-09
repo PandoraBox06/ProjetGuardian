@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public class WaveManager : MonoBehaviour
 {
+    [HideInInspector] public UnityEvent ShowNewWave;
     [SerializeField] Wave wave;
-    private int numberOfWave = 1;
+    public int numberOfWave { get; private set; }
     private int numberOfSuperWave = 0;
     private int enemySpawn;
     private int superEnemySpawn;
@@ -46,6 +48,7 @@ public class WaveManager : MonoBehaviour
 
     private void Start()
     {
+        numberOfWave = 1;
         GameManager.Instance.StartSpawningWave += StartSpawning;
         totalNumberOfEnemyPerWave = baseNumberOfEnemy;
         totalNumberOfSuperEnemyPerWave = baseNumberOfSuperEnemy;
@@ -163,6 +166,8 @@ public class WaveManager : MonoBehaviour
             totalNumberOfSuperEnemyPerWave = baseNumberOfSuperEnemy + (numberOfSuperWave * addingNumberOfSuperEnemyPerWave) * (int)Mathf.Pow(factorMultiplicatorSuperEnemy, numberOfSuperWave);
             totalNumberOfSuperEnemyPerWave = Mathf.RoundToInt(totalNumberOfSuperEnemyPerWave);
         }
+        
+        ShowNewWave?.Invoke();
     }
 
     private void RemoveEnemyFromWave(GameObject go)
