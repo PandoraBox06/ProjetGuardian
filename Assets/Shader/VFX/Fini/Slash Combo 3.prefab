@@ -14753,7 +14753,7 @@ PrefabInstance:
     - target: {fileID: 5308420162720630495, guid: a7c3375f72f199943b54ada3bf30bb0a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6f376a528dd0c4f4c8e3784effeb4507, type: 2}
+      objectReference: {fileID: -876546973899608171, guid: 7e82a88435b46984d953d50b80ac805f, type: 3}
     - target: {fileID: 6011204018901255793, guid: a7c3375f72f199943b54ada3bf30bb0a, type: 3}
       propertyPath: m_Name
       value: Slash Combo 3
