@@ -71,6 +71,7 @@ public class CameraBehavior : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.currentGameState == GameState.Cutscene) return;
         if (isAttacking)
         {
             return;

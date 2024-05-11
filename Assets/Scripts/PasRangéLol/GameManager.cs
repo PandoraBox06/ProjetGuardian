@@ -1,13 +1,11 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public enum GameState
 {
     Lobby,
+    Cutscene,
     Tutorial,
     PreWave,
     InWave,
@@ -20,7 +18,8 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameState currentGameState;
+    public GameState currentGameState { get; private set; }
+
     [SerializeField] float delayBeforeWaveStart = 3f;
     [SerializeField] private int currentWave;
     [SerializeField] private InputActionReference pauseInput;
@@ -29,8 +28,10 @@ public class GameManager : MonoBehaviour
     private bool isTutorialDone;
 
     private Action currentAction;
-
-    public event Action StartSpawningWave;
+    [SerializeField] private GameObject _CutSceneManager;
+    [SerializeField] private GameObject _PlayerCanvas;
+    [SerializeField] private GameObject _UICanvas;
+    public static event  Action StartSpawningWave;
     public static GameManager Instance { get; private set; }
     private void Awake()
     {
@@ -60,16 +61,18 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        _PlayerCanvas.SetActive(false);
+        _UICanvas.SetActive(false);
+        
         timer = delayBeforeWaveStart;
         stateBeforePause = GameState.Null;
-        
-        if (UIManager.Instance.startWithMenu) ChangeGameState(GameState.Lobby);
-        else ChangeGameState(GameState.PreWave);
+
+        ChangeGameState(UIManager.Instance.startWithMenu ? GameState.Lobby : GameState.Cutscene);
     }
 
     private void Update()
     {
-        if (currentAction != null) currentAction();
+        currentAction?.Invoke();
     }
 
     #region StateMachine
@@ -78,20 +81,26 @@ public class GameManager : MonoBehaviour
         //Main Menu
     }
 
+    void CutScene()
+    {
+        if (_CutSceneManager.activeInHierarchy == false) ChangeGameState(GameState.Tutorial);
+    }
+
     void Tutorial()
     {
         //Tutorial Related
+        _PlayerCanvas.SetActive(true);
+        _UICanvas.SetActive(true);
+        ChangeGameState(GameState.PreWave);
     }
 
     void PreWave()
     {
         //Before Wave
         timer -= Time.deltaTime;
-        if (timer <= 0)
-        {
-            StartSpawningWave?.Invoke();
-            ChangeGameState(GameState.InWave);
-        }
+        if (!(timer <= 0)) return;
+        StartSpawningWave?.Invoke();
+        ChangeGameState(GameState.InWave);
     }
 
     void InWave()
@@ -187,31 +196,19 @@ public class GameManager : MonoBehaviour
     {
         if (state == currentGameState) return;
         currentGameState = state;
-        
-        switch (currentGameState)
+
+        currentAction = currentGameState switch
         {
-            case GameState.Lobby:
-                currentAction = Lobby;
-                break;
-            case GameState.Tutorial:
-                currentAction = Tutorial;
-                break;
-            case GameState.PreWave:
-                currentAction = PreWave;
-                break;
-            case GameState.InWave:
-                currentAction = InWave;
-                break;
-            case GameState.PostWave:
-                currentAction = PostWave;
-                break;
-            case GameState.Defeat:
-                currentAction = Defeat;
-                break;
-            case GameState.Pause:
-                currentAction = Pause;
-                break;
-        }
+            GameState.Lobby => Lobby,
+            GameState.Tutorial => Tutorial,
+            GameState.PreWave => PreWave,
+            GameState.InWave => InWave,
+            GameState.PostWave => PostWave,
+            GameState.Defeat => Defeat,
+            GameState.Pause => Pause,
+            GameState.Cutscene => CutScene,
+            _ => currentAction
+        };
     }
 
     public void GetWaveNumber(int wave)

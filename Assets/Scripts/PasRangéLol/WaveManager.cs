@@ -38,18 +38,18 @@ public class WaveManager : MonoBehaviour
     private void OnEnable()
     {
         Enemy.OnDeath += RemoveEnemyFromWave;
+        GameManager.StartSpawningWave += StartSpawning;
     }
 
     private void OnDisable()
     {
         Enemy.OnDeath -= RemoveEnemyFromWave;
-        GameManager.Instance.StartSpawningWave -= StartSpawning;
+        GameManager.StartSpawningWave -= StartSpawning;
     }
 
     private void Start()
     {
         numberOfWave = 1;
-        GameManager.Instance.StartSpawningWave += StartSpawning;
         totalNumberOfEnemyPerWave = baseNumberOfEnemy;
         totalNumberOfSuperEnemyPerWave = baseNumberOfSuperEnemy;
         RefreshWaveCount?.Invoke(numberOfWave);

@@ -89,6 +89,7 @@ public class BlancoCombatManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.currentGameState == GameState.Cutscene) return;
         //detect pause input
         if (elapsedTime > transitionDuration)
         {
