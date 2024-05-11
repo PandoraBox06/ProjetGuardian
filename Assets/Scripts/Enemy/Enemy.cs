@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour, IDamageable
             shieldEffect.Play();
             if (guardHealth <= 0)
             {
-                enemyBehaviour.ChangeState(Enemy_State.Stun);
+                GetStun();
             }
         }
         else
@@ -81,6 +81,12 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
 
+    public void GetStun()
+    {
+        enemyBehaviour.ChangeState(Enemy_State.Stun);
+        isGuarding = false;
+    }
+    
     public void ResetGuard()
     {
         guardHealth = enemyData.GuardHealth;

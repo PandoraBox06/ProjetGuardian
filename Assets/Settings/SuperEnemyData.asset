@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29456595ba1e4439a4567bb9e88255ff, type: 3}
-  m_Name: EnemyData
+  m_Name: SuperEnemyData
   m_EditorClassIdentifier: 
   MaxHealth: 100
   GuardHealth: 50
-  WeaponDamage: 30
+  WeaponDamage: 20
   Projectiles: {fileID: 2509917760392722383, guid: a90fa225e09bd4642a0abd3c3cd428de, type: 3}
-  VFX_Hit: {fileID: 924768508263797405, guid: 8bc51796552c0164a8513fe8a6fc6925, type: 3}
+  VFX_Hit: {fileID: 924768508263797405, guid: 6bf9355d6d30d344aad63572edbbc84e, type: 3}
   VFX_Die: {fileID: 358637981425055526, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
   TrainingDummyMode: 0
   IdleTime: 0

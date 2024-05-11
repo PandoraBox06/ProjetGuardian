@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using FMODUnity;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -25,7 +22,9 @@ public class CharacterAnimatorEvents : MonoBehaviour
     [Header("VFX")] 
     [SerializeField] private ParticleSystem holdVFX;
     [SerializeField] private Transform vfxOutput;
-    
+    [Header("GuardBreaking")]
+    [SerializeField]  private Collider _guardBreak;
+
     private void Start()
     {
         _characterController = GetComponent<CharacterController>();
@@ -131,7 +130,18 @@ public class CharacterAnimatorEvents : MonoBehaviour
         _characterController.Move(dashDirection * ((dashDistance / dashDuration) * Time.deltaTime));
         animator.applyRootMotion = true;
     }
-    
+
+    public void GuardBreak()
+    {
+        _guardBreak.enabled = true;
+    }
+
+    public void GuardBreakOff()
+    {
+        _guardBreak.enabled = false;
+    }
+
+
     // private void ResetAllAnimatorTriggers()
     // {
     //     foreach (var trigger in animator.parameters)

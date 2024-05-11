@@ -100,15 +100,15 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.15166457
-        functionName: OnEnableCollider
+      - time: 0.24873233
+        functionName: GuardBreak
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.82565784
-        functionName: OnDisableCollider
+      - time: 0.2763158
+        functionName: HitSwordSound
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -128,8 +128,8 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.2763158
-        functionName: HitSwordSound
+      - time: 0.35359117
+        functionName: GuardBreakOff
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

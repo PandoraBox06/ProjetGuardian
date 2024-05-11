@@ -57,6 +57,11 @@ public class PlayerStats : MonoBehaviour, IDamageable
         animator.SetTrigger(Death);
         playerData.currentHealth = playerData.maxHealth;
     }
+
+    public void GetStun()
+    {
+        
+    }
     
     private void GetHitPlayerSound()
     {
