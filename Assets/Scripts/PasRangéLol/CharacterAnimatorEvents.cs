@@ -24,6 +24,7 @@ public class CharacterAnimatorEvents : MonoBehaviour
     [SerializeField] private Transform vfxOutput;
     [Header("GuardBreaking")]
     [SerializeField]  private Collider _guardBreak;
+    [SerializeField] private ParticleSystem _guardBreakerVfx;
 
     private void Start()
     {
@@ -134,6 +135,7 @@ public class CharacterAnimatorEvents : MonoBehaviour
     public void GuardBreak()
     {
         _guardBreak.enabled = true;
+        _guardBreakerVfx.Play();
     }
 
     public void GuardBreakOff()

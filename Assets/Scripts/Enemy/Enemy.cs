@@ -23,11 +23,11 @@ public class Enemy : MonoBehaviour, IDamageable
     [Header("VFX")]
     [HideInInspector] public GameObject VFX_Hit;
     [HideInInspector] public GameObject VFX_Die;
-    [HideInInspector] public bool HasInstanciated;
 
     [SerializeField] private ParticleSystem guardBlocked;
     [SerializeField] private ParticleSystem shieldEffect;    
     [SerializeField] private ParticleSystem deathEffect;
+    [SerializeField] private ParticleSystem _guardBeark;
     public static event Action<GameObject> OnDeath;
 
     [SerializeField] Transform hitOutput;
@@ -74,7 +74,6 @@ public class Enemy : MonoBehaviour, IDamageable
             {
                 Die();
                 Instantiate(VFX_Die,transform.position, Quaternion.identity);
-                HasInstanciated = true;
             }
 
             Instantiate(VFX_Hit, hitOutput.position, Quaternion.identity);
@@ -83,6 +82,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void GetStun()
     {
+        _guardBeark.Play();
         enemyBehaviour.ChangeState(Enemy_State.Stun);
         isGuarding = false;
     }
