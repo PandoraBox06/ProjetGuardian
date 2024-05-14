@@ -23,7 +23,8 @@ public class Enemy : MonoBehaviour, IDamageable
     [Header("VFX")]
     [HideInInspector] public GameObject VFX_Hit;
     [HideInInspector] public GameObject VFX_Die;
-
+    [SerializeField] private ParticleSystem _VFXTarget;
+    private ParticleSystem _spawned;
     [SerializeField] private ParticleSystem guardBlocked;
     [SerializeField] private ParticleSystem shieldEffect;    
     [SerializeField] private ParticleSystem deathEffect;
@@ -31,7 +32,6 @@ public class Enemy : MonoBehaviour, IDamageable
     public static event Action<GameObject> OnDeath;
 
     [SerializeField] Transform hitOutput;
-    
     private void Awake()
     {
         enemyData.SetUpEnemy(out maxHealth, out VFX_Hit, out VFX_Die, out guardHealth);
@@ -44,6 +44,19 @@ public class Enemy : MonoBehaviour, IDamageable
         barParent.localScale = Vector3.one;
         barSpriteRenderer.material.color = hpGradient.Evaluate(currentHealth / maxHealth);
         hpEnemy.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (CombatCamBehavior.Instance.closestTarget == transform)
+        {
+            if (_spawned != null)return;
+            _spawned = Instantiate(_VFXTarget, transform.position + Vector3.up * 2, Quaternion.identity, transform);
+        }
+        else
+        {
+            Destroy(_spawned);
+        }
     }
 
     public void TakeDamage(float damage)

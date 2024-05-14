@@ -3509,9 +3509,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targets: []
   closestTarget: {fileID: 0}
-  lockTarget: {fileID: 0}
   playerTransform: {fileID: 7898848057538208802}
   orientation: {fileID: 6064342496790884161}
+  _targetLock: {fileID: 0}
 --- !u!135 &7320264219946184014
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3531,7 +3531,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 7
+  m_Radius: 11
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8403462581918203872
 GameObject:

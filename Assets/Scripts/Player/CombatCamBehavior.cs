@@ -1,3 +1,4 @@
+using System;
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,16 +8,20 @@ using UnityEngine.InputSystem;
 
 public class CombatCamBehavior : MonoBehaviour
 {
-    /*[HideInInspector]*/ public List<Transform> targets;
-    /*[HideInInspector]*/ public Transform closestTarget;
-    /*[HideInInspector]*/ public Transform lockTarget;
+    public static CombatCamBehavior Instance;
+    [HideInInspector] public List<Transform> targets;
+     public Transform closestTarget;
 
     [Header("References")]
     public Transform playerTransform;
     public Transform orientation;
-    
     //Private
     bool lockOn;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void OnEnable()
     {
@@ -32,17 +37,18 @@ public class CombatCamBehavior : MonoBehaviour
 
     private void Update()
     {
-        if (targets.Count >= 2)
+        switch (targets.Count)
         {
-            targets = targets.Where(item => item != null).ToList();
-            closestTarget = FindClosestEnemy(playerTransform.position, targets);
-        }
-        else if (targets.Count == 1)
-        {
-            closestTarget = targets.First();
+            case >= 2:
+                targets = targets.Where(item => item != null).ToList();
+                closestTarget = FindClosestEnemy(playerTransform.position, targets);
+                break;
+            case 1:
+                closestTarget = targets.First();
+                break;
         }
     }
-
+    
     private void LookAtTarget()
     {
         if (closestTarget != null)
@@ -90,5 +96,12 @@ public class CombatCamBehavior : MonoBehaviour
                 closestTarget = null;
             }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        SphereCollider col = GetComponent<SphereCollider>();
+        Gizmos.DrawWireSphere(transform.position, col.radius);
     }
 }
