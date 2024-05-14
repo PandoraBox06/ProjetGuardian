@@ -2,6 +2,7 @@ using System;
 using BasicEnemyStateMachine;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Debug = System.Diagnostics.Debug;
 
 public class Enemy : MonoBehaviour, IDamageable
@@ -10,7 +11,7 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private Enemy_Data enemyData;
     [HideInInspector] public float currentHealth;
     public float guardHealth;
-    [SerializeField] EnemyBehaviour enemyBehaviour;
+    [SerializeField] NewEnemyBehaviour enemyBehaviour;
     [SerializeField] private Animator animator;
     //private
     [SerializeField] private GameObject hpEnemy;
@@ -28,7 +29,7 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private ParticleSystem guardBlocked;
     [SerializeField] private ParticleSystem shieldEffect;    
     [SerializeField] private ParticleSystem deathEffect;
-    [SerializeField] private ParticleSystem _guardBeark;
+    [SerializeField] private ParticleSystem _guardBreak;
     public static event Action<GameObject> OnDeath;
 
     [SerializeField] Transform hitOutput;
@@ -95,8 +96,8 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void GetStun()
     {
-        _guardBeark.Play();
-        enemyBehaviour.ChangeState(Enemy_State.Stun);
+        _guardBreak.Play();
+        enemyBehaviour.ChangeState(EnemyState.Stun);
         isGuarding = false;
     }
     

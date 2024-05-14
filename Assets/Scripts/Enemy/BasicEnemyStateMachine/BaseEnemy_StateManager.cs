@@ -80,17 +80,6 @@ namespace BasicEnemyStateMachine
             dodge
         }
 
-        private void Awake()
-        {
-            enemyData.SetUpStateManager(out projectiles, out trainingDummyMode, out idleTime, out meleeAttackRange,
-                out rangeAttackRange, out minRangeAttackRange, out projectilesSpeed, out stunTimer,
-                out highHpPercentLower, out midHpPercentUpper, out midHpPercentLower, out lowHpPercentUpper,
-                out lowHpPercentLower, out highHpPercentMelee, out highHpPercentRange, out highHpPercentDodge,
-                out midHpPercentMelee, out midHpPercentRange, out midHpPercentDodge, out lowHpPercentMelee,
-                out lowHpPercentRange, out lowHpPercentDodge, out randomTimeForMeleeUpper, out randomTimeForMeleeLower,
-                out randomTimeForRangeUpper, out randomTimeForRangeLower, out randomTimeForDodgeUpper, out randomTimeForDodgeLower);
-        }
-
         private void OnEnable()
         {
             Enemy_AnimatorEvents.OnFireProjectileEnemy += FireProjectile;

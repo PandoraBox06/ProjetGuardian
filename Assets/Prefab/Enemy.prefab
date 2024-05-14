@@ -835,7 +835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef98383fbb635394198e6e8348587344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyBehaviour: {fileID: 6858151234115867698}
+  enemyBehaviour: {fileID: 2663944057482477320}
 --- !u!1 &5858527829242232144
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,9 +849,9 @@ GameObject:
   - component: {fileID: 7466432572703052150}
   - component: {fileID: 6204848861542807151}
   - component: {fileID: 2517891411163887980}
-  - component: {fileID: 6858151234115867698}
   - component: {fileID: 3854044491715554193}
   - component: {fileID: 3549721490973236778}
+  - component: {fileID: 2663944057482477320}
   m_Layer: 10
   m_Name: Enemy
   m_TagString: Enemy
@@ -985,7 +985,7 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 718934a24a82edb48bcee1d7f4b2db70, type: 2}
   currentHealth: 0
   guardHealth: 0
-  enemyBehaviour: {fileID: 6858151234115867698}
+  enemyBehaviour: {fileID: 2663944057482477320}
   animator: {fileID: 5946708758066630822}
   hpEnemy: {fileID: 1301880845814085187}
   barSpriteRenderer: {fileID: 2232990642285334933}
@@ -1028,62 +1028,8 @@ MonoBehaviour:
   guardBlocked: {fileID: 3699205556897422688}
   shieldEffect: {fileID: 549612367561028924}
   deathEffect: {fileID: 1505819240896672979, guid: 761a8a8bb8ab1e14984916dd826998f2, type: 3}
-  _guardBeark: {fileID: 1366720334612670237}
+  _guardBreak: {fileID: 1366720334612670237}
   hitOutput: {fileID: 4626783797122302874}
---- !u!114 &6858151234115867698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5858527829242232144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5db748b080de42ab97a3897557128cfc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 718934a24a82edb48bcee1d7f4b2db70, type: 2}
-  currentState: 0
-  nextState: 0
-  player: {fileID: 0}
-  animator: {fileID: 5946708758066630822}
-  agent: {fileID: 3854044491715554193}
-  fireOutput: {fileID: 5252736024321665745}
-  projectileDump: {fileID: 179491751594032454}
-  stats: {fileID: 2517891411163887980}
-  trainingDummyMode: 0
-  idleTime: 1
-  meleeAttackRange: 0
-  rangeAttackRange: 15
-  minRangeAttackRange: 7
-  projectilesSpeed: 10
-  isStunned: 0
-  stunTimer: 1
-  highHpPercentLower: 0
-  midHpPercentUpper: 0
-  midHpPercentLower: 0
-  lowHpPercentUpper: 0
-  lowHpPercentLower: 0
-  highHpPercentMelee: 0
-  highHpPercentRange: 0
-  highHpPercentDodge: 0
-  midHpPercentMelee: 0
-  midHpPercentRange: 0
-  midHpPercentDodge: 0
-  lowHpPercentMelee: 0
-  lowHpPercentRange: 0
-  lowHpPercentDodge: 0
-  randomTimeForMeleeUpper: 0
-  randomTimeForMeleeLower: 0
-  randomTimeForRangeUpper: 0
-  randomTimeForRangeLower: 0
-  randomTimeForDodgeUpper: 0
-  randomTimeForDodgeLower: 0
-  attackBox: {fileID: 3031816720048385431}
-  stunEffect: {fileID: 8228209386453125205}
-  timer: 0
-  stateTimer: 0
-  projectiles: {fileID: 0}
 --- !u!195 &3854044491715554193
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1123,6 +1069,28 @@ MonoBehaviour:
   SlashEnnemy3: {fileID: 6881445055170871599}
   StunEnnemy: {fileID: 8228209386453125205}
   InstanceAttaque: {fileID: 2104389702474150517}
+--- !u!114 &2663944057482477320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5858527829242232144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba482c0bbe364cb4a1f47b54ae2687d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyData: {fileID: 11400000, guid: 718934a24a82edb48bcee1d7f4b2db70, type: 2}
+  Player: {fileID: 0}
+  _animator: {fileID: 5946708758066630822}
+  _agent: {fileID: 3854044491715554193}
+  _fireOutput: {fileID: 5252736024321665745}
+  _projectileDump: {fileID: 179491751594032454}
+  _stats: {fileID: 2517891411163887980}
+  _attackBox: {fileID: 3031816720048385431}
+  _stunEffect: {fileID: 8228209386453125205}
+  _timer: 0
 --- !u!1 &6566526895473901775
 GameObject:
   m_ObjectHideFlags: 0
