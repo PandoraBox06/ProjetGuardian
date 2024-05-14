@@ -91,7 +91,9 @@ public class NewEnemyBehaviour : MonoBehaviour
     }
 
     private void GoToPlayer()
-    {
+    {   
+        if(Player == null)return;
+        
         if (Vector3.Distance(transform.position, Player.position) > _enemyData.MeleeAttackRange)
         {
             _agent.SetDestination(Player.position);

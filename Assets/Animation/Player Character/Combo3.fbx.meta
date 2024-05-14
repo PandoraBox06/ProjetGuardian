@@ -114,22 +114,22 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.98313254
+      - time: 0.35359117
+        functionName: GuardBreakOff
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.8529956
         functionName: OnEndAnimations
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.98313254
+      - time: 0.8529956
         functionName: UnFreezeMovement
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.35359117
-        functionName: GuardBreakOff
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
