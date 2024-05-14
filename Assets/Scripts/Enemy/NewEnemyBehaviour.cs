@@ -134,6 +134,8 @@ public class NewEnemyBehaviour : MonoBehaviour
         if(_stats.isGuarding) return;
         //Turn towards player
         transform.LookAt(Player);
+        _agent.SetDestination(Player.position);
+        if(_agent.remainingDistance > _enemyData.MeleeAttackRange) return;
         //Guard Up
         _stats.isGuarding = true;
         _animator.SetBool("Block",_stats.isGuarding);
