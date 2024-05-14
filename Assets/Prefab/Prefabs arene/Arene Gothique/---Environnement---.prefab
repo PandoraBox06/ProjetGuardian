@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2546290047422424974}
   - component: {fileID: 5265091046022683443}
   - component: {fileID: 3921349640641473132}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.106_dmg.005
   m_TagString: Walls
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 8384779418723444121}
   - component: {fileID: 4089379440811091203}
   - component: {fileID: 5213524895478363514}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.106_dmg.006
   m_TagString: Walls
   m_Icon: {fileID: 0}
@@ -399,7 +399,7 @@ GameObject:
   - component: {fileID: 2067390507332868356}
   - component: {fileID: 5565133277836856938}
   - component: {fileID: 271571201869129428}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder.032
   m_TagString: Walls
   m_Icon: {fileID: 0}
@@ -851,7 +851,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2702693310754373016}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Contour pierre
   m_TagString: Walls
   m_Icon: {fileID: 0}
@@ -1094,7 +1094,7 @@ GameObject:
   - component: {fileID: 7989301557595502929}
   - component: {fileID: 1359511279434888045}
   - component: {fileID: 3246526965182570771}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.106_dmg.004
   m_TagString: Walls
   m_Icon: {fileID: 0}

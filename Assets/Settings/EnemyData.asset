@@ -15,33 +15,52 @@ MonoBehaviour:
   MaxHealth: 100
   GuardHealth: 50
   WeaponDamage: 10
+  AttackCooldown: 1
   Projectiles: {fileID: 2509917760392722383, guid: a90fa225e09bd4642a0abd3c3cd428de, type: 3}
   VFX_Hit: {fileID: 924768508263797405, guid: 8bc51796552c0164a8513fe8a6fc6925, type: 3}
   VFX_Die: {fileID: 358637981425055526, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
   TrainingDummyMode: 0
   IdleTime: 0
-  MeleeAttackRange: 2.3
+  MeleeAttackRange: 2
   RangeAttackRange: 15
   MinRangeAttackRange: 7
   ProjectilesSpeed: 10
   StunTimer: 2
-  HighHpPercentLower: 0.61
-  MidHpPercentUpper: 0.6
-  MidHpPercentLower: 0.31
-  LowHpPercentUpper: 0.3
-  LowHpPercentLower: 0
-  HighHpPercentMelee: 0.6
-  HighHpPercentRange: 0.3
-  HighHpPercentDodge: 0
-  MidHpPercentMelee: 0.3
-  MidHpPercentRange: 0
-  MidHpPercentDodge: 0.6
-  LowHpPercentMelee: 0
-  LowHpPercentRange: 0.6
-  LowHpPercentDodge: 0.3
+  WalkingSpeed: 3.5
+  HighHpPercent: 61
+  MidHpPercent: 60
+  LowHpPercent: 31
   RandomTimeForMeleeUpper: 6
   RandomTimeForMeleeLower: 3
   RandomTimeForRangeUpper: 6
   RandomTimeForRangeLower: 3
   RandomTimeForDodgeUpper: 4
   RandomTimeForDodgeLower: 2
+  RandomBehaviours:
+  - State: 2
+    Weight: 10
+  - State: 3
+    Weight: 60
+  - State: 4
+    Weight: 30
+  FullLifeBehaviours:
+  - State: 2
+    Weight: 60
+  - State: 3
+    Weight: 30
+  - State: 4
+    Weight: 10
+  MidLifeBehaviours:
+  - State: 2
+    Weight: 30
+  - State: 3
+    Weight: 10
+  - State: 4
+    Weight: 60
+  LowLifeBehaviours:
+  - State: 2
+    Weight: 10
+  - State: 3
+    Weight: 60
+  - State: 4
+    Weight: 30

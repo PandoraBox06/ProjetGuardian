@@ -72,17 +72,6 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private float stateTimer;
     [HideInInspector] public GameObject projectiles;
     private bool canChangeState;
-    
-    private void Awake()
-    {
-        enemyData.SetUpStateManager(out projectiles, out trainingDummyMode, out idleTime, out meleeAttackRange,
-            out rangeAttackRange, out minRangeAttackRange, out projectilesSpeed, out stunTimer,
-            out highHpPercentLower, out midHpPercentUpper, out midHpPercentLower, out lowHpPercentUpper,
-            out lowHpPercentLower, out highHpPercentMelee, out highHpPercentRange, out highHpPercentDodge,
-            out midHpPercentMelee, out midHpPercentRange, out midHpPercentDodge, out lowHpPercentMelee,
-            out lowHpPercentRange, out lowHpPercentDodge, out randomTimeForMeleeUpper, out randomTimeForMeleeLower,
-            out randomTimeForRangeUpper, out randomTimeForRangeLower, out randomTimeForDodgeUpper, out randomTimeForDodgeLower);
-    }
 
 
     private void Start()
@@ -115,39 +104,37 @@ public class EnemyBehaviour : MonoBehaviour
         }
 
 
-        if (player != null)
+        if (player == null) return;
+        //Search if close to player
+        if (nextState == Enemy_State.Fire)
         {
-            //Search if close to player
-            if (nextState == Enemy_State.Fire)
-            {
-                float playerDist = Vector3.Distance(player.position, transform.position);
+            float playerDist = Vector3.Distance(player.position, transform.position);
             
-                if (playerDist <= minRangeAttackRange && !isReplacing)
-                {
-                    //else : go to player
-                    agent.stoppingDistance = 1f;
-                    animator.SetFloat("Speed", agent.velocity.magnitude);
-                    agent.SetDestination(-transform.forward * (minRangeAttackRange + 1));
-                    isReplacing = true;
-                }
-                else
-                {
-                    isReplacing = false;
-                    ChangeState(nextState);
-                }
+            if (playerDist <= minRangeAttackRange && !isReplacing)
+            {
+                //else : go to player
+                agent.stoppingDistance = 1f;
+                animator.SetFloat("Speed", agent.velocity.magnitude);
+                agent.SetDestination(-transform.forward * (minRangeAttackRange + 1));
+                isReplacing = true;
             }
             else
             {
-                if (!CheckDistanceToPlayer())
-                {
-                    //else : go to player
-                    animator.SetFloat("Speed", agent.velocity.magnitude);
-                    agent.SetDestination(player.transform.position);
-                }
-                else
-                {
-                    ChangeState(nextState);
-                }
+                isReplacing = false;
+                ChangeState(nextState);
+            }
+        }
+        else
+        {
+            if (!CheckDistanceToPlayer())
+            {
+                //else : go to player
+                animator.SetFloat("Speed", agent.velocity.magnitude);
+                agent.SetDestination(player.transform.position);
+            }
+            else
+            {
+                ChangeState(nextState);
             }
         }
     }
@@ -160,32 +147,30 @@ public class EnemyBehaviour : MonoBehaviour
         //Turn towards player
         transform.LookAt(player);
         //Check again if range
-        if (player != null)
+        if (player == null) return;
+        //Search if close to player
+        if (!CheckDistanceToPlayer())
         {
-            //Search if close to player
-            if (!CheckDistanceToPlayer())
+            //else : go to player
+            animator.SetFloat("Speed", agent.velocity.magnitude);
+            agent.SetDestination(player.transform.position);
+        }
+        else
+        {
+            isAttacking = true;
+            //Random between 1&2
+            int randomAttack = Random.Range(0, 2);
+            //Play attack 1 ou 2
+            switch (randomAttack)
             {
-                //else : go to player
-                animator.SetFloat("Speed", agent.velocity.magnitude);
-                agent.SetDestination(player.transform.position);
+                case 0:
+                    animator.Play("Attack1");
+                    break;
+                case 1:
+                    animator.Play("Attack2");
+                    break;
             }
-            else
-            {
-                isAttacking = true;
-                //Random between 1&2
-                int randomAttack = Random.Range(0, 2);
-                //Play attack 1 ou 2
-                switch (randomAttack)
-                {
-                    case 0:
-                        animator.Play("Attack1");
-                        break;
-                    case 1:
-                        animator.Play("Attack2");
-                        break;
-                }
-                //Return to Walk
-            }
+            //Return to Walk
         }
     }
 
