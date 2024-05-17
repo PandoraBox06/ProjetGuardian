@@ -64,13 +64,6 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0
-        functionName: HitSwordSound
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
       - time: 0.30859286
         functionName: OnEnableCollider
         data: 
@@ -78,15 +71,22 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.3225635
+      - time: 0.30886486
         functionName: DoHitPlayerSound
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.34069052
+      - time: 0.3098686
         functionName: SpawnVFX2
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.32876712
+        functionName: HitSwordSound
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
