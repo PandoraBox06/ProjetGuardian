@@ -34,6 +34,7 @@ public class HelpComboInterface : MonoBehaviour
     [SerializeField] private Sprite pauseSprite;
     [SerializeField] private Sprite gunSprite;
     [SerializeField] private Sprite holdSprite;
+    [SerializeField] private Sprite dashSprite;
     [Header("Images")]
     [SerializeField] private List<Image> combosImages = new();
     [SerializeField] private GameObject lastComboBox;
@@ -53,6 +54,7 @@ public class HelpComboInterface : MonoBehaviour
         
         if (waveManager != null) waveManager.ShowNewWave.AddListener(ShowWaveNumber);
         managerInstance.InputEvent.AddListener(AddCombo);
+        managerInstance.LastInputEvent.AddListener(AddCombo);
         managerInstance.CancelEvent.AddListener(CleanCombo);
         managerInstance.FinishedComboEvent.AddListener(FinishedCombo);
         closeComboInput.action.performed += ToggleCombo;
@@ -124,6 +126,9 @@ public class HelpComboInterface : MonoBehaviour
             case "HoldAttack" :
                 combosImages[index].sprite = holdSprite;
                 break;
+            case "Dash" :
+                combosImages[index].sprite = dashSprite;
+                break;
         }
 
         index++;
@@ -158,6 +163,7 @@ public class HelpComboInterface : MonoBehaviour
     {
         waveManager.ShowNewWave.RemoveAllListeners();
         managerInstance.InputEvent.RemoveAllListeners();
+        managerInstance.LastInputEvent.RemoveAllListeners();
         managerInstance.CancelEvent.RemoveAllListeners();
         managerInstance.FinishedComboEvent.RemoveAllListeners();
         

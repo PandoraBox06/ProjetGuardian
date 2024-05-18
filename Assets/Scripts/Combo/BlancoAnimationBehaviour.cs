@@ -26,7 +26,17 @@ public class BlancoAnimationBehaviour : MonoBehaviour
         managerInstance.InputEvent.AddListener(StartAnimation);
         managerInstance.CancelEvent.AddListener(CancelAnimation);
     }
-    
+
+    private void OnEnable()
+    {
+        BlancoCombatManager.LastInput += PlayLastComboAnim;
+    }
+
+    private void OnDisable()
+    {
+        BlancoCombatManager.LastInput -= PlayLastComboAnim;
+    }
+
     private void StartAnimation()
     {
         inputIndex++;
@@ -40,7 +50,8 @@ public class BlancoAnimationBehaviour : MonoBehaviour
         }
         else if (managerInstance.actionInput == managerInstance.pauseInput.action)
         {
-            inputType = "pause";
+            // inputType = "pause";
+            return;
         }
         else if (managerInstance.actionInput == managerInstance.holdInput.action)
         {
@@ -62,6 +73,7 @@ public class BlancoAnimationBehaviour : MonoBehaviour
 
     private void TryToPlay(string _animation)
     {
+        //chck si string pour last sinon go
         var stateID = Animator.StringToHash(_animation);
         var hasState = animator.HasState(0, stateID);
         if (!hasState)
@@ -70,18 +82,20 @@ public class BlancoAnimationBehaviour : MonoBehaviour
             return;
         }
         
-        // foreach (var trigger in animator.parameters)
-        // {
-        //     if (trigger.type == AnimatorControllerParameterType.Trigger)
-        //     {
-        //         animator.ResetTrigger(trigger.name);
-        //     }
-        // }
-        
         // Debug.Log(_animation + " has been triggered");
         animator.Play(_animation);
     }
 
+    private void PlayLastComboAnim(ComboScriptableObject combo)
+    {
+        if (string.IsNullOrEmpty(combo.LastAnimation))
+        {
+            return;
+        }
+
+        animator.Play(combo.LastAnimation);
+    }
+    
     private void OnDestroy()
     {
         if (this == Instance)

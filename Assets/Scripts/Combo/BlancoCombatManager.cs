@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting.InputSystem;
 using UnityEngine;
 using UnityEngine.Events;
@@ -144,12 +145,12 @@ public class BlancoCombatManager : MonoBehaviour
         }
         else
         {
-            // Ici on fait le truc avec le combo.kuntz <=================
-            
             if (!isHoldFinished) CheckValidCombo(callback.action);
         }
     }
 
+    public static event Action<ComboScriptableObject> LastInput;
+    [HideInInspector] public UnityEvent LastInputEvent;
     private void CheckValidCombo(InputAction lastAction)
     {
         // Check if we are in play mode
@@ -170,11 +171,22 @@ public class BlancoCombatManager : MonoBehaviour
             {
                 if (!inputEventSent)
                 {
-                    //doAction, we keep the combo
+                    //check if last input then Event to ANimation Behaviour
                     actionInput = validList[i].inputList[currentComboLastIdx];
                     
+                    if (validList[i].inputList.Count == currentCombo.Count && !string.IsNullOrEmpty(validList[i].LastAnimation))
+                    {
+                        LastInput?.Invoke(validList[i]);
+                        LastInputEvent?.Invoke();
+                    }
+                    else
+                    {
+                        //doAction, we keep the combo
+                        InputEvent?.Invoke();
+                    }
+                    
                     inputEventSent = true;
-                    InputEvent?.Invoke();
+                        
                 }
             }
             else
