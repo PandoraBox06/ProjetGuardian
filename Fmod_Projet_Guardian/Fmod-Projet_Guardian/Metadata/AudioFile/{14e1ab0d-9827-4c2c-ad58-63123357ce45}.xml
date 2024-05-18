@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{14e1ab0d-9827-4c2c-ad58-63123357ce45}">
+		<property name="assetPath">
+			<value>Walk Concrete v2-006.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.40000000000000002</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{96b10a71-ce91-4c02-8101-4f875d5a0317}</destination>
+		</relationship>
+	</object>
+</objects>
