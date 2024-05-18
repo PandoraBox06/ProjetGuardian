@@ -32,7 +32,8 @@ public class PlayerStats : MonoBehaviour, IDamageable
     [SerializeField] private ParticleSystem blood;
     [SerializeField] private ParticleSystem hit;
     private bool isDashing;
-
+    private bool _iFrame;
+    private bool _isDead;
     public static event Action<float> OnDamageTaken;
 
     private void Awake()
@@ -44,16 +45,19 @@ public class PlayerStats : MonoBehaviour, IDamageable
     private void OnEnable()
     {
         DashController.OnDash += IsDashing;
+        CharacterAnimatorEvents.OnIFrame += IsInvu;
     }
 
     private void OnDisable()
     {
         DashController.OnDash -= IsDashing;
+        CharacterAnimatorEvents.OnIFrame -= IsInvu;
     }
 
     public void TakeDamage(float damage)
     {
         if (isDashing) return;
+        if (_iFrame) return;
         animator.SetTrigger(Hit);
         playerData.currentHealth -= damage;
         blood.Play();
@@ -66,12 +70,14 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
     public void Die()
     {
+        if(_isDead) return;
         DeathPlayerSound();
         animator.SetTrigger(Death);
         GetComponent<BlancoCombatManager>().enabled = false;
         GetComponent<CameraBehavior>().enabled = false;
         GetComponent<PlayerMouvement>().enabled = false;
         GetComponent<DashController>().enabled = false;
+        _isDead = true;
         // playerData.currentHealth = playerData.maxHealth;
     }
 
@@ -95,6 +101,10 @@ public class PlayerStats : MonoBehaviour, IDamageable
     private void IsDashing(bool b)
     {
         isDashing = b;
+    }
+    private void IsInvu(bool b)
+    {
+        _iFrame = b;
     }
 
 }

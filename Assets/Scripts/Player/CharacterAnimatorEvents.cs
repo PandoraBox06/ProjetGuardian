@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 public class CharacterAnimatorEvents : MonoBehaviour
@@ -26,6 +27,8 @@ public class CharacterAnimatorEvents : MonoBehaviour
     [SerializeField]  private Collider _guardBreak;
     [SerializeField] private ParticleSystem _guardBreakerVfx;
 
+    public static event Action<bool> OnIFrame;
+    private bool _iframe;
     private void Start()
     {
         _characterController = GetComponent<CharacterController>();
@@ -73,15 +76,19 @@ public class CharacterAnimatorEvents : MonoBehaviour
         if (!AudioManager.Instance.hitCrossbow.IsNull)
             AudioManager.Instance.PlayOneShot(AudioManager.Instance.hitCrossbow, transform.position);
     }
-    
-    public void PlayerIFrameOn()
-    {
-        playerCollider.enabled = false;
-    }
 
-    public void PlayerIFrameOff()
+    public void IFramee()
     {
-        playerCollider.enabled = true;
+        if (!_iframe)
+        {
+            _iframe = true;
+            OnIFrame?.Invoke(_iframe);
+        }
+        else
+        {
+            _iframe = false;
+            OnIFrame?.Invoke(_iframe);
+        }
     }
 
     public void FreezeMovement()
@@ -142,16 +149,4 @@ public class CharacterAnimatorEvents : MonoBehaviour
     {
         _guardBreak.enabled = false;
     }
-
-
-    // private void ResetAllAnimatorTriggers()
-    // {
-    //     foreach (var trigger in animator.parameters)
-    //     {
-    //         if (trigger.type == AnimatorControllerParameterType.Trigger)
-    //         {
-    //             animator.ResetTrigger(trigger.name);
-    //         }
-    //     }
-    // }
 }
