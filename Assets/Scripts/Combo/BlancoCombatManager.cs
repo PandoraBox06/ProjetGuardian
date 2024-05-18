@@ -58,8 +58,11 @@ public class BlancoCombatManager : MonoBehaviour
     
     private const string INPUT_NONE = "None_Input";
     #endregion
+
+    [SerializeField] private Animator _animator;
     private void Start()
     {
+        _animator = GetComponent<Animator>();
         NoneInputContainer = new InputAction(INPUT_NONE);
         NextInputContainer = NoneInputContainer;
         
@@ -141,12 +144,6 @@ public class BlancoCombatManager : MonoBehaviour
         }
         else
         {
-            // Check if we are in play mode
-            if (!GameManager.Instance.IsPlaying()) return;
-        
-            // Check if first attack
-            if (!canChainInput) RestartCombo();
-            
             // Ici on fait le truc avec le combo.kuntz <=================
             
             if (!isHoldFinished) CheckValidCombo(callback.action);
@@ -155,6 +152,12 @@ public class BlancoCombatManager : MonoBehaviour
 
     private void CheckValidCombo(InputAction lastAction)
     {
+        // Check if we are in play mode
+        if (!GameManager.Instance.IsPlaying()) return;
+        
+        // Check if first attack
+        if (!canChainInput) RestartCombo();
+        
         if (lastAction == NoneInputContainer || lastAction == null) return;
         
         currentCombo.Add(lastAction);

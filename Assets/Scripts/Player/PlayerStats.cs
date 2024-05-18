@@ -55,7 +55,11 @@ public class PlayerStats : MonoBehaviour, IDamageable
     {
         DeathPlayerSound();
         animator.SetTrigger(Death);
-        playerData.currentHealth = playerData.maxHealth;
+        GetComponent<BlancoCombatManager>().enabled = false;
+        GetComponent<CameraBehavior>().enabled = false;
+        GetComponent<PlayerMouvement>().enabled = false;
+        GetComponent<DashController>().enabled = false;
+        // playerData.currentHealth = playerData.maxHealth;
     }
 
     public void GetStun()

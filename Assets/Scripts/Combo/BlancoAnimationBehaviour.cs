@@ -40,7 +40,7 @@ public class BlancoAnimationBehaviour : MonoBehaviour
         }
         else if (managerInstance.actionInput == managerInstance.pauseInput.action)
         {
-            return;
+            inputType = "pause";
         }
         else if (managerInstance.actionInput == managerInstance.holdInput.action)
         {
@@ -56,14 +56,6 @@ public class BlancoAnimationBehaviour : MonoBehaviour
 
     private void CancelAnimation()
     {
-        // foreach (var trigger in animator.parameters)
-        // {
-        //     if (trigger.type == AnimatorControllerParameterType.Trigger)
-        //     {
-        //         animator.ResetTrigger(trigger.name);
-        //     }
-        // }
-        
         inputIndex = 0;
         animator.SetTrigger("CancelAnimation");
     }
@@ -87,7 +79,7 @@ public class BlancoAnimationBehaviour : MonoBehaviour
         // }
         
         // Debug.Log(_animation + " has been triggered");
-        animator.SetTrigger(_animation);
+        animator.Play(_animation);
     }
 
     private void OnDestroy()
