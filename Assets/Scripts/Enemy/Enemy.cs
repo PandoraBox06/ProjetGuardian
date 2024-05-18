@@ -1,8 +1,10 @@
 using System;
 using BasicEnemyStateMachine;
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 using Debug = System.Diagnostics.Debug;
 
 public class Enemy : MonoBehaviour, IDamageable
@@ -14,9 +16,6 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] NewEnemyBehaviour enemyBehaviour;
     [SerializeField] private Animator animator;
     //private
-    [SerializeField] private GameObject hpEnemy;
-    [SerializeField] private SpriteRenderer barSpriteRenderer;
-    [SerializeField] private Transform barParent;
     [HideInInspector] public float maxHealth;
     [SerializeField] private Gradient hpGradient;
     public bool isGuarding;
@@ -32,6 +31,12 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private ParticleSystem _guardBreak;
     public static event Action<GameObject> OnDeath;
 
+    [Header("Interface")]
+    [SerializeField] private Canvas enemyCanvas;
+    [SerializeField] private Slider slider;
+    [SerializeField] private RectTransform fill;
+    [SerializeField] private RectTransform animFill;
+
     [SerializeField] Transform hitOutput;
     private void Awake()
     {
@@ -41,10 +46,13 @@ public class Enemy : MonoBehaviour, IDamageable
     // Start is called before the first frame update
     void Start()
     {
+        enemyCanvas.worldCamera = Camera.main;
         currentHealth = maxHealth;
-        barParent.localScale = Vector3.one;
-        barSpriteRenderer.material.color = hpGradient.Evaluate(currentHealth / maxHealth);
-        hpEnemy.SetActive(false);
+        slider.maxValue = maxHealth;
+        slider.value = currentHealth;
+        animFill.anchorMax = fill.anchorMax;
+        // barSpriteRenderer.material.color = hpGradient.Evaluate(currentHealth / maxHealth);
+        enemyCanvas.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -58,6 +66,9 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             Destroy(_spawned);
         }
+        
+        //To make sure the hpBar is looking at the camera
+        enemyCanvas.transform.LookAt(enemyCanvas.worldCamera.transform);
     }
 
     public void TakeDamage(float damage)
@@ -79,11 +90,12 @@ public class Enemy : MonoBehaviour, IDamageable
         else
         {
             currentHealth -= damage;
-            barSpriteRenderer.material.color = hpGradient.Evaluate(currentHealth / maxHealth);
-            barParent.localScale = new Vector3((currentHealth / maxHealth), 1f);
+            slider.value = currentHealth;
+            if (animFill != null && fill != null) animFill.DOAnchorMax(fill.anchorMax, 1f);
+            // barSpriteRenderer.material.color = hpGradient.Evaluate(currentHealth / maxHealth);
             enemyBehaviour.GetHitEnemySound();
             if (currentHealth < maxHealth)
-                hpEnemy.SetActive(true);
+                enemyCanvas.gameObject.SetActive(true);
             if (currentHealth <= 0)
             {
                 Die();
