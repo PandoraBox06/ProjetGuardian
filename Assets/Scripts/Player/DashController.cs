@@ -17,8 +17,9 @@ public class DashController : MonoBehaviour
 
     [SerializeField] private PlayerMouvement _playerMouvement;
     [SerializeField] private ParticleSystem dashVFX;
-    [SerializeField] private LayerMask wallMask;
-
+    [SerializeField] private LayerMask _PassThroughMask;
+    public static event Action<bool> OnDash; 
+    
     // Update is called once per frame
     private void Start()
     {
@@ -52,14 +53,8 @@ public class DashController : MonoBehaviour
             else
             {
                 // Move the player in dash direction
-                // _characterController.Move(dashDirection * ((dashDistance / dashDuration) * Time.deltaTime));
-                _characterController.enabled = false;
-                if(!Physics.Raycast(transform.position, transform.forward, 1f, wallMask))
-                    transform.position += dashDirection * ((dashDistance / dashDuration) * Time.deltaTime);
-                else
-                {
-                    StopDash();
-                }
+                _characterController.excludeLayers = _PassThroughMask;
+                _characterController.Move(dashDirection * ((dashDistance / dashDuration) * Time.deltaTime));
             }
         }
     }
@@ -78,6 +73,7 @@ public class DashController : MonoBehaviour
         // Start dashing
         isDashing = true;
         dashTimer = 0f;
+        OnDash?.Invoke(isDashing);
         
         //
         _playerMouvement.isDashing = true;
@@ -87,8 +83,8 @@ public class DashController : MonoBehaviour
     {
         // Stop dashing
         isDashing = false;
-        _characterController.enabled = true;
-        
+        OnDash?.Invoke(isDashing);
+        _characterController.excludeLayers = 0;
         // Add any cooldown logic here if needed
         // Add your own cooldown logic
         timer = Time.time + dashCooldown;

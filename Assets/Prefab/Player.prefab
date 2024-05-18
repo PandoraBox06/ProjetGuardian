@@ -4073,9 +4073,9 @@ MonoBehaviour:
   dashCooldown: 0.5
   _playerMouvement: {fileID: 5665569233489516513}
   dashVFX: {fileID: 1866569947930334041}
-  wallMask:
+  _PassThroughMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 1024
 --- !u!143 &4836268023266057977
 CharacterController:
   m_ObjectHideFlags: 0

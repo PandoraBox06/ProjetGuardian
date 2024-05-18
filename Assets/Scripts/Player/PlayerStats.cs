@@ -31,7 +31,8 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
     [SerializeField] private ParticleSystem blood;
     [SerializeField] private ParticleSystem hit;
-    
+    private bool isDashing;
+
     public static event Action<float> OnDamageTaken;
 
     private void Awake()
@@ -39,8 +40,20 @@ public class PlayerStats : MonoBehaviour, IDamageable
         playerData = new(playerMaxHp);
         playerData.currentHealth = playerData.maxHealth;
     }
+
+    private void OnEnable()
+    {
+        DashController.OnDash += IsDashing;
+    }
+
+    private void OnDisable()
+    {
+        DashController.OnDash -= IsDashing;
+    }
+
     public void TakeDamage(float damage)
     {
+        if (isDashing) return;
         animator.SetTrigger(Hit);
         playerData.currentHealth -= damage;
         blood.Play();
@@ -77,6 +90,11 @@ public class PlayerStats : MonoBehaviour, IDamageable
     {
         if (!AudioManager.Instance.death.IsNull)
             AudioManager.Instance.PlayOneShot(AudioManager.Instance.death, transform.position);
+    }
+    
+    private void IsDashing(bool b)
+    {
+        isDashing = b;
     }
 
 }
