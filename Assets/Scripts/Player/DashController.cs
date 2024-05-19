@@ -29,7 +29,7 @@ public class DashController : MonoBehaviour
 
     void Update()
     {
-        if (!isDashing && dashInput.action.WasPerformedThisFrame() && Time.time > timer)
+        if (Time.time > timer && !isDashing && dashInput.action.WasPerformedThisFrame())
         {
             // Start dashing
             StartDash();

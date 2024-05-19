@@ -1,12 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting.InputSystem;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
-using Slider = UnityEngine.UI.Slider;
 
 public class BlancoCombatManager : MonoBehaviour
 {
@@ -59,11 +56,32 @@ public class BlancoCombatManager : MonoBehaviour
     
     private const string INPUT_NONE = "None_Input";
     #endregion
+    
+    private void OnEnable()
+    {
+        CharacterAnimatorEvents.OnEndAnimation += FinishedAnimation;
+    }
 
-    [SerializeField] private Animator _animator;
+    private void OnDisable()
+    {
+        CharacterAnimatorEvents.OnEndAnimation -= FinishedAnimation;
+        //detect all inputs in scriptableObjects
+        List<InputAction> _allInputs = new List<InputAction>();
+        foreach (ComboScriptableObject combo in allCombos)
+        {
+            foreach (var t in combo.inputList.Where(t => !_allInputs.Contains(t.action)))
+            {
+                _allInputs.Add(t.action);
+            }
+        }
+        foreach (InputAction input in _allInputs)
+        {
+            input.performed -= StartInput;
+            input.canceled -= CancelInput;
+        }
+    }
     private void Start()
     {
-        _animator = GetComponent<Animator>();
         NoneInputContainer = new InputAction(INPUT_NONE);
         NextInputContainer = NoneInputContainer;
         
@@ -252,15 +270,5 @@ public class BlancoCombatManager : MonoBehaviour
         canChainInput = false;
         currentAnimationName = null;
         CancelEvent?.Invoke();
-    }
-
-    private void OnEnable()
-    {
-        CharacterAnimatorEvents.OnEndAnimation += FinishedAnimation;
-    }
-
-    private void OnDisable()
-    {
-        CharacterAnimatorEvents.OnEndAnimation -= FinishedAnimation;
     }
 }

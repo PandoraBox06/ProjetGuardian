@@ -13,12 +13,11 @@ public class CharacterAnimatorEvents : MonoBehaviour
     
     [SerializeField] PlayerMouvement playerController;
     [SerializeField] private CameraBehavior _cameraBehavior;
-    [SerializeField] private Collider playerCollider;
     [SerializeField] private Animator animator;
-    
-    private Vector3 dashDirection;
-    [SerializeField] private float dashDistance = 5f;
-    [SerializeField] private float dashDuration = 0.2f;
+    [Header("Attack Slide (combo2)")]
+    private Vector3 _slideDirection;
+    [SerializeField] private float _slideDistance = 20f;
+    [SerializeField] private float _slideDuration = 0.4f;
     private CharacterController _characterController;
     [Header("VFX")] 
     [SerializeField] private ParticleSystem holdVFX;
@@ -91,6 +90,14 @@ public class CharacterAnimatorEvents : MonoBehaviour
         }
     }
 
+    public void TurnOffDash()
+    {
+        _guardBreak.enabled = false;
+        _iframe = false;
+        OnIFrame?.Invoke(_iframe);
+        OnDisbaleColliderCall?.Invoke();
+    }
+
     public void FreezeMovement()
     {
         playerController.isAttacking = true;
@@ -125,17 +132,17 @@ public class CharacterAnimatorEvents : MonoBehaviour
     public void MoveImpulse()
     {
         // Get camera forward direction as dash direction
-        dashDirection = transform.forward;
+        _slideDirection = transform.forward;
 
         // Ignore Y component to avoid dashing upwards
-        dashDirection.y = 0;
+        _slideDirection.y = 0;
 
         // Normalize dash direction to avoid faster dashes when looking up or down
-        dashDirection.Normalize();
+        _slideDirection.Normalize();
         
         // Move the player in dash direction
         animator.applyRootMotion = false;
-        _characterController.Move(dashDirection * ((dashDistance / dashDuration) * Time.deltaTime));
+        _characterController.Move(_slideDirection * ((_slideDistance / _slideDuration) * Time.deltaTime));
         animator.applyRootMotion = true;
     }
 

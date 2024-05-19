@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,8 +12,6 @@ public class NewEnemyBehaviour : MonoBehaviour
     public Transform Player;
     [SerializeField] private Animator _animator;
     [SerializeField] private NavMeshAgent _agent;
-    [SerializeField] private Transform _fireOutput;
-    [SerializeField] private Transform _projectileDump;
     [SerializeField] private Enemy _stats;
     
     [SerializeField] private Collider _attackBox;
@@ -22,7 +19,7 @@ public class NewEnemyBehaviour : MonoBehaviour
     [SerializeField] private float _timer;
     private bool _setTime;
     private bool _isStunned;
-    public EnemyState State { get; private set; }
+    private EnemyState State { get; set; }
 
     private void Start()
     {

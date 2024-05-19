@@ -31,7 +31,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _CutSceneManager;
     [SerializeField] private GameObject _PlayerCanvas;
     [SerializeField] private GameObject _UICanvas;
-    public static event  Action StartSpawningWave;
+    public static event Action StartSpawningWave;
+    public static event Action OnFullRegen;
     public static GameManager Instance { get; private set; }
     private void Awake()
     {
@@ -112,6 +113,7 @@ public class GameManager : MonoBehaviour
     {
         // After Wave
         timer = delayBeforeWaveStart;
+        OnFullRegen?.Invoke();
         ChangeGameState(GameState.PreWave);
     }
 

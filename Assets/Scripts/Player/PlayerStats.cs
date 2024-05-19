@@ -46,12 +46,14 @@ public class PlayerStats : MonoBehaviour, IDamageable
     {
         DashController.OnDash += IsDashing;
         CharacterAnimatorEvents.OnIFrame += IsInvu;
+        GameManager.OnFullRegen += FullRegen;
     }
 
     private void OnDisable()
     {
         DashController.OnDash -= IsDashing;
         CharacterAnimatorEvents.OnIFrame -= IsInvu;
+        GameManager.OnFullRegen -= FullRegen;
     }
 
     public void TakeDamage(float damage)
@@ -68,11 +70,17 @@ public class PlayerStats : MonoBehaviour, IDamageable
             Die();
     }
 
+    private void FullRegen()
+    {
+        playerData.currentHealth = playerData.maxHealth;
+    }
+
     public void Die()
     {
         if(_isDead) return;
         DeathPlayerSound();
         animator.SetTrigger(Death);
+        GetComponent<BlancoAnimationBehaviour>().enabled = false;
         GetComponent<BlancoCombatManager>().enabled = false;
         GetComponent<CameraBehavior>().enabled = false;
         GetComponent<PlayerMouvement>().enabled = false;
