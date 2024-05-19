@@ -16,22 +16,34 @@ public class NewEnemyBehaviour : MonoBehaviour
     
     [SerializeField] private Collider _attackBox;
     [SerializeField] private ParticleSystem _stunEffect;
+    [SerializeField] private ParticleSystem _spawnEffect;
     [SerializeField] private float _timer;
     private bool _setTime;
     private bool _isStunned;
     private EnemyState State { get; set; }
+    private bool _canMove;
 
     private void Start()
     {
-        State = EnemyState.GoToPlayer;
+        State = EnemyState.Idle;
         _animator.Play("spawning");
+        _spawnEffect.Play();
         _agent.speed = _enemyData.WalkingSpeed;
+        ChangeState(State);
+    }
+
+    public void CanMove()
+    {
+        _canMove = true;
         ChangeState(State);
     }
 
     private bool replacing;
     private void Update()
     {
+        if (!_canMove) return;
+        if(Player == null)return;
+        
         _animator.SetFloat("Speed", _agent.velocity.magnitude);
         switch (State)
         {

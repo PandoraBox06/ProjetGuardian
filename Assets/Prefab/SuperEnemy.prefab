@@ -15497,6 +15497,7 @@ Transform:
   - {fileID: 7865277363847733873}
   - {fileID: 7760624604947226351}
   - {fileID: 179491751594032454}
+  - {fileID: 7767283161069334834}
   - {fileID: 4400802476574708152}
   - {fileID: 5309204422734315147}
   - {fileID: 2074055725458897014}
@@ -15522,9 +15523,7 @@ Animator:
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tFrom animation clip 'spawning'"
+  m_WarningMessage: 
   m_HasTransformHierarchy: 0
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -15695,6 +15694,7 @@ MonoBehaviour:
   _stats: {fileID: 2517891411163887980}
   _attackBox: {fileID: 3031816720048385431}
   _stunEffect: {fileID: 382258090217011650}
+  _spawnEffect: {fileID: 945056660825560238}
   _timer: 0
 --- !u!1 &6633395469949554393
 GameObject:
@@ -20870,6 +20870,73 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00000011920929, y: 0.24009408, z: 0.11032602}
     m_Extent: {x: 0.06969739, y: 0.1049373, z: 0.052973334}
   m_DirtyAABB: 0
+--- !u!1001 &2030178881747025679
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5209968217221976136}
+    m_Modifications:
+    - target: {fileID: 7930252267795877179, guid: 43b93c100b8827049b128a4c9cefd334, type: 3}
+      propertyPath: m_Name
+      value: SpawnEnnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639674359422570045, guid: 43b93c100b8827049b128a4c9cefd334, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.1050277
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639674359422570045, guid: 43b93c100b8827049b128a4c9cefd334, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.163
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639674359422570045, guid: 43b93c100b8827049b128a4c9cefd334, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.9629126
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639674359422570045, guid: 43b93c100b8827049b128a4c9cefd334, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639674359422570045, guid: 43b93c100b8827049b128a4c9cefd334, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639674359422570045, guid: 43b93c100b8827049b128a4c9cefd334, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639674359422570045, guid: 43b93c100b8827049b128a4c9cefd334, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639674359422570045, guid: 43b93c100b8827049b128a4c9cefd334, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639674359422570045, guid: 43b93c100b8827049b128a4c9cefd334, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639674359422570045, guid: 43b93c100b8827049b128a4c9cefd334, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 43b93c100b8827049b128a4c9cefd334, type: 3}
+--- !u!198 &945056660825560238 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1238807559282371489, guid: 43b93c100b8827049b128a4c9cefd334, type: 3}
+  m_PrefabInstance: {fileID: 2030178881747025679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7767283161069334834 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8639674359422570045, guid: 43b93c100b8827049b128a4c9cefd334, type: 3}
+  m_PrefabInstance: {fileID: 2030178881747025679}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2861727357327186177
 PrefabInstance:
   m_ObjectHideFlags: 0

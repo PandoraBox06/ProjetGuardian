@@ -969,6 +969,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 188074662043996275}
+  - component: {fileID: 6254858540835772051}
   m_Layer: 0
   m_Name: ---Environnement---
   m_TagString: Untagged
@@ -1000,6 +1001,21 @@ Transform:
   - {fileID: 4786447382027895312}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6254858540835772051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7038177487092338331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e7ef79a5f3f458ebb13d29240fb8025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flames: []
+  _light1: {fileID: 5723317487183250897}
+  _light2: {fileID: 755951646117327679}
 --- !u!1 &7055026209167094921
 GameObject:
   m_ObjectHideFlags: 0
@@ -3340,6 +3356,10 @@ PrefabInstance:
     - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_Name
       value: Lampe 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874170346342139528, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2869586792090754228, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_LocalPosition.x

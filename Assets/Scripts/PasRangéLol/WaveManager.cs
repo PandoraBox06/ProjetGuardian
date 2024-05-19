@@ -34,6 +34,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private KeyCode skippingWave;
 
     public static event Action<int> RefreshWaveCount;
+    public static event Action OnWaveEnd;
     
     private void OnEnable()
     {
@@ -69,13 +70,14 @@ public class WaveManager : MonoBehaviour
         {
             if (enemyDump.Count <= 0)
             {
+                OnWaveEnd?.Invoke();
+                canSpawnWave = false;
                 fullWaveSpawn = false;
                 fullSuperWaveSpawn = false;
                 enemySpawn = 0;
                 superEnemySpawn = 0;
                 WaveIncrease();
                 GameManager.Instance.ChangeGameState(GameState.PostWave);
-                canSpawnWave = false;
             }
         }
 

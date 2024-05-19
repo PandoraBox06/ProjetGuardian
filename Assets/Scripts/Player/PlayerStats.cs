@@ -75,6 +75,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
     private void FullRegen()
     {
         playerData.currentHealth = playerData.maxHealth;
+        OnDamageTaken?.Invoke(playerData.currentHealth);
     }
 
     public void Die()

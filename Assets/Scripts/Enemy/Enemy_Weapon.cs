@@ -56,7 +56,6 @@ public class Enemy_Weapon : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
         other.TryGetComponent(out IDamageable damageable);
-        print("hit");
         damageable.TakeDamage(damage);
     }
 
