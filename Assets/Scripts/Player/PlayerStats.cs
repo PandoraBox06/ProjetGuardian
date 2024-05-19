@@ -58,10 +58,12 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
+        if(_isDead) return;
         if (isDashing) return;
         if (_iFrame) return;
         animator.SetTrigger(Hit);
-        playerData.currentHealth -= damage;
+        // playerData.currentHealth -= damage;
+        playerData.currentHealth = Mathf.Clamp(playerData.currentHealth - damage, 0, playerData.maxHealth);
         blood.Play();
         hit.Play();
         GetHitPlayerSound();
@@ -85,6 +87,8 @@ public class PlayerStats : MonoBehaviour, IDamageable
         GetComponent<CameraBehavior>().enabled = false;
         GetComponent<PlayerMouvement>().enabled = false;
         GetComponent<DashController>().enabled = false;
+  
+        this.enabled = false;
         _isDead = true;
         // playerData.currentHealth = playerData.maxHealth;
     }

@@ -54,11 +54,10 @@ public class Enemy_Weapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            other.TryGetComponent(out IDamageable damageable);
-            damageable.TakeDamage(damage);
-        }
+        if (!other.CompareTag("Player")) return;
+        other.TryGetComponent(out IDamageable damageable);
+        print("hit");
+        damageable.TakeDamage(damage);
     }
 
     private void OnTriggerExit(Collider other)
