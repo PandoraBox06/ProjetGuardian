@@ -85,11 +85,10 @@ public class Enemy_Data : ScriptableObject
         return RandomBehaviours[0].State;
     }
     
-    public void SetUpEnemy(out float maxHealth, out GameObject vfx_Hit, out GameObject vfx_Die, out float guardHealth)
+    public void SetUpEnemy(out float maxHealth, out GameObject vfx_Hit, out float guardHealth)
     {
         maxHealth = MaxHealth;
         vfx_Hit = VFX_Hit;
-        vfx_Die = VFX_Die;
         guardHealth = GuardHealth;
     }
     

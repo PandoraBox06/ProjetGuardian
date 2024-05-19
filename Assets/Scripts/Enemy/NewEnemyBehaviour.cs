@@ -32,12 +32,6 @@ public class NewEnemyBehaviour : MonoBehaviour
         ChangeState(State);
     }
 
-    public void CanMove()
-    {
-        _canMove = true;
-        ChangeState(State);
-    }
-
     private bool replacing;
     private void Update()
     {
@@ -164,12 +158,13 @@ public class NewEnemyBehaviour : MonoBehaviour
             _timer -= Time.deltaTime;
             if (!(_timer <= 0)) return;
             _stats.ResetGuard();
-            ChangeState(EnemyState.Idle);
             _isStunned = false;
             _animator.SetBool("Stun", _isStunned);
+            ChangeState(EnemyState.Idle);
         }
         else
         {
+            StopCoroutine(StateTimer(0));
             _timer = _enemyData.StunTimer;
             _stunEffect.Play();
             _stats.isGuarding = false;
@@ -254,6 +249,11 @@ public class NewEnemyBehaviour : MonoBehaviour
         StopCoroutine(GuardTimer());
     }
     //ANIMATION EVENT
+    public void CanMove()
+    {
+        _canMove = true;
+        ChangeState(State);
+    }
     public void FireProjectiles()
     {
         if (Player != null)

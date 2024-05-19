@@ -92,6 +92,7 @@ public class BlancoAnimationBehaviour : MonoBehaviour
         {
             return;
         }
+        if(combo.LastAnimation == "Rien") return;
 
         animator.Play(combo.LastAnimation);
     }

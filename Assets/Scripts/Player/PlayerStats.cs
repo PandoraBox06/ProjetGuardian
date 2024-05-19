@@ -61,8 +61,6 @@ public class PlayerStats : MonoBehaviour, IDamageable
         if(_isDead) return;
         if (isDashing) return;
         if (_iFrame) return;
-        animator.SetTrigger(Hit);
-        // playerData.currentHealth -= damage;
         playerData.currentHealth = Mathf.Clamp(playerData.currentHealth - damage, 0, playerData.maxHealth);
         blood.Play();
         hit.Play();
@@ -81,7 +79,6 @@ public class PlayerStats : MonoBehaviour, IDamageable
     public void Die()
     {
         if(_isDead) return;
-        print("Die");
         DeathPlayerSound();
         animator.SetTrigger(Death);
         GetComponent<BlancoAnimationBehaviour>().enabled = false;

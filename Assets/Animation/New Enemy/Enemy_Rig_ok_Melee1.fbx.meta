@@ -64,13 +64,6 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.72390574
-        functionName: DisableAttack
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
       - time: 0.4222222
         functionName: AttackEnemySound
         data: 
@@ -80,6 +73,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.43231836
         functionName: SlashEnemy
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.6348646
+        functionName: DisableAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

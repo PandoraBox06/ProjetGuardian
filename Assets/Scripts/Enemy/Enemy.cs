@@ -1,11 +1,7 @@
 using System;
-using BasicEnemyStateMachine;
-using System.Collections;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
-using Debug = System.Diagnostics.Debug;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
@@ -22,7 +18,6 @@ public class Enemy : MonoBehaviour, IDamageable
     
     [Header("VFX")]
     [HideInInspector] public GameObject VFX_Hit;
-    [HideInInspector] public GameObject VFX_Die;
     [SerializeField] private ParticleSystem _VFXTarget;
     private ParticleSystem _spawned;
     [SerializeField] private ParticleSystem guardBlocked;
@@ -40,7 +35,7 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] Transform hitOutput;
     private void Awake()
     {
-        enemyData.SetUpEnemy(out maxHealth, out VFX_Hit, out VFX_Die, out guardHealth);
+        enemyData.SetUpEnemy(out maxHealth, out VFX_Hit, out guardHealth);
     }
 
     // Start is called before the first frame update
@@ -99,7 +94,6 @@ public class Enemy : MonoBehaviour, IDamageable
             if (currentHealth <= 0)
             {
                 Die();
-                Instantiate(VFX_Die,transform.position, Quaternion.identity);
             }
 
             Instantiate(VFX_Hit, hitOutput.position, Quaternion.identity);
