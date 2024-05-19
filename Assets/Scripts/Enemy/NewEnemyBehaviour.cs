@@ -22,6 +22,7 @@ public class NewEnemyBehaviour : MonoBehaviour
     private bool _isStunned;
     private EnemyState State { get; set; }
     private bool _canMove;
+    private bool _cantMove;
 
     private void Start()
     {
@@ -54,7 +55,7 @@ public class NewEnemyBehaviour : MonoBehaviour
                     TimerHandler();
                     Attack();
                 }
-                else
+                else if (!_cantMove)
                 {
                     _agent.SetDestination(Player.position);
                 }
@@ -67,19 +68,25 @@ public class NewEnemyBehaviour : MonoBehaviour
                 }
                 else if (replacing)
                 {
+                    if(_agent.remainingDistance > 2.3)return;
                     TimerHandler();
                     Fire();
                 }
-                else
+                else if (!_cantMove)
                 {
-                    _agent.SetDestination(-transform.forward * (_enemyData.MinRangeAttackRange + 0.5f));
+                    Vector3 newPos = Random.insideUnitCircle * _enemyData.MinRangeAttackRange;
+                    newPos.y = 0;
+                    _agent.SetDestination(newPos);
                     replacing = true;
                 }
                 break;
             case EnemyState.Guard:
-                Guard();
+                if(_stats.isGuarding) return;
+                StopCoroutine(GuardTimer());
+                StartCoroutine(GuardTimer());
                 break;
             case EnemyState.Stun:
+                if (_isStunned) return;
                 Stun();
                 break;
         }
@@ -87,7 +94,7 @@ public class NewEnemyBehaviour : MonoBehaviour
 
     public void ChangeState(EnemyState newState)
     {
-        if(Player == null)return;
+        if(Player == null) return;
         if (_enemyData.TrainingDummyMode) return;
         
         State = newState;
@@ -95,7 +102,7 @@ public class NewEnemyBehaviour : MonoBehaviour
 
     private void GoToPlayer()
     {   
-        if(Player == null)return;
+        if(Player == null) return;
         
         if (Vector3.Distance(transform.position, Player.position) > _enemyData.MeleeAttackRange)
         {
@@ -132,23 +139,6 @@ public class NewEnemyBehaviour : MonoBehaviour
         if(_animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.9f) return;
         transform.LookAt(Player);
         _animator.Play("Fire");
-    }
-    
-    private void Guard()
-    {
-        if(_stats.isGuarding) return;
-        //Turn towards player
-        transform.LookAt(Player);
-        _agent.SetDestination(Player.position);
-        if(_agent.remainingDistance > _enemyData.MeleeAttackRange) return;
-        //Guard Up
-        _stats.isGuarding = true;
-        _animator.SetBool("Block",_stats.isGuarding);
-        StopCoroutine(GuardTimer());
-        StartCoroutine(GuardTimer());
-        //if Guard broken : stun
-        //Return to walk
-
     }
 
     private void Stun()
@@ -237,15 +227,28 @@ public class NewEnemyBehaviour : MonoBehaviour
 
     private IEnumerator GuardTimer()
     {
+        _stats.isGuarding = false;
+        _animator.SetBool("Block",_stats.isGuarding);
+        
+        transform.LookAt(Player);
+        _agent.SetDestination(Player.position);
+
+        if (!(_agent.remainingDistance < 2.3f)) yield break;
+        
+        _stats.isGuarding = true;
+        _animator.SetBool("Block",_stats.isGuarding);
+        
         float g = Random.Range(_enemyData.RandomTimeForDodgeLower, _enemyData.RandomTimeForDodgeUpper);
         StartCoroutine(StateTimer(g));
         _setTime = true;
         yield return new WaitForSeconds(g);
+        
         _stats.isGuarding = false;
         _animator.SetBool("Block",_stats.isGuarding);
+        
+        _setTime = false;
         _enemyData.RandomBehaviours = GetBehaviours();
         ChangeState(_enemyData.GetBehaviour());
-        _setTime = false;
         StopCoroutine(GuardTimer());
     }
     //ANIMATION EVENT
@@ -302,6 +305,15 @@ public class NewEnemyBehaviour : MonoBehaviour
     {
         if(!AudioManager.Instance.deathEnemy.IsNull)
             AudioManager.Instance.PlayOneShot(AudioManager.Instance.deathEnemy, transform.position);
+    }
+
+    public void FreezeMove()
+    {
+        _cantMove = true;
+    }
+    public void UnFreezeMove()
+    {
+        _cantMove = false;
     }
 }
 

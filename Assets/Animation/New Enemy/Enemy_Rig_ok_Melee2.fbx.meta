@@ -57,15 +57,8 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.43838385
-        functionName: EnableAttack
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.5447216
-        functionName: DisableAttack
+      - time: 0
+        functionName: FreezeMove
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -78,8 +71,29 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.43838385
+        functionName: EnableAttack
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.44387236
         functionName: SlashEnemy2
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5447216
+        functionName: DisableAttack
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.85082877
+        functionName: UnFreezeMove
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
