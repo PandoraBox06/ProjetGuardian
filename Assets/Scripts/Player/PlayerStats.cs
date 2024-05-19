@@ -81,6 +81,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
     public void Die()
     {
         if(_isDead) return;
+        print("Die");
         DeathPlayerSound();
         animator.SetTrigger(Death);
         GetComponent<BlancoAnimationBehaviour>().enabled = false;
