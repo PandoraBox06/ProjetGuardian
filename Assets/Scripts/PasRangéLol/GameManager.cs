@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
         //Tutorial Related
         _PlayerCanvas.SetActive(true);
         _UICanvas.SetActive(true);
-        ChangeGameState(GameState.PreWave);
+        // ChangeGameState(GameState.PreWave);
     }
 
     void PreWave()
