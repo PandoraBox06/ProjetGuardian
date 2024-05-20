@@ -64,7 +64,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
         if (isDashing) return;
         if (_iFrame) return;
         playerData.currentHealth = Mathf.Clamp(playerData.currentHealth - damage, 0, playerData.maxHealth);
-        if(playerData.currentHealth <= playerData.maxHealth * 0.3) _lowHp.SetActive(true);
+        _lowHp.SetActive(playerData.currentHealth <= playerData.maxHealth * 0.3);
         blood.Play();
         hit.Play();
         GetHitPlayerSound();
@@ -83,7 +83,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
     {
         if(_isDead) return;
         DeathPlayerSound();
-        animator.SetBool(Death, true);
+        animator.SetTrigger("Death");
         GetComponent<BlancoAnimationBehaviour>().enabled = false;
         GetComponent<BlancoCombatManager>().enabled = false;
         GetComponent<CameraBehavior>().enabled = false;
