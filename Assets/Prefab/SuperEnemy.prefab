@@ -15497,6 +15497,7 @@ Transform:
   - {fileID: 7865277363847733873}
   - {fileID: 7760624604947226351}
   - {fileID: 179491751594032454}
+  - {fileID: 600396205350188048}
   - {fileID: 7767283161069334834}
   - {fileID: 4400802476574708152}
   - {fileID: 5309204422734315147}
@@ -15673,7 +15674,8 @@ MonoBehaviour:
   SlashEnnemy1: {fileID: 6292503120528671115}
   SlashEnnemy2: {fileID: 4251269650036915843}
   SlashEnnemy3: {fileID: 290378084878193802}
-  StunEnnemy: {fileID: 0}
+  StunEnnemy: {fileID: 2520019540967317699, guid: 19cb713659766284ea50cce0ec894f39, type: 3}
+  FireEnnemy: {fileID: 4398167857551038202}
 --- !u!114 &2137856363355348472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21420,6 +21422,77 @@ ParticleSystem:
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 2753481164759523276, guid: fc1c7c09b537bfe41b55264967db754e, type: 3}
   m_PrefabInstance: {fileID: 8170975274182008391}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8749167568207608592
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5209968217221976136}
+    m_Modifications:
+    - target: {fileID: 4141991205520766912, guid: 17f52fc454a324d43a6f17e5a58aa236, type: 3}
+      propertyPath: m_Name
+      value: EnemyShootingRouge
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927544722991295978, guid: 17f52fc454a324d43a6f17e5a58aa236, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160030659352596224, guid: 17f52fc454a324d43a6f17e5a58aa236, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160030659352596224, guid: 17f52fc454a324d43a6f17e5a58aa236, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160030659352596224, guid: 17f52fc454a324d43a6f17e5a58aa236, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.171
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160030659352596224, guid: 17f52fc454a324d43a6f17e5a58aa236, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160030659352596224, guid: 17f52fc454a324d43a6f17e5a58aa236, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160030659352596224, guid: 17f52fc454a324d43a6f17e5a58aa236, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160030659352596224, guid: 17f52fc454a324d43a6f17e5a58aa236, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160030659352596224, guid: 17f52fc454a324d43a6f17e5a58aa236, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160030659352596224, guid: 17f52fc454a324d43a6f17e5a58aa236, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160030659352596224, guid: 17f52fc454a324d43a6f17e5a58aa236, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 17f52fc454a324d43a6f17e5a58aa236, type: 3}
+--- !u!4 &600396205350188048 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8160030659352596224, guid: 17f52fc454a324d43a6f17e5a58aa236, type: 3}
+  m_PrefabInstance: {fileID: 8749167568207608592}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &4398167857551038202 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4927544722991295978, guid: 17f52fc454a324d43a6f17e5a58aa236, type: 3}
+  m_PrefabInstance: {fileID: 8749167568207608592}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8790376341081086121
 PrefabInstance:

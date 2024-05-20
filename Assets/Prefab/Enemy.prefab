@@ -777,6 +777,7 @@ Transform:
   - {fileID: 7761659096299866593}
   - {fileID: 5704928745277877471}
   - {fileID: 7718930325917032140}
+  - {fileID: 6492708663622284659}
   - {fileID: 4626783797122302874}
   - {fileID: 8338403243012633797}
   m_Father: {fileID: 0}
@@ -797,9 +798,7 @@ Animator:
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tFrom animation clip 'spawning'"
+  m_WarningMessage: 
   m_HasTransformHierarchy: 0
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -902,7 +901,6 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   isGuarding: 0
   VFX_Hit: {fileID: 0}
-  VFX_Die: {fileID: 358637981425055526, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
   _VFXTarget: {fileID: 8296635225587360182, guid: 2151dbb568e979642aab9a7290f53eb4, type: 3}
   guardBlocked: {fileID: 3699205556897422688}
   shieldEffect: {fileID: 549612367561028924}
@@ -951,6 +949,7 @@ MonoBehaviour:
   SlashEnnemy2: {fileID: 3552956416710592574}
   SlashEnnemy3: {fileID: 6881445055170871599}
   StunEnnemy: {fileID: 8228209386453125205}
+  FireEnnemy: {fileID: 8018337353002358681}
 --- !u!114 &2663944057482477320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1513,6 +1512,73 @@ Transform:
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 9166622362060739297, guid: d34c23b1fa4f76b4b90ad84a8a87d3fd, type: 3}
   m_PrefabInstance: {fileID: 2326583826221650894}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3108887301997771379
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5209968217221976136}
+    m_Modifications:
+    - target: {fileID: 4141991205520766912, guid: ad0ba630b9674f84fa9be1c64dc21bcb, type: 3}
+      propertyPath: m_Name
+      value: EnemyShootingVFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160030659352596224, guid: ad0ba630b9674f84fa9be1c64dc21bcb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160030659352596224, guid: ad0ba630b9674f84fa9be1c64dc21bcb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160030659352596224, guid: ad0ba630b9674f84fa9be1c64dc21bcb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160030659352596224, guid: ad0ba630b9674f84fa9be1c64dc21bcb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160030659352596224, guid: ad0ba630b9674f84fa9be1c64dc21bcb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160030659352596224, guid: ad0ba630b9674f84fa9be1c64dc21bcb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160030659352596224, guid: ad0ba630b9674f84fa9be1c64dc21bcb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160030659352596224, guid: ad0ba630b9674f84fa9be1c64dc21bcb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160030659352596224, guid: ad0ba630b9674f84fa9be1c64dc21bcb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160030659352596224, guid: ad0ba630b9674f84fa9be1c64dc21bcb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ad0ba630b9674f84fa9be1c64dc21bcb, type: 3}
+--- !u!4 &6492708663622284659 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8160030659352596224, guid: ad0ba630b9674f84fa9be1c64dc21bcb, type: 3}
+  m_PrefabInstance: {fileID: 3108887301997771379}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8018337353002358681 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4927544722991295978, guid: ad0ba630b9674f84fa9be1c64dc21bcb, type: 3}
+  m_PrefabInstance: {fileID: 3108887301997771379}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5821061656300791958
 PrefabInstance:

@@ -8,6 +8,7 @@ public class VFXManagerEnnemy : MonoBehaviour
     public ParticleSystem SlashEnnemy2;
     public ParticleSystem SlashEnnemy3;
     public ParticleSystem StunEnnemy;
+    public ParticleSystem FireEnnemy;
 
     void SlashEnemy()
     {
@@ -22,6 +23,10 @@ public class VFXManagerEnnemy : MonoBehaviour
     void Stun()
     {
         StunEnnemy.Play();
+    }
+    void FireVFX()
+    {
+        FireEnnemy.Play();
     }
 
 }

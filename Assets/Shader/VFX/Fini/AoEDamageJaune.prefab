@@ -79,6 +79,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8468782779282879382, guid: 73dc020f4a2b7bf4da2164fab1971d61, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c8ea42d404e1c1a4580638bd595ddfca, type: 2}
     - target: {fileID: -1392748988882419234, guid: 73dc020f4a2b7bf4da2164fab1971d61, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -117,7 +121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 73dc020f4a2b7bf4da2164fab1971d61, type: 3}
       propertyPath: m_Name
-      value: AoEDamage
+      value: AoEDamageJaune
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
