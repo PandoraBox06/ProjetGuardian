@@ -192,7 +192,7 @@ public class BlancoCombatManager : MonoBehaviour
                     //check if last input then Event to ANimation Behaviour
                     actionInput = validList[i].inputList[currentComboLastIdx];
                     
-                    if (validList[i].inputList.Count == currentCombo.Count && !string.IsNullOrEmpty(validList[i].lastAnimation))
+                    if (validList[i].inputList.Count == currentCombo.Count && !string.IsNullOrEmpty(validList[i].LastAnimation))
                     {
                         LastInput?.Invoke(validList[i]);
                         LastInputEvent?.Invoke();

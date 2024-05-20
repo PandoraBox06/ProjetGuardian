@@ -88,13 +88,13 @@ public class BlancoAnimationBehaviour : MonoBehaviour
 
     private void PlayLastComboAnim(ComboScriptableObject combo)
     {
-        if (string.IsNullOrEmpty(combo.lastAnimation))
+        if (string.IsNullOrEmpty(combo.LastAnimation))
         {
             return;
         }
-        if(combo.lastAnimation == "Rien") return;
+        if(combo.LastAnimation == "Rien") return;
 
-        animator.Play(combo.lastAnimation);
+        animator.Play(combo.LastAnimation);
     }
     
     private void OnDestroy()
