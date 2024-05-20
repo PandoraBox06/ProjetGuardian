@@ -861,7 +861,7 @@ Transform:
   m_GameObject: {fileID: 1868300569363738888}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -1.1384866, y: 4, z: -9.934981}
+  m_LocalPosition: {x: -1.1386791, y: 4, z: -9.934959}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -904,7 +904,7 @@ MonoBehaviour:
     m_SensorSize: {x: 1, y: 1}
   m_Transitions:
     m_BlendHint: 0
-    m_InheritPosition: 1
+    m_InheritPosition: 0
     m_OnCameraLive:
       m_PersistentCalls:
         m_Calls: []
@@ -1388,7 +1388,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2765762373367000570}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.43910027, y: -0.026679004, z: 0.020377474, w: 0.8978106}
+  m_LocalRotation: {x: 0.43910027, y: -0.026678963, z: 0.020377442, w: 0.8978106}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1778,7 +1778,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4219283958837976098}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.5959595, y: 0.034035236, z: -0.045744404, w: 0.8009877}
+  m_LocalRotation: {x: -0.5959591, y: 0.03404101, z: -0.045752157, w: 0.80098736}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1942,7 +1942,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4602318276961627246}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.63254493, y: 0.03612464, z: -0.04411302, w: 0.7724222}
+  m_LocalRotation: {x: -0.6325446, y: 0.036130767, z: -0.04412051, w: 0.7724218}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2858,7 +2858,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6017324436475141005}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.61445785, y: 0.035091672, z: -0.044939075, w: 0.78688663}
+  m_LocalRotation: {x: -0.61445755, y: 0.035097625, z: -0.044946697, w: 0.7868863}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3064,7 +3064,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6914647089413847220}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.41806534, y: -0.027146477, z: 0.01975041, w: 0.90779644}
+  m_LocalRotation: {x: 0.41806534, y: -0.027146464, z: 0.019750403, w: 0.90779644}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3742,6 +3742,7 @@ GameObject:
   - component: {fileID: 4836268023266057977}
   - component: {fileID: 5108578877518357498}
   - component: {fileID: 7705849206106131450}
+  - component: {fileID: 1902882446121454212}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3981,6 +3982,7 @@ MonoBehaviour:
   animator: {fileID: 4400684632701187603}
   blood: {fileID: 8571678118707078578}
   hit: {fileID: 2025432489170769683}
+  _lowHp: {fileID: 0}
 --- !u!114 &2799678670773151554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4032,7 +4034,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8749299566912900666}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 50
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -4159,6 +4161,21 @@ MonoBehaviour:
   SlashAnim3: {fileID: 6067141306883916696}
   SlashAnim5: {fileID: 8159600152701014036}
   HoldGood: {fileID: 3423992569407255887}
+--- !u!114 &1902882446121454212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8749299566912900666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43b815d5792149c590c09750bdbbb130, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackInput: {fileID: 6733769925832788176, guid: b0b17bf653d5a64488494776990ea425, type: 3}
+  gunInput: {fileID: -7983557248117076479, guid: b0b17bf653d5a64488494776990ea425, type: 3}
+  holdInput: {fileID: 4847718353859119778, guid: b0b17bf653d5a64488494776990ea425, type: 3}
 --- !u!1 &9041258510780551821
 GameObject:
   m_ObjectHideFlags: 0

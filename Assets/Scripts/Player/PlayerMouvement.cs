@@ -68,7 +68,7 @@ public class PlayerMouvement : MonoBehaviour
         if (GameManager.Instance.currentGameState == GameState.Cutscene) return;
         StateHandler();
         Move();
-        RotatePlayerToSlope();
+        // RotatePlayerToSlope();
         Gravity();
 
         // animator.SetBool("Sprint", isSprinting);

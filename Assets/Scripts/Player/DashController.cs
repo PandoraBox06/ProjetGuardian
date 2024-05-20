@@ -62,6 +62,7 @@ public class DashController : MonoBehaviour
 
     void StartDash()
     {
+        _playerMouvement.isDashing = true;
         // Get camera forward direction as dash direction
         dashDirection = transform.forward;
 
@@ -77,7 +78,6 @@ public class DashController : MonoBehaviour
         OnDash?.Invoke(isDashing);
         
         //
-        _playerMouvement.isDashing = true;
     }
 
     void StopDash()
@@ -91,6 +91,7 @@ public class DashController : MonoBehaviour
         timer = Time.time + dashCooldown;
         
         //
+        _characterController.Move(Vector3.zero);
         _playerMouvement.isDashing = false;
     }
     

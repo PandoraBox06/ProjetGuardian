@@ -23,7 +23,7 @@ public class BlancoCombatManager : MonoBehaviour
     [HideInInspector] public UnityEvent CancelEvent;
     [HideInInspector] public UnityEvent FinishedComboEvent;
     public InputAction actionInput { get; private set; }
-    public static event Action LookTarget;
+
     public ComboScriptableObject finishedCombo { get; private set; }
     //-----sérialisé------------------------------------------------------
     [SerializeField] private Animator animator;
@@ -154,7 +154,6 @@ public class BlancoCombatManager : MonoBehaviour
         holdTime = 0f;
         isHoldFinished = false;
         HoldInputContainer = NoneInputContainer;
-        LookTarget?.Invoke();
         if (IsPlayingAttack())
         {
             if (NextInputContainer == NoneInputContainer)

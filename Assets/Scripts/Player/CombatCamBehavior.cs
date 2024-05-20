@@ -1,10 +1,6 @@
-using System;
-using Cinemachine;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class CombatCamBehavior : MonoBehaviour
 {
@@ -26,12 +22,12 @@ public class CombatCamBehavior : MonoBehaviour
     private void OnEnable()
     {
         // CharacterAnimatorEvents.OnLooktAtTarget += LookAtTarget;
-        BlancoCombatManager.LookTarget += LookAtTarget;
+        LookingTarget.LookTarget += LookAtTarget;
     }
     private void OnDisable()
     {
         // CharacterAnimatorEvents.OnLooktAtTarget -= LookAtTarget;
-        BlancoCombatManager.LookTarget -= LookAtTarget;
+        LookingTarget.LookTarget -= LookAtTarget;
 
     }
 
