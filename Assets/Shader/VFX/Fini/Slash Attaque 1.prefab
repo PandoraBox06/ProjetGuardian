@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &849423929563933873
+--- !u!1001 &6748621492675872548
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,71 +10,71 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3983955493320659057, guid: a7c3375f72f199943b54ada3bf30bb0a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 200
+      value: 200.00002
       objectReference: {fileID: 0}
     - target: {fileID: 3983955493320659057, guid: a7c3375f72f199943b54ada3bf30bb0a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 200
+      value: 199.99998
       objectReference: {fileID: 0}
     - target: {fileID: 3983955493320659057, guid: a7c3375f72f199943b54ada3bf30bb0a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 200
+      value: 199.99998
       objectReference: {fileID: 0}
     - target: {fileID: 3983955493320659057, guid: a7c3375f72f199943b54ada3bf30bb0a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.16
+      value: -0.32
       objectReference: {fileID: 0}
     - target: {fileID: 3983955493320659057, guid: a7c3375f72f199943b54ada3bf30bb0a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.568
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 3983955493320659057, guid: a7c3375f72f199943b54ada3bf30bb0a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.13000011
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3983955493320659057, guid: a7c3375f72f199943b54ada3bf30bb0a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.35050267
+      value: 0.52489525
       objectReference: {fileID: 0}
     - target: {fileID: 3983955493320659057, guid: a7c3375f72f199943b54ada3bf30bb0a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.43675938
+      value: 0.6607081
       objectReference: {fileID: 0}
     - target: {fileID: 3983955493320659057, guid: a7c3375f72f199943b54ada3bf30bb0a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.5638576
+      value: 0.1986313
       objectReference: {fileID: 0}
     - target: {fileID: 3983955493320659057, guid: a7c3375f72f199943b54ada3bf30bb0a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.60700387
+      value: 0.4984932
       objectReference: {fileID: 0}
     - target: {fileID: 3983955493320659057, guid: a7c3375f72f199943b54ada3bf30bb0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -82.179
+      value: 29.708
       objectReference: {fileID: 0}
     - target: {fileID: 3983955493320659057, guid: a7c3375f72f199943b54ada3bf30bb0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 262.659
+      value: 86.831
       objectReference: {fileID: 0}
     - target: {fileID: 3983955493320659057, guid: a7c3375f72f199943b54ada3bf30bb0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -150.491
+      value: 115.218
       objectReference: {fileID: 0}
-    - target: {fileID: 3983955493320659057, guid: a7c3375f72f199943b54ada3bf30bb0a, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 5308420162720630495, guid: a7c3375f72f199943b54ada3bf30bb0a, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -6423869263543878106, guid: cd6ab7e5e5a92ec4caee928b9a0d5a57, type: 3}
     - target: {fileID: 6011204018901255793, guid: a7c3375f72f199943b54ada3bf30bb0a, type: 3}
       propertyPath: m_Name
-      value: Slash Attaque 2 Variant
+      value: Slash Attaque 1
       objectReference: {fileID: 0}
     - target: {fileID: 9166622362060739297, guid: a7c3375f72f199943b54ada3bf30bb0a, type: 3}
       propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9166622362060739297, guid: a7c3375f72f199943b54ada3bf30bb0a, type: 3}
-      propertyPath: playOnAwake
-      value: 0
+      propertyPath: lengthInSec
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 9166622362060739297, guid: a7c3375f72f199943b54ada3bf30bb0a, type: 3}
       propertyPath: VelocityModule.enabled
@@ -82,11 +82,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9166622362060739297, guid: a7c3375f72f199943b54ada3bf30bb0a, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 0.2
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 9166622362060739297, guid: a7c3375f72f199943b54ada3bf30bb0a, type: 3}
       propertyPath: RotationBySpeedModule.curve.scalar
-      value: 15.707963
+      value: 17.453293
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
