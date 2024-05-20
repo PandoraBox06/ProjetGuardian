@@ -53,43 +53,33 @@ public class UI_Tutorial : MonoBehaviour
         {
             if (isCombo2Done)
             {
-                if (isCombo3Done)
+                if (!isCombo3Done)
                 {
-                    GameManager.Instance.ChangeGameState(GameState.PreWave);
-                    ResetTutorial();
-                }
-                else
-                {
-                    if (!combosList[2].activeInHierarchy) combosList[2].SetActive(true);
-                    if (!combosList[1].activeInHierarchy) greyList[1].SetActive(true);
-
                     if (_lastComboName == "Hold attack")
                     {
                         isCombo3Done = true;
-                        DetectCombo();
+                        GameManager.Instance.ChangeGameState(GameState.PreWave);
+                        ResetTutorial();
                     }
                 }
             }
             else
             {
-                if (!combosList[1].activeInHierarchy) combosList[1].SetActive(true);
-                if (!combosList[0].activeInHierarchy) greyList[0].SetActive(true);
-
                 if (_lastComboName == "Paused attack")
                 {
                     isCombo2Done = true;
-                    DetectCombo();
+                    greyList[1].SetActive(true);
+                    combosList[2].SetActive(true);
                 }
             }
         }
         else
         {
-            if (!combosList[0].activeInHierarchy) combosList[0].SetActive(true);
-
             if (_lastComboName == "Full attack")
             {
                 isCombo1Done = true;
-                DetectCombo();
+                greyList[0].SetActive(true);
+                combosList[1].SetActive(true);
             }
         }
     }
