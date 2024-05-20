@@ -965,12 +965,6 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: Death
-    m_Type: 9
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
   - m_Name: Attack_simple_1
     m_Type: 9
     m_DefaultFloat: 0
@@ -1015,6 +1009,12 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   - m_Name: Attack_hold_1
     m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: Death
+    m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -1903,7 +1903,7 @@ AnimatorStateMachine:
     m_Position: {x: 410, y: 530, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1053547236529443319}
-    m_Position: {x: 430, y: 460, z: 0}
+    m_Position: {x: 420, y: 460, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2992914412152340737}
     m_Position: {x: 30, y: 270, z: 0}

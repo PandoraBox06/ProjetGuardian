@@ -80,7 +80,8 @@ public class BlancoCombatManager : MonoBehaviour
             input.canceled -= CancelInput;
         }
     }
-    private void Start()
+    
+    public void Init()
     {
         NoneInputContainer = new InputAction(INPUT_NONE);
         NextInputContainer = NoneInputContainer;
@@ -108,7 +109,7 @@ public class BlancoCombatManager : MonoBehaviour
         
         RestartCombo();
     }
-
+    
     private void Update()
     {
         if (GameManager.Instance.currentGameState == GameState.Cutscene) return;

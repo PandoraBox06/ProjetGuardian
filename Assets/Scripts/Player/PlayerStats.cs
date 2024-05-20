@@ -80,7 +80,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
     {
         if(_isDead) return;
         DeathPlayerSound();
-        animator.SetTrigger(Death);
+        animator.SetBool(Death, true);
         GetComponent<BlancoAnimationBehaviour>().enabled = false;
         GetComponent<BlancoCombatManager>().enabled = false;
         GetComponent<CameraBehavior>().enabled = false;

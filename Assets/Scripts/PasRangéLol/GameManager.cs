@@ -84,7 +84,11 @@ public class GameManager : MonoBehaviour
 
     void CutScene()
     {
-        if (_CutSceneManager.activeInHierarchy == false) ChangeGameState(GameState.Tutorial);
+        if (_CutSceneManager.activeInHierarchy == false)
+        {
+            BlancoCombatManager.Instance.Init();
+            ChangeGameState(GameState.Tutorial);
+        }
     }
 
     void Tutorial()
