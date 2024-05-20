@@ -7,7 +7,8 @@ public class VFXManager : MonoBehaviour
     public ParticleSystem SlashAnim1;
     public ParticleSystem SlashAnim2;
     public ParticleSystem SlashAnim3;
-    public ParticleSystem SlashAnim4;
+    //public ParticleSystem SlashAnim4;
+    public ParticleSystem SlashAnim5;
     public ParticleSystem HoldGood;
     void SpawnVFX()
     {
@@ -21,9 +22,13 @@ public class VFXManager : MonoBehaviour
     {
         SlashAnim3.Play();
     }
-    void SpawnVFX4()
+    //void SpawnVFX4()
+    //{
+    //    SlashAnim4.Play();
+    //}
+    void ComboVFX()
     {
-        SlashAnim4.Play();
+        SlashAnim5.Play();
     }
     void HoldVFX()
     {
