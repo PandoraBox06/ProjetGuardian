@@ -34,6 +34,8 @@ public class PlayerStats : MonoBehaviour, IDamageable
     private bool isDashing;
     private bool _iFrame;
     private bool _isDead;
+
+    [SerializeField] private GameObject _lowHp;
     public static event Action<float> OnDamageTaken;
 
     private void Awake()
@@ -62,6 +64,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
         if (isDashing) return;
         if (_iFrame) return;
         playerData.currentHealth = Mathf.Clamp(playerData.currentHealth - damage, 0, playerData.maxHealth);
+        if(playerData.currentHealth <= playerData.maxHealth * 0.3) _lowHp.SetActive(true);
         blood.Play();
         hit.Play();
         GetHitPlayerSound();

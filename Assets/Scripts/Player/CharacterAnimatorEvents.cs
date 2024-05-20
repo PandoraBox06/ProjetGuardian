@@ -14,6 +14,7 @@ public class CharacterAnimatorEvents : MonoBehaviour
     [SerializeField] PlayerMouvement playerController;
     [SerializeField] private CameraBehavior _cameraBehavior;
     [SerializeField] private Animator animator;
+    [SerializeField] private GameObject _crossbow;
     [Header("Attack Slide (combo2)")]
     private Vector3 _slideDirection;
     [SerializeField] private float _slideDistance = 20f;
@@ -155,5 +156,15 @@ public class CharacterAnimatorEvents : MonoBehaviour
     public void GuardBreakOff()
     {
         _guardBreak.enabled = false;
+    }
+
+    public void CrossbowOn()
+    {
+        _crossbow.SetActive(true);
+    }
+
+    public void CrossbowOff()
+    {
+        _crossbow.SetActive(false);
     }
 }
