@@ -37,6 +37,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
     [SerializeField] private GameObject _lowHp;
     public static event Action<float> OnDamageTaken;
+    public static event Action OnDeath;
 
     private void Awake()
     {
@@ -76,12 +77,14 @@ public class PlayerStats : MonoBehaviour, IDamageable
     private void FullRegen()
     {
         playerData.currentHealth = playerData.maxHealth;
+        _lowHp.SetActive(playerData.currentHealth <= playerData.maxHealth * 0.3);
         OnDamageTaken?.Invoke(playerData.currentHealth);
     }
 
     public void Die()
     {
         if(_isDead) return;
+        OnDeath?.Invoke();
         DeathPlayerSound();
         animator.SetTrigger("Death");
         GetComponent<BlancoAnimationBehaviour>().enabled = false;

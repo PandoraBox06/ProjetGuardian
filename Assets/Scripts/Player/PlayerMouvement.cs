@@ -100,15 +100,15 @@ public class PlayerMouvement : MonoBehaviour
 
         if (isGrounded && velocity.y < 0)
         {
-            velocity.y = -2f;
+            velocity.y = -4f;
         }
 
         GroundCheck();
 
         velocity.y += gravity * Time.deltaTime;
         
-        if (state == PlayerState.dashing) return;
-        if (state == PlayerState.attacking) return;
+        // if (state == PlayerState.dashing) return;
+        // if (state == PlayerState.attacking) return;
         
         characterController.Move(velocity * Time.deltaTime);
     }
@@ -167,8 +167,8 @@ public class PlayerMouvement : MonoBehaviour
 
     void RotatePlayerToSlope()
     {
-        if (state == PlayerState.dashing) return;
-        if (state == PlayerState.attacking) return;
+        // if (state == PlayerState.dashing) return;
+        // if (state == PlayerState.attacking) return;
         
         if (OnSlope())
         {
