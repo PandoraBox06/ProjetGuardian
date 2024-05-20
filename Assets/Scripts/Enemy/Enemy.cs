@@ -46,12 +46,14 @@ public class Enemy : MonoBehaviour, IDamageable
         slider.maxValue = maxHealth;
         slider.value = currentHealth;
         animFill.anchorMax = fill.anchorMax;
-        // barSpriteRenderer.material.color = hpGradient.Evaluate(currentHealth / maxHealth);
         enemyCanvas.gameObject.SetActive(false);
     }
 
     private void Update()
     {
+        //To make sure the hpBar is looking at the camera
+        enemyCanvas.transform.LookAt(enemyCanvas.worldCamera.transform);
+        
         if (CombatCamBehavior.Instance.closestTarget == transform)
         {
             if (_spawned != null)return;
@@ -61,9 +63,6 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             Destroy(_spawned);
         }
-        
-        //To make sure the hpBar is looking at the camera
-        enemyCanvas.transform.LookAt(enemyCanvas.worldCamera.transform);
     }
 
     public void TakeDamage(float damage)
@@ -87,7 +86,6 @@ public class Enemy : MonoBehaviour, IDamageable
             currentHealth -= damage;
             slider.value = currentHealth;
             if (animFill != null && fill != null) animFill.DOAnchorMax(fill.anchorMax, 1f);
-            // barSpriteRenderer.material.color = hpGradient.Evaluate(currentHealth / maxHealth);
             enemyBehaviour.GetHitEnemySound();
             if (currentHealth < maxHealth)
                 enemyCanvas.gameObject.SetActive(true);
@@ -118,5 +116,10 @@ public class Enemy : MonoBehaviour, IDamageable
         Instantiate(deathEffect, hitOutput.position, Quaternion.identity);
         OnDeath?.Invoke(this.gameObject);
         Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        animFill.DOKill();
     }
 }

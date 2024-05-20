@@ -32,4 +32,9 @@ public class PlayerHpBar : MonoBehaviour
         slider.value = hp;
         animFill.DOAnchorMax(fill.anchorMax, 1f);
     }
+    
+    private void OnDestroy()
+    {
+        animFill.DOKill();
+    }
 }
