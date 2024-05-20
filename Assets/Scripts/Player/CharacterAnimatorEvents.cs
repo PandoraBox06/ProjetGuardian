@@ -95,6 +95,7 @@ public class CharacterAnimatorEvents : MonoBehaviour
     {
         _guardBreak.enabled = false;
         _iframe = false;
+        _crossbow.SetActive(false);
         OnIFrame?.Invoke(_iframe);
         OnDisbaleColliderCall?.Invoke();
     }
