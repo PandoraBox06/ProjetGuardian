@@ -87,7 +87,8 @@ public class NewEnemyBehaviour : MonoBehaviour
                 break;
             case EnemyState.Stun:
                 if (_isStunned) return;
-                Stun();
+                StopCoroutine(StunTimer());
+                StartCoroutine(StunTimer());
                 break;
         }
     }
@@ -250,6 +251,21 @@ public class NewEnemyBehaviour : MonoBehaviour
         _enemyData.RandomBehaviours = GetBehaviours();
         ChangeState(_enemyData.GetBehaviour());
         StopCoroutine(GuardTimer());
+    }
+
+    private IEnumerator StunTimer()
+    {
+        StopCoroutine(StateTimer(0));
+        _stats.isGuarding = false;
+        _animator.SetBool("Block",_stats.isGuarding);
+        _stunEffect.Play();
+        _isStunned = true;
+        _animator.SetBool("Stun", _isStunned);
+        yield return new WaitForSeconds(_enemyData.StunTimer);
+        _isStunned = false;
+        _animator.SetBool("Stun", _isStunned);
+        _stats.ResetGuard();
+        ChangeState(EnemyState.Idle);
     }
     //ANIMATION EVENT
     public void CanMove()
