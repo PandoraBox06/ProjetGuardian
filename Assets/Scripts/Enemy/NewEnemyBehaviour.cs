@@ -42,7 +42,7 @@ public class NewEnemyBehaviour : MonoBehaviour
 
         if (GameManager.Instance.currentGameState == GameState.Tutorial)
         {
-            _animator.SetFloat("Speed", 0);
+            _animator.SetFloat("Speed", _agent.velocity.magnitude);
 
             if (!UI_Tutorial.Instance.isCombo1Done)
             {
@@ -55,6 +55,23 @@ public class NewEnemyBehaviour : MonoBehaviour
             else if (!UI_Tutorial.Instance.isCombo3Done)
             {
                 if (State != EnemyState.Guard) ChangeState(EnemyState.Guard);
+            }
+
+            switch (State)
+            {
+                case EnemyState.Attack:
+                    TimerHandler();
+                    Attack();
+                    break;
+                case EnemyState.Range:
+                    TimerHandler();
+                    Fire();
+                    break;
+                case EnemyState.Guard:
+                    if (_stats.isGuarding) return;
+                    StopCoroutine(GuardTimer());
+                    StartCoroutine(GuardTimer());
+                    break;
             }
         }
         else

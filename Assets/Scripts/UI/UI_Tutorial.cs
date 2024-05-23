@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class UI_Tutorial : MonoBehaviour
@@ -74,9 +75,9 @@ public class UI_Tutorial : MonoBehaviour
                     if (_lastComboName == "Hold attack")
                     {
                         isCombo3Done = true;
-                        currentEnemy.GetComponent<Enemy>().Die();
                         GameManager.Instance.ChangeGameState(GameState.PreWave);
                         ResetTutorial();
+                        DOVirtual.DelayedCall(0.5f, KillDummy);
                     }
                 }
             }
@@ -107,5 +108,10 @@ public class UI_Tutorial : MonoBehaviour
         {
             currentEnemy = Instantiate(enemyPrefab, enemyPosition.position, Quaternion.identity);
         }
+    }
+
+    private void KillDummy()
+    {
+        currentEnemy.GetComponent<Enemy>().Die();
     }
 }
