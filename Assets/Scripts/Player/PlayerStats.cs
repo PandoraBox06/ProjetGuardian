@@ -61,6 +61,8 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
+        if (GameManager.Instance.currentGameState == GameState.Tutorial) return;
+        
         if(_isDead) return;
         if (isDashing) return;
         if (_iFrame) return;
