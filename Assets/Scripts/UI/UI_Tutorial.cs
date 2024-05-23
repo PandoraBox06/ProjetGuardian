@@ -7,9 +7,22 @@ public class UI_Tutorial : MonoBehaviour
     [SerializeField] private List<GameObject> combosList = new();
     [SerializeField] private List<GameObject> greyList = new();
 
-    private bool isCombo1Done;
-    private bool isCombo2Done;
-    private bool isCombo3Done;
+    public bool isCombo1Done { get; private set; }
+    public bool isCombo2Done { get; private set; }
+    public bool isCombo3Done { get; private set; }
+
+    [SerializeField] private Transform enemyPosition;
+    [SerializeField] private GameObject enemyPrefab;
+    private GameObject currentEnemy;
+    
+    public static UI_Tutorial Instance
+    {
+        get {
+            if (_instance == null) _instance = FindObjectOfType<UI_Tutorial>();
+            return _instance;
+        }
+    }
+    private static UI_Tutorial _instance;
 
     private void Start()
     {
@@ -41,6 +54,7 @@ public class UI_Tutorial : MonoBehaviour
     private void InitTutorial()
     {
         combosList[0].SetActive(true);
+        CheckDummy();
     }
 
     public void DetectCombo()
@@ -48,6 +62,8 @@ public class UI_Tutorial : MonoBehaviour
         if (GameManager.Instance.currentGameState != GameState.Tutorial) return;
 
         string _lastComboName = BlancoCombatManager.Instance.finishedCombo.comboName;
+        
+        CheckDummy();
         
         if (isCombo1Done)
         {
@@ -58,6 +74,7 @@ public class UI_Tutorial : MonoBehaviour
                     if (_lastComboName == "Hold attack")
                     {
                         isCombo3Done = true;
+                        currentEnemy.GetComponent<Enemy>().Die();
                         GameManager.Instance.ChangeGameState(GameState.PreWave);
                         ResetTutorial();
                     }
@@ -81,6 +98,14 @@ public class UI_Tutorial : MonoBehaviour
                 greyList[0].SetActive(true);
                 combosList[1].SetActive(true);
             }
+        }
+    }
+
+    private void CheckDummy()
+    {
+        if (currentEnemy == null)
+        {
+            currentEnemy = Instantiate(enemyPrefab, enemyPosition.position, Quaternion.identity);
         }
     }
 }

@@ -83,7 +83,8 @@ public class Enemy : MonoBehaviour, IDamageable
         }
         else
         {
-            currentHealth -= damage;
+            if (GameManager.Instance.currentGameState == GameState.Tutorial) currentHealth -= damage/10;
+            else currentHealth -= damage;
             slider.value = currentHealth;
             if (animFill != null && fill != null) animFill.DOAnchorMax(fill.anchorMax, 1f);
             enemyBehaviour.GetHitEnemySound();

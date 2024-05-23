@@ -34,62 +34,86 @@ public class NewEnemyBehaviour : MonoBehaviour
     }
 
     private bool replacing;
+
     private void Update()
     {
         if (!_canMove) return;
-        if(Player == null)return;
-        
-        _animator.SetFloat("Speed", _agent.velocity.magnitude);
-        switch (State)
+        if (Player == null) return;
+
+        if (GameManager.Instance.currentGameState == GameState.Tutorial)
         {
-            case EnemyState.Idle:
-                _setTime = false;
-                ChangeState(EnemyState.GoToPlayer);
-                break;
-            case EnemyState.GoToPlayer:
-                GoToPlayer();
-                break;
-            case EnemyState.Attack:
-                if (Vector3.Distance(transform.position, Player.position) <= _enemyData.MeleeAttackRange)
-                {
-                    TimerHandler();
-                    Attack();
-                }
-                else if (!_cantMove)
-                {
-                    _agent.SetDestination(Player.position);
-                }
-                break;
-            case EnemyState.Range:
-                if (Vector3.Distance(transform.position, Player.position) <= _enemyData.RangeAttackRange && Vector3.Distance(transform.position, Player.position) >= _enemyData.MinRangeAttackRange)
-                {
-                    TimerHandler();
-                    Fire();
-                }
-                else if (replacing)
-                {
-                    if(_agent.remainingDistance > 2.3)return;
-                    TimerHandler();
-                    Fire();
-                }
-                else if (!_cantMove)
-                {
-                    Vector3 newPos = Random.insideUnitCircle * _enemyData.MinRangeAttackRange;
-                    newPos.y = 0;
-                    _agent.SetDestination(newPos);
-                    replacing = true;
-                }
-                break;
-            case EnemyState.Guard:
-                if(_stats.isGuarding) return;
-                StopCoroutine(GuardTimer());
-                StartCoroutine(GuardTimer());
-                break;
-            case EnemyState.Stun:
-                if (_isStunned) return;
-                StopCoroutine(StunTimer());
-                StartCoroutine(StunTimer());
-                break;
+            _animator.SetFloat("Speed", 0);
+
+            if (!UI_Tutorial.Instance.isCombo1Done)
+            {
+                if (State != EnemyState.Attack) ChangeState(EnemyState.Attack);
+            }
+            else if (!UI_Tutorial.Instance.isCombo2Done)
+            {
+                if (State != EnemyState.Range) ChangeState(EnemyState.Range);
+            }
+            else if (!UI_Tutorial.Instance.isCombo3Done)
+            {
+                if (State != EnemyState.Guard) ChangeState(EnemyState.Guard);
+            }
+        }
+        else
+        {
+            _animator.SetFloat("Speed", _agent.velocity.magnitude);
+            switch (State)
+            {
+                case EnemyState.Idle:
+                    _setTime = false;
+                    ChangeState(EnemyState.GoToPlayer);
+                    break;
+                case EnemyState.GoToPlayer:
+                    GoToPlayer();
+                    break;
+                case EnemyState.Attack:
+                    if (Vector3.Distance(transform.position, Player.position) <= _enemyData.MeleeAttackRange)
+                    {
+                        TimerHandler();
+                        Attack();
+                    }
+                    else if (!_cantMove)
+                    {
+                        _agent.SetDestination(Player.position);
+                    }
+
+                    break;
+                case EnemyState.Range:
+                    if (Vector3.Distance(transform.position, Player.position) <= _enemyData.RangeAttackRange &&
+                        Vector3.Distance(transform.position, Player.position) >= _enemyData.MinRangeAttackRange)
+                    {
+                        TimerHandler();
+                        Fire();
+                    }
+                    else if (replacing)
+                    {
+                        if (_agent.remainingDistance > 2.3) return;
+                        TimerHandler();
+                        Fire();
+                    }
+                    else if (!_cantMove)
+                    {
+                        Vector3 newPos = Random.insideUnitCircle * _enemyData.MinRangeAttackRange;
+                        newPos.y = 0;
+                        _agent.SetDestination(newPos);
+                        replacing = true;
+                    }
+
+                    break;
+                case EnemyState.Guard:
+                    if (_stats.isGuarding) return;
+                    StopCoroutine(GuardTimer());
+                    StartCoroutine(GuardTimer());
+                    break;
+                case EnemyState.Stun:
+                    if (_isStunned) return;
+                    StopCoroutine(StunTimer());
+                    StartCoroutine(StunTimer());
+                    break;
+            }
         }
     }
 
