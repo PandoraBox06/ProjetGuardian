@@ -62,9 +62,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _PlayerCanvas.SetActive(false);
-        _UICanvas.SetActive(false);
-        
         timer = delayBeforeWaveStart;
         stateBeforePause = GameState.Null;
 
@@ -79,7 +76,8 @@ public class GameManager : MonoBehaviour
     #region StateMachine
     void Lobby()
     {
-        //Main Menu
+        if (!_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(true);
+        if (!_UICanvas.activeInHierarchy) _UICanvas.SetActive(true);
     }
 
     void CutScene()
@@ -93,14 +91,14 @@ public class GameManager : MonoBehaviour
 
     void Tutorial()
     {
-        //Tutorial Related
-        _PlayerCanvas.SetActive(true);
-        _UICanvas.SetActive(true);
-        // ChangeGameState(GameState.PreWave);
+        
     }
 
     void PreWave()
     {
+        if (_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(false);
+        if (_UICanvas.activeInHierarchy) _UICanvas.SetActive(false);
+        
         //Before Wave
         timer -= Time.deltaTime;
         if (!(timer <= 0)) return;

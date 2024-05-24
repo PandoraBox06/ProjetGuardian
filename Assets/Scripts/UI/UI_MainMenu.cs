@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -55,5 +54,6 @@ public class UI_MainMenu : MonoBehaviour
     private void OnEnable()
     {
         popUpGO.SetActive(false);
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(playButton.gameObject); 
     }
 }

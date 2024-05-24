@@ -14,4 +14,9 @@ public class UI_Score : MonoBehaviour
     {
         UIManager.Instance.OpenOnePanel(PanelsNames.MainMenu);
     }
+    
+    private void OnEnable()
+    {
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(quitButton.gameObject); 
+    }
 }
