@@ -11,6 +11,8 @@ public class AlphaBlending : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private float _speed = 2f;
 
+    [SerializeField] private float _maxOpacityBGText = 0.55f;
+    
     private void Awake()
     {
         _text = GetComponent<TextMeshProUGUI>();
@@ -31,6 +33,11 @@ public class AlphaBlending : MonoBehaviour
         StartCoroutine(FadeInImage());
     }
 
+    public void StartFadeInBGImage()
+    {
+        StartCoroutine(FadeInBGImage());
+    }
+    
     public void StartFadeInText()
     {
         StartCoroutine(FadeInText());
@@ -91,6 +98,26 @@ public class AlphaBlending : MonoBehaviour
         _image.color = endColor;
         StopCoroutine(FadeOutImage());
     }
+    
+    private IEnumerator FadeInBGImage()
+    {
+        Color startColor = _image.color;
+        Color endColor = new Color(startColor.r, startColor.g, startColor.b, _maxOpacityBGText); // Target color with alpha = 1
+
+        float elapsedTime = 0.0f;
+
+        while (elapsedTime < _speed)
+        {
+            elapsedTime += Time.deltaTime;
+            _image.color = Color.Lerp(startColor, endColor, elapsedTime / _speed);
+            yield return null; // Wait until the next frame
+        }
+
+        // Ensure the image is completely faded out
+        _image.color = endColor;
+        StopCoroutine(FadeOutImage());
+    }
+    
     private IEnumerator FadeInText()
     {
         Color startColor = _text.color;
