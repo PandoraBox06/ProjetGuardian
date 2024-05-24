@@ -7,6 +7,7 @@ TagManager:
   - Slope
   - Enemy
   - Walls
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - Water
   - UI
   - Walls
-  - 
-  - 
+  - Player
+  - Post-Process
   - 
   - Enemy
   - 
