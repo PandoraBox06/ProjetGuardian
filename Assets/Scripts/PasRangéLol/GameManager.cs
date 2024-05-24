@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
     #region StateMachine
     void Lobby()
     {
-        if (!_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(true);
+        if (!_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(false);
         if (!_UICanvas.activeInHierarchy) _UICanvas.SetActive(true);
     }
 
@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
 
     void PreWave()
     {
-        if (_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(false);
+        if (_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(true);
         if (_UICanvas.activeInHierarchy) _UICanvas.SetActive(false);
         
         //Before Wave
