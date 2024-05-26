@@ -1,8 +1,5 @@
-using System;
 using Cinemachine;
-using DG.Tweening;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -71,7 +68,6 @@ public class CameraBehavior : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.currentGameState == GameState.Cutscene) return;
         if (isAttacking)
         {
             return;

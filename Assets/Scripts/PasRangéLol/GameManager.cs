@@ -1,6 +1,8 @@
 using System;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.PostProcessing;
 
 public enum GameState
 {
@@ -27,10 +29,20 @@ public class GameManager : MonoBehaviour
     private GameState stateBeforePause;
     private bool isTutorialDone;
 
+    [SerializeField] private bool _skipCutscene;
+    public bool IsTutorialDone
+    {
+        get => isTutorialDone;
+        set => isTutorialDone = value;
+    }
+
+    private bool _cutsceneOnce;
     private Action currentAction;
     [SerializeField] private GameObject _CutSceneManager;
     [SerializeField] private GameObject _PlayerCanvas;
     [SerializeField] private GameObject _UICanvas;
+    [SerializeField] private PostProcessVolume _TutoVolume;
+    [SerializeField] private CinemachineBrain _cameraBrain;
     public static event Action StartSpawningWave;
     public static event Action OnFullRegen;
     public static GameManager Instance { get; private set; }
@@ -42,6 +54,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
+        _cameraBrain.enabled = false;
     }
     private void OnDestroy()
     {
@@ -64,7 +77,7 @@ public class GameManager : MonoBehaviour
     {
         timer = delayBeforeWaveStart;
         stateBeforePause = GameState.Null;
-
+        _CutSceneManager.SetActive(false);
         ChangeGameState(UIManager.Instance.startWithMenu ? GameState.Lobby : GameState.Cutscene);
     }
 
@@ -76,16 +89,24 @@ public class GameManager : MonoBehaviour
     #region StateMachine
     void Lobby()
     {
-        if (!_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(false);
+        if (_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(false);
         if (!_UICanvas.activeInHierarchy) _UICanvas.SetActive(true);
     }
 
     void CutScene()
     {
-        if (_CutSceneManager.activeInHierarchy == false)
+        if (_cameraBrain.enabled == false) _cameraBrain.enabled = true;
+        if (_skipCutscene || UIManager.Instance.startWithMenu == false)
         {
+            PlayerInit.Instance.EnablePlayer();
             BlancoCombatManager.Instance.Init();
             ChangeGameState(GameState.Tutorial);
+        }
+        else
+        {
+            if (_cutsceneOnce) return;
+            _CutSceneManager.SetActive(true);
+            _cutsceneOnce = true;
         }
     }
 
@@ -96,7 +117,8 @@ public class GameManager : MonoBehaviour
 
     void PreWave()
     {
-        if (_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(true);
+        if (_TutoVolume.enabled) _TutoVolume.enabled = false;
+        if (!_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(true);
         if (_UICanvas.activeInHierarchy) _UICanvas.SetActive(false);
         
         //Before Wave
@@ -146,8 +168,9 @@ public class GameManager : MonoBehaviour
     {
         //methods to launch to enter gameMode
         UIManager.Instance.LockCursor();
+        _cameraBrain.enabled = true;
         if (isTutorialDone) ChangeGameState(GameState.PreWave);
-        else ChangeGameState(GameState.Tutorial);
+        else ChangeGameState(GameState.Cutscene);
     }
 
     public void StopGame() //jsp à quoi ça va servir lol
@@ -196,6 +219,13 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.ClosePanels();
     }
 
+    public void ChangeToTuto()
+    {
+        PlayerInit.Instance.EnablePlayer();
+        BlancoCombatManager.Instance.Init();
+        ChangeGameState(GameState.Tutorial);
+    }
+    
     public void ChangeGameState(GameState state)
     {
         if (state == currentGameState) return;

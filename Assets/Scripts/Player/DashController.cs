@@ -29,7 +29,6 @@ public class DashController : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.currentGameState == GameState.Cutscene) return;
         if (Time.time > timer && !isDashing && dashInput.action.WasPerformedThisFrame())
         {
             // Start dashing

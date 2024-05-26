@@ -65,7 +65,6 @@ public class PlayerMouvement : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.currentGameState == GameState.Cutscene) return;
         StateHandler();
         Move();
         // RotatePlayerToSlope();

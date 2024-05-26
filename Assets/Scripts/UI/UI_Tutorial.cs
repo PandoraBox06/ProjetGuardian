@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -15,7 +16,7 @@ public class UI_Tutorial : MonoBehaviour
     [SerializeField] private Transform enemyPosition;
     [SerializeField] private GameObject enemyPrefab;
     private GameObject currentEnemy;
-    
+    [SerializeField] private Animator _fadeAnim;
     public static UI_Tutorial Instance
     {
         get {
@@ -75,7 +76,7 @@ public class UI_Tutorial : MonoBehaviour
                     if (_lastComboName == "Hold attack")
                     {
                         isCombo3Done = true;
-                        GameManager.Instance.ChangeGameState(GameState.PreWave);
+                        StartCoroutine(FadeToPlay());
                         ResetTutorial();
                         DOVirtual.DelayedCall(0.5f, KillDummy);
                     }
@@ -113,5 +114,13 @@ public class UI_Tutorial : MonoBehaviour
     private void KillDummy()
     {
         currentEnemy.GetComponent<Enemy>().Die();
+    }
+
+    IEnumerator FadeToPlay()
+    {
+        _fadeAnim.Play("Fade");
+        yield return new WaitForSeconds(2.5f);
+        GameManager.Instance.IsTutorialDone = true;
+        GameManager.Instance.ChangeGameState(GameState.PreWave);
     }
 }
