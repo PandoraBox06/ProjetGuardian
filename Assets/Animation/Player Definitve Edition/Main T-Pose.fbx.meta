@@ -3,7 +3,77 @@ guid: f78576d93203fb648971ebb27d4ef4ee
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: METAL
+    second: {fileID: 2100000, guid: ede830c572aaec042b43cb0cbaab4c42, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: f827374c76378ef4fb8389fdafee5c7d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: 1f9da8c89ba35024ba621a7782ba4cfa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.005
+    second: {fileID: 2100000, guid: 883cf2a7b75fdc64aa0044fe8d6aee8f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cuir
+    second: {fileID: 2100000, guid: ea5f64d61c86349498d9e4cc243fea34, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cuir.001
+    second: {fileID: 2100000, guid: f0363007a8f8e304585739c38c01d5a3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cuir.002
+    second: {fileID: 2100000, guid: 3c96e5317981a5d4eb9e5b46fec2bf0e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cuir.003
+    second: {fileID: 2100000, guid: 7f49887e07c6f774994c2dba8c408a52, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: f3208d747c306ee419147aa8812016d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pantalon
+    second: {fileID: 2100000, guid: afa78eec5bf06ce4c85763bfa6244f19, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: peau
+    second: {fileID: 2100000, guid: b74e687b06f6e5f4c9dfdf8dc6166ca4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: peau.001
+    second: {fileID: 2100000, guid: d02b77feaf927094ca9760a1103f660f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tshirt
+    second: {fileID: 2100000, guid: 83e1d16dc21cce841929bcef16f94c80, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: violet
+    second: {fileID: 2100000, guid: 68b31455fca1fc044bf87cee0c931b07, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
