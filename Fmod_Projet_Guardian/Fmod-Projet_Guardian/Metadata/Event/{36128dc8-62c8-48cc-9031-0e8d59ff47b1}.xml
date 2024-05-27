@@ -139,7 +139,7 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{6d5aee12-d2fc-4fd8-980b-9747df674027}">
 		<relationship name="effects">
-			<destination>{00e45d71-35f0-4b25-b143-a11be12bb4c0}</destination>
+			<destination>{8fc93269-5f17-4384-a6d8-ccd2e4008184}</destination>
 			<destination>{04be18d6-3c24-4bee-97e5-709d11f79c9a}</destination>
 			<destination>{cbd8fe0d-5c0e-45b8-98dd-9b8cb3930b3a}</destination>
 		</relationship>
@@ -262,18 +262,9 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{36e524e4-34f2-4976-b05d-fdabff2ebe01}" />
-	<object class="PitchShifterEffect" id="{00e45d71-35f0-4b25-b143-a11be12bb4c0}">
-		<property name="pitch">
-			<value>0.879999995</value>
-		</property>
-		<property name="fftSize">
-			<value>940</value>
-		</property>
-		<property name="overlap">
-			<value>4.20000029</value>
-		</property>
-		<property name="maxChannels">
-			<value>0.100000001</value>
+	<object class="LowpassEffect" id="{8fc93269-5f17-4384-a6d8-ccd2e4008184}">
+		<property name="cutoff">
+			<value>700</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{04be18d6-3c24-4bee-97e5-709d11f79c9a}" />
