@@ -77,7 +77,6 @@ public class UI_Tutorial : MonoBehaviour
                     {
                         isCombo3Done = true;
                         StartCoroutine(FadeToPlay());
-                        ResetTutorial();
                         DOVirtual.DelayedCall(0.5f, KillDummy);
                     }
                 }
@@ -118,9 +117,14 @@ public class UI_Tutorial : MonoBehaviour
 
     IEnumerator FadeToPlay()
     {
+         yield return new WaitForSeconds(2f);
         _fadeAnim.Play("Fade");
+        yield return new WaitForSeconds(.5f);
+         if (GameManager.Instance.TutoVolume.enabled) GameManager.Instance.TutoVolume.enabled = false;
         yield return new WaitForSeconds(2.5f);
+        ResetTutorial();
         GameManager.Instance.IsTutorialDone = true;
         GameManager.Instance.ChangeGameState(GameState.PreWave);
+        StopCoroutine(FadeToPlay());
     }
 }

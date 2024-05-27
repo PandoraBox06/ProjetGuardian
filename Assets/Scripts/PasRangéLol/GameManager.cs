@@ -42,6 +42,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _PlayerCanvas;
     [SerializeField] private GameObject _UICanvas;
     [SerializeField] private PostProcessVolume _TutoVolume;
+
+    public PostProcessVolume TutoVolume
+    {
+        get => _TutoVolume;
+        set => _TutoVolume = value;
+    }
+
     [SerializeField] private CinemachineBrain _cameraBrain;
     public static event Action StartSpawningWave;
     public static event Action OnFullRegen;
@@ -84,6 +91,15 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         currentAction?.Invoke();
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            _cutsceneOnce = true;
+            _cameraBrain.enabled = true;
+            _CutSceneManager.SetActive(false);
+            PlayerInit.Instance.EnablePlayer();
+            BlancoCombatManager.Instance.Init();
+            ChangeGameState(GameState.Tutorial);
+        }
     }
 
     #region StateMachine
