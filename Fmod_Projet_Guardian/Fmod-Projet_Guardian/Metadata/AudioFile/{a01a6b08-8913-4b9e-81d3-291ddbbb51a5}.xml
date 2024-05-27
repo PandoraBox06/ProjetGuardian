@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{a01a6b08-8913-4b9e-81d3-291ddbbb51a5}">
+		<property name="assetPath">
+			<value>Death Avatar-004.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.2</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{96b10a71-ce91-4c02-8101-4f875d5a0317}</destination>
+		</relationship>
+	</object>
+</objects>
