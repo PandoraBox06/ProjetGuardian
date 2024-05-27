@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _CutSceneManager;
     [SerializeField] private GameObject _PlayerCanvas;
     [SerializeField] private GameObject _UICanvas;
+    [SerializeField] private GameObject TutoCanvas;
     [SerializeField] private GameObject PlayerHp;
     [SerializeField] private PostProcessVolume _TutoVolume;
 
@@ -109,6 +110,7 @@ public class GameManager : MonoBehaviour
         if (_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(false);
         if (!_UICanvas.activeInHierarchy) _UICanvas.SetActive(true);
         if (PlayerHp.activeInHierarchy) PlayerHp.SetActive(false);
+        if (TutoCanvas.activeInHierarchy) TutoCanvas.SetActive(false);
     }
 
     void CutScene()
@@ -116,6 +118,7 @@ public class GameManager : MonoBehaviour
         if (_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(false);
         if (_UICanvas.activeInHierarchy) _UICanvas.SetActive(false);
         if (PlayerHp.activeInHierarchy) PlayerHp.SetActive(false);
+        if (TutoCanvas.activeInHierarchy) TutoCanvas.SetActive(false);
         
         if (_cameraBrain.enabled == false) _cameraBrain.enabled = true;
         if (_skipCutscene || UIManager.Instance.startWithMenu == false)
@@ -137,6 +140,7 @@ public class GameManager : MonoBehaviour
         if (_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(false);
         if (_UICanvas.activeInHierarchy) _UICanvas.SetActive(false);
         if (PlayerHp.activeInHierarchy) PlayerHp.SetActive(false);
+        if (!TutoCanvas.activeInHierarchy) TutoCanvas.SetActive(true);
     }
 
     void PreWave()
@@ -145,6 +149,7 @@ public class GameManager : MonoBehaviour
         if (!_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(true);
         if (_UICanvas.activeInHierarchy) _UICanvas.SetActive(false);
         if (PlayerHp.activeInHierarchy) PlayerHp.SetActive(true);
+        if (TutoCanvas.activeInHierarchy) TutoCanvas.SetActive(false);
         
         //Before Wave
         timer -= Time.deltaTime;

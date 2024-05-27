@@ -17,14 +17,16 @@ public class UI_Tutorial : MonoBehaviour
     [SerializeField] private GameObject enemyPrefab;
     private GameObject currentEnemy;
     [SerializeField] private Animator _fadeAnim;
-    public static UI_Tutorial Instance
+    public static UI_Tutorial Instance { get; private set; }
+    private void Awake()
     {
-        get {
-            if (_instance == null) _instance = FindObjectOfType<UI_Tutorial>();
-            return _instance;
+        if (Instance)
+        {
+            Destroy(gameObject);
+            return;
         }
+        Instance = this;
     }
-    private static UI_Tutorial _instance;
 
     private void Start()
     {
@@ -127,5 +129,11 @@ public class UI_Tutorial : MonoBehaviour
         GameManager.Instance.IsTutorialDone = true;
         GameManager.Instance.ChangeGameState(GameState.PreWave);
         StopCoroutine(FadeToPlay());
+    }
+    
+    private void OnDestroy()
+    {
+        if (this == Instance)
+            Instance = null;
     }
 }
