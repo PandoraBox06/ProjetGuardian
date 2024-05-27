@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _CutSceneManager;
     [SerializeField] private GameObject _PlayerCanvas;
     [SerializeField] private GameObject _UICanvas;
+    [SerializeField] private GameObject PlayerHp;
     [SerializeField] private PostProcessVolume _TutoVolume;
 
     public PostProcessVolume TutoVolume
@@ -107,10 +108,15 @@ public class GameManager : MonoBehaviour
     {
         if (_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(false);
         if (!_UICanvas.activeInHierarchy) _UICanvas.SetActive(true);
+        if (PlayerHp.activeInHierarchy) PlayerHp.SetActive(false);
     }
 
     void CutScene()
     {
+        if (_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(false);
+        if (_UICanvas.activeInHierarchy) _UICanvas.SetActive(false);
+        if (PlayerHp.activeInHierarchy) PlayerHp.SetActive(false);
+        
         if (_cameraBrain.enabled == false) _cameraBrain.enabled = true;
         if (_skipCutscene || UIManager.Instance.startWithMenu == false)
         {
@@ -128,7 +134,9 @@ public class GameManager : MonoBehaviour
 
     void Tutorial()
     {
-        
+        if (_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(false);
+        if (_UICanvas.activeInHierarchy) _UICanvas.SetActive(false);
+        if (PlayerHp.activeInHierarchy) PlayerHp.SetActive(false);
     }
 
     void PreWave()
@@ -136,6 +144,7 @@ public class GameManager : MonoBehaviour
         if (_TutoVolume.enabled) _TutoVolume.enabled = false;
         if (!_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(true);
         if (_UICanvas.activeInHierarchy) _UICanvas.SetActive(false);
+        if (PlayerHp.activeInHierarchy) PlayerHp.SetActive(true);
         
         //Before Wave
         timer -= Time.deltaTime;

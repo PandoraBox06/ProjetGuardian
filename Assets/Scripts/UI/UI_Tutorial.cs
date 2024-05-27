@@ -36,6 +36,7 @@ public class UI_Tutorial : MonoBehaviour
     private void Update()
     {
         if (!combosList[0].activeInHierarchy && GameManager.Instance.currentGameState == GameState.Tutorial) InitTutorial();
+        if (combosList[0].activeInHierarchy && GameManager.Instance.currentGameState != GameState.Tutorial) ResetTutorial();
     }
 
     private void ResetTutorial()
