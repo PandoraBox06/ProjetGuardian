@@ -12,6 +12,7 @@ public class UI_MainMenu : MonoBehaviour
     [Header("PopUp")]
     [SerializeField] private GameObject popUpGO;
     [SerializeField] private Button continueButton;
+    [SerializeField] private Button backButton;
     [SerializeField] private TMP_InputField pseudoInput;
 
     private void Awake()
@@ -21,6 +22,7 @@ public class UI_MainMenu : MonoBehaviour
         creditsButton.onClick.AddListener(Credits);
         quitButton.onClick.AddListener(Quit);
         continueButton.onClick.AddListener(Continue);
+        backButton.onClick.AddListener(Back);
     }
 
     private void Continue()
@@ -28,6 +30,12 @@ public class UI_MainMenu : MonoBehaviour
         UIManager.Instance.RegisterNewPseudo(pseudoInput.text);
         Debug.Log($"Pseudo : {pseudoInput.text}");
         GameManager.Instance.StartGame();
+    }
+
+    private void Back()
+    {
+        popUpGO.SetActive(false);
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(playButton.gameObject); 
     }
 
     private void Play()
@@ -54,6 +62,6 @@ public class UI_MainMenu : MonoBehaviour
     private void OnEnable()
     {
         popUpGO.SetActive(false);
-        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(playButton.gameObject); 
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(playButton.gameObject);
     }
 }
