@@ -18589,7 +18589,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2120371020
 Transform:
   m_ObjectHideFlags: 0
@@ -19358,6 +19358,7 @@ GameObject:
   - component: {fileID: 2528702091985861005}
   - component: {fileID: 6453016090105485209}
   - component: {fileID: 7434880120548565100}
+  - component: {fileID: 7434880120548565101}
   m_Layer: 5
   m_Name: PlayerCanva
   m_TagString: Untagged
@@ -19888,11 +19889,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 404833624577125423, guid: b0770e01f45aa79429bc9d9d3d2cc5b1, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.027569134
+      value: -0.027569104
       objectReference: {fileID: 0}
     - target: {fileID: 404833624577125423, guid: b0770e01f45aa79429bc9d9d3d2cc5b1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.019156035
+      value: 0.019156015
       objectReference: {fileID: 0}
     - target: {fileID: 1322695445709061762, guid: b0770e01f45aa79429bc9d9d3d2cc5b1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19924,15 +19925,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1964552548777296080, guid: b0770e01f45aa79429bc9d9d3d2cc5b1, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.37687624
+      value: 0.3768762
       objectReference: {fileID: 0}
     - target: {fileID: 1964552548777296080, guid: b0770e01f45aa79429bc9d9d3d2cc5b1, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.02800598
+      value: -0.02800604
       objectReference: {fileID: 0}
     - target: {fileID: 1964552548777296080, guid: b0770e01f45aa79429bc9d9d3d2cc5b1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.01851135
+      value: 0.018511388
       objectReference: {fileID: 0}
     - target: {fileID: 2935721454778639055, guid: b0770e01f45aa79429bc9d9d3d2cc5b1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20016,11 +20017,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8340960889927087436, guid: b0770e01f45aa79429bc9d9d3d2cc5b1, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.027115399
+      value: -0.027115336
       objectReference: {fileID: 0}
     - target: {fileID: 8340960889927087436, guid: b0770e01f45aa79429bc9d9d3d2cc5b1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.01979311
+      value: 0.019793062
+      objectReference: {fileID: 0}
+    - target: {fileID: 8533224216080592768, guid: b0770e01f45aa79429bc9d9d3d2cc5b1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.741653
+      objectReference: {fileID: 0}
+    - target: {fileID: 8533224216080592768, guid: b0770e01f45aa79429bc9d9d3d2cc5b1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.66800016
       objectReference: {fileID: 0}
     - target: {fileID: 8533224216080592768, guid: b0770e01f45aa79429bc9d9d3d2cc5b1, type: 3}
       propertyPath: m_LocalRotation.y
@@ -20465,6 +20474,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7434880120548565101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969865757804528858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88d9dd329d814889881f3121fd864d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _toInit: {fileID: 2253564213781997686}
+  _stateToActivate: 3
 --- !u!222 &7567972677230478558
 CanvasRenderer:
   m_ObjectHideFlags: 0
