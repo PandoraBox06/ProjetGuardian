@@ -6,7 +6,6 @@ public class UI_MainMenu : MonoBehaviour
 {
     [Header("MainMenu")]
     [SerializeField] private Button playButton;
-    [SerializeField] private Button scoreButton;
     [SerializeField] private Button creditsButton;
     [SerializeField] private Button quitButton;
     [Header("PopUp")]
@@ -18,7 +17,6 @@ public class UI_MainMenu : MonoBehaviour
     private void Awake()
     {
         playButton.onClick.AddListener(Play);
-        scoreButton.onClick.AddListener(Score);
         creditsButton.onClick.AddListener(Credits);
         quitButton.onClick.AddListener(Quit);
         continueButton.onClick.AddListener(Continue);
@@ -42,11 +40,6 @@ public class UI_MainMenu : MonoBehaviour
     {
         popUpGO.SetActive(true);
         pseudoInput.Select();
-    }
-
-    private void Score()
-    {
-        UIManager.Instance.OpenPopUpPanel(PanelsNames.Score);
     }
 
     private void Credits()

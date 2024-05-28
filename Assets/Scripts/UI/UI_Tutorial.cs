@@ -48,7 +48,7 @@ public class UI_Tutorial : MonoBehaviour
 
     private void OnDisable()
     {
-        HelpComboInterface.Instance.ShowAll();
+        if(HelpComboInterface.Instance != null) HelpComboInterface.Instance.ShowAll();
     }
 
     private void ResetTutorial()
