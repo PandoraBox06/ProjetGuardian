@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour
 
     void Tutorial()
     {
-        if (_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(false);
+        if (!_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(true);
         if (_UICanvas.activeInHierarchy) _UICanvas.SetActive(false);
         if (PlayerHp.activeInHierarchy) PlayerHp.SetActive(false);
         if (!TutoCanvas.activeInHierarchy) TutoCanvas.SetActive(true);

@@ -28,7 +28,7 @@ public class BlancoTransitionBehaviour : StateMachineBehaviour
             if (pointsGiven == 0) Debug.LogWarning("You have to specify points, the player gets none");
             else
             {
-                HelpComboInterface.Instance.AddScore(pointsGiven);
+                HelpComboInterface.Instance.ShowScore(pointsGiven);
             }
         }
     }

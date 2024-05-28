@@ -5,6 +5,7 @@ using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Sequence = DG.Tweening.Sequence;
 
@@ -26,7 +27,7 @@ public class HelpComboInterface : MonoBehaviour
     [SerializeField] private WaveManager waveManager;
     [SerializeField] private InputActionReference closeComboInput;
     [Header("Texts")]
-    [SerializeField] private TextMeshProUGUI wavemCounterText;
+    [SerializeField] private TextMeshProUGUI waveCounterText;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI lastComboText;
     [Header("Sprites")]
@@ -37,10 +38,15 @@ public class HelpComboInterface : MonoBehaviour
     [SerializeField] private Sprite dashSprite;
     [Header("Images")]
     [SerializeField] private List<Image> combosImages = new();
+    [SerializeField] private Slider inputTimingSlider;
     [SerializeField] private GameObject lastComboBox;
     [SerializeField] private GameObject comboHelpBox;
+    [Header("GameObjects")]
+    [SerializeField] private GameObject scoreBox;
+    [SerializeField] private GameObject hpPlayerBox;
     [SerializeField] private GameObject waveCounterBox;
-    [SerializeField] private Slider inputTimingSlider;
+    [SerializeField] private GameObject comboCurrentBox;
+    [SerializeField] private GameObject comboListBox;
     
     private BlancoCombatManager managerInstance;
     private Vector3 comboBoxPos;
@@ -62,6 +68,8 @@ public class HelpComboInterface : MonoBehaviour
         comboBoxPos = lastComboBox.transform.position;
         waveCounterBox.SetActive(false);
 
+        
+        ShowWaveNumber();
         CleanCombo();
     }
 
@@ -73,6 +81,31 @@ public class HelpComboInterface : MonoBehaviour
     private void OnEnable()
     {
         score = 0;
+        
+        foreach (Image combo in combosImages)
+        {
+            combo.enabled = false;
+        }
+
+        hasFinished = false;
+    }
+
+    public void ShowOnlyTuto()
+    {
+        scoreBox.SetActive(false);
+        hpPlayerBox.SetActive(false);
+        waveCounterBox.SetActive(false);
+        comboCurrentBox.SetActive(true);
+        comboListBox.SetActive(false);
+    }
+
+    public void ShowAll()
+    {
+        scoreBox.SetActive(true);
+        hpPlayerBox.SetActive(true);
+        waveCounterBox.SetActive(true);
+        comboCurrentBox.SetActive(true);
+        comboListBox.SetActive(true);
     }
 
     private void ToggleCombo(InputAction.CallbackContext callback)
@@ -84,8 +117,9 @@ public class HelpComboInterface : MonoBehaviour
     private void ShowWaveNumber()
     {
         waveCounterBox.SetActive(true);
-        wavemCounterText.text = "Wave n." + waveManager.numberOfWave;
+        waveCounterText.text = "Wave n." + waveManager.numberOfWave;
         DOVirtual.DelayedCall(5, HideWaveNumber);
+        ShowScore(waveManager.numberOfWave);
     }
 
     private void HideWaveNumber()
@@ -134,10 +168,9 @@ public class HelpComboInterface : MonoBehaviour
         index++;
     }
 
-    public void AddScore(int _score)
+    public void ShowScore(int _score)
     {
-        score += _score;
-        scoreText.text = $"{score}";
+        scoreText.text = $"{_score}";
     }
 
     private void FinishedCombo()

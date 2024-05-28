@@ -41,6 +41,16 @@ public class UI_Tutorial : MonoBehaviour
         if (combosList[0].activeInHierarchy && GameManager.Instance.currentGameState != GameState.Tutorial) ResetTutorial();
     }
 
+    private void OnEnable()
+    {
+        HelpComboInterface.Instance.ShowOnlyTuto();
+    }
+
+    private void OnDisable()
+    {
+        HelpComboInterface.Instance.ShowAll();
+    }
+
     private void ResetTutorial()
     {
         isCombo1Done = false;
