@@ -86,9 +86,10 @@ public class UI_Tutorial : MonoBehaviour
             {
                 if (!isCombo3Done)
                 {
-                    if (_lastComboName == "Hold attack")
+                    if (_lastComboName == "Guard break")
                     {
                         isCombo3Done = true;
+                        greyList[2].SetActive(true);
                         StartCoroutine(FadeToPlay());
                         DOVirtual.DelayedCall(0.5f, KillDummy);
                     }
@@ -96,7 +97,7 @@ public class UI_Tutorial : MonoBehaviour
             }
             else
             {
-                if (_lastComboName == "Paused attack")
+                if (_lastComboName == "Slide")
                 {
                     isCombo2Done = true;
                     greyList[1].SetActive(true);
@@ -106,7 +107,7 @@ public class UI_Tutorial : MonoBehaviour
         }
         else
         {
-            if (_lastComboName == "Full attack")
+            if (_lastComboName == "Great slash")
             {
                 isCombo1Done = true;
                 greyList[0].SetActive(true);

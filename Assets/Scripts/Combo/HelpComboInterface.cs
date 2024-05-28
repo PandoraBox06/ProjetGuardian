@@ -131,6 +131,7 @@ public class HelpComboInterface : MonoBehaviour
 
     private void HideWaveNumber()
     {
+        Debug.Log("blop");
         waveCounterBox.SetActive(false);
     }
 

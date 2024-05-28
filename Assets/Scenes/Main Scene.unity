@@ -11031,7 +11031,7 @@ MonoBehaviour:
   delayBeforeWaveStart: 3
   currentWave: 0
   pauseInput: {fileID: -8883490959086131353, guid: b0b17bf653d5a64488494776990ea425, type: 3}
-  isTutorialDone: 0
+  isTutorialDone: 1
   _skipCutscene: 1
   _CutSceneManager: {fileID: 2120371019}
   _PlayerCanvas: {fileID: 1969865757804528858}
@@ -20321,11 +20321,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8340960889927087436, guid: b0770e01f45aa79429bc9d9d3d2cc5b1, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.027115336
+      value: -0.027115399
       objectReference: {fileID: 0}
     - target: {fileID: 8340960889927087436, guid: b0770e01f45aa79429bc9d9d3d2cc5b1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.019793062
+      value: 0.01979311
       objectReference: {fileID: 0}
     - target: {fileID: 8533224216080592768, guid: b0770e01f45aa79429bc9d9d3d2cc5b1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -20337,11 +20337,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8533224216080592768, guid: b0770e01f45aa79429bc9d9d3d2cc5b1, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.040854983
+      value: 0.040854987
       objectReference: {fileID: 0}
     - target: {fileID: 8533224216080592768, guid: b0770e01f45aa79429bc9d9d3d2cc5b1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.045359604
+      value: -0.045359608
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
