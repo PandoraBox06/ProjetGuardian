@@ -40,7 +40,6 @@ public class HelpComboInterface : MonoBehaviour
     [SerializeField] private List<Image> combosImages = new();
     [SerializeField] private Slider inputTimingSlider;
     [SerializeField] private GameObject lastComboBox;
-    [SerializeField] private GameObject comboHelpBox;
     [Header("GameObjects")]
     [SerializeField] private GameObject scoreBox;
     [SerializeField] private GameObject hpPlayerBox;
@@ -110,8 +109,16 @@ public class HelpComboInterface : MonoBehaviour
 
     private void ToggleCombo(InputAction.CallbackContext callback)
     {
-        if (comboHelpBox.activeInHierarchy) comboHelpBox.SetActive(false);
-        else comboHelpBox.SetActive(true);
+        if (comboListBox.activeInHierarchy)
+        {
+            comboCurrentBox.SetActive(false);
+            comboListBox.SetActive(false);
+        }
+        else
+        {
+            comboCurrentBox.SetActive(true);
+            comboListBox.SetActive(true);
+        }
     }
 
     private void ShowWaveNumber()

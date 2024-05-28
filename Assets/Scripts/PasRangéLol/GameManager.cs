@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private InputActionReference pauseInput;
     private float timer;
     private GameState stateBeforePause;
-    private bool isTutorialDone;
+    [SerializeField] private bool isTutorialDone;
 
     [SerializeField] private bool _skipCutscene;
     public bool IsTutorialDone
