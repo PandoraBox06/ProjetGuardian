@@ -39,6 +39,20 @@ public class UI_Tutorial : MonoBehaviour
     {
         if (!combosList[0].activeInHierarchy && GameManager.Instance.currentGameState == GameState.Tutorial) InitTutorial();
         if (combosList[0].activeInHierarchy && GameManager.Instance.currentGameState != GameState.Tutorial) ResetTutorial();
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            SkipToPlay();
+        }
+    }
+    
+    void SkipToPlay()
+    {
+        isCombo1Done = true;
+        isCombo2Done = true;
+        isCombo3Done = true;
+        greyList[2].SetActive(true);
+        StartCoroutine(FadeToPlay());
+        DOVirtual.DelayedCall(0.5f, KillDummy);
     }
 
     private void OnEnable()

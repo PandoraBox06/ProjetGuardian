@@ -93,17 +93,23 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         currentAction?.Invoke();
-        if (Input.GetKeyDown(KeyCode.F2))
+        if (Input.GetKeyDown(KeyCode.F1))
         {
-            _cutsceneOnce = true;
-            _cameraBrain.enabled = true;
-            _CutSceneManager.SetActive(false);
-            PlayerInit.Instance.EnablePlayer();
-            BlancoCombatManager.Instance.Init();
-            ChangeGameState(GameState.Tutorial);
+            SkipToTuto();
         }
+   
     }
 
+    void SkipToTuto()
+    {
+        _cutsceneOnce = true;
+        _cameraBrain.enabled = true;
+        _CutSceneManager.SetActive(false);
+        PlayerInit.Instance.EnablePlayer();
+        BlancoCombatManager.Instance.Init();
+        ChangeGameState(GameState.Tutorial);
+    }
+    
     #region StateMachine
     void Lobby()
     {

@@ -63,6 +63,10 @@ public class WaveManager : MonoBehaviour
         {
             SkipWave();
         }
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            SkipToWave8();
+        }
         
         if(!canSpawnWave) return;
         
@@ -95,6 +99,25 @@ public class WaveManager : MonoBehaviour
         {
             SpawnSuperWave();
         }
+    }
+
+    void SkipToWave8()
+    {
+        canSpawnWave = false;
+        GameObject[] enemyDumping = enemyDump.ToArray();
+        foreach (var enemy in enemyDumping)
+        {
+            enemy.GetComponent<Enemy>().Die();
+        }
+        fullWaveSpawn = false;
+        fullSuperWaveSpawn = false;
+        enemySpawn = 0;
+        superEnemySpawn = 0;
+        for (int i = 0; i < 7; i++)
+        {
+            WaveIncrease();
+        }
+        GameManager.Instance.ChangeGameState(GameState.PostWave);
     }
 
     private void SpawnWave()
