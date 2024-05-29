@@ -33,6 +33,7 @@ public class FlameTransition : MonoBehaviour
 
     private void FlameFlickering()
     {
+        NewWaveSound();
         foreach (var flame in _flames)
         {
             flame.Play("Light_Flickering");
@@ -53,5 +54,11 @@ public class FlameTransition : MonoBehaviour
         {
             flame.gameObject.SetActive(true);
         }
+    }
+
+    void NewWaveSound()
+    {
+        if (!AudioManager.Instance.newWave.IsNull)
+            AudioManager.Instance.PlayOneShot(AudioManager.Instance.newWave, transform.position);
     }
 }

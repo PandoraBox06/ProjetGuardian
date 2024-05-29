@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 8677166351488763548}
   - component: {fileID: 3059077401599318241}
   - component: {fileID: 5003205648049281552}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -502,7 +502,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5723317487183250897}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -563,7 +563,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1939993372867248911}
   - component: {fileID: 157100331696100921}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Directional Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -796,7 +796,7 @@ GameObject:
   - component: {fileID: 319410427797710992}
   - component: {fileID: 5770863641925835343}
   - component: {fileID: 4798862618361296971}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Arche briques
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -912,7 +912,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5721555663831741448}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "Cercle ext\xE9rieur"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1064,7 +1064,7 @@ GameObject:
   m_Component:
   - component: {fileID: 188074662043996275}
   - component: {fileID: 6254858540835772051}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ---Environnement---
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1123,7 +1123,7 @@ GameObject:
   - component: {fileID: 8437525844454715682}
   - component: {fileID: 1714583653366714163}
   - component: {fileID: 3015399472960574048}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube.106_dmg.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1383,7 +1383,7 @@ GameObject:
   - component: {fileID: 8952627788662912639}
   - component: {fileID: 2412170690787805408}
   - component: {fileID: 489366674035077645}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pilones
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1464,7 +1464,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 755951646117327679}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lights (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1526,7 +1526,7 @@ GameObject:
   - component: {fileID: 773238389387759004}
   - component: {fileID: 2174514433117121075}
   - component: {fileID: 5390584146841738384}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube.106_dmg.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1689,9 +1689,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 755951646117327679}
     m_Modifications:
+    - target: {fileID: 3030919033790091372, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784200675964718936, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976008975578826318, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_Name
       value: Lampe 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7784305572795925241, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1755,6 +1775,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lampe 2 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 563907061842064799, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2869586792090754228, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16.789415
@@ -1795,6 +1827,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4721008117036286560, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189879851929543427, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1813,9 +1853,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5723317487183250897}
     m_Modifications:
+    - target: {fileID: 278259934634505909, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_Name
       value: Lampe (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3374064538994881662, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1857,6 +1905,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3566477590031230525, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290854043098825891, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1875,9 +1931,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5723317487183250897}
     m_Modifications:
+    - target: {fileID: 3030919033790091372, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784200675964718936, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976008975578826318, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_Name
       value: Lampe 1 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7784305572795925241, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1998,6 +2070,10 @@ PrefabInstance:
       value: CONTOUR LUMIERE
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6d2e75baa175c9b4d950c0ded4748c94, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6d2e75baa175c9b4d950c0ded4748c94, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -2019,9 +2095,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 755951646117327679}
     m_Modifications:
+    - target: {fileID: 278259934634505909, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_Name
       value: Lampe
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3374064538994881662, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2063,6 +2151,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3566477590031230525, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290854043098825891, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2084,6 +2180,18 @@ PrefabInstance:
     - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_Name
       value: Lampe 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 563907061842064799, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2869586792090754228, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2125,6 +2233,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4721008117036286560, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189879851929543427, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2143,9 +2259,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 755951646117327679}
     m_Modifications:
+    - target: {fileID: 3030919033790091372, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784200675964718936, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976008975578826318, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_Name
       value: Lampe 1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7784305572795925241, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2205,9 +2341,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5723317487183250897}
     m_Modifications:
+    - target: {fileID: 278259934634505909, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_Name
       value: Lampe (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3374064538994881662, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2249,6 +2393,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3566477590031230525, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290854043098825891, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2267,9 +2419,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 755951646117327679}
     m_Modifications:
+    - target: {fileID: 3030919033790091372, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784200675964718936, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976008975578826318, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_Name
       value: Lampe 1 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7784305572795925241, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2357,6 +2529,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lampe 2 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 563907061842064799, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2869586792090754228, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.3781447
@@ -2397,6 +2577,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4721008117036286560, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189879851929543427, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2415,9 +2603,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5723317487183250897}
     m_Modifications:
+    - target: {fileID: 278259934634505909, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_Name
       value: Lampe (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3374064538994881662, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2459,6 +2655,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3566477590031230525, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290854043098825891, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2477,9 +2681,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 755951646117327679}
     m_Modifications:
+    - target: {fileID: 3030919033790091372, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784200675964718936, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976008975578826318, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_Name
       value: Lampe 1 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7784305572795925241, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2539,9 +2763,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5723317487183250897}
     m_Modifications:
+    - target: {fileID: 278259934634505909, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_Name
       value: Lampe (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3374064538994881662, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2583,6 +2815,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3566477590031230525, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290854043098825891, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2604,6 +2844,14 @@ PrefabInstance:
     - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_Name
       value: Lampe 2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 563907061842064799, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2869586792090754228, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2645,6 +2893,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4721008117036286560, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189879851929543427, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2663,9 +2919,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 755951646117327679}
     m_Modifications:
+    - target: {fileID: 3030919033790091372, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784200675964718936, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976008975578826318, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_Name
       value: Lampe 1 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7784305572795925241, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2725,9 +3001,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 755951646117327679}
     m_Modifications:
+    - target: {fileID: 278259934634505909, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_Name
       value: Lampe (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3374064538994881662, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2769,6 +3057,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3566477590031230525, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290854043098825891, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2787,9 +3083,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 755951646117327679}
     m_Modifications:
+    - target: {fileID: 278259934634505909, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_Name
       value: Lampe (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3374064538994881662, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2831,6 +3139,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3566477590031230525, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290854043098825891, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2849,9 +3165,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 755951646117327679}
     m_Modifications:
+    - target: {fileID: 278259934634505909, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_Name
       value: Lampe (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3374064538994881662, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2893,6 +3221,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3566477590031230525, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290854043098825891, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2911,9 +3247,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 755951646117327679}
     m_Modifications:
+    - target: {fileID: 278259934634505909, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_Name
       value: Lampe (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3374064538994881662, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2955,6 +3303,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3566477590031230525, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290854043098825891, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2973,9 +3329,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 755951646117327679}
     m_Modifications:
+    - target: {fileID: 3030919033790091372, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784200675964718936, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976008975578826318, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_Name
       value: Lampe 1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7784305572795925241, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3039,6 +3415,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lampe 2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 563907061842064799, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2869586792090754228, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.3781447
@@ -3079,6 +3467,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4721008117036286560, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189879851929543427, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3097,9 +3493,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5723317487183250897}
     m_Modifications:
+    - target: {fileID: 278259934634505909, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_Name
       value: Lampe (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3374064538994881662, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3141,6 +3545,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3566477590031230525, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290854043098825891, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3162,6 +3574,14 @@ PrefabInstance:
     - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_Name
       value: Lampe 2 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 563907061842064799, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2869586792090754228, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3203,6 +3623,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4721008117036286560, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189879851929543427, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3221,9 +3649,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5723317487183250897}
     m_Modifications:
+    - target: {fileID: 3030919033790091372, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784200675964718936, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976008975578826318, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_Name
       value: Lampe 1 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7784305572795925241, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3287,6 +3731,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lampe 2 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 563907061842064799, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2869586792090754228, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19.418694
@@ -3327,6 +3783,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4721008117036286560, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189879851929543427, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3348,6 +3812,18 @@ PrefabInstance:
     - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_Name
       value: Lampe 2 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 563907061842064799, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2869586792090754228, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3389,6 +3865,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4721008117036286560, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189879851929543427, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3407,9 +3891,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 755951646117327679}
     m_Modifications:
+    - target: {fileID: 278259934634505909, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_Name
       value: Lampe (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3374064538994881662, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3451,6 +3947,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3566477590031230525, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290854043098825891, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3472,6 +3976,14 @@ PrefabInstance:
     - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_Name
       value: Lampe 2 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 563907061842064799, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2869586792090754228, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3513,6 +4025,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4721008117036286560, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189879851929543427, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3534,6 +4054,14 @@ PrefabInstance:
     - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_Name
       value: Lampe 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 563907061842064799, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1874170346342139528, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -3579,6 +4107,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4721008117036286560, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189879851929543427, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3597,9 +4133,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5723317487183250897}
     m_Modifications:
+    - target: {fileID: 3030919033790091372, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784200675964718936, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976008975578826318, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_Name
       value: Lampe 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7784305572795925241, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3663,6 +4215,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lampe 2 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 563907061842064799, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2869586792090754228, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.427776
@@ -3703,6 +4267,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4721008117036286560, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189879851929543427, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3724,6 +4296,14 @@ PrefabInstance:
     - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_Name
       value: Lampe 2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 563907061842064799, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2869586792090754228, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3765,6 +4345,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4721008117036286560, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189879851929543427, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3783,9 +4371,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 755951646117327679}
     m_Modifications:
+    - target: {fileID: 278259934634505909, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_Name
       value: Lampe (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3374064538994881662, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3827,6 +4427,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3566477590031230525, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290854043098825891, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3845,9 +4453,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5723317487183250897}
     m_Modifications:
+    - target: {fileID: 278259934634505909, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_Name
       value: Lampe
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3374064538994881662, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3889,6 +4505,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3566477590031230525, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290854043098825891, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3907,9 +4531,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 755951646117327679}
     m_Modifications:
+    - target: {fileID: 278259934634505909, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_Name
       value: Lampe (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3374064538994881662, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3951,6 +4587,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3566477590031230525, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290854043098825891, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3972,6 +4616,18 @@ PrefabInstance:
     - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_Name
       value: Lampe 2 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 563907061842064799, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2869586792090754228, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4013,6 +4669,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4721008117036286560, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189879851929543427, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4031,9 +4695,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5723317487183250897}
     m_Modifications:
+    - target: {fileID: 3030919033790091372, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784200675964718936, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976008975578826318, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_Name
       value: Lampe 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7784305572795925241, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4093,9 +4773,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5723317487183250897}
     m_Modifications:
+    - target: {fileID: 3030919033790091372, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784200675964718936, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976008975578826318, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_Name
       value: Lampe 1 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7784305572795925241, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4155,9 +4851,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5723317487183250897}
     m_Modifications:
+    - target: {fileID: 3030919033790091372, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784200675964718936, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976008975578826318, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_Name
       value: Lampe 1 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7784305572795925241, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4221,6 +4933,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lampe 2 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 563907061842064799, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2869586792090754228, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.46324
@@ -4261,6 +4981,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4721008117036286560, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189879851929543427, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4279,9 +5007,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5723317487183250897}
     m_Modifications:
+    - target: {fileID: 278259934634505909, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_Name
       value: Lampe (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3374064538994881662, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4323,6 +5059,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3566477590031230525, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290854043098825891, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4344,6 +5088,14 @@ PrefabInstance:
     - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_Name
       value: Lampe 2 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 563907061842064799, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2869586792090754228, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4385,6 +5137,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4721008117036286560, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189879851929543427, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4406,6 +5166,18 @@ PrefabInstance:
     - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_Name
       value: Lampe 2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 563907061842064799, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2869586792090754228, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4447,6 +5219,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4721008117036286560, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189879851929543427, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4465,9 +5245,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5723317487183250897}
     m_Modifications:
+    - target: {fileID: 3030919033790091372, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784200675964718936, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976008975578826318, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_Name
       value: Lampe 1 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7784305572795925241, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4527,9 +5323,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 755951646117327679}
     m_Modifications:
+    - target: {fileID: 278259934634505909, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_Name
       value: Lampe (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3374064538994881662, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4571,6 +5379,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3566477590031230525, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290854043098825891, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4589,9 +5405,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 755951646117327679}
     m_Modifications:
+    - target: {fileID: 3030919033790091372, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784200675964718936, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976008975578826318, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_Name
       value: Lampe 1 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7784305572795925241, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4651,9 +5487,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 755951646117327679}
     m_Modifications:
+    - target: {fileID: 3030919033790091372, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784200675964718936, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976008975578826318, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_Name
       value: Lampe 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7784305572795925241, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4713,9 +5569,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5723317487183250897}
     m_Modifications:
+    - target: {fileID: 278259934634505909, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_Name
       value: Lampe (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3374064538994881662, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4757,6 +5621,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3566477590031230525, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290854043098825891, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4775,9 +5647,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5723317487183250897}
     m_Modifications:
+    - target: {fileID: 3030919033790091372, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784200675964718936, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976008975578826318, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_Name
       value: Lampe 1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7784305572795925241, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4841,6 +5729,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lampe 2 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 563907061842064799, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2869586792090754228, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.51
@@ -4881,6 +5781,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4721008117036286560, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189879851929543427, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4902,6 +5810,14 @@ PrefabInstance:
     - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_Name
       value: Lampe 2 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 563907061842064799, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2869586792090754228, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4943,6 +5859,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4721008117036286560, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189879851929543427, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4961,9 +5885,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 755951646117327679}
     m_Modifications:
+    - target: {fileID: 3030919033790091372, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784200675964718936, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976008975578826318, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_Name
       value: Lampe 1 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7784305572795925241, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5027,6 +5971,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lampe 2 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 363127463603542747, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 563907061842064799, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2869586792090754228, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.7399986
@@ -5067,6 +6023,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4721008117036286560, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189879851929543427, guid: f0e1a9965c3013141b3af374215dd787, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5085,9 +6049,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 755951646117327679}
     m_Modifications:
+    - target: {fileID: 3030919033790091372, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784200675964718936, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976008975578826318, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_Name
       value: Lampe 1 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7784305572795925241, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5147,9 +6131,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5723317487183250897}
     m_Modifications:
+    - target: {fileID: 3030919033790091372, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784200675964718936, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976008975578826318, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_Name
       value: Lampe 1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106600403715632311, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7784305572795925241, guid: 52400513fba268e4a813adf8fa5e2e42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5209,9 +6209,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5723317487183250897}
     m_Modifications:
+    - target: {fileID: 278259934634505909, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_Name
       value: Lampe (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3374064538994881662, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5253,6 +6261,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3566477590031230525, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290854043098825891, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5271,9 +6287,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5723317487183250897}
     m_Modifications:
+    - target: {fileID: 278259934634505909, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_Name
       value: Lampe (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3374064538994881662, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5315,6 +6339,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3566477590031230525, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290854043098825891, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5333,9 +6365,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5723317487183250897}
     m_Modifications:
+    - target: {fileID: 278259934634505909, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_Name
       value: Lampe (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967797121338319046, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3374064538994881662, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5376,6 +6416,14 @@ PrefabInstance:
     - target: {fileID: 3374064538994881662, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3566477590031230525, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290854043098825891, guid: de0bb9b49ec20474eae7ef8f3bfd170b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6184818145868380753}
   - component: {fileID: 2978025074651395289}
   - component: {fileID: 32070137327354035}
+  - component: {fileID: -5394265054762399951}
   m_Layer: 0
   m_Name: VFX_Bones_Impact
   m_TagString: Untagged
@@ -4830,3 +4831,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-5394265054762399951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4644376525260227028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45ed6260ae70451c8a245c5752c3c510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

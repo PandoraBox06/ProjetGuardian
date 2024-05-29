@@ -150,6 +150,7 @@ public class UI_Tutorial : MonoBehaviour
         yield return new WaitForSeconds(.5f);
          if (GameManager.Instance.TutoVolume.enabled) GameManager.Instance.TutoVolume.enabled = false;
         yield return new WaitForSeconds(2.5f);
+        NewWaveSound();
         ResetTutorial();
         GameManager.Instance.IsTutorialDone = true;
         GameManager.Instance.ChangeGameState(GameState.PreWave);
@@ -160,5 +161,10 @@ public class UI_Tutorial : MonoBehaviour
     {
         if (this == Instance)
             Instance = null;
+    }
+    void NewWaveSound()
+    {
+        if (!AudioManager.Instance.newWave.IsNull)
+            AudioManager.Instance.PlayOneShot(AudioManager.Instance.newWave, transform.position);
     }
 }

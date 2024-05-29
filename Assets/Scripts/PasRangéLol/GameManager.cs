@@ -1,5 +1,6 @@
 using System;
 using Cinemachine;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.PostProcessing;
@@ -45,6 +46,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject PlayerHp;
     [SerializeField] private PostProcessVolume _TutoVolume;
 
+
+    [SerializeField] private StudioEventEmitter menuAmbiant;
+    [SerializeField] private StudioEventEmitter musicEmitter;
+    
     public PostProcessVolume TutoVolume
     {
         get => _TutoVolume;
@@ -88,6 +93,7 @@ public class GameManager : MonoBehaviour
         stateBeforePause = GameState.Null;
         _CutSceneManager.SetActive(false);
         ChangeGameState(UIManager.Instance.startWithMenu ? GameState.Lobby : GameState.Cutscene);
+        menuAmbiant.Play();
     }
 
     private void Update()
@@ -121,6 +127,8 @@ public class GameManager : MonoBehaviour
 
     void CutScene()
     {
+        menuAmbiant.Stop();
+        musicEmitter.Play();
         if (_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(false);
         if (_UICanvas.activeInHierarchy) _UICanvas.SetActive(false);
         if (PlayerHp.activeInHierarchy) PlayerHp.SetActive(false);
@@ -151,6 +159,21 @@ public class GameManager : MonoBehaviour
 
     void PreWave()
     {
+        switch (currentWave)
+        {
+            case 1:
+                musicEmitter.Params[0].Value = 1;
+                break;
+            case 5:
+                musicEmitter.Params[0].Value = 2;
+                break;
+            case 8:
+                musicEmitter.Params[0].Value = 3;
+                break;
+            case 11:
+                musicEmitter.Params[0].Value = 4;
+                break;
+        }
         if (_TutoVolume.enabled) _TutoVolume.enabled = false;
         if (!_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(true);
         if (_UICanvas.activeInHierarchy) _UICanvas.SetActive(false);
@@ -285,4 +308,7 @@ public class GameManager : MonoBehaviour
     {
         currentWave = wave;
     }
+    
+    
+    
 }

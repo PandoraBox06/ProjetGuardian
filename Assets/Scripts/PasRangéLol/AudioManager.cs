@@ -8,6 +8,13 @@ using FMOD.Studio;
 public class AudioManager : MonoBehaviour
 {
     private List<EventInstance> eventInstances;
+
+    public List<EventInstance> EventInstances
+    {
+        get => eventInstances;
+        set => eventInstances = value;
+    }
+
     private List<StudioEventEmitter> eventEmitters;
     public static AudioManager Instance { get; private set; }
 
@@ -19,21 +26,26 @@ public class AudioManager : MonoBehaviour
     [field: SerializeField] public EventReference doHit { get; private set; }
     [field: Header("Weapons")]
     [field: SerializeField] public EventReference hitSword { get; private set; }
-    [field: SerializeField] public EventReference draw { get; private set; }
     [field: SerializeField] public EventReference hitCrossbow { get; private set; }
-    [field: SerializeField] public EventReference hitCrossbowWall { get; private set; }
     [field: Header("Ennemis")]
     [field: SerializeField] public EventReference walkEnemy { get; private set; }
     [field: SerializeField] public EventReference getHitEnemy { get; private set; }
     [field: SerializeField] public EventReference attackEnemy { get; private set; }
     [field: SerializeField] public EventReference attackRangeEnemy { get; private set; }
+    [field: SerializeField] public EventReference attackRangeEnemyImpact { get; private set; }
     [field: SerializeField] public EventReference guardEnemy { get; private set; }
     [field: SerializeField] public EventReference deathEnemy { get; private set; }
     [field: Header("UI")]
     [field: SerializeField] public EventReference cursorValidate { get; private set; }
     [field: SerializeField] public EventReference cursorBack { get; private set; }
     [field: SerializeField] public EventReference cursorSelection { get; private set; }
-    [field: SerializeField] public EventReference gameOver { get; private set; }
+    [field: SerializeField] public EventReference menuAmbianceSound { get; private set; }
+    [field: Header("HUD")]
+    [field: SerializeField] public EventReference combo1 { get; private set; }
+    [field: SerializeField] public EventReference combo2 { get; private set; }
+    [field: SerializeField] public EventReference combo3 { get; private set; }
+    [field: SerializeField] public EventReference musicInGame { get; private set; }
+    [field: SerializeField] public EventReference newWave { get; private set; }
     
     private void Awake()
     {

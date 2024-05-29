@@ -76,6 +76,22 @@ public class CharacterAnimatorEvents : MonoBehaviour
         if (!AudioManager.Instance.hitCrossbow.IsNull)
             AudioManager.Instance.PlayOneShot(AudioManager.Instance.hitCrossbow, transform.position);
     }
+    
+    public void Combo1Sound()
+    {
+        if (!AudioManager.Instance.combo1.IsNull)
+            AudioManager.Instance.PlayOneShot(AudioManager.Instance.combo1, transform.position);
+    }
+    public void Combo2Sound()
+    {
+        if (!AudioManager.Instance.combo2.IsNull)
+            AudioManager.Instance.PlayOneShot(AudioManager.Instance.combo2, transform.position);
+    }
+    public void Combo3Sound()
+    {
+        if (!AudioManager.Instance.combo3.IsNull)
+            AudioManager.Instance.PlayOneShot(AudioManager.Instance.combo3, transform.position);
+    }
 
     public void IFramee()
     {
