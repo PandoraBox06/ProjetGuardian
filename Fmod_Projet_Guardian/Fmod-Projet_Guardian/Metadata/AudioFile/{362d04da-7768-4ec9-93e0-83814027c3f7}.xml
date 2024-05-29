@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{362d04da-7768-4ec9-93e0-83814027c3f7}">
+		<property name="assetPath">
+			<value>fire-making-wav-24576.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>24</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>135.40799999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{96b10a71-ce91-4c02-8101-4f875d5a0317}</destination>
+		</relationship>
+	</object>
+</objects>
