@@ -234,7 +234,7 @@
 	<object class="MixerBusPanner" id="{fb864e04-8f65-4170-831b-cc97433aedea}" />
 	<object class="SFXReverbEffect" id="{e6ab2906-f097-4a3a-ad07-9a243698227d}">
 		<property name="decayTime">
-			<value>450</value>
+			<value>150</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{23b36989-d1fe-4766-9e0b-802216fca9d6}" />
