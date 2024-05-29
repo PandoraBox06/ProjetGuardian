@@ -86,17 +86,17 @@ public class PlayerStats : MonoBehaviour, IDamageable
     public void Die()
     {
         if(_isDead) return;
+        animator.SetTrigger("Death");
         OnDeath?.Invoke();
         DeathPlayerSound();
-        animator.SetTrigger("Death");
         GetComponent<BlancoAnimationBehaviour>().enabled = false;
         GetComponent<BlancoCombatManager>().enabled = false;
         GetComponent<CameraBehavior>().enabled = false;
         GetComponent<PlayerMouvement>().enabled = false;
         GetComponent<DashController>().enabled = false;
   
-        this.enabled = false;
         _isDead = true;
+        this.enabled = false;
         // playerData.currentHealth = playerData.maxHealth;
     }
 
