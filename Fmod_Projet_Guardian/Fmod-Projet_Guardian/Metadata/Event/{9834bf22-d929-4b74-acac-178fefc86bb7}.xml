@@ -5,7 +5,7 @@
 			<value>Purple Light 1</value>
 		</property>
 		<property name="name">
-			<value>Attack à distance</value>
+			<value>Attack lancement à distance</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -62,11 +62,18 @@
 	<object class="EventAutomatableProperties" id="{8be7a259-1c41-4004-80cf-0df09a08a905}" />
 	<object class="MarkerTrack" id="{45822fbc-3515-46a6-ad7f-d145f62b77d2}" />
 	<object class="GroupTrack" id="{e4270015-d333-40d0-87c3-b30d68e21260}">
+		<relationship name="modules">
+			<destination>{2b1e49ed-f45b-4f4c-a5f7-161b4345bf54}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{e03e98ce-ea25-4e30-819f-49053146dc9f}</destination>
 		</relationship>
 	</object>
-	<object class="Timeline" id="{32efc4f2-ca6f-4c1e-9403-fffbd92d6e4e}" />
+	<object class="Timeline" id="{32efc4f2-ca6f-4c1e-9403-fffbd92d6e4e}">
+		<relationship name="modules">
+			<destination>{2b1e49ed-f45b-4f4c-a5f7-161b4345bf54}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerMaster" id="{628428e8-393b-4052-8f4b-b6ea802c8ecb}">
 		<relationship name="effectChain">
 			<destination>{4cf4c28d-2fc2-4370-9477-c2e65c3835c3}</destination>
@@ -84,6 +91,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{eb9b580d-67c0-4a4d-aea3-0fce67440ec4}" />
+	<object class="SingleSound" id="{2b1e49ed-f45b-4f4c-a5f7-161b4345bf54}">
+		<property name="length">
+			<value>1.5592970521541951</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{c71eae14-894a-4c42-9aa7-610479dfa2aa}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerGroup" id="{e03e98ce-ea25-4e30-819f-49053146dc9f}">
 		<property name="name">
 			<value>Audio 1</value>
