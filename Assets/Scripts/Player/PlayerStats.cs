@@ -69,7 +69,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
         if (_iFrame) return;
         if (Gamepad.current.enabled)
         {
-            Gamepad.current.SetMotorSpeeds(0.123f, 0.234f);
+            Gamepad.current.SetMotorSpeeds(0.25f, 0.25f);
             Gamepad.current.ResumeHaptics();
             Gamepad.current.PauseHaptics();
         }

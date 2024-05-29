@@ -163,13 +163,13 @@ public class GameManager : MonoBehaviour
             case 1:
                 RuntimeManager.StudioSystem.setParameterByName("Song", 1);
                 break;
-            case 4:
+            case 5:
                 RuntimeManager.StudioSystem.setParameterByName("Song", 2);
                 break;
-            case 7:
+            case 8:
                 RuntimeManager.StudioSystem.setParameterByName("Song", 3);
                 break;
-            case 10:
+            case 11:
                 RuntimeManager.StudioSystem.setParameterByName("Song", 4);
                 break;
         }
