@@ -423,7 +423,7 @@ MonoBehaviour:
   holdVFX: {fileID: 899962980978204243, guid: e3179729e3070a84d883b5a9bf9b94b2, type: 3}
   vfxOutput: {fileID: 8180385708170454003}
   _guardBreak: {fileID: 6991805737372052992}
-  _guardBreakerVfx: {fileID: 669941833610737928, guid: 6ddbb2701ca437d4f8ef484b2707325a, type: 3}
+  _guardBreakerVfx: {fileID: 5879588470730314396}
 --- !u!54 &8214926884682690391
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4073,6 +4073,11 @@ PrefabInstance:
 --- !u!4 &1866678829864226828 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6068922142703077913, guid: b7e6f1546c49dab438af970d95b56351, type: 3}
+  m_PrefabInstance: {fileID: 5611170717096565269}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5879588470730314396 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2037488065492125833, guid: b7e6f1546c49dab438af970d95b56351, type: 3}
   m_PrefabInstance: {fileID: 5611170717096565269}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7068558823648645005
