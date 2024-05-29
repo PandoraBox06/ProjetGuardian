@@ -163,16 +163,16 @@ public class GameManager : MonoBehaviour
         switch (currentWave)
         {
             case 1:
-                musicEmitter.Params[0].Value = 1;
+                RuntimeManager.StudioSystem.setParameterByName("Parameter1", 1);
                 break;
-            case 5:
+            case 4:
                 RuntimeManager.StudioSystem.setParameterByName("Parameter1", 2);
                 break;
-            case 8:
-                musicEmitter.Params[0].Value = 3;
+            case 7:
+                RuntimeManager.StudioSystem.setParameterByName("Parameter1", 3);
                 break;
-            case 11:
-                musicEmitter.Params[0].Value = 4;
+            case 10:
+                RuntimeManager.StudioSystem.setParameterByName("Parameter1", 4);
                 break;
         }
         if (_TutoVolume.enabled) _TutoVolume.enabled = false;
