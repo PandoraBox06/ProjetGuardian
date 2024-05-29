@@ -129,6 +129,7 @@ public class GameManager : MonoBehaviour
     {
         menuAmbiant.Stop();
         musicEmitter.Play();
+        musicEmitter.Params[0].Value = 0;
         if (_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(false);
         if (_UICanvas.activeInHierarchy) _UICanvas.SetActive(false);
         if (PlayerHp.activeInHierarchy) PlayerHp.SetActive(false);
@@ -165,7 +166,7 @@ public class GameManager : MonoBehaviour
                 musicEmitter.Params[0].Value = 1;
                 break;
             case 5:
-                musicEmitter.Params[0].Value = 2;
+                RuntimeManager.StudioSystem.setParameterByName("Parameter1", 2);
                 break;
             case 8:
                 musicEmitter.Params[0].Value = 3;
