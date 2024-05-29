@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{ad1d80b2-a445-4b61-a1d9-cbca4d5cc78d}">
 		<property name="color">
-			<value>Magenta Light 2</value>
+			<value>Yellow</value>
 		</property>
 		<property name="name">
 			<value>New Wave</value>
@@ -11,7 +11,7 @@
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{c03ba82b-9b08-4f98-896c-e603f47f0acc}</destination>
+			<destination>{49ff87a1-d8e0-47fb-bdf3-f773200e74f6}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{c855cd7f-7270-4135-9d0f-3aecded22224}</destination>
