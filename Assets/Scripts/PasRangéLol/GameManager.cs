@@ -49,7 +49,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private StudioEventEmitter menuAmbiant;
     [SerializeField] private StudioEventEmitter musicEmitter;
-    
     public PostProcessVolume TutoVolume
     {
         get => _TutoVolume;
@@ -103,7 +102,6 @@ public class GameManager : MonoBehaviour
         {
             SkipToTuto();
         }
-   
     }
 
     void SkipToTuto()
@@ -129,7 +127,7 @@ public class GameManager : MonoBehaviour
     {
         menuAmbiant.Stop();
         musicEmitter.Play();
-        musicEmitter.Params[0].Value = 0;
+        RuntimeManager.StudioSystem.setParameterByName("Song", 0);
         if (_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(false);
         if (_UICanvas.activeInHierarchy) _UICanvas.SetActive(false);
         if (PlayerHp.activeInHierarchy) PlayerHp.SetActive(false);
@@ -163,16 +161,16 @@ public class GameManager : MonoBehaviour
         switch (currentWave)
         {
             case 1:
-                RuntimeManager.StudioSystem.setParameterByName("Parameter1", 1);
+                RuntimeManager.StudioSystem.setParameterByName("Song", 1);
                 break;
             case 4:
-                RuntimeManager.StudioSystem.setParameterByName("Parameter1", 2);
+                RuntimeManager.StudioSystem.setParameterByName("Song", 2);
                 break;
             case 7:
-                RuntimeManager.StudioSystem.setParameterByName("Parameter1", 3);
+                RuntimeManager.StudioSystem.setParameterByName("Song", 3);
                 break;
             case 10:
-                RuntimeManager.StudioSystem.setParameterByName("Parameter1", 4);
+                RuntimeManager.StudioSystem.setParameterByName("Song", 4);
                 break;
         }
         if (_TutoVolume.enabled) _TutoVolume.enabled = false;

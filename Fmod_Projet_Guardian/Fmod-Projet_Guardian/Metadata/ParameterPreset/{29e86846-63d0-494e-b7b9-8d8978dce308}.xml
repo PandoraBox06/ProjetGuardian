@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="ParameterPreset" id="{29e86846-63d0-494e-b7b9-8d8978dce308}">
 		<property name="name">
-			<value>Parameter 1</value>
+			<value>Song</value>
 		</property>
 		<relationship name="folder">
 			<destination>{2166462f-ae97-42f1-a069-4568cfccb65e}</destination>
@@ -25,8 +25,14 @@
 			<value>Wave 8 to 11</value>
 			<value>Wave 11 to After</value>
 		</property>
+		<property name="isGlobal">
+			<value>true</value>
+		</property>
 		<property name="initialValue">
 			<value>0</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
 		</property>
 	</object>
 </objects>

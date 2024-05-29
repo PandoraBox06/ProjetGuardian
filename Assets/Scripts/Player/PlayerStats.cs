@@ -67,9 +67,12 @@ public class PlayerStats : MonoBehaviour, IDamageable
         if(_isDead) return;
         if (isDashing) return;
         if (_iFrame) return;
-        Gamepad.current.SetMotorSpeeds(0.123f, 0.234f);
-        Gamepad.current.ResumeHaptics();
-        Gamepad.current.PauseHaptics();
+        if (Gamepad.current.enabled)
+        {
+            Gamepad.current.SetMotorSpeeds(0.123f, 0.234f);
+            Gamepad.current.ResumeHaptics();
+            Gamepad.current.PauseHaptics();
+        }
         playerData.currentHealth = Mathf.Clamp(playerData.currentHealth - damage, 0, playerData.maxHealth);
         _lowHp.SetActive(playerData.currentHealth <= playerData.maxHealth * 0.3);
         blood.Play();
