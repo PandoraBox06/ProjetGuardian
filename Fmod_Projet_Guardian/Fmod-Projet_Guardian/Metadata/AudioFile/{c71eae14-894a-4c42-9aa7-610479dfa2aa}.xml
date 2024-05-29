@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{36204d9d-6cbb-463c-93b7-dfb63d755f11}">
+	<object class="AudioFile" id="{c71eae14-894a-4c42-9aa7-610479dfa2aa}">
 		<property name="assetPath">
-			<value>Ui Back.wav</value>
+			<value>Attack a distance.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
@@ -11,7 +11,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>2</value>
+			<value>1.5592970521541951</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{96b10a71-ce91-4c02-8101-4f875d5a0317}</destination>
