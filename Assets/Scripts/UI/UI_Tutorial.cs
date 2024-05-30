@@ -2,13 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI_Tutorial : MonoBehaviour
 {
     [SerializeField] private List<GameObject> combosList = new();
     [SerializeField] private List<GameObject> greyList = new();
-
+    [SerializeField] private List<Image> validationList = new();
+    [SerializeField] private Sprite cross;
+    [SerializeField] private Sprite valid;
     public bool isCombo1Done { get; private set; }
     public bool isCombo2Done { get; private set; }
     public bool isCombo3Done { get; private set; }
@@ -81,18 +85,21 @@ public class UI_Tutorial : MonoBehaviour
         isCombo1Done = false;
         isCombo2Done = false;
         isCombo3Done = false;
-
-        combosList[0].SetActive(false);
-        combosList[1].SetActive(false);
-        combosList[2].SetActive(false);
-        combosList[3].SetActive(false);
-        combosList[4].SetActive(false);
-
-        greyList[0].SetActive(false);
-        greyList[1].SetActive(false);
-        greyList[2].SetActive(false);
-        greyList[3].SetActive(false);
-        greyList[4].SetActive(false);
+        
+        foreach (GameObject _object in combosList)
+        {
+            _object.SetActive(false);
+        }
+        
+        foreach (GameObject _object in greyList)
+        {
+            _object.SetActive(false);
+        }
+        
+        foreach (Image _object in validationList)
+        {
+            _object.sprite = cross;
+        }
 
         comboCounter = 0;
     }
@@ -125,6 +132,7 @@ public class UI_Tutorial : MonoBehaviour
                             {
                                 if (comboCounter >= 1)
                                 {
+                                    validationList[9].sprite = valid;
                                     comboCounter = 0;
                                     isCombo3Done = true;
                                     greyList[4].SetActive(true);
@@ -133,6 +141,7 @@ public class UI_Tutorial : MonoBehaviour
                                 }
                                 else
                                 {
+                                    validationList[8].sprite = valid;
                                     comboCounter ++;
                                 }
                             }
@@ -144,6 +153,7 @@ public class UI_Tutorial : MonoBehaviour
                         {
                             if (comboCounter >= 1)
                             {
+                                validationList[7].sprite = valid;
                                 comboCounter = 0;
                                 isCombo2Done = true;
                                 greyList[3].SetActive(true);
@@ -151,6 +161,7 @@ public class UI_Tutorial : MonoBehaviour
                             }
                             else
                             {
+                                validationList[6].sprite = valid;
                                 comboCounter ++;
                             }
                         }
@@ -162,6 +173,7 @@ public class UI_Tutorial : MonoBehaviour
                     {
                         if (comboCounter >= 1)
                         {
+                            validationList[5].sprite = valid;
                             comboCounter = 0;
                             isCombo1Done = true;
                             greyList[2].SetActive(true);
@@ -169,6 +181,7 @@ public class UI_Tutorial : MonoBehaviour
                         }
                         else
                         {
+                            validationList[4].sprite = valid;
                             comboCounter ++;
                         }
                     }
@@ -180,6 +193,7 @@ public class UI_Tutorial : MonoBehaviour
                 {
                     if (comboCounter >= 1)
                     {
+                        validationList[3].sprite = valid;
                         comboCounter = 0;
                         isCrossbowDone = true;
                         greyList[1].SetActive(true);
@@ -187,6 +201,7 @@ public class UI_Tutorial : MonoBehaviour
                     }
                     else
                     {
+                        validationList[2].sprite = valid;
                         comboCounter ++;
                     }
                 }
@@ -198,6 +213,7 @@ public class UI_Tutorial : MonoBehaviour
             {
                 if (comboCounter >= 1)
                 {
+                    validationList[1].sprite = valid;
                     comboCounter = 0;
                     isDashDone = true;
                     greyList[0].SetActive(true);
@@ -205,6 +221,7 @@ public class UI_Tutorial : MonoBehaviour
                 }
                 else
                 {
+                    validationList[0].sprite = valid;
                     comboCounter ++;
                 }
             }
