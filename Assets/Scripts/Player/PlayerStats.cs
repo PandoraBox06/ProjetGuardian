@@ -67,7 +67,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
         if(_isDead) return;
         if (isDashing) return;
         if (_iFrame) return;
-        if (Gamepad.current.enabled)
+        if (Gamepad.all.Count > 0)
         {
             Gamepad.current.SetMotorSpeeds(0.25f, 0.8f);
             Gamepad.current.ResumeHaptics();
@@ -85,7 +85,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
     private void FullRegen()
     {
-        playerData.currentHealth = playerData.maxHealth;
+        playerData.currentHealth += playerData.maxHealth * 0.3f;
         _lowHp.SetActive(playerData.currentHealth <= playerData.maxHealth * 0.3);
         OnDamageTaken?.Invoke(playerData.currentHealth);
     }

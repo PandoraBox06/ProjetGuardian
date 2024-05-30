@@ -102,6 +102,21 @@ public class GameManager : MonoBehaviour
         {
             SkipToTuto();
         }
+        switch (currentWave)
+        {
+            case 1:
+                RuntimeManager.StudioSystem.setParameterByName("Song", 1);
+                break;
+            case 5:
+                RuntimeManager.StudioSystem.setParameterByName("Song", 2);
+                break;
+            case 8:
+                RuntimeManager.StudioSystem.setParameterByName("Song", 3);
+                break;
+            case 11:
+                RuntimeManager.StudioSystem.setParameterByName("Song", 4);
+                break;
+        }
     }
 
     void SkipToTuto()
@@ -158,21 +173,6 @@ public class GameManager : MonoBehaviour
 
     void PreWave()
     {
-        switch (currentWave)
-        {
-            case 1:
-                RuntimeManager.StudioSystem.setParameterByName("Song", 1);
-                break;
-            case 5:
-                RuntimeManager.StudioSystem.setParameterByName("Song", 2);
-                break;
-            case 8:
-                RuntimeManager.StudioSystem.setParameterByName("Song", 3);
-                break;
-            case 11:
-                RuntimeManager.StudioSystem.setParameterByName("Song", 4);
-                break;
-        }
         if (_TutoVolume.enabled) _TutoVolume.enabled = false;
         if (!_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(true);
         if (_UICanvas.activeInHierarchy) _UICanvas.SetActive(false);

@@ -26,7 +26,8 @@ public class CharacterAnimatorEvents : MonoBehaviour
     [Header("GuardBreaking")]
     [SerializeField]  private Collider _guardBreak;
     [SerializeField] private ParticleSystem _guardBreakerVfx;
-
+    [Header("GreatSlash")]
+    [SerializeField]  private Collider _greatSlash;
     public static event Action<bool> OnIFrame;
     private bool _iframe;
     private void Start()
@@ -175,6 +176,16 @@ public class CharacterAnimatorEvents : MonoBehaviour
         _guardBreak.enabled = false;
     }
 
+    public void GreatSlash()
+    {
+        _greatSlash.enabled = true;
+    }
+
+    public void GreatSlashOff()
+    {
+        _greatSlash.enabled = false;
+    }
+    
     public void CrossbowOn()
     {
         _crossbow.SetActive(true);
