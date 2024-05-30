@@ -102,9 +102,11 @@ public class HelpComboInterface : MonoBehaviour
     {
         scoreBox.SetActive(true);
         hpPlayerBox.SetActive(true);
-        waveCounterBox.SetActive(true);
+        waveCounterBox.SetActive(false);
         comboCurrentBox.SetActive(true);
         comboListBox.SetActive(true);
+
+        ShowWaveNumber();
     }
 
     private void ToggleCombo(InputAction.CallbackContext callback)
