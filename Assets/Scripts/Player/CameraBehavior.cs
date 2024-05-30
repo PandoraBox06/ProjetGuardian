@@ -73,22 +73,22 @@ public class CameraBehavior : MonoBehaviour
             return;
         }
         
-        if (switchCam.action.WasPressedThisFrame())
-        {
-            switch (currentStyle)
-            {
-                case CameraStyle.Basic:
-                    SwitchCameraStyle(CameraStyle.Combat);
-                    Debug.Log("Combat !");
-                    break;
-                case CameraStyle.Combat:
-                    SwitchCameraStyle(CameraStyle.Basic);
-                    Debug.Log("Basic !");
-                    break;
-                case CameraStyle.Topdown:
-                    break;
-            }
-        }
+        // if (switchCam.action.WasPressedThisFrame())
+        // {
+        //     switch (currentStyle)
+        //     {
+        //         case CameraStyle.Basic:
+        //             SwitchCameraStyle(CameraStyle.Combat);
+        //             Debug.Log("Combat !");
+        //             break;
+        //         case CameraStyle.Combat:
+        //             SwitchCameraStyle(CameraStyle.Basic);
+        //             Debug.Log("Basic !");
+        //             break;
+        //         case CameraStyle.Topdown:
+        //             break;
+        //     }
+        // }
 
         // rotate orientation
         Vector3 viewDir = transform.position - new Vector3(cameraPos.position.x, transform.position.y, cameraPos.position.z);

@@ -174,6 +174,7 @@ public class CharacterAnimatorEvents : MonoBehaviour
     public void GuardBreakOff()
     {
         _guardBreak.enabled = false;
+        CinemachineShake.Instance.ShakeCamera(1, .3f);
     }
 
     public void GreatSlash()
