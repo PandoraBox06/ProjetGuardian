@@ -116,6 +116,7 @@
 	<object class="MixerBusEffectChain" id="{d367ac60-1d13-4576-91fc-ca4dfcd30ef6}">
 		<relationship name="effects">
 			<destination>{accab30b-e612-4aa8-b4f1-e18fb6f6fb23}</destination>
+			<destination>{a147725a-4976-49dc-922e-c4073f91d0c0}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{8024aed5-f0d7-463a-b35b-1c84faed8414}" />
@@ -127,5 +128,10 @@
 	</object>
 	<object class="MixerBusPanner" id="{439d5af4-cbdb-4188-80d6-a094766595c9}" />
 	<object class="MixerBusFader" id="{accab30b-e612-4aa8-b4f1-e18fb6f6fb23}" />
+	<object class="PitchShifterEffect" id="{a147725a-4976-49dc-922e-c4073f91d0c0}">
+		<property name="pitch">
+			<value>0.899999976</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{9261cd69-dec3-491c-ae84-de0aded60ae0}" />
 </objects>
