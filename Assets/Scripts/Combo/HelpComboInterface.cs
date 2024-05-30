@@ -109,6 +109,7 @@ public class HelpComboInterface : MonoBehaviour
 
     private void ToggleCombo(InputAction.CallbackContext callback)
     {
+        if (GameManager.Instance.currentGameState == GameState.Tutorial) return;
         if (comboListBox.activeInHierarchy)
         {
             comboCurrentBox.SetActive(false);
