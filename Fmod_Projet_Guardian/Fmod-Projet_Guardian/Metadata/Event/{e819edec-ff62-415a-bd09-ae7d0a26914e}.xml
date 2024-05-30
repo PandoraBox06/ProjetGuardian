@@ -5,7 +5,7 @@
 			<value>Red Light 1</value>
 		</property>
 		<property name="name">
-			<value>DoHit (effort)</value>
+			<value>Fais Coup</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>

@@ -5,7 +5,7 @@
 			<value>Purple Light 1</value>
 		</property>
 		<property name="name">
-			<value>Attack arrivée à distance 2</value>
+			<value>Attaque arrivée à distance</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
