@@ -1,8 +1,11 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UI_GameOver : MonoBehaviour
 {
+    [SerializeField] private WaveManager waveManager;
+    [SerializeField] private TextMeshProUGUI waveTextEnd;
     [SerializeField] private Button playButton;
     [SerializeField] private Button quitButton;
 
@@ -10,6 +13,8 @@ public class UI_GameOver : MonoBehaviour
     {
         playButton.onClick.AddListener(Play);
         quitButton.onClick.AddListener(Quit);
+
+        waveTextEnd.text = $"You have survived {waveManager.numberOfWave} waves";
     }
 
     private void Play()
