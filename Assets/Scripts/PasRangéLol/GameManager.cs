@@ -191,6 +191,8 @@ public class GameManager : MonoBehaviour
 
         if (isTutorialDone)
         {
+            RuntimeManager.StudioSystem.setParameterByName("Song", 0);
+            _cameraBrain.enabled = true;
             BlancoCombatManager.Instance.Init();
             PlayerInit.Instance.EnablePlayer();
         }
