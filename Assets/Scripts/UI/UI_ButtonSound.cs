@@ -15,11 +15,6 @@ public class UI_ButtonSound : MonoBehaviour, IPointerEnterHandler, ISelectHandle
     {
         thisButton = GetComponent<Button>();
         thisButton.onClick.AddListener(OnClickButton);
-
-        if (Gamepad.all.Count > 0)
-        {
-            UIManager.Instance.navigateUI.action.performed += OnSelect;
-        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -34,11 +29,6 @@ public class UI_ButtonSound : MonoBehaviour, IPointerEnterHandler, ISelectHandle
     }
 
     public void OnSelect(BaseEventData eventData)
-    {
-        AudioManager.Instance.PlayOneShot(AudioManager.Instance.cursorSelection, transform.position);
-    }
-    
-    private void OnSelect(InputAction.CallbackContext callback)
     {
         AudioManager.Instance.PlayOneShot(AudioManager.Instance.cursorSelection, transform.position);
     }

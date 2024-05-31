@@ -11,7 +11,6 @@ public class UIManager : MonoBehaviour
     public PanelsNames startingMenu;
     [Space]
     [SerializeField] private List<GameObject> allPanels = new List<GameObject>();
-    public InputActionReference navigateUI;
     public static UIManager Instance
     {
         get {
