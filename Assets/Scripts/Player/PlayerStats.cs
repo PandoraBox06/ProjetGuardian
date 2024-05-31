@@ -67,7 +67,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
         if (_iFrame) return;
         if (Gamepad.all.Count > 0)
         {
-            Gamepad.current.SetMotorSpeeds(0.25f, 0.8f);
+            Gamepad.current.SetMotorSpeeds(0.25f, 2f);
             Gamepad.current.ResumeHaptics();
             Gamepad.current.PauseHaptics();
         }
@@ -99,7 +99,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
         GetComponent<CameraBehavior>().enabled = false;
         GetComponent<PlayerMouvement>().enabled = false;
         GetComponent<DashController>().enabled = false;
-  
+        GameManager.Instance.musicEmitter.Stop();
         _isDead = true;
         this.enabled = false;
         // playerData.currentHealth = playerData.maxHealth;

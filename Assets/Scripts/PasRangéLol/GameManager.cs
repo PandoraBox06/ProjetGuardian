@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
 
 
     [SerializeField] private StudioEventEmitter menuAmbiant;
-    [SerializeField] private StudioEventEmitter musicEmitter;
+    public StudioEventEmitter musicEmitter;
     public PostProcessVolume TutoVolume
     {
         get => _TutoVolume;
@@ -117,6 +117,9 @@ public class GameManager : MonoBehaviour
         switch (currentWave)
         {
             case 1:
+                RuntimeManager.StudioSystem.setParameterByName("Song", 0);
+                break;
+            case 2:
                 RuntimeManager.StudioSystem.setParameterByName("Song", 1);
                 break;
             case 5:
@@ -177,6 +180,7 @@ public class GameManager : MonoBehaviour
 
     void Tutorial()
     {
+        RuntimeManager.StudioSystem.setParameterByName("Song", 0);
         if (!_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(true);
         if (_UICanvas.activeInHierarchy) _UICanvas.SetActive(false);
         if (PlayerHp.activeInHierarchy) PlayerHp.SetActive(false);
@@ -193,7 +197,9 @@ public class GameManager : MonoBehaviour
 
         if (isRestarted)
         {
-            RuntimeManager.StudioSystem.setParameterByName("Song", 0);
+            menuAmbiant.Stop();
+            musicEmitter.Play();
+            RuntimeManager.StudioSystem.setParameterByName("Song", 1);
             _cameraBrain.enabled = true;
             BlancoCombatManager.Instance.Init();
             PlayerInit.Instance.EnablePlayer();

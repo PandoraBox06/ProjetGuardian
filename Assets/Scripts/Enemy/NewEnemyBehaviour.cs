@@ -38,6 +38,7 @@ public class NewEnemyBehaviour : MonoBehaviour
     private void Update()
     {
         if (!_canMove) return;
+        if (Player == null) _agent.SetDestination(transform.position);
         if (Player == null) return;
 
         if (GameManager.Instance.currentGameState == GameState.Tutorial)
