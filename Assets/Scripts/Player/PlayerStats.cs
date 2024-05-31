@@ -83,7 +83,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
     private void FullRegen()
     {
-        playerData.currentHealth += playerData.maxHealth * 0.3f;
+        playerData.currentHealth =  Mathf.Clamp(playerData.currentHealth + (playerData.maxHealth * 0.3f), 0, playerData.maxHealth);
         _lowHp.SetActive(playerData.currentHealth <= playerData.maxHealth * 0.3);
         OnDamageTaken?.Invoke(playerData.currentHealth);
     }
