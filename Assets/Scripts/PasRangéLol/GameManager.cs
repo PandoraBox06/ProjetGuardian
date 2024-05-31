@@ -201,7 +201,10 @@ public class GameManager : MonoBehaviour
 
     void Defeat()
     {
-        // Player Died
+        if (_PlayerCanvas.activeInHierarchy) _PlayerCanvas.SetActive(false);
+        if (!_UICanvas.activeInHierarchy) _UICanvas.SetActive(true);
+        if (PlayerHp.activeInHierarchy) PlayerHp.SetActive(false);
+        if (TutoCanvas.activeInHierarchy) TutoCanvas.SetActive(false);
     }
 
     void Pause()
