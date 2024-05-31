@@ -19,5 +19,9 @@ public class SceneReloader : MonoBehaviour
     public void ReloadScene()
     {
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        if (isAButton)
+        {
+            PlayerPrefs.SetInt("Restart", 1);
+        }
     }
 }

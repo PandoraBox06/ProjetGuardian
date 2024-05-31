@@ -89,10 +89,12 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+    private bool isRestarted;
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        int isDone = PlayerPrefs.GetInt("TutoEnd");
+        int isDone = PlayerPrefs.GetInt("Restart");
         isTutorialDone = isDone == 1;
+        isRestarted = isDone == 1;
         StopGame();
     }
 
@@ -189,7 +191,7 @@ public class GameManager : MonoBehaviour
         if (PlayerHp.activeInHierarchy) PlayerHp.SetActive(true);
         if (TutoCanvas.activeInHierarchy) TutoCanvas.SetActive(false);
 
-        if (isTutorialDone)
+        if (isRestarted)
         {
             RuntimeManager.StudioSystem.setParameterByName("Song", 0);
             _cameraBrain.enabled = true;
@@ -334,6 +336,7 @@ public class GameManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         PlayerPrefs.DeleteKey("TutoEnd");
+        PlayerPrefs.DeleteKey("Restart");
     }
 #endif
 }
