@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -92,7 +90,6 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
     public void Die()
     {
-        Debug.Log("you ded");
         if(_isDead) return;
         animator.SetTrigger("Death");
         OnDeath?.Invoke();
@@ -106,10 +103,10 @@ public class PlayerStats : MonoBehaviour, IDamageable
         _isDead = true;
         this.enabled = false;
         // playerData.currentHealth = playerData.maxHealth;
-        
-        Debug.Log("piou piou piou");
+     
         GameManager.Instance.ChangeGameState(GameState.Defeat);
         UIManager.Instance.OpenOnePanel(PanelsNames.GameOver);
+        Destroy(gameObject);
     }
 
     public void GetStun()

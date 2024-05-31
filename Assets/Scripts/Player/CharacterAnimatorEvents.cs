@@ -111,6 +111,7 @@ public class CharacterAnimatorEvents : MonoBehaviour
     public void TurnOffDash()
     {
         _guardBreak.enabled = false;
+        _greatSlash.enabled = false;
         _iframe = false;
         _crossbow.SetActive(false);
         OnIFrame?.Invoke(_iframe);
