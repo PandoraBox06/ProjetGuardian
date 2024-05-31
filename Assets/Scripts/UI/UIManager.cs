@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class UIManager : MonoBehaviour
         }
     }
     private static UIManager _instance;
-    
+
     public string bestScore {get ; private set;}
     public string playerPseudo {get ; private set;} //pas récupéré pour le moment 
     public string currentLastScore {get ; private set;}
@@ -29,6 +30,22 @@ public class UIManager : MonoBehaviour
         //TEMPORARY
         if (startWithMenu) OpenOnePanel(startingMenu);
         else ClosePanels();
+        //
+    }
+
+    private void OnEnable()
+    {
+        StartMenu();
+    }
+
+    public void StartMenu()
+    {
+        //lancer la piste ambiance en loop
+    }
+
+    public void StopMenu()
+    {
+        //stopper la piste ambiance
     }
 
     #region Panels
