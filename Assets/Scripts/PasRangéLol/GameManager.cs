@@ -328,8 +328,10 @@ public class GameManager : MonoBehaviour
         currentWave = wave;
     }
 
+#if UNITY_EDITOR
     private void OnApplicationQuit()
     {
         PlayerPrefs.DeleteKey("TutoEnd");
     }
+#endif
 }
