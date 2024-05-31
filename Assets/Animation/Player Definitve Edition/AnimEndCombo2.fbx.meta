@@ -103,14 +103,14 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.32926518
-        functionName: OnEnableCollider
+        functionName: SlideSlash
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.5102404
-        functionName: OnDisableCollider
+        functionName: SlideSlashOff
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

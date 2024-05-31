@@ -28,6 +28,8 @@ public class CharacterAnimatorEvents : MonoBehaviour
     [SerializeField] private ParticleSystem _guardBreakerVfx;
     [Header("GreatSlash")]
     [SerializeField]  private Collider _greatSlash;
+    [Header("SlideSlash")]
+    [SerializeField]  private Collider _slideSlash;
     public static event Action<bool> OnIFrame;
     private bool _iframe;
     private void Start()
@@ -186,6 +188,16 @@ public class CharacterAnimatorEvents : MonoBehaviour
     public void GreatSlashOff()
     {
         _greatSlash.enabled = false;
+    }
+    
+    public void SlideSlash()
+    {
+        _slideSlash.enabled = true;
+    }
+
+    public void SlideSlashOff()
+    {
+        _slideSlash.enabled = false;
     }
     
     public void CrossbowOn()

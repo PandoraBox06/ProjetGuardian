@@ -60,6 +60,18 @@ public class WaveManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.currentGameState == GameState.Defeat)
+        {
+            canSpawnWave = false;
+            GameObject[] enemyDumping = enemyDump.ToArray();
+            foreach (var enemy in enemyDumping)
+            {
+                enemy.GetComponent<Enemy>().Die();
+            }
+
+            this.enabled = false;
+        }
+        
         if (Input.GetKeyDown(skippingWave))
         {
             SkipWave();

@@ -47,7 +47,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject PlayerHp;
     [SerializeField] private PostProcessVolume _TutoVolume;
 
-
     [SerializeField] private StudioEventEmitter menuAmbiant;
     public StudioEventEmitter musicEmitter;
     public PostProcessVolume TutoVolume
@@ -113,6 +112,11 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F1))
         {
             SkipToTuto();
+        }
+        if (Input.GetKeyDown(KeyCode.F7))
+        {
+            PlayerPrefs.DeleteKey("TutoEnd");
+            PlayerPrefs.DeleteKey("Restart");
         }
         switch (currentWave)
         {
