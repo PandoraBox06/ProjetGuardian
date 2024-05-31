@@ -107,8 +107,22 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0.17154981
+        functionName: Combo3Sound
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.21912129
         functionName: IFramee
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.21935481
+        functionName: DoHitPlayerSound
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -143,28 +157,14 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.96201813
-        functionName: UnFreezeMovement
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.96201813
         functionName: OnEndAnimations
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.2129032
-        functionName: Combo3Sound
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.21935481
-        functionName: DoHitPlayerSound
+      - time: 0.96201813
+        functionName: UnFreezeMovement
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
