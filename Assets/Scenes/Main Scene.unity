@@ -971,6 +971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Main Scene
   reloadKey: 114
+  isAButton: 0
 --- !u!4 &97766103
 Transform:
   m_ObjectHideFlags: 0
@@ -3555,9 +3556,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1693073796}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -400}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1000, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &423495687
@@ -10293,7 +10294,7 @@ MonoBehaviour:
       Data2: 1157932066
       Data3: -1516766560
       Data4: 1170030362
-    Path: event:/HUD/Game Environnement Sound
+    Path: event:/HUD/Musique Jeu
   Event: 
   PlayEvent: 0
   StopEvent: 0
@@ -10301,12 +10302,10 @@ MonoBehaviour:
   TriggerOnce: 0
   Preload: 1
   AllowNonRigidbodyDoppler: 0
-  Params:
-  - Name: Parameter 1
-    Value: 0
-  OverrideAttenuation: 1
-  OverrideMinDistance: 0
-  OverrideMaxDistance: 9999
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!114 &1289183040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10326,7 +10325,7 @@ MonoBehaviour:
       Data2: 1173840426
       Data3: -631454585
       Data4: 95158788
-    Path: event:/User Interface/Menu Ambiance Sound
+    Path: event:/User Interface/Ambiance Menu
   Event: 
   PlayEvent: 0
   StopEvent: 0
@@ -13088,9 +13087,9 @@ RectTransform:
   - {fileID: 1628243608}
   m_Father: {fileID: 1693073796}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -750}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1562424841
@@ -14509,7 +14508,7 @@ MonoBehaviour:
       Data2: 1221354184
       Data3: -1928449648
       Data4: -1320681639
-    Path: event:/Avatar/Walk
+    Path: event:/Avatar/Marche
   <dash>k__BackingField:
     Guid:
       Data1: -1832341489
@@ -14523,112 +14522,112 @@ MonoBehaviour:
       Data2: 1259865624
       Data3: 1742987
       Data4: 419742179
-    Path: event:/Avatar/GetHit
+    Path: "event:/Avatar/Re\xE7ois Coup"
   <death>k__BackingField:
     Guid:
       Data1: -1156032588
       Data2: 1115338382
       Data3: 1183220119
       Data4: -1356353927
-    Path: event:/Avatar/Death
+    Path: event:/Avatar/Mort
   <doHit>k__BackingField:
     Guid:
       Data1: -400953876
       Data2: 1096482658
       Data3: 2108557757
       Data4: 1318135306
-    Path: event:/Avatar/DoHit (effort)
+    Path: event:/Avatar/Fais Coup
   <hitSword>k__BackingField:
     Guid:
       Data1: 828630756
       Data2: 1112668891
       Data3: 661649594
       Data4: 2082059715
-    Path: "event:/Weapons/Hit \xE9p\xE9e Sound"
+    Path: "event:/Weapons/Attaque \xE0 l'\xE9p\xE9e"
   <hitCrossbow>k__BackingField:
     Guid:
       Data1: 1827339922
       Data2: 1302479770
       Data3: -268771424
       Data4: -420192623
-    Path: "event:/Weapons/Hit arbal\xE8te Nothing Sound"
+    Path: "event:/Weapons/Attaque \xE0 l'arbal\xE8te"
   <walkEnemy>k__BackingField:
     Guid:
       Data1: 609650096
       Data2: 1095427164
       Data3: 528303038
       Data4: 2027100920
-    Path: event:/Ennemy/Walk Ennemy
+    Path: event:/Ennemi/Marche Ennemi
   <getHitEnemy>k__BackingField:
     Guid:
       Data1: 1317439258
       Data2: 1202258794
       Data3: 301508518
       Data4: -194790144
-    Path: event:/Ennemy/GetHit Ennemy
+    Path: "event:/Ennemi/Re\xE7ois Coup Ennemi"
   <attackEnemy>k__BackingField:
     Guid:
       Data1: 613673999
       Data2: 1094049073
       Data3: 1936186000
       Data4: -472425221
-    Path: event:/Ennemy/Attack
+    Path: event:/Ennemi/Attaque
   <attackRangeEnemy>k__BackingField:
     Guid:
       Data1: -1741373662
       Data2: 1265948969
       Data3: -1894273876
       Data4: -1217672977
-    Path: "event:/Ennemy/Attack \xE0 distance"
+    Path: "event:/Ennemi/Attaque lancement \xE0 distance"
   <attackRangeEnemyImpact>k__BackingField:
     Guid:
       Data1: 996744588
       Data2: 1205432213
       Data3: 32149183
       Data4: -1700088449
-    Path: "event:/Ennemy/Attack arriv\xE9e \xE0 distance 2"
+    Path: "event:/Ennemi/Attaque arriv\xE9e \xE0 distance"
   <guardEnemy>k__BackingField:
     Guid:
       Data1: 447839066
       Data2: 1220796501
       Data3: 374269853
       Data4: -805339195
-    Path: event:/Ennemy/Guard up (la garde)
+    Path: event:/Ennemi/Garde Contact
   <deathEnemy>k__BackingField:
     Guid:
       Data1: -1766758891
       Data2: 1097425781
       Data3: 322247553
       Data4: -629184972
-    Path: event:/Ennemy/Death
+    Path: event:/Ennemi/Mort Ennemi
   <cursorValidate>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1490984354
+      Data2: 1076846316
+      Data3: -1460688497
+      Data4: -1573344472
+    Path: event:/User Interface/Cursor Validation
   <cursorBack>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1145707267
+      Data2: 1242885118
+      Data3: -1844353624
+      Data4: 454189732
+    Path: event:/User Interface/Cursor Retour
   <cursorSelection>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 292563492
+      Data2: 1134014756
+      Data3: -1770436695
+      Data4: -30913179
+    Path: event:/User Interface/Cursor Selection
   <menuAmbianceSound>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 324550349
+      Data2: 1173840426
+      Data3: -631454585
+      Data4: 95158788
+    Path: event:/User Interface/Ambiance Menu
   <combo1>k__BackingField:
     Guid:
       Data1: -1848778815
@@ -14656,14 +14655,14 @@ MonoBehaviour:
       Data2: 1157932066
       Data3: -1516766560
       Data4: 1170030362
-    Path: event:/HUD/Game Environnement Sound
+    Path: event:/HUD/Musique Jeu
   <newWave>k__BackingField:
     Guid:
       Data1: -1390575438
       Data2: 1264690245
       Data3: -892610143
       Data4: -1916314547
-    Path: event:/HUD/New Wave
+    Path: event:/HUD/Nouvelles Vagues
 --- !u!1 &1693073795
 GameObject:
   m_ObjectHideFlags: 0
@@ -14683,7 +14682,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1693073796
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17545,6 +17544,7 @@ GameObject:
   - component: {fileID: 2097925088}
   - component: {fileID: 2097925086}
   - component: {fileID: 2097925085}
+  - component: {fileID: 2097925089}
   m_Layer: 5
   m_Name: Replay
   m_TagString: Untagged
@@ -17569,9 +17569,9 @@ RectTransform:
   - {fileID: 648281551}
   m_Father: {fileID: 1693073796}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -600}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2097925085
@@ -17617,7 +17617,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2097925086}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2097925089}
+        m_TargetAssemblyTypeName: SceneReloader, Assembly-CSharp
+        m_MethodName: ReloadScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2097925086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17669,6 +17681,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBackButton: 0
+--- !u!114 &2097925089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097925083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16a154bc579bef14fa558dd79ca21462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Main Scene
+  reloadKey: 0
+  isAButton: 1
 --- !u!95 &2103330590 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 240066541819854080, guid: b0770e01f45aa79429bc9d9d3d2cc5b1, type: 3}
@@ -18335,7 +18362,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2120371020
 Transform:
   m_ObjectHideFlags: 0
@@ -19464,11 +19491,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8340960889927087436, guid: b0770e01f45aa79429bc9d9d3d2cc5b1, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.027115336
+      value: -0.027115399
       objectReference: {fileID: 0}
     - target: {fileID: 8340960889927087436, guid: b0770e01f45aa79429bc9d9d3d2cc5b1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.019793062
+      value: 0.01979311
       objectReference: {fileID: 0}
     - target: {fileID: 8533224216080592768, guid: b0770e01f45aa79429bc9d9d3d2cc5b1, type: 3}
       propertyPath: m_LocalRotation.y

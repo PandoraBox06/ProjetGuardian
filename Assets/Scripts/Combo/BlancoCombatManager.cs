@@ -253,6 +253,7 @@ public class BlancoCombatManager : MonoBehaviour
     
     private bool IsPlayingAttack()
     {
+        if (animator == null) return false;
         var animatorState = animator.GetCurrentAnimatorStateInfo(0);
         if (animatorState.normalizedTime < 1 && animatorState.IsTag("Attack"))
         {

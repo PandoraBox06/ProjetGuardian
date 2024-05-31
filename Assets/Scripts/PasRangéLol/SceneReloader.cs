@@ -7,12 +7,17 @@ public class SceneReloader : MonoBehaviour
 {
     [SerializeField] private string sceneName = "Axel";
     [SerializeField] private KeyCode reloadKey;
-    
+    [SerializeField] private bool isAButton;
     void Update()
     {
-        if (Input.GetKeyDown(reloadKey))
+        if (Input.GetKeyDown(reloadKey) && !isAButton)
         {
-            SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+            ReloadScene();
         }
+    }
+
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 }

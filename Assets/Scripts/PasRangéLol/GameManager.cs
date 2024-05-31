@@ -4,6 +4,7 @@ using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 
 public enum GameState
 {
@@ -79,11 +80,20 @@ public class GameManager : MonoBehaviour
     {
         WaveManager.RefreshWaveCount += GetWaveNumber;
         pauseInput.action.performed += PauseInput;
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnDisable()
     {
         WaveManager.RefreshWaveCount -= GetWaveNumber;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        int isDone = PlayerPrefs.GetInt("TutoEnd");
+        isTutorialDone = isDone == 1;
+        StopGame();
     }
 
     private void Start()
@@ -178,6 +188,12 @@ public class GameManager : MonoBehaviour
         if (_UICanvas.activeInHierarchy) _UICanvas.SetActive(false);
         if (PlayerHp.activeInHierarchy) PlayerHp.SetActive(true);
         if (TutoCanvas.activeInHierarchy) TutoCanvas.SetActive(false);
+
+        if (isTutorialDone)
+        {
+            BlancoCombatManager.Instance.Init();
+            PlayerInit.Instance.EnablePlayer();
+        }
         
         //Before Wave
         timer -= Time.deltaTime;
@@ -205,6 +221,7 @@ public class GameManager : MonoBehaviour
         if (!_UICanvas.activeInHierarchy) _UICanvas.SetActive(true);
         if (PlayerHp.activeInHierarchy) PlayerHp.SetActive(false);
         if (TutoCanvas.activeInHierarchy) TutoCanvas.SetActive(false);
+        StopGame();
     }
 
     void Pause()
@@ -310,7 +327,9 @@ public class GameManager : MonoBehaviour
     {
         currentWave = wave;
     }
-    
-    
-    
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.DeleteKey("TutoEnd");
+    }
 }
