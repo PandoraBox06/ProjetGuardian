@@ -133,5 +133,11 @@
 		<property name="pitch">
 			<value>0.899999976</value>
 		</property>
+		<property name="fftSize">
+			<value>1000</value>
+		</property>
+		<property name="overlap">
+			<value>1</value>
+		</property>
 	</object>
 </objects>

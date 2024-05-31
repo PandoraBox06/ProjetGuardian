@@ -132,6 +132,9 @@
 		<property name="pitch">
 			<value>0.899999976</value>
 		</property>
+		<property name="fftSize">
+			<value>280</value>
+		</property>
 	</object>
 	<object class="MixerBusFader" id="{9261cd69-dec3-491c-ae84-de0aded60ae0}" />
 </objects>
